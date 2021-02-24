@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="introduction.html"/>
+<link rel="prev" href="genomic-libraries-and-sequence-capture.html"/>
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -53,8 +53,77 @@
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<link href="libs/sequences-0.1/sequences.css" rel="stylesheet" />
+<script src="libs/sunburst-binding-2.1.5/sunburst.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <link rel="stylesheet" href="html/style.css" type="text/css" />
 </head>
@@ -74,6 +143,80 @@
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="study-site-sampling.html"><a href="study-site-sampling.html"><i class="fa fa-check"></i><b>1</b> Study site &amp; sampling</a><ul>
+<li class="chapter" data-level="1.1" data-path="study-site-sampling.html"><a href="study-site-sampling.html#study-site"><i class="fa fa-check"></i><b>1.1</b> Study site</a></li>
+<li class="chapter" data-level="1.2" data-path="study-site-sampling.html"><a href="study-site-sampling.html#plant-material"><i class="fa fa-check"></i><b>1.2</b> Plant material</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html"><i class="fa fa-check"></i><b>2</b> Design of probes set</a><ul>
+<li class="chapter" data-level="2.1" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#scotti-et-al.-in-prep-scaffolds-preparation"><i class="fa fa-check"></i><b>2.1</b> Scotti <em>et al. (in prep)</em> scaffolds preparation</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#filtering-scaffolds-over-1kbp"><i class="fa fa-check"></i><b>2.1.1</b> Filtering scaffolds over <span class="math inline">\(1kbp\)</span></a></li>
+<li class="chapter" data-level="2.1.2" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#renaming"><i class="fa fa-check"></i><b>2.1.2</b> Renaming</a></li>
+<li class="chapter" data-level="2.1.3" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#libraries-merging"><i class="fa fa-check"></i><b>2.1.3</b> Libraries merging</a></li>
+<li class="chapter" data-level="2.1.4" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#removing-scaffolds-with-multimatch-blasted-consensus-sequence-from-torroba-balmori-et-al.-unpublished"><i class="fa fa-check"></i><b>2.1.4</b> Removing scaffolds with multimatch blasted consensus sequence from Torroba-Balmori <em>et al. (unpublished)</em></a></li>
+<li class="chapter" data-level="2.1.5" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#total-filtered-scaffolds"><i class="fa fa-check"></i><b>2.1.5</b> Total filtered scaffolds</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#olsson-et-al.-2017-scaffolds-preparation"><i class="fa fa-check"></i><b>2.2</b> Olsson <em>et al. (2017)</em> scaffolds preparation</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#renaming-1"><i class="fa fa-check"></i><b>2.2.1</b> Renaming</a></li>
+<li class="chapter" data-level="2.2.2" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#removing-scaffolds-with-multimatch-blasted-consensus-sequence-from-torroba-balmori-et-al.-unpublished-1"><i class="fa fa-check"></i><b>2.2.2</b> Removing scaffolds with multimatch blasted consensus sequence from Torroba-Balmori <em>et al. (unpublished)</em></a></li>
+<li class="chapter" data-level="2.2.3" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#total-filtered-scaffolds-1"><i class="fa fa-check"></i><b>2.2.3</b> Total filtered scaffolds</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#tysklind-et-al-in-prep-transcript-preparation"><i class="fa fa-check"></i><b>2.3</b> Tysklind <em>et al (in prep)</em> transcript preparation</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#filtering-snp-on-quality"><i class="fa fa-check"></i><b>2.3.1</b> Filtering SNP on quality</a></li>
+<li class="chapter" data-level="2.3.2" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#filtering-snp-on-type"><i class="fa fa-check"></i><b>2.3.2</b> Filtering SNP on type</a></li>
+<li class="chapter" data-level="2.3.3" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#filtering-transcripts-on-snp-frequency"><i class="fa fa-check"></i><b>2.3.3</b> Filtering transcripts on SNP frequency</a></li>
+<li class="chapter" data-level="2.3.4" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#total-filtered-transcript"><i class="fa fa-check"></i><b>2.3.4</b> Total filtered transcript</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#neutral-region-selection"><i class="fa fa-check"></i><b>2.4</b> Neutral region selection</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#raw-reads-from-torroba-balmori-et-al.-unpublished-alignment-on-scaffolds-from-scotti-et-al.-in-prep"><i class="fa fa-check"></i><b>2.4.1</b> Raw reads from Torroba-Balmori <em>et al. (unpublished)</em> alignment on scaffolds from Scotti <em>et al. (in prep)</em></a></li>
+<li class="chapter" data-level="2.4.2" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#masking-scaffolds-with-multimatch-from-scotti-et-al.-in-prep"><i class="fa fa-check"></i><b>2.4.2</b> Masking scaffolds with multimatch from Scotti <em>et al. (in prep)</em></a></li>
+<li class="chapter" data-level="2.4.3" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#raw-reads-from-torroba-balmori-et-al.-unpublished-alignment-on-scaffolds-from-olsson2017"><i class="fa fa-check"></i><b>2.4.3</b> Raw reads from Torroba-Balmori <em>et al. (unpublished)</em> alignment on scaffolds from <span class="citation">Olsson <em>et al.</em> (<span>2017</span>)</span></a></li>
+<li class="chapter" data-level="2.4.4" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#masking-scaffolds-with-multimatch-from-olsson2017"><i class="fa fa-check"></i><b>2.4.4</b> Masking scaffolds with multimatch from <span class="citation">Olsson <em>et al.</em> (<span>2017</span>)</span></a></li>
+<li class="chapter" data-level="2.4.5" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#removing-scaffolds-already-matching-transcripts"><i class="fa fa-check"></i><b>2.4.5</b> Removing scaffolds already matching transcripts</a></li>
+<li class="chapter" data-level="2.4.6" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#merge-of-selected-scaffolds"><i class="fa fa-check"></i><b>2.4.6</b> Merge of selected scaffolds</a></li>
+<li class="chapter" data-level="2.4.7" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#final-subset-of-selected-neutral-scaffolds"><i class="fa fa-check"></i><b>2.4.7</b> Final subset of selected neutral scaffolds</a></li>
+<li class="chapter" data-level="2.4.8" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#repetitive-regions-final-check"><i class="fa fa-check"></i><b>2.4.8</b> Repetitive regions final check</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#fuctional-region-selection"><i class="fa fa-check"></i><b>2.5</b> Fuctional region selection</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#open-reading-frames-orfs-filtering"><i class="fa fa-check"></i><b>2.5.1</b> Open Reading Frames (ORFs) filtering</a></li>
+<li class="chapter" data-level="2.5.2" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#orf-alignment-on-genomics-scaffolds"><i class="fa fa-check"></i><b>2.5.2</b> ORF alignment on genomics scaffolds</a></li>
+<li class="chapter" data-level="2.5.3" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#overlaping-genes-filtering"><i class="fa fa-check"></i><b>2.5.3</b> Overlaping genes filtering</a></li>
+<li class="chapter" data-level="2.5.4" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#pre-selected-genes"><i class="fa fa-check"></i><b>2.5.4</b> Pre-selected genes</a></li>
+<li class="chapter" data-level="2.5.5" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#differential-expression-de-of-genes"><i class="fa fa-check"></i><b>2.5.5</b> Differential Expression (DE) of genes</a></li>
+<li class="chapter" data-level="2.5.6" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#final-subset-of-selected-functional-scaffolds"><i class="fa fa-check"></i><b>2.5.6</b> Final subset of selected functional scaffolds</a></li>
+<li class="chapter" data-level="2.5.7" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#repetitive-regions-final-check-1"><i class="fa fa-check"></i><b>2.5.7</b> Repetitive regions final check</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html"><i class="fa fa-check"></i><b>3</b> Genomic libraries and sequence capture</a><ul>
+<li class="chapter" data-level="3.1" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#plates"><i class="fa fa-check"></i><b>3.1</b> Plates</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#extraction"><i class="fa fa-check"></i><b>3.1.1</b> Extraction</a></li>
+<li class="chapter" data-level="3.1.2" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#library-plates-design"><i class="fa fa-check"></i><b>3.1.2</b> Library plates design</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#libraries-preparation-protocol"><i class="fa fa-check"></i><b>3.2</b> Libraries preparation protocol</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#material-preparation"><i class="fa fa-check"></i><b>3.2.1</b> Material preparation</a></li>
+<li class="chapter" data-level="3.2.2" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#fragmentation"><i class="fa fa-check"></i><b>3.2.2</b> Fragmentation</a></li>
+<li class="chapter" data-level="3.2.3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#adaptor-ligation"><i class="fa fa-check"></i><b>3.2.3</b> Adaptor ligation</a></li>
+<li class="chapter" data-level="3.2.4" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#size-selection"><i class="fa fa-check"></i><b>3.2.4</b> Size selection</a></li>
+<li class="chapter" data-level="3.2.5" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#enrichment-and-purification"><i class="fa fa-check"></i><b>3.2.5</b> Enrichment and purification</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#libraries-preparation-results"><i class="fa fa-check"></i><b>3.3</b> Libraries preparation results</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#post-enrichment-pcr1-quantification"><i class="fa fa-check"></i><b>3.3.1</b> Post-enrichment PCR1 quantification</a></li>
+<li class="chapter" data-level="3.3.2" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#post-enrichment-pcr1-pcr2-and-amplification-quantification"><i class="fa fa-check"></i><b>3.3.2</b> Post-enrichment (PCR1 &amp; PCR2) and amplification quantification</a></li>
+<li class="chapter" data-level="3.3.3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#amplification-result"><i class="fa fa-check"></i><b>3.3.3</b> Amplification result</a></li>
+<li class="chapter" data-level="3.3.4" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#library-extraction-repetition-result"><i class="fa fa-check"></i><b>3.3.4</b> Library &amp; extraction repetition result</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#capture"><i class="fa fa-check"></i><b>3.4</b> Capture</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#amplifcation-1-plate-reorganization"><i class="fa fa-check"></i><b>3.4.1</b> Amplifcation 1 Plate reorganization</a></li>
+<li class="chapter" data-level="3.4.2" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#dna-dosage-1"><i class="fa fa-check"></i><b>3.4.2</b> DNA dosage 1</a></li>
+<li class="chapter" data-level="3.4.3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#amplification-2"><i class="fa fa-check"></i><b>3.4.3</b> Amplification 2</a></li>
+<li class="chapter" data-level="3.4.4" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#dna-dosage-2"><i class="fa fa-check"></i><b>3.4.4</b> DNA dosage 2</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#amplifcation-2-and-library-repeat-plates-reorganization"><i class="fa fa-check"></i><b>3.5</b> Amplifcation 2 and Library Repeat Plates reorganization</a></li>
+<li class="chapter" data-level="3.6" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#pool-building"><i class="fa fa-check"></i><b>3.6</b> Pool building</a></li>
+<li class="chapter" data-level="3.7" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#purification-concentration"><i class="fa fa-check"></i><b>3.7</b> Purification &amp; Concentration</a></li>
+<li class="chapter" data-level="3.8" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#size-assessment"><i class="fa fa-check"></i><b>3.8</b> Size assessment</a></li>
+<li class="chapter" data-level="3.9" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#size-selection-1"><i class="fa fa-check"></i><b>3.9</b> Size selection</a></li>
+<li class="chapter" data-level="3.10" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#capture-1"><i class="fa fa-check"></i><b>3.10</b> Capture</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/sylvainschmitt/GOING" target="blank">Source</a></li>
@@ -98,6 +241,71 @@
 <div id="references" class="section level1 unnumbered">
 <h1>References</h1>
 
+<div id="refs" class="references">
+<div>
+<p>Aguilos, M., Stahl, C., Burban, B., Hérault, B., Courtois, E., Coste, S., Wagner, F., Ziegler, C., Takagi, K. &amp; Bonal, D. (2018). Interannual and Seasonal Variations in Ecosystem Transpiration and Water Use Efficiency in a Tropical Rainforest. <em>Forests</em>, <strong>10</strong>, 14. Retrieved from <a href="http://www.mdpi.com/1999-4907/10/1/14">http://www.mdpi.com/1999-4907/10/1/14</a></p>
+</div>
+<div>
+<p>Allié, E., Pélissier, R., Engel, J., Petronelli, P., Freycon, V., Deblauwe, V., Soucémarianadin, L., Weigel, J. &amp; Baraloto, C. (2015). Pervasive local-scale tree-soil habitat association in a tropical forest community. <em>PLoS ONE</em>, <strong>10</strong>, e0141488. Retrieved from <a href="http://dx.plos.org/10.1371/journal.pone.0141488">http://dx.plos.org/10.1371/journal.pone.0141488</a></p>
+</div>
+<div>
+<p>Baraloto, C., Hardy, O.J., Paine, C.E.T., Dexter, K.G., Cruaud, C., Dunning, L.T., Gonzalez, M.-A., Molino, J.-F., Sabatier, D., Savolainen, V. &amp; Chave, J. (2012). Using functional traits and phylogenetic trees to examine the assembly of tropical tree communities. <em>Journal of Ecology</em>, <strong>100</strong>, 690–701. Retrieved from <a href="http://onlinelibrary.wiley.com/doi/10.1111/j.1365-2745.2012.01966.x/abstract">http://onlinelibrary.wiley.com/doi/10.1111/j.1365-2745.2012.01966.x/abstract</a></p>
+</div>
+<div>
+<p>Baraloto, C., Morneau, F., Bonal, D., Blanc, L. &amp; Ferry, B. (2007). Seasonal water stress tolerance and habitat associations within four Neotropical tree genera. <em>Ecology</em>, <strong>88</strong>, 478–489.</p>
+</div>
+<div>
+<p>Caron, H., Molino, J., Sabatier, D., Léger, P., Chaumeil, P., Scotti-Saintagne, C., Frigério, J., Scotti, I., Franc, A. &amp; Petit, R.J. (2019). Chloroplast DNA variation in a hyperdiverse tropical tree community. <em>Ecology and Evolution</em>, <strong>9</strong>, ece3.5096. Retrieved from <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/ece3.5096">https://onlinelibrary.wiley.com/doi/abs/10.1002/ece3.5096</a></p>
+</div>
+<div>
+<p>Chakraborty, M., Baldwin-Brown, J.G., Long, A.D. &amp; Emerson, J.J. (2016). Contiguous and accurate de novo assembly of metazoan genomes with modest long read coverage. <em>Nucleic Acids Research</em>, <strong>44</strong>, 1–12.</p>
+</div>
+<div>
+<p>Doyle, J. &amp; Doyle, J. (1987). Genomic plant DNA preparation from fresh tissue-CTAB method. <em>Phytochem Bull</em>, <strong>19</strong>, 11–15.</p>
+</div>
+<div>
+<p>Gonzalez, M.A., Baraloto, C., Engel, J., Mori, S.A., Pétronelli, P., Riéra, B., Roger, A., Thébaud, C. &amp; Chave, J. (2009). Identification of amazonian trees with DNA barcodes. <em>PLoS ONE</em>, <strong>4</strong>, e7483. Retrieved from <a href="http://dx.plos.org/10.1371/journal.pone.0007483">http://dx.plos.org/10.1371/journal.pone.0007483</a></p>
+</div>
+<div>
+<p>Gourlet-Fleury, S., Guehl, J.-M. &amp; Laroussine, O. (2004). <em>Ecology and management of a neotropical rainforest : lessons drawn from Paracou, a long-term experimental research site in French Guiana Ecology and management of a neotropical rainforest : lessons drawn from Paracou, a long-term experimental research sit</em>. Paris: Elsevier. Retrieved from <a href="http://agritrop.cirad.fr/522004/">http://agritrop.cirad.fr/522004/</a></p>
+</div>
+<div>
+<p>Haas, B.J., Papanicolaou, A., Yassour, M., Grabherr, M., Philip, D., Bowden, J., Couger, M.B., Eccles, D., Li, B., Macmanes, M.D., Ott, M., Orvis, J., Pochet, N., Strozzi, F., Weeks, N., Westerman, R., William, T., Dewey, C.N., Henschel, R., Leduc, R.D., Friedman, N. &amp; Regev, A. (2013). <em>De novo transcript sequence recostruction from RNA-Seq: reference generation and analysis with Trinity</em>.</p>
+</div>
+<div>
+<p>Hérault, B. &amp; Piponiot, C. (2018). Key drivers of ecosystem recovery after disturbance in a neotropical forest. <em>Forest Ecosystems</em>, <strong>5</strong>, 2. Retrieved from <a href="https://forestecosyst.springeropen.com/articles/10.1186/s40663-017-0126-7">https://forestecosyst.springeropen.com/articles/10.1186/s40663-017-0126-7</a></p>
+</div>
+<div>
+<p>Kent, W.J. (2002). BLAT—The BLAST-Like Alignment Tool. <em>Genome Research</em>, <strong>12</strong>, 656–664.</p>
+</div>
+<div>
+<p>Li, H. &amp; Durbin, R. (2009). Fast and accurate short read alignment with Burrows-Wheeler transform. <em>Bioinformatics</em>, <strong>25</strong>, 1754–1760.</p>
+</div>
+<div>
+<p>Lopez-Maestre, H., Brinza, L., Marchet, C., Kielbassa, J., Bastien, S., Boutigny, M., Monnin, D., Filali, A.E., Carareto, C.M., Vieira, C., Picard, F., Kremer, N., Vavre, F., Sagot, M.F. &amp; Lacroix, V. (2016). SNP calling from RNA-seq data without a reference genome: Identification, quantification, differential analysis and impact on the protein sequence. <em>Nucleic Acids Research</em>, <strong>44</strong>, gkw655. Retrieved from <a href="https://academic.oup.com/nar/article-lookup/doi/10.1093/nar/gkw655">https://academic.oup.com/nar/article-lookup/doi/10.1093/nar/gkw655</a></p>
+</div>
+<div>
+<p>Molino, J.-F. &amp; Sabatier, D. (2001). Tree Diversity in Tropical Rain Forests: A Validation of the Intermediate Disturbance Hypothesis. <em>Science</em>, <strong>294</strong>, 1702–1704. Retrieved from <a href="http://science.sciencemag.org/content/294/5547/1702%20http://www.sciencemag.org/cgi/doi/10.1126/science.1060284">http://science.sciencemag.org/content/294/5547/1702 http://www.sciencemag.org/cgi/doi/10.1126/science.1060284</a></p>
+</div>
+<div>
+<p>Olsson, S., Seoane-Zonjic, P., Bautista, R., Claros, M.G., González-Martínez, S.C., Scotti, I., Scotti-Saintagne, C., Hardy, O.J. &amp; Heuertz, M. (2017). Development of genomic tools in a widespread tropical tree, Symphonia globulifera L.f.: a new low-coverage draft genome, SNP and SSR markers. <em>Molecular Ecology Resources</em>, <strong>17</strong>, 614–630. Retrieved from <a href="http://doi.wiley.com/10.1111/1755-0998.12605">http://doi.wiley.com/10.1111/1755-0998.12605</a></p>
+</div>
+<div>
+<p>Sabatier, D., Grimaldi, M., Prévost, M.F., Guillaume, J., Godron, M., Dosso, M. &amp; Curmi, P. (1997). The influence of soil cover organization on the floristic and structural heterogeneity of a Guianan rain forest. <em>Plant Ecology</em>, <strong>131</strong>, 81–108.</p>
+</div>
+<div>
+<p>Schmitt, S. (2020). <em>Génomique écologique de l’exploitation de niche et de la performance individuelle chez les arbres forestiers tropicaux</em>. PhD thesis, University of Bordeaux. Retrieved from <a href="https://phdthesissylvainschmitt.netlify.app/">https://phdthesissylvainschmitt.netlify.app/</a></p>
+</div>
+<div>
+<p>Schmitt, S., Hérault, B., Ducouret, É., Baranger, A., Tysklind, N., Heuertz, M., Marcon, É., Cazal, S.O. &amp; Derroire, G. (2020). Topography consistently drives intra- and inter-specific leaf trait variation within tree species complexes in a Neotropical forest. <em>Oikos</em>, <strong>129</strong>, 1521–1530. Retrieved from <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/oik.07488%20https://onlinelibrary.wiley.com/doi/10.1111/oik.07488">https://onlinelibrary.wiley.com/doi/abs/10.1111/oik.07488 https://onlinelibrary.wiley.com/doi/10.1111/oik.07488</a></p>
+</div>
+<div>
+<p>Smit, A., Hubley, R. &amp; Green, P. (2015). RepeatMasker Open-4.0. &lt;http://www.repeatmasker.org&gt;.</p>
+</div>
+<div>
+<p>Torroba-Balmori, P., Budde, K.B., Heer, K., González-Martínez, S.C., Olsson, S., Scotti-Saintagne, C., Casalis, M., Sonké, B., Dick, C.W. &amp; Heuertz, M. (2017). Altitudinal gradients, biogeographic history and microhabitat adaptation affect fine-scale spatial genetic structure in African and Neotropical populations of an ancient tropical tree species. <em>PLOS ONE</em>, <strong>12</strong>, e0182515. Retrieved from <a href="http://dx.plos.org/10.1371/journal.pone.0182515">http://dx.plos.org/10.1371/journal.pone.0182515</a></p>
+</div>
+</div>
 </div>
 <div id="disqus_thread"></div>
 <script>
@@ -124,7 +332,7 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="introduction.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="genomic-libraries-and-sequence-capture.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
@@ -175,6 +383,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

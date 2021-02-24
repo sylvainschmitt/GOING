@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Design of probes set | GOING</title>
+  <meta name="description" content="Genomic of Individual Growth in tropical tree species Symphonia globulifera." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Design of probes set | GOING" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Genomic of Individual Growth in tropical tree species Symphonia globulifera." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Design of probes set | GOING" />
+  
+  <meta name="twitter:description" content="Genomic of Individual Growth in tropical tree species Symphonia globulifera." />
+  
+
+<meta name="author" content="Sylvain Schmitt" />
+
+
+<meta name="date" content="2021-02-24" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="study-site-sampling.html"/>
+<link rel="next" href="genomic-libraries-and-sequence-capture.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<link href="libs/sequences-0.1/sequences.css" rel="stylesheet" />
+<script src="libs/sunburst-binding-2.1.5/sunburst.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="html/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">GOING</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="study-site-sampling.html"><a href="study-site-sampling.html"><i class="fa fa-check"></i><b>1</b> Study site &amp; sampling</a><ul>
+<li class="chapter" data-level="1.1" data-path="study-site-sampling.html"><a href="study-site-sampling.html#study-site"><i class="fa fa-check"></i><b>1.1</b> Study site</a></li>
+<li class="chapter" data-level="1.2" data-path="study-site-sampling.html"><a href="study-site-sampling.html#plant-material"><i class="fa fa-check"></i><b>1.2</b> Plant material</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html"><i class="fa fa-check"></i><b>2</b> Design of probes set</a><ul>
+<li class="chapter" data-level="2.1" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#scotti-et-al.-in-prep-scaffolds-preparation"><i class="fa fa-check"></i><b>2.1</b> Scotti <em>et al. (in prep)</em> scaffolds preparation</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#filtering-scaffolds-over-1kbp"><i class="fa fa-check"></i><b>2.1.1</b> Filtering scaffolds over <span class="math inline">\(1kbp\)</span></a></li>
+<li class="chapter" data-level="2.1.2" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#renaming"><i class="fa fa-check"></i><b>2.1.2</b> Renaming</a></li>
+<li class="chapter" data-level="2.1.3" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#libraries-merging"><i class="fa fa-check"></i><b>2.1.3</b> Libraries merging</a></li>
+<li class="chapter" data-level="2.1.4" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#removing-scaffolds-with-multimatch-blasted-consensus-sequence-from-torroba-balmori-et-al.-unpublished"><i class="fa fa-check"></i><b>2.1.4</b> Removing scaffolds with multimatch blasted consensus sequence from Torroba-Balmori <em>et al. (unpublished)</em></a></li>
+<li class="chapter" data-level="2.1.5" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#total-filtered-scaffolds"><i class="fa fa-check"></i><b>2.1.5</b> Total filtered scaffolds</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#olsson-et-al.-2017-scaffolds-preparation"><i class="fa fa-check"></i><b>2.2</b> Olsson <em>et al. (2017)</em> scaffolds preparation</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#renaming-1"><i class="fa fa-check"></i><b>2.2.1</b> Renaming</a></li>
+<li class="chapter" data-level="2.2.2" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#removing-scaffolds-with-multimatch-blasted-consensus-sequence-from-torroba-balmori-et-al.-unpublished-1"><i class="fa fa-check"></i><b>2.2.2</b> Removing scaffolds with multimatch blasted consensus sequence from Torroba-Balmori <em>et al. (unpublished)</em></a></li>
+<li class="chapter" data-level="2.2.3" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#total-filtered-scaffolds-1"><i class="fa fa-check"></i><b>2.2.3</b> Total filtered scaffolds</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#tysklind-et-al-in-prep-transcript-preparation"><i class="fa fa-check"></i><b>2.3</b> Tysklind <em>et al (in prep)</em> transcript preparation</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#filtering-snp-on-quality"><i class="fa fa-check"></i><b>2.3.1</b> Filtering SNP on quality</a></li>
+<li class="chapter" data-level="2.3.2" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#filtering-snp-on-type"><i class="fa fa-check"></i><b>2.3.2</b> Filtering SNP on type</a></li>
+<li class="chapter" data-level="2.3.3" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#filtering-transcripts-on-snp-frequency"><i class="fa fa-check"></i><b>2.3.3</b> Filtering transcripts on SNP frequency</a></li>
+<li class="chapter" data-level="2.3.4" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#total-filtered-transcript"><i class="fa fa-check"></i><b>2.3.4</b> Total filtered transcript</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#neutral-region-selection"><i class="fa fa-check"></i><b>2.4</b> Neutral region selection</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#raw-reads-from-torroba-balmori-et-al.-unpublished-alignment-on-scaffolds-from-scotti-et-al.-in-prep"><i class="fa fa-check"></i><b>2.4.1</b> Raw reads from Torroba-Balmori <em>et al. (unpublished)</em> alignment on scaffolds from Scotti <em>et al. (in prep)</em></a></li>
+<li class="chapter" data-level="2.4.2" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#masking-scaffolds-with-multimatch-from-scotti-et-al.-in-prep"><i class="fa fa-check"></i><b>2.4.2</b> Masking scaffolds with multimatch from Scotti <em>et al. (in prep)</em></a></li>
+<li class="chapter" data-level="2.4.3" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#raw-reads-from-torroba-balmori-et-al.-unpublished-alignment-on-scaffolds-from-olsson2017"><i class="fa fa-check"></i><b>2.4.3</b> Raw reads from Torroba-Balmori <em>et al. (unpublished)</em> alignment on scaffolds from <span class="citation">Olsson <em>et al.</em> (<span>2017</span>)</span></a></li>
+<li class="chapter" data-level="2.4.4" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#masking-scaffolds-with-multimatch-from-olsson2017"><i class="fa fa-check"></i><b>2.4.4</b> Masking scaffolds with multimatch from <span class="citation">Olsson <em>et al.</em> (<span>2017</span>)</span></a></li>
+<li class="chapter" data-level="2.4.5" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#removing-scaffolds-already-matching-transcripts"><i class="fa fa-check"></i><b>2.4.5</b> Removing scaffolds already matching transcripts</a></li>
+<li class="chapter" data-level="2.4.6" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#merge-of-selected-scaffolds"><i class="fa fa-check"></i><b>2.4.6</b> Merge of selected scaffolds</a></li>
+<li class="chapter" data-level="2.4.7" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#final-subset-of-selected-neutral-scaffolds"><i class="fa fa-check"></i><b>2.4.7</b> Final subset of selected neutral scaffolds</a></li>
+<li class="chapter" data-level="2.4.8" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#repetitive-regions-final-check"><i class="fa fa-check"></i><b>2.4.8</b> Repetitive regions final check</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#fuctional-region-selection"><i class="fa fa-check"></i><b>2.5</b> Fuctional region selection</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#open-reading-frames-orfs-filtering"><i class="fa fa-check"></i><b>2.5.1</b> Open Reading Frames (ORFs) filtering</a></li>
+<li class="chapter" data-level="2.5.2" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#orf-alignment-on-genomics-scaffolds"><i class="fa fa-check"></i><b>2.5.2</b> ORF alignment on genomics scaffolds</a></li>
+<li class="chapter" data-level="2.5.3" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#overlaping-genes-filtering"><i class="fa fa-check"></i><b>2.5.3</b> Overlaping genes filtering</a></li>
+<li class="chapter" data-level="2.5.4" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#pre-selected-genes"><i class="fa fa-check"></i><b>2.5.4</b> Pre-selected genes</a></li>
+<li class="chapter" data-level="2.5.5" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#differential-expression-de-of-genes"><i class="fa fa-check"></i><b>2.5.5</b> Differential Expression (DE) of genes</a></li>
+<li class="chapter" data-level="2.5.6" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#final-subset-of-selected-functional-scaffolds"><i class="fa fa-check"></i><b>2.5.6</b> Final subset of selected functional scaffolds</a></li>
+<li class="chapter" data-level="2.5.7" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#repetitive-regions-final-check-1"><i class="fa fa-check"></i><b>2.5.7</b> Repetitive regions final check</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html"><i class="fa fa-check"></i><b>3</b> Genomic libraries and sequence capture</a><ul>
+<li class="chapter" data-level="3.1" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#plates"><i class="fa fa-check"></i><b>3.1</b> Plates</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#extraction"><i class="fa fa-check"></i><b>3.1.1</b> Extraction</a></li>
+<li class="chapter" data-level="3.1.2" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#library-plates-design"><i class="fa fa-check"></i><b>3.1.2</b> Library plates design</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#libraries-preparation-protocol"><i class="fa fa-check"></i><b>3.2</b> Libraries preparation protocol</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#material-preparation"><i class="fa fa-check"></i><b>3.2.1</b> Material preparation</a></li>
+<li class="chapter" data-level="3.2.2" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#fragmentation"><i class="fa fa-check"></i><b>3.2.2</b> Fragmentation</a></li>
+<li class="chapter" data-level="3.2.3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#adaptor-ligation"><i class="fa fa-check"></i><b>3.2.3</b> Adaptor ligation</a></li>
+<li class="chapter" data-level="3.2.4" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#size-selection"><i class="fa fa-check"></i><b>3.2.4</b> Size selection</a></li>
+<li class="chapter" data-level="3.2.5" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#enrichment-and-purification"><i class="fa fa-check"></i><b>3.2.5</b> Enrichment and purification</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#libraries-preparation-results"><i class="fa fa-check"></i><b>3.3</b> Libraries preparation results</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#post-enrichment-pcr1-quantification"><i class="fa fa-check"></i><b>3.3.1</b> Post-enrichment PCR1 quantification</a></li>
+<li class="chapter" data-level="3.3.2" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#post-enrichment-pcr1-pcr2-and-amplification-quantification"><i class="fa fa-check"></i><b>3.3.2</b> Post-enrichment (PCR1 &amp; PCR2) and amplification quantification</a></li>
+<li class="chapter" data-level="3.3.3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#amplification-result"><i class="fa fa-check"></i><b>3.3.3</b> Amplification result</a></li>
+<li class="chapter" data-level="3.3.4" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#library-extraction-repetition-result"><i class="fa fa-check"></i><b>3.3.4</b> Library &amp; extraction repetition result</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#capture"><i class="fa fa-check"></i><b>3.4</b> Capture</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#amplifcation-1-plate-reorganization"><i class="fa fa-check"></i><b>3.4.1</b> Amplifcation 1 Plate reorganization</a></li>
+<li class="chapter" data-level="3.4.2" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#dna-dosage-1"><i class="fa fa-check"></i><b>3.4.2</b> DNA dosage 1</a></li>
+<li class="chapter" data-level="3.4.3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#amplification-2"><i class="fa fa-check"></i><b>3.4.3</b> Amplification 2</a></li>
+<li class="chapter" data-level="3.4.4" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#dna-dosage-2"><i class="fa fa-check"></i><b>3.4.4</b> DNA dosage 2</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#amplifcation-2-and-library-repeat-plates-reorganization"><i class="fa fa-check"></i><b>3.5</b> Amplifcation 2 and Library Repeat Plates reorganization</a></li>
+<li class="chapter" data-level="3.6" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#pool-building"><i class="fa fa-check"></i><b>3.6</b> Pool building</a></li>
+<li class="chapter" data-level="3.7" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#purification-concentration"><i class="fa fa-check"></i><b>3.7</b> Purification &amp; Concentration</a></li>
+<li class="chapter" data-level="3.8" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#size-assessment"><i class="fa fa-check"></i><b>3.8</b> Size assessment</a></li>
+<li class="chapter" data-level="3.9" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#size-selection-1"><i class="fa fa-check"></i><b>3.9</b> Size selection</a></li>
+<li class="chapter" data-level="3.10" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#capture-1"><i class="fa fa-check"></i><b>3.10</b> Capture</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/sylvainschmitt/GOING" target="blank">Source</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">GOING</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="design-of-probes-set" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Design of probes set</h1>
+<p>The genomic and transcriptomic resources used for the design were comprised of a published low-coverage draft genome from Africa <span class="citation">(Olsson <em>et al.</em> <a href="#ref-Olsson2017" role="doc-biblioref">2017</a>)</span>, an unpublished draft genome from French Guiana [Scotti et al., in prep], an unpublished transcriptome from 20 juveniles from French Guiana [Tysklind et al., in prep], and reduced-representation genomic sequence reads of individuals from French Guiana [Torroba-Balmori et al., unpublished].
+We aligned genomic reads on the two genome drafts with <code>bwa</code> <span class="citation">(Li &amp; Durbin <a href="#ref-Li2009" role="doc-biblioref">2009</a>)</span>.
+We kept scaffolds from the two genome drafts with a length superior to 1 kbp and at least one matching alignment with a read with a single match on the genome, and merged the two filtered genome drafts with <code>quickmerge</code> <span class="citation">(Chakraborty <em>et al.</em> <a href="#ref-Chakraborty2016" role="doc-biblioref">2016</a>)</span>.
+We aligned transcripts on the new filtered genome draft with <code>BLAT</code> <span class="citation">(Kent <a href="#ref-Kent2002" role="doc-biblioref">2002</a>)</span> and selected 533 scaffolds without transcript-match, <em>i.e.</em> anonymous scaffolds.
+We masked repetitive regions with <code>RepeatMasker</code> <span class="citation">(Smit <em>et al.</em> <a href="#ref-Smit2015" role="doc-biblioref">2015</a>)</span> and selected 533 1-kbp anonymous loci within the 533 previous scaffolds.</p>
+<p>Similarly, we filtered transcripts from the 20 juveniles of <em>Symphonia globulifera</em> from French Guiana [Tysklind et al., in prep] based on SNP quality, type and frequency.
+We further detected open reading frames (ORFs) using <code>transdecoder</code> <span class="citation">(Haas <em>et al.</em> <a href="#ref-Haas2013" role="doc-biblioref">2013</a>)</span>,
+and selected transcripts with non-overlapping ORFs including a start codon.
+We kept ORFs with an alignment on scaffolds from the aforementioned genome draft for <em>Symphonia</em> using <code>BLAT</code> <span class="citation">(Kent <a href="#ref-Kent2002" role="doc-biblioref">2002</a>)</span>,
+and masked repetitive regions with <code>RepeatMasker</code> <span class="citation">(Smit <em>et al.</em> <a href="#ref-Smit2015" role="doc-biblioref">2015</a>)</span>.
+We selected 1,150 genic loci of 500-bp to 1-kbp, from 100 bp before the start to a maximum of 900 bp after the end of the ORFs, resulting in 1-Mbp genomic loci that included a coding region.</p>
+<div id="scotti-et-al.-in-prep-scaffolds-preparation" class="section level2">
+<h2><span class="header-section-number">2.1</span> Scotti <em>et al. (in prep)</em> scaffolds preparation</h2>
+<div id="filtering-scaffolds-over-1kbp" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Filtering scaffolds over <span class="math inline">\(1kbp\)</span></h3>
+<p>We first filtered scaffolds with a width superior to <strong>1000 bp</strong>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="design-of-probes-set.html#cb1-1"></a><span class="bu">cd</span> ~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/Ivan_2018/</span>
+<span id="cb1-2"><a href="design-of-probes-set.html#cb1-2"></a><span class="fu">mkdir</span> scf_1000</span>
+<span id="cb1-3"><a href="design-of-probes-set.html#cb1-3"></a><span class="kw">for</span> <span class="ex">scf</span> in <span class="va">$(</span> <span class="fu">ls</span> raw/ <span class="kw">|</span> <span class="fu">grep</span> scafSeq$<span class="va">)</span><span class="kw">;</span> </span>
+<span id="cb1-4"><a href="design-of-probes-set.html#cb1-4"></a><span class="kw">do</span></span>
+<span id="cb1-5"><a href="design-of-probes-set.html#cb1-5"></a>  <span class="bu">echo</span> item: <span class="va">$scf</span></span>
+<span id="cb1-6"><a href="design-of-probes-set.html#cb1-6"></a>  <span class="fu">perl</span> ~/Tools/SeqFilter/bin/SeqFilter -l 1000 raw/<span class="va">$scf</span> --out scf_1000/<span class="va">$scf</span></span>
+<span id="cb1-7"><a href="design-of-probes-set.html#cb1-7"></a><span class="kw">done</span></span></code></pre></div>
+</div>
+<div id="renaming" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> Renaming</h3>
+<p>For all scaffolds we used the following code : **Ivan_2018_[file name without .scafSeq]_[scaffold name]**.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="design-of-probes-set.html#cb2-1"></a><span class="kw">dir.create</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;Ivan_2018&quot;</span>, <span class="st">&quot;renamed_scf_1000&quot;</span>))</span>
+<span id="cb2-2"><a href="design-of-probes-set.html#cb2-2"></a>files &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;Ivan_2018&quot;</span>, <span class="st">&quot;scf_1000&quot;</span>))</span>
+<span id="cb2-3"><a href="design-of-probes-set.html#cb2-3"></a><span class="kw">sapply</span>(files, <span class="cf">function</span>(file){</span>
+<span id="cb2-4"><a href="design-of-probes-set.html#cb2-4"></a>  scf &lt;-<span class="st"> </span><span class="kw">readDNAStringSet</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;Ivan_2018&quot;</span>, <span class="st">&quot;scf_1000&quot;</span>, file))</span>
+<span id="cb2-5"><a href="design-of-probes-set.html#cb2-5"></a>  <span class="kw">names</span>(scf) &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;Ivan_2018_&quot;</span>, <span class="kw">gsub</span>(<span class="st">&quot;.scafSeq&quot;</span>, <span class="st">&quot;&quot;</span>, file), <span class="st">&quot;_&quot;</span>, <span class="kw">gsub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;_&quot;</span>, <span class="kw">names</span>(scf)))</span>
+<span id="cb2-6"><a href="design-of-probes-set.html#cb2-6"></a>  <span class="kw">writeXStringSet</span>(scf, <span class="kw">file.path</span>(path, <span class="st">&quot;Ivan_2018&quot;</span>, <span class="st">&quot;renamed_scf_1000&quot;</span>,</span>
+<span id="cb2-7"><a href="design-of-probes-set.html#cb2-7"></a>                                 <span class="kw">paste0</span>(<span class="kw">gsub</span>(<span class="st">&quot;.scafSeq&quot;</span>, <span class="st">&quot;&quot;</span>, file), <span class="st">&quot;.1000.renamed.scafSeq&quot;</span>)))</span>
+<span id="cb2-8"><a href="design-of-probes-set.html#cb2-8"></a>}, <span class="dt">simplify =</span> F)</span>
+<span id="cb2-9"><a href="design-of-probes-set.html#cb2-9"></a><span class="kw">unlink</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;Ivan_2018&quot;</span>, <span class="st">&quot;scf_1000&quot;</span>), <span class="dt">recursive =</span> T)</span></code></pre></div>
+</div>
+<div id="libraries-merging" class="section level3">
+<h3><span class="header-section-number">2.1.3</span> Libraries merging</h3>
+<p>We successively merged scaffolds from 6 libraries with <code>quickmerge</code>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="design-of-probes-set.html#cb3-1"></a><span class="bu">cd</span> ~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/Ivan_2018/renamed_scf_1000</span>
+<span id="cb3-2"><a href="design-of-probes-set.html#cb3-2"></a><span class="va">ref=(</span>sympho47_1L1_002.1000.renamed.scafSeq merge1.fasta merge2.fasta merge3.fasta merge4.fasta merge5.fasta merge6.fasta merge7.fasta<span class="va">)</span></span>
+<span id="cb3-3"><a href="design-of-probes-set.html#cb3-3"></a><span class="va">query=(</span>sympho47_1L2_001.1000.renamed.scafSeq sympho47_2L1_008.1000.renamed.scafSeq sympho47_2L1_009.1000.renamed.scafSeq sympho47_2L1_010.1000.renamed.scafSeq sympho47_2L1_011.1000.renamed.scafSeq sympho47_2L1_012.1000.renamed.scafSeq sympho47_3L2_013.1000.renamed.scafSeq sympho47_4L1_014.1000.renamed.scafSeq<span class="va">)</span></span>
+<span id="cb3-4"><a href="design-of-probes-set.html#cb3-4"></a><span class="kw">for</span> <span class="ex">i</span> in <span class="dt">{0..7}</span> </span>
+<span id="cb3-5"><a href="design-of-probes-set.html#cb3-5"></a><span class="kw">do</span></span>
+<span id="cb3-6"><a href="design-of-probes-set.html#cb3-6"></a>  <span class="fu">mkdir</span> merge<span class="va">$i</span></span>
+<span id="cb3-7"><a href="design-of-probes-set.html#cb3-7"></a>  <span class="fu">cp</span>  <span class="st">&quot;</span><span class="va">${ref[$i]}</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="va">${query[$i]}</span><span class="st">&quot;</span> ./merge<span class="va">$i</span>/</span>
+<span id="cb3-8"><a href="design-of-probes-set.html#cb3-8"></a>  <span class="bu">cd</span> merge<span class="va">$i</span></span>
+<span id="cb3-9"><a href="design-of-probes-set.html#cb3-9"></a>  <span class="ex">nucmer</span> -l 100 -prefix out <span class="va">${ref[$i]}</span> <span class="va">${query[$i]}</span></span>
+<span id="cb3-10"><a href="design-of-probes-set.html#cb3-10"></a>  <span class="ex">delta-filter</span> -i 95 -r -q out.delta <span class="op">&gt;</span> out.rq.delta</span>
+<span id="cb3-11"><a href="design-of-probes-set.html#cb3-11"></a>  <span class="ex">~/Tools/quickmerge/quickmerge</span> -d out.rq.delta -q <span class="va">${query[$i]}</span> -r <span class="va">${ref[$i]}</span> -hco 5.0 -c 1.5 -l n -ml m</span>
+<span id="cb3-12"><a href="design-of-probes-set.html#cb3-12"></a>  <span class="bu">cd</span> ..</span>
+<span id="cb3-13"><a href="design-of-probes-set.html#cb3-13"></a>  <span class="fu">cp</span> merge<span class="va">$i</span>/merged.fasta ./merge<span class="va">$((</span>i+1<span class="va">))</span>.fasta</span>
+<span id="cb3-14"><a href="design-of-probes-set.html#cb3-14"></a><span class="kw">done</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="design-of-probes-set.html#cb4-1"></a><span class="bu">cd</span> ~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/Ivan_2018</span>
+<span id="cb4-2"><a href="design-of-probes-set.html#cb4-2"></a><span class="fu">mkdir</span> merged_1000</span>
+<span id="cb4-3"><a href="design-of-probes-set.html#cb4-3"></a><span class="fu">cp</span>  renamed_scf_1000/merge5/merged.fasta merged_1000/merged_1000.fa</span>
+<span id="cb4-4"><a href="design-of-probes-set.html#cb4-4"></a><span class="bu">cd</span> merged_1000</span>
+<span id="cb4-5"><a href="design-of-probes-set.html#cb4-5"></a><span class="ex">makeblastdb</span> -in merged_1000.fa -parse_seqids -dbtype nucl</span></code></pre></div>
+</div>
+<div id="removing-scaffolds-with-multimatch-blasted-consensus-sequence-from-torroba-balmori-et-al.-unpublished" class="section level3">
+<h3><span class="header-section-number">2.1.4</span> Removing scaffolds with multimatch blasted consensus sequence from Torroba-Balmori <em>et al. (unpublished)</em></h3>
+<p>We used the consensus sequence for French Guianan reads from Torroba-Balmori <em>et al. (unpublished)</em> previously assembled with ipyrad.
+We kept the first sequence of the consensus loci file and recoded it to fasta (see loci2fa.py script below).
+We then blasted the consensus sequences on merged scaffolds from Scotti <em>et al (in prep)</em> with <code>blastn</code> in order to detect scaffolds with repetitive regions (multi-mapped consensus sequences).
+Repetitive sequences have been saved as a list removed in final selected scaffolds list.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="design-of-probes-set.html#cb5-1"></a>infile <span class="op">=</span> <span class="bu">open</span>(<span class="st">&quot;symphoGbS2.loci&quot;</span>, <span class="st">&quot;r&quot;</span>)</span>
+<span id="cb5-2"><a href="design-of-probes-set.html#cb5-2"></a>outfile <span class="op">=</span> <span class="bu">open</span>(<span class="st">&quot;symphoGbS2.firstline.fasta&quot;</span>, <span class="st">&quot;w&quot;</span>)</span>
+<span id="cb5-3"><a href="design-of-probes-set.html#cb5-3"></a>loci <span class="op">=</span> infile.read().split(<span class="st">&quot;|</span><span class="ch">\n</span><span class="st">&quot;</span>)[:<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb5-4"><a href="design-of-probes-set.html#cb5-4"></a><span class="cf">for</span> loc <span class="kw">in</span> loci:</span>
+<span id="cb5-5"><a href="design-of-probes-set.html#cb5-5"></a>    reads <span class="op">=</span> loc.split(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb5-6"><a href="design-of-probes-set.html#cb5-6"></a>    name, seq <span class="op">=</span> reads[<span class="dv">0</span>].split()</span>
+<span id="cb5-7"><a href="design-of-probes-set.html#cb5-7"></a>    <span class="bu">print</span> <span class="op">&gt;&gt;</span>outfile, <span class="st">&quot;&gt;&quot;</span><span class="op">+</span>name<span class="op">+</span><span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span><span class="op">+</span>seq</span>
+<span id="cb5-8"><a href="design-of-probes-set.html#cb5-8"></a>outfile.close()</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="design-of-probes-set.html#cb6-1"></a><span class="bu">cd</span> ~/Documents/BIOGECO/PhD/data/Symphonia_Torroba/assembly/symphoGbS2_outfile</span>
+<span id="cb6-2"><a href="design-of-probes-set.html#cb6-2"></a><span class="ex">python</span> loci2fa.py</span>
+<span id="cb6-3"><a href="design-of-probes-set.html#cb6-3"></a><span class="fu">cat</span> symphoGbS2.firstline.fasta <span class="kw">|</span> <span class="fu">tr</span> - N <span class="op">&gt;&gt;</span> symphoGbS2.firstline.fasta</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="design-of-probes-set.html#cb7-1"></a><span class="bu">cd</span> ~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/Ivan_2018</span>
+<span id="cb7-2"><a href="design-of-probes-set.html#cb7-2"></a><span class="va">query=</span>~/Documents/BIOGECO/PhD/data/Symphonia_Torroba/assembly/symphoGbS2_outfiles/symphoGbS2.firstline.fasta</span>
+<span id="cb7-3"><a href="design-of-probes-set.html#cb7-3"></a><span class="ex">blastn</span> -db merged_1000/merged_1000.fa -query <span class="va">$query</span> -out blast_consensus_torroba2.txt -evalue 1e-10 -best_hit_score_edge 0.05 -best_hit_overhang 0.25 -outfmt 6 -perc_identity 75 -max_target_seqs 10</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="design-of-probes-set.html#cb8-1"></a>blast &lt;-<span class="st"> </span><span class="kw">read_tsv</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;Ivan_2018&quot;</span>, <span class="st">&quot;torroba_blast&quot;</span>,</span>
+<span id="cb8-2"><a href="design-of-probes-set.html#cb8-2"></a>                            <span class="st">&quot;blast_consensus_torroba2.txt&quot;</span>), <span class="dt">col_names =</span> F)</span>
+<span id="cb8-3"><a href="design-of-probes-set.html#cb8-3"></a><span class="kw">names</span>(blast) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Read&quot;</span>, <span class="st">&quot;Scaffold&quot;</span>, <span class="st">&quot;Perc_Ident&quot;</span>, <span class="st">&quot;Alignment_length&quot;</span>, <span class="st">&quot;Mismatches&quot;</span>,</span>
+<span id="cb8-4"><a href="design-of-probes-set.html#cb8-4"></a>                  <span class="st">&quot;Gap_openings&quot;</span>, <span class="st">&quot;R_start&quot;</span>, <span class="st">&quot;R_end&quot;</span>, <span class="st">&quot;S_start&quot;</span>, <span class="st">&quot;S_end&quot;</span>, <span class="st">&quot;E&quot;</span>, <span class="st">&quot;Bits&quot;</span>)</span>
+<span id="cb8-5"><a href="design-of-probes-set.html#cb8-5"></a><span class="kw">write_file</span>(<span class="kw">paste</span>(<span class="kw">unique</span>(blast<span class="op">$</span>Scaffold), <span class="dt">collapse =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>), </span>
+<span id="cb8-6"><a href="design-of-probes-set.html#cb8-6"></a>           <span class="kw">file.path</span>(path, <span class="st">&quot;Ivan_2018&quot;</span>, <span class="st">&quot;torroba_blast&quot;</span>,</span>
+<span id="cb8-7"><a href="design-of-probes-set.html#cb8-7"></a>                     <span class="st">&quot;selected_scaffolds_blast_consensus2.list&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="design-of-probes-set.html#cb9-1"></a><span class="ex">seqtk</span> subseq merged_1000/merged_1000.fa selected_scaffolds_blast_consensus2.list <span class="op">&gt;&gt;</span> selected_scaffolds_blast_consensus2.fa</span></code></pre></div>
+<p>In total <strong>542 scaffolds</strong> from Scotti <em>et al (in prep)</em> matched consensus sequences from Torroba-Balmori et al. (unpublished).
+Several scaffolds obtained multiple matches that we cannot use for probes.
+We thus excluded the whole scaffold if the scaffold is shorter than 2000 bp,
+or the scaffold region matching the raw read if the scaffold is longer than 2000 bp.</p>
+<div class="figure"><span id="fig:blastResultScottiFig"></span>
+<img src="GOING_files/figure-html/blastResultScottiFig-1.png" alt="Number of match with Torroba consensus reads vs gene width." width="768" />
+<p class="caption">
+Figure 2.1: Number of match with Torroba consensus reads vs gene width.
+</p>
+</div>
+<table>
+<caption><span id="tab:blastResultScottiFilter">Table 2.1: </span>Scaffold to cut due to multiple read match.</caption>
+<thead>
+<tr class="header">
+<th align="left">Scaffold</th>
+<th align="right">width</th>
+<th align="left">remove</th>
+<th align="left">cut</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Ivan_2018_sympho47_2L1_012_scaffold197676__8.6</td>
+<td align="right">4993</td>
+<td align="left"></td>
+<td align="left">4993-4932</td>
+</tr>
+<tr class="even">
+<td align="left">Ivan_2018_sympho47_2L1_012_scaffold246452__6.6</td>
+<td align="right">3103</td>
+<td align="left"></td>
+<td align="left">2980-3058</td>
+</tr>
+<tr class="odd">
+<td align="left">Ivan_2018_sympho47_2L1_012_scaffold26367__7.7</td>
+<td align="right">2168</td>
+<td align="left"></td>
+<td align="left">2118-2168</td>
+</tr>
+<tr class="even">
+<td align="left">Ivan_2018_sympho47_2L1_012_scaffold463128__4.7</td>
+<td align="right">2188</td>
+<td align="left"></td>
+<td align="left">667-586</td>
+</tr>
+<tr class="odd">
+<td align="left">Ivan_2018_sympho47_2L1_008_scaffold309475__2.1</td>
+<td align="right">3525</td>
+<td align="left"></td>
+<td align="left">342-292</td>
+</tr>
+</tbody>
+</table>
+<p>Following scaffolds have been removed due to multiple matches and a length <span class="math inline">\(&lt;200bp\)</span>: 2L1_012_scaffold645876__7.5, 2L1_012_scaffold176548__7.1, 2L1_012_scaffold21882__4.9, 2L1_012_scaffold9236__6.0.
+The others have been cut (see table <a href="design-of-probes-set.html#tab:blastResultScottiFilter">2.1</a>).</p>
+</div>
+<div id="total-filtered-scaffolds" class="section level3">
+<h3><span class="header-section-number">2.1.5</span> Total filtered scaffolds</h3>
+<p><img src="GOING_files/figure-html/scfIvanFilterFig-1.png" width="768" /></p>
+</div>
+</div>
+<div id="olsson-et-al.-2017-scaffolds-preparation" class="section level2">
+<h2><span class="header-section-number">2.2</span> Olsson <em>et al. (2017)</em> scaffolds preparation</h2>
+<p><strong>African genome from <span class="citation">Olsson <em>et al.</em> (<a href="#ref-Olsson2017" role="doc-biblioref">2017</a>)</span>.</strong></p>
+<div id="renaming-1" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Renaming</h3>
+<p>We renamed scaffolds from Olsson using the following code : <strong>Olsson_2017_[scaffold name]</strong>.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="design-of-probes-set.html#cb10-1"></a>scf &lt;-<span class="st"> </span><span class="kw">readDNAStringSet</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;Olsson_2016&quot;</span>, <span class="st">&quot;symph_genome.fa&quot;</span>))</span>
+<span id="cb10-2"><a href="design-of-probes-set.html#cb10-2"></a><span class="kw">names</span>(scf) &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&#39;Olsson_2017_&#39;</span>, <span class="kw">names</span>(scf))</span>
+<span id="cb10-3"><a href="design-of-probes-set.html#cb10-3"></a><span class="kw">dir.create</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;Olsson_2016&quot;</span>, <span class="st">&quot;db&quot;</span>))</span>
+<span id="cb10-4"><a href="design-of-probes-set.html#cb10-4"></a><span class="kw">writeXStringSet</span>(scf, <span class="kw">file.path</span>(path, <span class="st">&quot;Olsson_2016&quot;</span>, <span class="st">&quot;db&quot;</span>, <span class="st">&quot;Olsson2017.fa&quot;</span>))<span class="er">)</span></span></code></pre></div>
+</div>
+<div id="removing-scaffolds-with-multimatch-blasted-consensus-sequence-from-torroba-balmori-et-al.-unpublished-1" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Removing scaffolds with multimatch blasted consensus sequence from Torroba-Balmori <em>et al. (unpublished)</em></h3>
+<p>We used the consensus sequence for French Guianan reads from Torroba-Balmori <em>et al. (unpublished)</em>, by blasting them on scaffolds from <span class="citation">Olsson <em>et al.</em> (<a href="#ref-Olsson2017" role="doc-biblioref">2017</a>)</span> with <code>blastn</code>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="design-of-probes-set.html#cb11-1"></a><span class="bu">cd</span> ~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/Olsson_2016</span>
+<span id="cb11-2"><a href="design-of-probes-set.html#cb11-2"></a><span class="bu">cd</span> Olsson2017</span>
+<span id="cb11-3"><a href="design-of-probes-set.html#cb11-3"></a><span class="ex">makeblastdb</span> -in Olsson2017.fa -parse_seqids -dbtype nucl</span>
+<span id="cb11-4"><a href="design-of-probes-set.html#cb11-4"></a><span class="bu">cd</span> ..</span>
+<span id="cb11-5"><a href="design-of-probes-set.html#cb11-5"></a><span class="va">query=</span>~/Documents/BIOGECO/PhD/data/Symphonia_Torroba/assembly/symphoGbS2_outfiles/symphoGbS2.firstline.fasta</span>
+<span id="cb11-6"><a href="design-of-probes-set.html#cb11-6"></a><span class="ex">blastn</span> -db Olsson2017/Olsson2017.fa -query <span class="va">$query</span> -out blast_consensus_torroba2.txt -evalue 1e-10 -best_hit_score_edge 0.05 -best_hit_overhang 0.25 -outfmt 6 -perc_identity 75 -max_target_seqs 10</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="design-of-probes-set.html#cb12-1"></a>blast &lt;-<span class="st"> </span><span class="kw">read_tsv</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;Olsson_2016&quot;</span>, <span class="st">&quot;torroba_blast&quot;</span>,</span>
+<span id="cb12-2"><a href="design-of-probes-set.html#cb12-2"></a>                            <span class="st">&quot;blast_consensus_torroba2.txt&quot;</span>), <span class="dt">col_names =</span> F)</span>
+<span id="cb12-3"><a href="design-of-probes-set.html#cb12-3"></a><span class="kw">names</span>(blast) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Read&quot;</span>, <span class="st">&quot;Scaffold&quot;</span>, <span class="st">&quot;Perc_Ident&quot;</span>, <span class="st">&quot;Alignment_length&quot;</span>, <span class="st">&quot;Mismatches&quot;</span>,</span>
+<span id="cb12-4"><a href="design-of-probes-set.html#cb12-4"></a>                  <span class="st">&quot;Gap_openings&quot;</span>, <span class="st">&quot;R_start&quot;</span>, <span class="st">&quot;R_end&quot;</span>, <span class="st">&quot;S_start&quot;</span>, <span class="st">&quot;S_end&quot;</span>, <span class="st">&quot;E&quot;</span>, <span class="st">&quot;Bits&quot;</span>)</span>
+<span id="cb12-5"><a href="design-of-probes-set.html#cb12-5"></a><span class="kw">write_file</span>(<span class="kw">paste</span>(<span class="kw">unique</span>(blast<span class="op">$</span>Scaffold), <span class="dt">collapse =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>), </span>
+<span id="cb12-6"><a href="design-of-probes-set.html#cb12-6"></a>           <span class="kw">file.path</span>(path, <span class="st">&quot;Olsson_2016&quot;</span>, <span class="st">&quot;torroba_blast&quot;</span>,</span>
+<span id="cb12-7"><a href="design-of-probes-set.html#cb12-7"></a>                     <span class="st">&quot;selected_scaffolds_blast_consensus2.list&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="design-of-probes-set.html#cb13-1"></a><span class="ex">seqtk</span> subseq Olsson2017/Olsson2017.fa selected_scaffolds_blast_consensus2.list <span class="op">&gt;&gt;</span> selected_scaffolds_blast_consensus2.fa</span></code></pre></div>
+<p>We obtained most of scaffolds with a single match including a broad range of sizes (from 100 bp to 33.2 kbp).
+In total <strong>688</strong> scaffolds from <span class="citation">Olsson <em>et al.</em> (<a href="#ref-Olsson2017" role="doc-biblioref">2017</a>)</span> match consensus sequences from Torroba-Balmori <em>et al. (unpublished)</em>.
+Deveral scaffolds obtained multiple matches that we cannot use for probes.
+We thus excluded the whole scaffold if the scaffold is shorter than 2000 bp,
+or the scaffold region matching the raw read if the scaffold is longer than 2000 bp.</p>
+<div class="figure"><span id="fig:blastResultOlssonFig"></span>
+<img src="GOING_files/figure-html/blastResultOlssonFig-1.png" alt="Number of match with Torroba consensus reads vs gene width." width="768" />
+<p class="caption">
+Figure 2.2: Number of match with Torroba consensus reads vs gene width.
+</p>
+</div>
+<table>
+<caption><span id="tab:blastResultOlssonFilter">Table 2.2: </span>Scaffold to cut due to multiple read match.</caption>
+<thead>
+<tr class="header">
+<th align="left">Scaffold</th>
+<th align="right">width</th>
+<th align="left">remove</th>
+<th align="left">cut</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Olsson_2017_deg7180004393135</td>
+<td align="right">2380</td>
+<td align="left"></td>
+<td align="left">1700-1631</td>
+</tr>
+<tr class="even">
+<td align="left">Olsson_2017_deg7180004374686</td>
+<td align="right">2120</td>
+<td align="left"></td>
+<td align="left">2073-1992</td>
+</tr>
+<tr class="odd">
+<td align="left">Olsson_2017_scf7180005372912</td>
+<td align="right">3152</td>
+<td align="left"></td>
+<td align="left">3102-3152</td>
+</tr>
+<tr class="even">
+<td align="left">Olsson_2017_scf7180005387046</td>
+<td align="right">2048</td>
+<td align="left"></td>
+<td align="left">174-256</td>
+</tr>
+<tr class="odd">
+<td align="left">Olsson_2017_scf7180005323991</td>
+<td align="right">2482</td>
+<td align="left"></td>
+<td align="left">2330-2267</td>
+</tr>
+</tbody>
+</table>
+<p>Following scaffolds have been removed due to multiple matches and a length <span class="math inline">\(&lt;200bp\)</span>: deg7180004378417, deg7180003744575, deg7180002657883, deg7180004705895, deg7180004369764, deg7180002776754, deg7180004453462, deg7180004453461, deg7180002668453, deg7180005298947, deg7180003723902, deg7180005298948, deg7180004372504, deg7180002659849, deg7180004372505, deg7180004377385, deg7180003260802, deg7180003625436, deg7180004705895, deg7180002776754, deg7180004705894, deg7180002852093, deg7180004822905, deg7180005023024, deg7180004478675, deg7180004428004, deg7180004428003, deg7180004507379, deg7180002656221, deg7180004374687, deg7180004372498, deg7180004372497, deg7180002654368, deg7180002674357, deg7180004700334, deg7180004899808, deg7180004899808, deg7180002726303, scf7180005372913, deg7180005163225, deg7180003214542, scf7180005400822, deg7180005163224, deg7180003138164, deg7180004981997, deg7180004981996, deg7180005171251, deg7180005106503, deg7180003910181, deg7180005026532, deg7180003853280, deg7180004724986, deg7180005246885, deg7180004710959, deg7180004681149, deg7180004580422, deg7180004472718, deg7180003290510, deg7180005004768, deg7180004756559, scf7180005435685, deg7180004725719, deg7180004599019, deg7180004599018, deg7180002749392, deg7180002739372, deg7180004754314, deg7180004847375, deg7180004580009, deg7180004386399, deg7180004377195, deg7180004377194, deg7180004399409, deg7180004392029, deg7180004385805, deg7180004386398, deg7180002816623, deg7180002985310, scf7180005421751, deg7180004374725, deg7180004372798, deg7180004374726, deg7180002668107, deg7180003199928, deg7180003093903, deg7180003310549, deg7180004796671, deg7180003505925, deg7180002988969.
+And other have been cut (see table <a href="design-of-probes-set.html#tab:blastResultOlssonFilter">2.2</a>).</p>
+</div>
+<div id="total-filtered-scaffolds-1" class="section level3">
+<h3><span class="header-section-number">2.2.3</span> Total filtered scaffolds</h3>
+<p><img src="GOING_files/figure-html/scfOlssonFilterFig-1.png" width="768" /></p>
+</div>
+</div>
+<div id="tysklind-et-al-in-prep-transcript-preparation" class="section level2">
+<h2><span class="header-section-number">2.3</span> Tysklind <em>et al (in prep)</em> transcript preparation</h2>
+<p>Tysklind <em>et al (in prep)</em> used 20 <em>Symphonia</em> juveniles from the transplantation garden experiment for transcriptomic analysis.
+RNA sequence were captured.
+The analysis followed the scheme suggested by <span class="citation">Lopez-Maestre <em>et al.</em> (<a href="#ref-Lopez-Maestre2016" role="doc-biblioref">2016</a>)</span> (see below).
+First, reads were assembled with <code>Trinity</code> into transcripts.
+In parallel, SNPs were detected with <code>Kissplice</code>.
+Then SNPs have been mapped on the transcritpome with <code>BLAT</code>.
+In parallel SNPs have been tested to be morphotype-specific at the level <span class="math inline">\(\alpha = 0.001\)</span> with <code>KissDE</code> and transcriptome Open Reading Frames (ORF) have been identified with <code>Transdecoder</code>.
+Finally, SNPs functional impact have been evaluated through <code>k2rt</code>.
+Consequently, for every SNP we have the following information:
+(i) inside coding DNA sequence (CDS),
+(ii) synonymous or not,
+(iii) morphotype-specificity.</p>
+<div class="figure">
+<img src="images/analysisScheme.jpeg" alt="" />
+<p class="caption">Analysis scheme from <span class="citation">Lopez-Maestre <em>et al.</em> (<a href="#ref-Lopez-Maestre2016" role="doc-biblioref">2016</a>)</span>.</p>
+</div>
+<div id="filtering-snp-on-quality" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> Filtering SNP on quality</h3>
+<p>We assessed transcriptomic analysis quality with possible sequencing errors, and SNPs in multiple assembled genes or isoforms (see table <a href="design-of-probes-set.html#tab:Qcheck">2.3</a>).
+We found <strong>38 594</strong> SNPs with possible sequencing error,
+and <strong>609 214</strong> SNPs associated to multiple assembled genes that we removed from further analysis.</p>
+<table>
+<caption><span id="tab:Qcheck">Table 2.3: </span>Quality check with single SNPs.</caption>
+<thead>
+<tr class="header">
+<th align="left">variable</th>
+<th align="right">n</th>
+<th align="right">Percentage</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</div>
+<div id="filtering-snp-on-type" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> Filtering SNP on type</h3>
+<p>We also highlighted SNPs which met impossible association of characteristic (table <a href="design-of-probes-set.html#tab:countTable">2.4</a>), that we removed from further analysis.</p>
+<table>
+<caption><span id="tab:countTable">Table 2.4: </span>Single SNPs with unpossible association of characteristic. First column indicates if the SNP is in a coding sequence, second column indicates is the SNP is not synonymous, third column indicates if the SNP is morphotype-specific, and fourth column indicates the headcount.</caption>
+<thead>
+<tr class="header">
+<th align="left">Coding sequence</th>
+<th align="left">Not synonymous</th>
+<th align="left">Morphotype-specific</th>
+<th align="right">n</th>
+<th align="left">type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">False</td>
+<td align="left">False</td>
+<td align="left">morphotype specific</td>
+<td align="right">9 505</td>
+<td align="left">unpossible</td>
+</tr>
+<tr class="even">
+<td align="left">False</td>
+<td align="left">False</td>
+<td align="left">morphotype specific</td>
+<td align="right">5 362</td>
+<td align="left">unpossible</td>
+</tr>
+<tr class="odd">
+<td align="left">False</td>
+<td align="left">True</td>
+<td align="left">morphotype specific</td>
+<td align="right">11 819</td>
+<td align="left">unpossible</td>
+</tr>
+<tr class="even">
+<td align="left">False</td>
+<td align="left">True</td>
+<td align="left">morphotype specific</td>
+<td align="right">5 565</td>
+<td align="left">unpossible</td>
+</tr>
+<tr class="odd">
+<td align="left">N/A</td>
+<td align="left">False</td>
+<td align="left">morphotype specific</td>
+<td align="right">42</td>
+<td align="left">unpossible</td>
+</tr>
+<tr class="even">
+<td align="left">N/A</td>
+<td align="left">False</td>
+<td align="left">morphotype specific</td>
+<td align="right">21</td>
+<td align="left">unpossible</td>
+</tr>
+<tr class="odd">
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">morphotype specific</td>
+<td align="right">2 557</td>
+<td align="left">unpossible</td>
+</tr>
+<tr class="even">
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">morphotype specific</td>
+<td align="right">424</td>
+<td align="left">unpossible</td>
+</tr>
+<tr class="odd">
+<td align="left">N/A</td>
+<td align="left">True</td>
+<td align="left">morphotype specific</td>
+<td align="right">63</td>
+<td align="left">unpossible</td>
+</tr>
+<tr class="even">
+<td align="left">N/A</td>
+<td align="left">True</td>
+<td align="left">morphotype specific</td>
+<td align="right">9</td>
+<td align="left">unpossible</td>
+</tr>
+<tr class="odd">
+<td align="left">True</td>
+<td align="left">N/A</td>
+<td align="left">morphotype specific</td>
+<td align="right">26 482</td>
+<td align="left">unpossible</td>
+</tr>
+<tr class="even">
+<td align="left">True</td>
+<td align="left">N/A</td>
+<td align="left">morphotype specific</td>
+<td align="right">14 342</td>
+<td align="left">unpossible</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="filtering-transcripts-on-snp-frequency" class="section level3">
+<h3><span class="header-section-number">2.3.3</span> Filtering transcripts on SNP frequency</h3>
+<p>We found a high frequency of SNPs per candidate genes (the majority between 1 SNP per 10 or 100 bp),
+with some scaffolds having a frequency superior to 0.2 (see figure <a href="design-of-probes-set.html#fig:snpGenes2">2.3</a>). We assumed those hyper SNP-rich scaffolds to be errors and decided to remove them of the reference transcriptome.
+In order to do that, we fitted a <span class="math inline">\(\Gamma\)</span> law into the SNP frequency distribution and we kept scaffolds with a SNP frequency under the <span class="math inline">\(99^{th}\)</span> quantile (<span class="math inline">\(q_{99} = 0.07810194\)</span>). We thus removed:</p>
+<ul>
+<li><strong>358 308</strong> SNPs</li>
+<li>including <strong>20 521</strong> transcripts</li>
+<li>representing <strong>1 490</strong> candidate genes</li>
+</ul>
+<div class="figure"><span id="fig:snpGenes2"></span>
+<img src="GOING_files/figure-html/snpGenes2-1.png" alt="Distribution of SNP frequencies in scaffolds. Histogram (gray bars) represents the data, red line represents the Gamma law fit, and blue area represents X*sigma were scaffolds are not excluded." width="768" />
+<p class="caption">
+Figure 2.3: Distribution of SNP frequencies in scaffolds. Histogram (gray bars) represents the data, red line represents the Gamma law fit, and blue area represents X*sigma were scaffolds are not excluded.
+</p>
+</div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="design-of-probes-set.html#cb14-1"></a>filtered_data &lt;-<span class="st"> </span>snp_genes <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb14-2"><a href="design-of-probes-set.html#cb14-2"></a><span class="st">  </span><span class="kw">filter</span>(freq <span class="op">&lt;=</span><span class="st"> </span>q99) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb14-3"><a href="design-of-probes-set.html#cb14-3"></a><span class="st">  </span><span class="kw">left_join</span>(data, <span class="dt">by =</span> <span class="st">&quot;gene_id&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb14-4"><a href="design-of-probes-set.html#cb14-4"></a><span class="st">  </span><span class="kw">select</span>(transcript_id, sequence) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb14-5"><a href="design-of-probes-set.html#cb14-5"></a><span class="st">  </span><span class="kw">unique</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb14-6"><a href="design-of-probes-set.html#cb14-6"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">transcript_id =</span> <span class="kw">paste0</span>(<span class="st">&quot;&gt;&quot;</span>, transcript_id))</span>
+<span id="cb14-7"><a href="design-of-probes-set.html#cb14-7"></a>filtered_data_fasta &lt;-<span class="st"> </span><span class="kw">do.call</span>(rbind, <span class="kw">lapply</span>(<span class="kw">seq</span>(<span class="kw">nrow</span>(filtered_data)),</span>
+<span id="cb14-8"><a href="design-of-probes-set.html#cb14-8"></a>                                             <span class="cf">function</span>(i) <span class="kw">t</span>(filtered_data[i, ])))</span>
+<span id="cb14-9"><a href="design-of-probes-set.html#cb14-9"></a><span class="kw">write.table</span>(filtered_data_fasta, <span class="dt">row.names =</span> F, <span class="dt">col.names =</span> F, <span class="dt">quote =</span> F, </span>
+<span id="cb14-10"><a href="design-of-probes-set.html#cb14-10"></a>            <span class="dt">file =</span> <span class="kw">file.path</span>(path, <span class="st">&quot;..&quot;</span>, <span class="st">&quot;filtered_transcripts.fasta&quot;</span>))</span></code></pre></div>
+</div>
+<div id="total-filtered-transcript" class="section level3">
+<h3><span class="header-section-number">2.3.4</span> Total filtered transcript</h3>
+<p>We have a total of:</p>
+<ul>
+<li><strong>1 382 525</strong> filtered SNPs (over 2 398 550)</li>
+<li>including <strong>177 388</strong> transcripts (over 257 140, including pseudo-genes isoforms)</li>
+<li>representing <strong>63 707</strong> candidate genes (over 76 032)</li>
+<li>for a total of Mbp</li>
+</ul>
+<p><img src="GOING_files/figure-html/trscFilterFig-1.png" width="768" /></p>
+</div>
+</div>
+<div id="neutral-region-selection" class="section level2">
+<h2><span class="header-section-number">2.4</span> Neutral region selection</h2>
+<div id="raw-reads-from-torroba-balmori-et-al.-unpublished-alignment-on-scaffolds-from-scotti-et-al.-in-prep" class="section level3">
+<h3><span class="header-section-number">2.4.1</span> Raw reads from Torroba-Balmori <em>et al. (unpublished)</em> alignment on scaffolds from Scotti <em>et al. (in prep)</em></h3>
+<p>We used the French Guianan raw reads from Torroba-Balmori <em>et al. (unpublished)</em>,
+by aligning them on scaffolds from <span class="citation">Olsson <em>et al.</em> (<a href="#ref-Olsson2017" role="doc-biblioref">2017</a>)</span> with <code>bwa</code>.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="design-of-probes-set.html#cb15-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb15-2"><a href="design-of-probes-set.html#cb15-2"></a><span class="co">#SBATCH --time=36:00:00</span></span>
+<span id="cb15-3"><a href="design-of-probes-set.html#cb15-3"></a><span class="co">#SBATCH -J alignIvan</span></span>
+<span id="cb15-4"><a href="design-of-probes-set.html#cb15-4"></a><span class="co">#SBATCH -o alignIvan_output.out</span></span>
+<span id="cb15-5"><a href="design-of-probes-set.html#cb15-5"></a><span class="co">#SBATCH -e alignIvan_error.out</span></span>
+<span id="cb15-6"><a href="design-of-probes-set.html#cb15-6"></a><span class="co">#SBATCH --mem=20G</span></span>
+<span id="cb15-7"><a href="design-of-probes-set.html#cb15-7"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
+<span id="cb15-8"><a href="design-of-probes-set.html#cb15-8"></a><span class="co">#SBATCH --mail-type=</span><span class="re">BEGIN</span><span class="co">,</span><span class="re">END</span><span class="co">,FAIL</span></span>
+<span id="cb15-9"><a href="design-of-probes-set.html#cb15-9"></a></span>
+<span id="cb15-10"><a href="design-of-probes-set.html#cb15-10"></a><span class="co"># Environment</span></span>
+<span id="cb15-11"><a href="design-of-probes-set.html#cb15-11"></a><span class="ex">module</span> purge</span>
+<span id="cb15-12"><a href="design-of-probes-set.html#cb15-12"></a><span class="ex">module</span> load bioinfo/bwa-0.7.15</span>
+<span id="cb15-13"><a href="design-of-probes-set.html#cb15-13"></a><span class="ex">module</span> load bioinfo/picard-2.14.1</span>
+<span id="cb15-14"><a href="design-of-probes-set.html#cb15-14"></a><span class="ex">module</span> load bioinfo/samtools-1.4</span>
+<span id="cb15-15"><a href="design-of-probes-set.html#cb15-15"></a><span class="ex">module</span> load bioinfo/bedtools-2.26.0</span>
+<span id="cb15-16"><a href="design-of-probes-set.html#cb15-16"></a></span>
+<span id="cb15-17"><a href="design-of-probes-set.html#cb15-17"></a><span class="co"># read preparation</span></span>
+<span id="cb15-18"><a href="design-of-probes-set.html#cb15-18"></a><span class="bu">cd</span> ~/work/Symphonia_Torroba/</span>
+<span id="cb15-19"><a href="design-of-probes-set.html#cb15-19"></a><span class="fu">tar</span> -xvzf Gbs.tar.gz</span>
+<span id="cb15-20"><a href="design-of-probes-set.html#cb15-20"></a><span class="bu">cd</span> raw</span>
+<span id="cb15-21"><a href="design-of-probes-set.html#cb15-21"></a><span class="fu">rm</span> PR_49.fastq RG_1.fastq</span>
+<span id="cb15-22"><a href="design-of-probes-set.html#cb15-22"></a><span class="kw">for</span> <span class="fu">file</span> in ./*.fastq</span>
+<span id="cb15-23"><a href="design-of-probes-set.html#cb15-23"></a><span class="kw">do</span></span>
+<span id="cb15-24"><a href="design-of-probes-set.html#cb15-24"></a>  <span class="bu">echo</span> <span class="va">$file</span></span>
+<span id="cb15-25"><a href="design-of-probes-set.html#cb15-25"></a>  <span class="va">filename=$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">$file</span><span class="st">&quot;</span><span class="va">)</span></span>
+<span id="cb15-26"><a href="design-of-probes-set.html#cb15-26"></a>  <span class="va">filename=</span><span class="st">&quot;</span><span class="va">${filename%</span>.*<span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb15-27"><a href="design-of-probes-set.html#cb15-27"></a>  <span class="fu">perl</span> -pe <span class="st">&#39;s|[\h]||g&#39;</span> <span class="va">$file</span> <span class="op">&gt;</span> <span class="st">&quot;</span><span class="va">${filename}</span><span class="st">&quot;</span>.renamed.fastq</span>
+<span id="cb15-28"><a href="design-of-probes-set.html#cb15-28"></a>  <span class="fu">rm</span> <span class="va">$file</span></span>
+<span id="cb15-29"><a href="design-of-probes-set.html#cb15-29"></a><span class="kw">done</span></span>
+<span id="cb15-30"><a href="design-of-probes-set.html#cb15-30"></a><span class="co"># variables</span></span>
+<span id="cb15-31"><a href="design-of-probes-set.html#cb15-31"></a><span class="bu">cd</span> ~/work/Symphonia_Genomes/Ivan_2018/torroba_alignment</span>
+<span id="cb15-32"><a href="design-of-probes-set.html#cb15-32"></a><span class="va">reference=</span>~/work/Symphonia_Genomes/Ivan_2018/merged_1000/merged_1000.fa</span>
+<span id="cb15-33"><a href="design-of-probes-set.html#cb15-33"></a><span class="va">query_path=</span>~/work/Symphonia_Torroba/raw</span>
+<span id="cb15-34"><a href="design-of-probes-set.html#cb15-34"></a><span class="co"># alignment</span></span>
+<span id="cb15-35"><a href="design-of-probes-set.html#cb15-35"></a><span class="ex">bwa</span> index <span class="va">$reference</span></span>
+<span id="cb15-36"><a href="design-of-probes-set.html#cb15-36"></a><span class="fu">mkdir</span> bwa</span>
+<span id="cb15-37"><a href="design-of-probes-set.html#cb15-37"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$query_path</span>/*.fastq</span>
+<span id="cb15-38"><a href="design-of-probes-set.html#cb15-38"></a><span class="kw">do</span></span>
+<span id="cb15-39"><a href="design-of-probes-set.html#cb15-39"></a>  <span class="va">filename=$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">$file</span><span class="st">&quot;</span><span class="va">)</span></span>
+<span id="cb15-40"><a href="design-of-probes-set.html#cb15-40"></a>  <span class="va">filename=</span><span class="st">&quot;</span><span class="va">${filename%</span>.*<span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb15-41"><a href="design-of-probes-set.html#cb15-41"></a>  <span class="va">rg=</span><span class="st">&quot;@RG\tID:</span><span class="va">${filename}</span><span class="st">\tSM:</span><span class="va">${filename}</span><span class="st">\tPL:IONTORRENT&quot;</span></span>
+<span id="cb15-42"><a href="design-of-probes-set.html#cb15-42"></a>  <span class="ex">bwa</span> mem -M -R <span class="st">&quot;</span><span class="va">${rg}</span><span class="st">&quot;</span> <span class="va">$reference</span> <span class="va">$file</span> <span class="op">&gt;</span> bwa/<span class="st">&quot;</span><span class="va">${filename}</span><span class="st">.sam&quot;</span>    </span>
+<span id="cb15-43"><a href="design-of-probes-set.html#cb15-43"></a><span class="co">#  rm $file</span></span>
+<span id="cb15-44"><a href="design-of-probes-set.html#cb15-44"></a><span class="kw">done</span></span>
+<span id="cb15-45"><a href="design-of-probes-set.html#cb15-45"></a><span class="co"># sam2bam</span></span>
+<span id="cb15-46"><a href="design-of-probes-set.html#cb15-46"></a><span class="kw">for</span> <span class="fu">file</span> in ./bwa/*.sam</span>
+<span id="cb15-47"><a href="design-of-probes-set.html#cb15-47"></a><span class="kw">do</span></span>
+<span id="cb15-48"><a href="design-of-probes-set.html#cb15-48"></a>  <span class="va">filename=$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">$file</span><span class="st">&quot;</span><span class="va">)</span></span>
+<span id="cb15-49"><a href="design-of-probes-set.html#cb15-49"></a>  <span class="va">filename=</span><span class="st">&quot;</span><span class="va">${filename%</span>.*<span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb15-50"><a href="design-of-probes-set.html#cb15-50"></a>  <span class="ex">java</span> -Xmx4g -jar <span class="va">$PICARD</span> SortSam I=<span class="va">$file</span> O=bwa/<span class="st">&quot;</span><span class="va">${filename}</span><span class="st">&quot;</span>.bam SORT_ORDER=coordinate</span>
+<span id="cb15-51"><a href="design-of-probes-set.html#cb15-51"></a><span class="kw">done</span></span>
+<span id="cb15-52"><a href="design-of-probes-set.html#cb15-52"></a><span class="co"># Bam index</span></span>
+<span id="cb15-53"><a href="design-of-probes-set.html#cb15-53"></a><span class="kw">for</span> <span class="fu">file</span> in bwa/*.bam</span>
+<span id="cb15-54"><a href="design-of-probes-set.html#cb15-54"></a><span class="kw">do</span></span>
+<span id="cb15-55"><a href="design-of-probes-set.html#cb15-55"></a>  <span class="va">filename=$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">$file</span><span class="st">&quot;</span><span class="va">)</span></span>
+<span id="cb15-56"><a href="design-of-probes-set.html#cb15-56"></a>  <span class="va">filename=</span><span class="st">&quot;</span><span class="va">${filename%</span>.*<span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb15-57"><a href="design-of-probes-set.html#cb15-57"></a>  <span class="ex">java</span> -Xmx4g -jar <span class="va">$PICARD</span> BuildBamIndex I=<span class="va">$file</span> O=bwa/<span class="st">&quot;</span><span class="va">${filename}</span><span class="st">&quot;</span>.bai</span>
+<span id="cb15-58"><a href="design-of-probes-set.html#cb15-58"></a><span class="kw">done</span></span>
+<span id="cb15-59"><a href="design-of-probes-set.html#cb15-59"></a><span class="co"># sam2bed</span></span>
+<span id="cb15-60"><a href="design-of-probes-set.html#cb15-60"></a><span class="fu">mkdir</span> bed</span>
+<span id="cb15-61"><a href="design-of-probes-set.html#cb15-61"></a><span class="kw">for</span> <span class="fu">file</span> in ./bwa/*.bam</span>
+<span id="cb15-62"><a href="design-of-probes-set.html#cb15-62"></a><span class="kw">do</span></span>
+<span id="cb15-63"><a href="design-of-probes-set.html#cb15-63"></a>  <span class="va">filename=$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">$file</span><span class="st">&quot;</span><span class="va">)</span></span>
+<span id="cb15-64"><a href="design-of-probes-set.html#cb15-64"></a>  <span class="va">filename=</span><span class="st">&quot;</span><span class="va">${filename%</span>.*<span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb15-65"><a href="design-of-probes-set.html#cb15-65"></a>  <span class="ex">bedtools</span> bamtobed -i bwa/<span class="st">&quot;</span><span class="va">${filename}</span><span class="st">&quot;</span>.bam <span class="op">&gt;</span> bed/<span class="st">&quot;</span><span class="va">${filename}</span><span class="st">&quot;</span>.bed</span>
+<span id="cb15-66"><a href="design-of-probes-set.html#cb15-66"></a><span class="kw">done</span></span>
+<span id="cb15-67"><a href="design-of-probes-set.html#cb15-67"></a><span class="co"># merge bed</span></span>
+<span id="cb15-68"><a href="design-of-probes-set.html#cb15-68"></a><span class="fu">mkdir</span> merged_bed</span>
+<span id="cb15-69"><a href="design-of-probes-set.html#cb15-69"></a><span class="kw">for</span> <span class="fu">file</span> in ./bed/*.bed</span>
+<span id="cb15-70"><a href="design-of-probes-set.html#cb15-70"></a><span class="kw">do</span></span>
+<span id="cb15-71"><a href="design-of-probes-set.html#cb15-71"></a>  <span class="va">filename=$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">$file</span><span class="st">&quot;</span><span class="va">)</span></span>
+<span id="cb15-72"><a href="design-of-probes-set.html#cb15-72"></a>  <span class="va">filename=</span><span class="st">&quot;</span><span class="va">${filename%</span>.*<span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb15-73"><a href="design-of-probes-set.html#cb15-73"></a>  <span class="ex">bedtools</span> merge -i bed/<span class="st">&quot;</span><span class="va">${filename}</span><span class="st">&quot;</span>.bed <span class="op">&gt;</span> merged_bed/<span class="st">&quot;</span><span class="va">${filename}</span><span class="st">&quot;</span>.bed</span>
+<span id="cb15-74"><a href="design-of-probes-set.html#cb15-74"></a><span class="kw">done</span></span>
+<span id="cb15-75"><a href="design-of-probes-set.html#cb15-75"></a><span class="fu">cat</span> bed/* <span class="kw">|</span> <span class="fu">sort</span> -k 1,1 -k2,2n <span class="op">&gt;</span>  all.nonunique.bed</span>
+<span id="cb15-76"><a href="design-of-probes-set.html#cb15-76"></a><span class="ex">bedtools</span> merge -i all.nonunique.bed -c 1 -o count <span class="op">&gt;</span> all.merged.bed</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="design-of-probes-set.html#cb16-1"></a>bed &lt;-<span class="st"> </span><span class="kw">read_tsv</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;Ivan_2018&quot;</span>, <span class="st">&quot;torroba_alignment&quot;</span>, <span class="st">&quot;all.merged.bed&quot;</span>), <span class="dt">col_names =</span> F)</span>
+<span id="cb16-2"><a href="design-of-probes-set.html#cb16-2"></a><span class="kw">names</span>(bed) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;scaffold&quot;</span>, <span class="st">&quot;start&quot;</span>, <span class="st">&quot;end&quot;</span>, <span class="st">&quot;coverage&quot;</span>)</span>
+<span id="cb16-3"><a href="design-of-probes-set.html#cb16-3"></a><span class="kw">write_file</span>(<span class="kw">paste</span>(<span class="kw">unique</span>(bed<span class="op">$</span>scaffold), <span class="dt">collapse =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>), </span>
+<span id="cb16-4"><a href="design-of-probes-set.html#cb16-4"></a>           <span class="kw">file.path</span>(path, <span class="st">&quot;Ivan_2018&quot;</span>, <span class="st">&quot;torroba_alignment&quot;</span>, <span class="st">&quot;scaffolds.list&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="design-of-probes-set.html#cb17-1"></a><span class="bu">cd</span> ~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/Ivan_2018/torroba_alignment</span>
+<span id="cb17-2"><a href="design-of-probes-set.html#cb17-2"></a><span class="va">ref=</span>~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/Ivan_2018/merged_1000/merged_1000.fa</span>
+<span id="cb17-3"><a href="design-of-probes-set.html#cb17-3"></a><span class="ex">seqtk</span> subseq <span class="va">$ref</span> scaffolds.list <span class="op">&gt;&gt;</span> scaffolds.fa</span></code></pre></div>
+<table>
+<caption><span id="tab:bwaReadResultIvanCov">Table 2.5: </span>alignment coverage summary</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">N</th>
+<th align="right">Width (Mbp)</th>
+<th align="right">Coverage (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">aligned sequence</td>
+<td align="right">1 786 852</td>
+<td align="right">130.3105</td>
+<td align="right">29.87923</td>
+</tr>
+<tr class="even">
+<td align="left">selected scaffold</td>
+<td align="right">179 665</td>
+<td align="right">421.7514</td>
+<td align="right">96.70448</td>
+</tr>
+<tr class="odd">
+<td align="left">total</td>
+<td align="right">190 098</td>
+<td align="right">436.1239</td>
+<td align="right">100.00000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="masking-scaffolds-with-multimatch-from-scotti-et-al.-in-prep" class="section level3">
+<h3><span class="header-section-number">2.4.2</span> Masking scaffolds with multimatch from Scotti <em>et al. (in prep)</em></h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="design-of-probes-set.html#cb18-1"></a>bed &lt;-<span class="st"> </span>data.table<span class="op">::</span><span class="kw">fread</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;Ivan_2018&quot;</span>, <span class="st">&quot;torroba_alignment&quot;</span>, </span>
+<span id="cb18-2"><a href="design-of-probes-set.html#cb18-2"></a>                                   <span class="st">&quot;all.nonunique.bed&quot;</span>), <span class="dt">header =</span> F)</span>
+<span id="cb18-3"><a href="design-of-probes-set.html#cb18-3"></a><span class="kw">names</span>(bed) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;scaffold&quot;</span>, <span class="st">&quot;start&quot;</span>, <span class="st">&quot;end&quot;</span>, <span class="st">&quot;read&quot;</span>, <span class="st">&quot;quality&quot;</span>, <span class="st">&quot;orientation&quot;</span>)</span>
+<span id="cb18-4"><a href="design-of-probes-set.html#cb18-4"></a>multimatch_reads &lt;-<span class="st"> </span>bed <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb18-5"><a href="design-of-probes-set.html#cb18-5"></a><span class="st">  </span><span class="kw">filter</span>(<span class="kw">duplicated</span>(read)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb18-6"><a href="design-of-probes-set.html#cb18-6"></a><span class="st">  </span><span class="kw">select</span>(read) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb18-7"><a href="design-of-probes-set.html#cb18-7"></a><span class="st">  </span><span class="kw">unique</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb18-8"><a href="design-of-probes-set.html#cb18-8"></a><span class="st">  </span><span class="kw">unlist</span>()</span>
+<span id="cb18-9"><a href="design-of-probes-set.html#cb18-9"></a>bed <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb18-10"><a href="design-of-probes-set.html#cb18-10"></a><span class="st">  </span><span class="kw">filter</span>(read <span class="op">%in%</span><span class="st"> </span>multimatch_reads) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb18-11"><a href="design-of-probes-set.html#cb18-11"></a><span class="st">  </span><span class="kw">write_tsv</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;Ivan_2018&quot;</span>, <span class="st">&quot;torroba_alignment&quot;</span>, </span>
+<span id="cb18-12"><a href="design-of-probes-set.html#cb18-12"></a>                       <span class="st">&quot;multimatch.bed&quot;</span>), <span class="dt">col_names =</span> F)</span>
+<span id="cb18-13"><a href="design-of-probes-set.html#cb18-13"></a><span class="kw">rm</span>(bed, multimatch_reads) ; <span class="kw">invisible</span>(<span class="kw">gc</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="design-of-probes-set.html#cb19-1"></a><span class="bu">cd</span> ~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/Ivan_2018/torroba_alignment</span>
+<span id="cb19-2"><a href="design-of-probes-set.html#cb19-2"></a><span class="ex">bedtools</span> maskfasta -fi scaffolds.fa -bed multimatch.bed -fo masked.scaffolds.fa</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="design-of-probes-set.html#cb20-1"></a>scf &lt;-<span class="st"> </span><span class="kw">readDNAStringSet</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;Ivan_2018&quot;</span>, </span>
+<span id="cb20-2"><a href="design-of-probes-set.html#cb20-2"></a>                                  <span class="st">&quot;torroba_alignment&quot;</span>, <span class="st">&quot;masked.scaffolds.fa&quot;</span>))</span>
+<span id="cb20-3"><a href="design-of-probes-set.html#cb20-3"></a>scf &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">scaffold =</span> <span class="kw">names</span>(scf), <span class="dt">width =</span> <span class="kw">width</span>(scf), </span>
+<span id="cb20-4"><a href="design-of-probes-set.html#cb20-4"></a>           <span class="dt">N =</span> <span class="kw">letterFrequency</span>(scf, <span class="dt">letters =</span> <span class="st">&quot;N&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb20-5"><a href="design-of-probes-set.html#cb20-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Nperc =</span> N<span class="op">/</span>width<span class="op">*</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb20-6"><a href="design-of-probes-set.html#cb20-6"></a><span class="st">  </span><span class="kw">filter</span>(Nperc <span class="op">&lt;</span><span class="st"> </span><span class="dv">25</span> <span class="op">&amp;</span><span class="st"> </span>width <span class="op">&gt;</span><span class="st"> </span><span class="dv">1000</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb20-7"><a href="design-of-probes-set.html#cb20-7"></a><span class="st">  </span><span class="kw">select</span>(scaffold)</span>
+<span id="cb20-8"><a href="design-of-probes-set.html#cb20-8"></a><span class="kw">write_file</span>(<span class="kw">paste</span>(scf<span class="op">$</span>scaffold, <span class="dt">collapse =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>), </span>
+<span id="cb20-9"><a href="design-of-probes-set.html#cb20-9"></a>           <span class="kw">file.path</span>(path, <span class="st">&quot;Ivan_2018&quot;</span>, <span class="st">&quot;torroba_alignment&quot;</span>, <span class="st">&quot;final.scaffolds.list&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="design-of-probes-set.html#cb21-1"></a><span class="bu">cd</span> ~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/Ivan_2018/torroba_alignment</span>
+<span id="cb21-2"><a href="design-of-probes-set.html#cb21-2"></a><span class="ex">seqtk</span> subseq masked.scaffolds.fa final.scaffolds.list <span class="op">&gt;&gt;</span> final.scaffolds.fa</span></code></pre></div>
+<table>
+<caption><span id="tab:bwaFilterScottiCov">Table 2.6: </span>alignment coverage summary</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">N</th>
+<th align="right">Width (Mbp)</th>
+<th align="right">Mask (%N)</th>
+<th align="right">Coverage (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">selected scaffold</td>
+<td align="right">315 226</td>
+<td align="right">776.5915</td>
+<td align="right">6.651114</td>
+<td align="right">178.0667</td>
+</tr>
+<tr class="even">
+<td align="left">total</td>
+<td align="right">190 098</td>
+<td align="right">436.1239</td>
+<td align="right">NA</td>
+<td align="right">100.0000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="raw-reads-from-torroba-balmori-et-al.-unpublished-alignment-on-scaffolds-from-olsson2017" class="section level3">
+<h3><span class="header-section-number">2.4.3</span> Raw reads from Torroba-Balmori <em>et al. (unpublished)</em> alignment on scaffolds from <span class="citation">Olsson <em>et al.</em> (<a href="#ref-Olsson2017" role="doc-biblioref">2017</a>)</span></h3>
+<p>We used again the French Guianan raw reads from Torroba-Balmori <em>et al. (unpublished)</em>,
+to align them on scaffolds from <span class="citation">Olsson <em>et al.</em> (<a href="#ref-Olsson2017" role="doc-biblioref">2017</a>)</span> with <code>bwa</code>.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="design-of-probes-set.html#cb22-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb22-2"><a href="design-of-probes-set.html#cb22-2"></a><span class="co">#SBATCH --time=36:00:00</span></span>
+<span id="cb22-3"><a href="design-of-probes-set.html#cb22-3"></a><span class="co">#SBATCH -J alignOlsson</span></span>
+<span id="cb22-4"><a href="design-of-probes-set.html#cb22-4"></a><span class="co">#SBATCH -o alignOlsson_output.out</span></span>
+<span id="cb22-5"><a href="design-of-probes-set.html#cb22-5"></a><span class="co">#SBATCH -e alignOlsson_error.out</span></span>
+<span id="cb22-6"><a href="design-of-probes-set.html#cb22-6"></a><span class="co">#SBATCH --mem=20G</span></span>
+<span id="cb22-7"><a href="design-of-probes-set.html#cb22-7"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
+<span id="cb22-8"><a href="design-of-probes-set.html#cb22-8"></a><span class="co">#SBATCH --mail-type=</span><span class="re">BEGIN</span><span class="co">,</span><span class="re">END</span><span class="co">,FAIL</span></span>
+<span id="cb22-9"><a href="design-of-probes-set.html#cb22-9"></a></span>
+<span id="cb22-10"><a href="design-of-probes-set.html#cb22-10"></a><span class="co"># Environment</span></span>
+<span id="cb22-11"><a href="design-of-probes-set.html#cb22-11"></a><span class="ex">module</span> purge</span>
+<span id="cb22-12"><a href="design-of-probes-set.html#cb22-12"></a><span class="ex">module</span> load bioinfo/bwa-0.7.15</span>
+<span id="cb22-13"><a href="design-of-probes-set.html#cb22-13"></a><span class="ex">module</span> load bioinfo/picard-2.14.1</span>
+<span id="cb22-14"><a href="design-of-probes-set.html#cb22-14"></a><span class="ex">module</span> load bioinfo/samtools-1.4</span>
+<span id="cb22-15"><a href="design-of-probes-set.html#cb22-15"></a><span class="ex">module</span> load bioinfo/bedtools-2.26.0</span>
+<span id="cb22-16"><a href="design-of-probes-set.html#cb22-16"></a></span>
+<span id="cb22-17"><a href="design-of-probes-set.html#cb22-17"></a><span class="co"># read preparation</span></span>
+<span id="cb22-18"><a href="design-of-probes-set.html#cb22-18"></a><span class="bu">cd</span> ~/work/Symphonia_Torroba/</span>
+<span id="cb22-19"><a href="design-of-probes-set.html#cb22-19"></a><span class="fu">tar</span> -xvzf Gbs.tar.gz</span>
+<span id="cb22-20"><a href="design-of-probes-set.html#cb22-20"></a><span class="bu">cd</span> raw</span>
+<span id="cb22-21"><a href="design-of-probes-set.html#cb22-21"></a><span class="fu">rm</span> PR_49.fastq RG_1.fastq</span>
+<span id="cb22-22"><a href="design-of-probes-set.html#cb22-22"></a><span class="kw">for</span> <span class="fu">file</span> in ./*.fastq</span>
+<span id="cb22-23"><a href="design-of-probes-set.html#cb22-23"></a><span class="kw">do</span></span>
+<span id="cb22-24"><a href="design-of-probes-set.html#cb22-24"></a>  <span class="bu">echo</span> <span class="va">$file</span></span>
+<span id="cb22-25"><a href="design-of-probes-set.html#cb22-25"></a>  <span class="va">filename=$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">$file</span><span class="st">&quot;</span><span class="va">)</span></span>
+<span id="cb22-26"><a href="design-of-probes-set.html#cb22-26"></a>  <span class="va">filename=</span><span class="st">&quot;</span><span class="va">${filename%</span>.*<span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb22-27"><a href="design-of-probes-set.html#cb22-27"></a>  <span class="fu">perl</span> -pe <span class="st">&#39;s|[\h]||g&#39;</span> <span class="va">$file</span> <span class="op">&gt;</span> <span class="st">&quot;</span><span class="va">${filename}</span><span class="st">&quot;</span>.renamed.fastq</span>
+<span id="cb22-28"><a href="design-of-probes-set.html#cb22-28"></a>  <span class="fu">rm</span> <span class="va">$file</span></span>
+<span id="cb22-29"><a href="design-of-probes-set.html#cb22-29"></a><span class="kw">done</span></span>
+<span id="cb22-30"><a href="design-of-probes-set.html#cb22-30"></a><span class="co"># variables</span></span>
+<span id="cb22-31"><a href="design-of-probes-set.html#cb22-31"></a><span class="bu">cd</span> ~/work/Symphonia_Genomes/Olsson_2016/torroba_alignment</span>
+<span id="cb22-32"><a href="design-of-probes-set.html#cb22-32"></a><span class="va">reference=</span>~/work/Symphonia_Genomes/Olsson_2016/Olsson2017/Olsson2017.fa</span>
+<span id="cb22-33"><a href="design-of-probes-set.html#cb22-33"></a><span class="va">query_path=</span>~/work/Symphonia_Torroba/raw</span>
+<span id="cb22-34"><a href="design-of-probes-set.html#cb22-34"></a><span class="co"># alignment</span></span>
+<span id="cb22-35"><a href="design-of-probes-set.html#cb22-35"></a><span class="ex">bwa</span> index <span class="va">$reference</span></span>
+<span id="cb22-36"><a href="design-of-probes-set.html#cb22-36"></a><span class="fu">mkdir</span> bwa</span>
+<span id="cb22-37"><a href="design-of-probes-set.html#cb22-37"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$query_path</span>/*.fastq</span>
+<span id="cb22-38"><a href="design-of-probes-set.html#cb22-38"></a><span class="kw">do</span></span>
+<span id="cb22-39"><a href="design-of-probes-set.html#cb22-39"></a>  <span class="va">filename=$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">$file</span><span class="st">&quot;</span><span class="va">)</span></span>
+<span id="cb22-40"><a href="design-of-probes-set.html#cb22-40"></a>  <span class="va">filename=</span><span class="st">&quot;</span><span class="va">${filename%</span>.*<span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb22-41"><a href="design-of-probes-set.html#cb22-41"></a>  <span class="va">rg=</span><span class="st">&quot;@RG\tID:</span><span class="va">${filename}</span><span class="st">\tSM:</span><span class="va">${filename}</span><span class="st">\tPL:IONTORRENT&quot;</span></span>
+<span id="cb22-42"><a href="design-of-probes-set.html#cb22-42"></a>  <span class="ex">bwa</span> mem -M -R <span class="st">&quot;</span><span class="va">${rg}</span><span class="st">&quot;</span> <span class="va">$reference</span> <span class="va">$file</span> <span class="op">&gt;</span> bwa/<span class="st">&quot;</span><span class="va">${filename}</span><span class="st">.sam&quot;</span>    </span>
+<span id="cb22-43"><a href="design-of-probes-set.html#cb22-43"></a>  <span class="fu">rm</span> <span class="va">$file</span></span>
+<span id="cb22-44"><a href="design-of-probes-set.html#cb22-44"></a><span class="kw">done</span></span>
+<span id="cb22-45"><a href="design-of-probes-set.html#cb22-45"></a><span class="co"># sam2bam</span></span>
+<span id="cb22-46"><a href="design-of-probes-set.html#cb22-46"></a><span class="kw">for</span> <span class="fu">file</span> in ./bwa/*.sam</span>
+<span id="cb22-47"><a href="design-of-probes-set.html#cb22-47"></a><span class="kw">do</span></span>
+<span id="cb22-48"><a href="design-of-probes-set.html#cb22-48"></a>  <span class="va">filename=$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">$file</span><span class="st">&quot;</span><span class="va">)</span></span>
+<span id="cb22-49"><a href="design-of-probes-set.html#cb22-49"></a>  <span class="va">filename=</span><span class="st">&quot;</span><span class="va">${filename%</span>.*<span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb22-50"><a href="design-of-probes-set.html#cb22-50"></a>  <span class="ex">java</span> -Xmx4g -jar <span class="va">$PICARD</span> SortSam I=<span class="va">$file</span> O=bwa/<span class="st">&quot;</span><span class="va">${filename}</span><span class="st">&quot;</span>.bam SORT_ORDER=coordinate</span>
+<span id="cb22-51"><a href="design-of-probes-set.html#cb22-51"></a><span class="kw">done</span></span>
+<span id="cb22-52"><a href="design-of-probes-set.html#cb22-52"></a><span class="co"># Bam index</span></span>
+<span id="cb22-53"><a href="design-of-probes-set.html#cb22-53"></a><span class="kw">for</span> <span class="fu">file</span> in bwa/*.bam</span>
+<span id="cb22-54"><a href="design-of-probes-set.html#cb22-54"></a><span class="kw">do</span></span>
+<span id="cb22-55"><a href="design-of-probes-set.html#cb22-55"></a>  <span class="va">filename=$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">$file</span><span class="st">&quot;</span><span class="va">)</span></span>
+<span id="cb22-56"><a href="design-of-probes-set.html#cb22-56"></a>  <span class="va">filename=</span><span class="st">&quot;</span><span class="va">${filename%</span>.*<span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb22-57"><a href="design-of-probes-set.html#cb22-57"></a>  <span class="ex">java</span> -Xmx4g -jar <span class="va">$PICARD</span> BuildBamIndex I=<span class="va">$file</span> O=bwa/<span class="st">&quot;</span><span class="va">${filename}</span><span class="st">&quot;</span>.bai</span>
+<span id="cb22-58"><a href="design-of-probes-set.html#cb22-58"></a><span class="kw">done</span></span>
+<span id="cb22-59"><a href="design-of-probes-set.html#cb22-59"></a><span class="co"># sam2bed</span></span>
+<span id="cb22-60"><a href="design-of-probes-set.html#cb22-60"></a><span class="fu">mkdir</span> bed</span>
+<span id="cb22-61"><a href="design-of-probes-set.html#cb22-61"></a><span class="kw">for</span> <span class="fu">file</span> in ./bwa/*.bam</span>
+<span id="cb22-62"><a href="design-of-probes-set.html#cb22-62"></a><span class="kw">do</span></span>
+<span id="cb22-63"><a href="design-of-probes-set.html#cb22-63"></a>  <span class="va">filename=$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">$file</span><span class="st">&quot;</span><span class="va">)</span></span>
+<span id="cb22-64"><a href="design-of-probes-set.html#cb22-64"></a>  <span class="va">filename=</span><span class="st">&quot;</span><span class="va">${filename%</span>.*<span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb22-65"><a href="design-of-probes-set.html#cb22-65"></a>  <span class="ex">bedtools</span> bamtobed -i bwa/<span class="st">&quot;</span><span class="va">${filename}</span><span class="st">&quot;</span>.bam <span class="op">&gt;</span> bed/<span class="st">&quot;</span><span class="va">${filename}</span><span class="st">&quot;</span>.bed</span>
+<span id="cb22-66"><a href="design-of-probes-set.html#cb22-66"></a><span class="kw">done</span></span>
+<span id="cb22-67"><a href="design-of-probes-set.html#cb22-67"></a><span class="co"># merge bed</span></span>
+<span id="cb22-68"><a href="design-of-probes-set.html#cb22-68"></a><span class="fu">mkdir</span> merged_bed</span>
+<span id="cb22-69"><a href="design-of-probes-set.html#cb22-69"></a><span class="kw">for</span> <span class="fu">file</span> in ./bed/*.bed</span>
+<span id="cb22-70"><a href="design-of-probes-set.html#cb22-70"></a><span class="kw">do</span></span>
+<span id="cb22-71"><a href="design-of-probes-set.html#cb22-71"></a>  <span class="va">filename=$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">$file</span><span class="st">&quot;</span><span class="va">)</span></span>
+<span id="cb22-72"><a href="design-of-probes-set.html#cb22-72"></a>  <span class="va">filename=</span><span class="st">&quot;</span><span class="va">${filename%</span>.*<span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb22-73"><a href="design-of-probes-set.html#cb22-73"></a>  <span class="ex">bedtools</span> merge -i bed/<span class="st">&quot;</span><span class="va">${filename}</span><span class="st">&quot;</span>.bed <span class="op">&gt;</span> merged_bed/<span class="st">&quot;</span><span class="va">${filename}</span><span class="st">&quot;</span>.bed</span>
+<span id="cb22-74"><a href="design-of-probes-set.html#cb22-74"></a><span class="kw">done</span></span>
+<span id="cb22-75"><a href="design-of-probes-set.html#cb22-75"></a><span class="fu">cat</span> bed/* <span class="kw">|</span> <span class="fu">sort</span> -k 1,1 -k2,2n <span class="op">&gt;</span>  all.nonunique.bed</span>
+<span id="cb22-76"><a href="design-of-probes-set.html#cb22-76"></a><span class="ex">bedtools</span> merge -i all.nonunique.bed -c 1 -o count <span class="op">&gt;</span> all.merged.bed</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="design-of-probes-set.html#cb23-1"></a>bed &lt;-<span class="st"> </span><span class="kw">read_tsv</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;Olsson_2016&quot;</span>, <span class="st">&quot;torroba_alignment&quot;</span>, <span class="st">&quot;all.merged.bed&quot;</span>), <span class="dt">col_names =</span> F)</span>
+<span id="cb23-2"><a href="design-of-probes-set.html#cb23-2"></a><span class="kw">names</span>(bed) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;scaffold&quot;</span>, <span class="st">&quot;start&quot;</span>, <span class="st">&quot;end&quot;</span>, <span class="st">&quot;coverage&quot;</span>)</span>
+<span id="cb23-3"><a href="design-of-probes-set.html#cb23-3"></a><span class="kw">write_file</span>(<span class="kw">paste</span>(<span class="kw">unique</span>(bed<span class="op">$</span>scaffold), <span class="dt">collapse =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>), </span>
+<span id="cb23-4"><a href="design-of-probes-set.html#cb23-4"></a>           <span class="kw">file.path</span>(path, <span class="st">&quot;Olsson_2016&quot;</span>, <span class="st">&quot;torroba_alignment&quot;</span>, <span class="st">&quot;scaffolds.list&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="design-of-probes-set.html#cb24-1"></a><span class="bu">cd</span> ~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/Olsson_2016/torroba_alignment</span>
+<span id="cb24-2"><a href="design-of-probes-set.html#cb24-2"></a><span class="va">ref=</span>~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/Olsson_2016/Olsson2017/Olsson2017.fa</span>
+<span id="cb24-3"><a href="design-of-probes-set.html#cb24-3"></a><span class="ex">seqtk</span> subseq <span class="va">$ref</span> scaffolds.list <span class="op">&gt;&gt;</span> scaffolds.fa</span></code></pre></div>
+<table>
+<caption><span id="tab:bwaReadResultOlssonCov">Table 2.7: </span>alignment coverage summary</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">N</th>
+<th align="right">Width (Mbp)</th>
+<th align="right">Coverage (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">aligned sequence</td>
+<td align="right">1 786 852</td>
+<td align="right">130.3105</td>
+<td align="right">12.68385</td>
+</tr>
+<tr class="even">
+<td align="left">selected scaffold</td>
+<td align="right">1 056 548</td>
+<td align="right">590.1957</td>
+<td align="right">57.44708</td>
+</tr>
+<tr class="odd">
+<td align="left">total</td>
+<td align="right">2 653 526</td>
+<td align="right">1 027.3729</td>
+<td align="right">100.00000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="masking-scaffolds-with-multimatch-from-olsson2017" class="section level3">
+<h3><span class="header-section-number">2.4.4</span> Masking scaffolds with multimatch from <span class="citation">Olsson <em>et al.</em> (<a href="#ref-Olsson2017" role="doc-biblioref">2017</a>)</span></h3>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="design-of-probes-set.html#cb25-1"></a>bed &lt;-<span class="st"> </span>data.table<span class="op">::</span><span class="kw">fread</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;Olsson_2016&quot;</span>, <span class="st">&quot;torroba_alignment&quot;</span>, </span>
+<span id="cb25-2"><a href="design-of-probes-set.html#cb25-2"></a>                                   <span class="st">&quot;all.nonunique.bed&quot;</span>), <span class="dt">header =</span> F)</span>
+<span id="cb25-3"><a href="design-of-probes-set.html#cb25-3"></a><span class="kw">names</span>(bed) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;scaffold&quot;</span>, <span class="st">&quot;start&quot;</span>, <span class="st">&quot;end&quot;</span>, <span class="st">&quot;read&quot;</span>, <span class="st">&quot;quality&quot;</span>, <span class="st">&quot;orientation&quot;</span>)</span>
+<span id="cb25-4"><a href="design-of-probes-set.html#cb25-4"></a>multimatch_reads &lt;-<span class="st"> </span>bed <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb25-5"><a href="design-of-probes-set.html#cb25-5"></a><span class="st">  </span><span class="kw">filter</span>(<span class="kw">duplicated</span>(read)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb25-6"><a href="design-of-probes-set.html#cb25-6"></a><span class="st">  </span><span class="kw">select</span>(read) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb25-7"><a href="design-of-probes-set.html#cb25-7"></a><span class="st">  </span><span class="kw">unique</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb25-8"><a href="design-of-probes-set.html#cb25-8"></a><span class="st">  </span><span class="kw">unlist</span>()</span>
+<span id="cb25-9"><a href="design-of-probes-set.html#cb25-9"></a>bed <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb25-10"><a href="design-of-probes-set.html#cb25-10"></a><span class="st">  </span><span class="kw">filter</span>(read <span class="op">%in%</span><span class="st"> </span>multimatch_reads) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb25-11"><a href="design-of-probes-set.html#cb25-11"></a><span class="st">  </span><span class="kw">write_tsv</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;Olsson_2016&quot;</span>, <span class="st">&quot;torroba_alignment&quot;</span>, </span>
+<span id="cb25-12"><a href="design-of-probes-set.html#cb25-12"></a>                       <span class="st">&quot;multimatch.bed&quot;</span>), <span class="dt">col_names =</span> F)</span>
+<span id="cb25-13"><a href="design-of-probes-set.html#cb25-13"></a><span class="kw">rm</span>(bed, multimatch_reads) ; <span class="kw">invisible</span>(<span class="kw">gc</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="design-of-probes-set.html#cb26-1"></a><span class="bu">cd</span> ~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/Olsson_2016/torroba_alignment</span>
+<span id="cb26-2"><a href="design-of-probes-set.html#cb26-2"></a><span class="ex">bedtools</span> maskfasta -fi scaffolds.fa -bed multimatch.bed -fo masked.scaffolds.fa</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="design-of-probes-set.html#cb27-1"></a>scf &lt;-<span class="st"> </span><span class="kw">readDNAStringSet</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;Olsson_2016&quot;</span>, </span>
+<span id="cb27-2"><a href="design-of-probes-set.html#cb27-2"></a>                                  <span class="st">&quot;torroba_alignment&quot;</span>, <span class="st">&quot;masked.scaffolds.fa&quot;</span>))</span>
+<span id="cb27-3"><a href="design-of-probes-set.html#cb27-3"></a>scf &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">scaffold =</span> <span class="kw">names</span>(scf), <span class="dt">width =</span> <span class="kw">width</span>(scf), </span>
+<span id="cb27-4"><a href="design-of-probes-set.html#cb27-4"></a>           <span class="dt">N =</span> <span class="kw">letterFrequency</span>(scf, <span class="dt">letters =</span> <span class="st">&quot;N&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb27-5"><a href="design-of-probes-set.html#cb27-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Nperc =</span> N<span class="op">/</span>width<span class="op">*</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb27-6"><a href="design-of-probes-set.html#cb27-6"></a><span class="st">  </span><span class="kw">filter</span>(Nperc <span class="op">&lt;</span><span class="st"> </span><span class="dv">25</span> <span class="op">&amp;</span><span class="st"> </span>width <span class="op">&gt;</span><span class="st"> </span><span class="dv">1000</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb27-7"><a href="design-of-probes-set.html#cb27-7"></a><span class="st">  </span><span class="kw">select</span>(scaffold)</span>
+<span id="cb27-8"><a href="design-of-probes-set.html#cb27-8"></a><span class="kw">write_file</span>(<span class="kw">paste</span>(scf<span class="op">$</span>scaffold, <span class="dt">collapse =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>), </span>
+<span id="cb27-9"><a href="design-of-probes-set.html#cb27-9"></a>           <span class="kw">file.path</span>(path, <span class="st">&quot;Olsson_2016&quot;</span>, <span class="st">&quot;torroba_alignment&quot;</span>, <span class="st">&quot;final.scaffolds.list&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="design-of-probes-set.html#cb28-1"></a><span class="bu">cd</span> ~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/Olsson_2016/torroba_alignment</span>
+<span id="cb28-2"><a href="design-of-probes-set.html#cb28-2"></a><span class="va">ref=</span>~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/Olsson_2016/Olsson2017/Olsson2017.fa</span>
+<span id="cb28-3"><a href="design-of-probes-set.html#cb28-3"></a><span class="ex">seqtk</span> subseq masked.scaffolds.fa final.scaffolds.list <span class="op">&gt;&gt;</span> final.scaffolds.fa</span></code></pre></div>
+<table>
+<caption><span id="tab:bwaFilterOlssonCov">Table 2.8: </span>alignment coverage summary</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">N</th>
+<th align="right">Width (Mbp)</th>
+<th align="right">Mask (%N)</th>
+<th align="right">Coverage (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">selected scaffold</td>
+<td align="right">245 646</td>
+<td align="right">464.1304</td>
+<td align="right">1.896894</td>
+<td align="right">45.17643</td>
+</tr>
+<tr class="even">
+<td align="left">total</td>
+<td align="right">2 653 526</td>
+<td align="right">1 027.3729</td>
+<td align="right">NA</td>
+<td align="right">100.00000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="removing-scaffolds-already-matching-transcripts" class="section level3">
+<h3><span class="header-section-number">2.4.5</span> Removing scaffolds already matching transcripts</h3>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="design-of-probes-set.html#cb29-1"></a>func &lt;-<span class="kw">unlist</span>(<span class="kw">read_tsv</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;Ivan_2018&quot;</span>, </span>
+<span id="cb29-2"><a href="design-of-probes-set.html#cb29-2"></a>                          <span class="st">&quot;transcript_alignment&quot;</span>, <span class="st">&quot;selected_scaffolds.list&quot;</span>), <span class="dt">col_names =</span> F))</span>
+<span id="cb29-3"><a href="design-of-probes-set.html#cb29-3"></a>neutral &lt;-<span class="st"> </span><span class="kw">readDNAStringSet</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;Ivan_2018&quot;</span>, <span class="st">&quot;torroba_alignment&quot;</span>,</span>
+<span id="cb29-4"><a href="design-of-probes-set.html#cb29-4"></a>                                  <span class="st">&quot;final.scaffolds.fa&quot;</span>))</span>
+<span id="cb29-5"><a href="design-of-probes-set.html#cb29-5"></a><span class="kw">writeXStringSet</span>(neutral[<span class="kw">setdiff</span>(<span class="kw">names</span>(neutral), func)], <span class="kw">file.path</span>(path, <span class="st">&quot;neutral_selection&quot;</span>, <span class="st">&quot;Ivan.selected.scaffolds.fa&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="design-of-probes-set.html#cb30-1"></a>func &lt;-<span class="kw">unlist</span>(<span class="kw">read_tsv</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;Olsson_2016&quot;</span>, </span>
+<span id="cb30-2"><a href="design-of-probes-set.html#cb30-2"></a>                          <span class="st">&quot;transcript_alignment&quot;</span>, <span class="st">&quot;selected_scaffolds.list&quot;</span>), <span class="dt">col_names =</span> F))</span>
+<span id="cb30-3"><a href="design-of-probes-set.html#cb30-3"></a>neutral &lt;-<span class="st"> </span><span class="kw">readDNAStringSet</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;Olsson_2016&quot;</span>, <span class="st">&quot;torroba_alignment&quot;</span>,</span>
+<span id="cb30-4"><a href="design-of-probes-set.html#cb30-4"></a>                                  <span class="st">&quot;final.scaffolds.fa&quot;</span>))</span>
+<span id="cb30-5"><a href="design-of-probes-set.html#cb30-5"></a><span class="kw">writeXStringSet</span>(neutral[<span class="kw">setdiff</span>(<span class="kw">names</span>(neutral), func)], <span class="kw">file.path</span>(path, <span class="st">&quot;neutral_selection&quot;</span>, <span class="st">&quot;Olsson.selected.scaffolds.fa&quot;</span>))</span></code></pre></div>
+</div>
+<div id="merge-of-selected-scaffolds" class="section level3">
+<h3><span class="header-section-number">2.4.6</span> Merge of selected scaffolds</h3>
+<p>We merged selected scaffolds from Scotti <em>et al (in prep)</em> and <span class="citation">Olsson <em>et al.</em> (<a href="#ref-Olsson2017" role="doc-biblioref">2017</a>)</span> with <code>quickmerge</code>.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb31-1"><a href="design-of-probes-set.html#cb31-1"></a><span class="bu">cd</span> ~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/neutral_selection</span>
+<span id="cb31-2"><a href="design-of-probes-set.html#cb31-2"></a><span class="va">ref=</span>Ivan.selected.scaffolds.fa</span>
+<span id="cb31-3"><a href="design-of-probes-set.html#cb31-3"></a><span class="va">query=</span>Olsson.selected.scaffolds.fa</span>
+<span id="cb31-4"><a href="design-of-probes-set.html#cb31-4"></a><span class="ex">nucmer</span> -l 100 -prefix out <span class="va">$ref</span> <span class="va">$query</span></span>
+<span id="cb31-5"><a href="design-of-probes-set.html#cb31-5"></a><span class="ex">delta-filter</span> -i 95 -r -q out.delta <span class="op">&gt;</span> out.rq.delta</span>
+<span id="cb31-6"><a href="design-of-probes-set.html#cb31-6"></a><span class="ex">~/Tools/quickmerge/quickmerge</span> -d out.rq.delta -q <span class="va">$query</span> -r <span class="va">$ref</span> -hco 5.0 -c 1.5 -l n -ml m</span></code></pre></div>
+<p>We merged selected scaffolds from Scotti <em>et al (in prep)</em> and <span class="citation">Olsson <em>et al.</em> (<a href="#ref-Olsson2017" role="doc-biblioref">2017</a>)</span> with <code>quickmerge</code>.
+We found <strong>13 343</strong> overlaps resulting a final merged assembly of <strong>82 792</strong> scaffolds for a total length of <strong>146.80 Mb</strong>.</p>
+<div class="figure"><span id="fig:neutralSelectionOverlap"></span>
+<img src="GOING_files/figure-html/neutralSelectionOverlap-1.png" alt="Merging result from quickmerge. Left graph represents the overlap distribution. Right graph represent the merged scaffolds distribution." width="768" />
+<p class="caption">
+Figure 2.4: Merging result from quickmerge. Left graph represents the overlap distribution. Right graph represent the merged scaffolds distribution.
+</p>
+</div>
+</div>
+<div id="final-subset-of-selected-neutral-scaffolds" class="section level3">
+<h3><span class="header-section-number">2.4.7</span> Final subset of selected neutral scaffolds</h3>
+<p>We finally selected 0.533 Mb of sequences by sampling 533 1-kb sequences among 533 scaffolds (1 sequence per scaffold) with a probability <span class="math inline">\(p=\frac{scaffold\_length}{total\_length}\)</span>.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="design-of-probes-set.html#cb32-1"></a>scf &lt;-<span class="st"> </span><span class="kw">readDNAStringSet</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;neutral_selection&quot;</span>, <span class="st">&quot;merged.fasta&quot;</span>))</span>
+<span id="cb32-2"><a href="design-of-probes-set.html#cb32-2"></a>selection &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">scf =</span> <span class="kw">names</span>(scf), <span class="dt">width =</span> <span class="kw">width</span>(scf), </span>
+<span id="cb32-3"><a href="design-of-probes-set.html#cb32-3"></a>                        <span class="dt">N =</span> <span class="kw">letterFrequency</span>(scf, <span class="st">&quot;N&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb32-4"><a href="design-of-probes-set.html#cb32-4"></a><span class="st">  </span><span class="kw">sample_n</span>(<span class="dv">533</span>, <span class="dt">weight =</span> width) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb32-5"><a href="design-of-probes-set.html#cb32-5"></a><span class="st">  </span><span class="kw">select</span>(scf) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb32-6"><a href="design-of-probes-set.html#cb32-6"></a><span class="st">  </span><span class="kw">unlist</span>()</span>
+<span id="cb32-7"><a href="design-of-probes-set.html#cb32-7"></a>scf_sel &lt;-<span class="st"> </span><span class="kw">subseq</span>(scf[selection], <span class="dt">end=</span><span class="dv">1000</span>, <span class="dt">width=</span><span class="dv">1000</span>)</span>
+<span id="cb32-8"><a href="design-of-probes-set.html#cb32-8"></a><span class="kw">writeXStringSet</span>(scf_sel, <span class="kw">file.path</span>(path, <span class="st">&quot;neutral_selection&quot;</span>, <span class="st">&quot;selected.scaffolds.fa&quot;</span>))</span></code></pre></div>
+<table>
+<caption><span id="tab:neutralSelectionTab">Table 2.9: </span>Selected neutral scaffolds</caption>
+<thead>
+<tr class="header">
+<th align="right">N</th>
+<th align="right">Width (Mbp)</th>
+<th align="right">Mask (%N)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">533</td>
+<td align="right">0.533</td>
+<td align="right">0.0036529</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="repetitive-regions-final-check" class="section level3">
+<h3><span class="header-section-number">2.4.8</span> Repetitive regions final check</h3>
+<p>Last but not least, we do not want to include repetitive regions in our targets for baits design. We consequently aligned raw reads from one library from Scotti <em>et al. (in prep)</em> on our targets with <code>bwa</code>.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="design-of-probes-set.html#cb33-1"></a><span class="bu">cd</span> ~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/neutral_selection</span>
+<span id="cb33-2"><a href="design-of-probes-set.html#cb33-2"></a><span class="va">reference=</span>selected.scaffolds.fa</span>
+<span id="cb33-3"><a href="design-of-probes-set.html#cb33-3"></a><span class="va">query=</span>~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/Ivan_2018/raw_reads/globu1_symphonia_globulifera_CTTGTA_L001_R1_001.fastq.gz</span>
+<span id="cb33-4"><a href="design-of-probes-set.html#cb33-4"></a><span class="ex">bwa</span> index <span class="va">$reference</span></span>
+<span id="cb33-5"><a href="design-of-probes-set.html#cb33-5"></a><span class="ex">bwa</span> mem -M <span class="va">$reference</span> <span class="va">$query</span> <span class="op">&gt;</span> raw_read_alignment.sam</span>
+<span id="cb33-6"><a href="design-of-probes-set.html#cb33-6"></a><span class="va">picard=</span>~/Tools/picard/picard.jar</span>
+<span id="cb33-7"><a href="design-of-probes-set.html#cb33-7"></a><span class="ex">java</span> -Xmx4g -jar <span class="va">$picard</span> SortSam I=raw_read_alignment.sam O=raw_read_alignment.bam SORT_ORDER=coordinate</span>
+<span id="cb33-8"><a href="design-of-probes-set.html#cb33-8"></a><span class="ex">bedtools</span> bamtobed -i raw_read_alignment.bam <span class="op">&gt;</span> raw_read_alignment.bed</span>
+<span id="cb33-9"><a href="design-of-probes-set.html#cb33-9"></a><span class="fu">cat</span> raw_read_alignment.bed <span class="kw">|</span> <span class="fu">sort</span> -k 1,1 -k2,2n <span class="op">&gt;</span>  raw_read_alignment.sorted.bed</span>
+<span id="cb33-10"><a href="design-of-probes-set.html#cb33-10"></a><span class="ex">bedtools</span> merge -i raw_read_alignment.sorted.bed -c 1 -o count <span class="op">&gt;</span> raw_read_alignment.merged.bed</span></code></pre></div>
+<p>We obtained a continuous decreasing distribution of read coverage across our scaffolds regions (figure <a href="design-of-probes-set.html#fig:neutralRepetFilter2">2.5</a>). We fitted a <span class="math inline">\(\Gamma\)</span> distribution with positive parameters for scaffolds regions with a coverage under 5 000 (non continuous distribution with optimization issues). We obtained a distribution with a mean of 324 reads per region and a <span class="math inline">\(99^{th}\)</span> quantile of 4 042. We decided to mask regions with a coverage over the <span class="math inline">\(99^{th}\)</span> quantile and remove scaffolds with a mask superior to 75% of its total length (figure <a href="#fig:neutralRepetFilter3"><strong>??</strong></a>).</p>
+<div class="figure"><span id="fig:neutralRepetFilter2"></span>
+<img src="GOING_files/figure-html/neutralRepetFilter2-1.png" alt="Read coverage distribution." width="768" />
+<p class="caption">
+Figure 2.5: Read coverage distribution.
+</p>
+</div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="design-of-probes-set.html#cb34-1"></a>repetitive_target &lt;-<span class="st"> </span>bed <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb34-2"><a href="design-of-probes-set.html#cb34-2"></a><span class="st">  </span><span class="kw">filter</span>(coverage <span class="op">&gt;</span><span class="st"> </span><span class="kw">qgamma</span>(<span class="fl">0.99</span>, alpha, beta)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb34-3"><a href="design-of-probes-set.html#cb34-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">size =</span> end <span class="op">-</span><span class="st"> </span>start) </span>
+<span id="cb34-4"><a href="design-of-probes-set.html#cb34-4"></a>repetitive_target <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb34-5"><a href="design-of-probes-set.html#cb34-5"></a><span class="st">  </span><span class="kw">select</span>(target, start, end) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb34-6"><a href="design-of-probes-set.html#cb34-6"></a><span class="st">  </span><span class="kw">arrange</span>(target, start, end) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb34-7"><a href="design-of-probes-set.html#cb34-7"></a><span class="st">  </span><span class="kw">mutate_if</span>(is.numeric, as.character) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb34-8"><a href="design-of-probes-set.html#cb34-8"></a><span class="st">  </span><span class="kw">write_tsv</span>(<span class="dt">path =</span> <span class="kw">file.path</span>(path, <span class="st">&quot;neutral_selection&quot;</span>, <span class="st">&quot;repetitive_targets.bed&quot;</span>),</span>
+<span id="cb34-9"><a href="design-of-probes-set.html#cb34-9"></a>            <span class="dt">col_names =</span> F)</span></code></pre></div>
+<div class="figure"><span id="fig:neutralRepetFilter4"></span>
+<img src="GOING_files/figure-html/neutralRepetFilter4-1.png" alt="target regions with a coverage over the 99th quantile of the fitted Gamma distribution (4042)." width="768" />
+<p class="caption">
+Figure 2.6: target regions with a coverage over the 99th quantile of the fitted Gamma distribution (4042).
+</p>
+</div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb35-1"><a href="design-of-probes-set.html#cb35-1"></a><span class="bu">cd</span> ~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/neutral_selection</span>
+<span id="cb35-2"><a href="design-of-probes-set.html#cb35-2"></a><span class="fu">cat</span> repetitive_targets.bed <span class="kw">|</span> <span class="fu">sort</span> -k 1,1 -k2,2n <span class="op">&gt;</span>  repetitive_targets.sorted.bed</span>
+<span id="cb35-3"><a href="design-of-probes-set.html#cb35-3"></a><span class="ex">bedtools</span> maskfasta -fi selected.scaffolds.fa -bed repetitive_targets.sorted.bed -fo targets.masked.fasta</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="design-of-probes-set.html#cb36-1"></a>targets &lt;-<span class="st"> </span><span class="kw">readDNAStringSet</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;neutral_selection&quot;</span>, <span class="st">&quot;targets.masked.fasta&quot;</span>))</span>
+<span id="cb36-2"><a href="design-of-probes-set.html#cb36-2"></a><span class="kw">writeXStringSet</span>(targets[<span class="kw">which</span>(<span class="kw">letterFrequency</span>(targets, <span class="st">&quot;N&quot;</span>)<span class="op">/</span><span class="kw">width</span>(targets) <span class="op">&lt;</span><span class="st"> </span><span class="fl">0.65</span>)],</span>
+<span id="cb36-3"><a href="design-of-probes-set.html#cb36-3"></a>                <span class="kw">file.path</span>(path, <span class="st">&quot;neutral_selection&quot;</span>, <span class="st">&quot;targets.filtered.masked.fasta&quot;</span>))</span></code></pre></div>
+<table>
+<caption><span id="tab:neutralRepeatFilter7">Table 2.10: </span>Selected, masked and filtered funcional targets.</caption>
+<thead>
+<tr class="header">
+<th align="right">N</th>
+<th align="right">Width (Mbp)</th>
+<th align="right">Mask (%N)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">415</td>
+<td align="right">0.415</td>
+<td align="right">0.024412</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="fuctional-region-selection" class="section level2">
+<h2><span class="header-section-number">2.5</span> Fuctional region selection</h2>
+<p>We used open reading frames (ORF) to target genes within scaffolds.
+ORFs have been detected with <code>transdecoder</code> on assembled transcripts.
+First, we filtered ORFs including a start codon(figure <a href="design-of-probes-set.html#fig:orfFilterGraph">2.7</a>).
+Then, we aligned ORFs on pre-selected and merged genomic scaffolds with <code>blat</code>.
+We obtained 7 744 aligned scaffolds (table <a href="design-of-probes-set.html#tab:blatCovORF">2.11</a> and figure <a href="design-of-probes-set.html#fig:blatFigORF">2.8</a>).
+Thanks to alignments, we removed overlapping genes (figure <a href="design-of-probes-set.html#fig:orfDist">2.9</a>) and obtained 4 076 pre-selected genes with a total length of 757 hbp (figure <a href="design-of-probes-set.html#fig:genesPlot">2.10</a>).
+Finally, we used transcript differential expression to select all genes deferentially expressed between <em>Symphonia globulifera</em> and <em>Symphonia sp1</em> (figure <a href="design-of-probes-set.html#fig:diffExprFig">2.11</a>).
+We selected 1150 sequences of 500 to 1-kbp representing 1 063 Mbp (table <a href="design-of-probes-set.html#tab:functionalSelectionTab">2.12</a>).
+To validate our final target set, we aligned with <code>bwa</code> raw reads from one library from Scotti <em>et al. (in prep)</em>.</p>
+<div id="open-reading-frames-orfs-filtering" class="section level3">
+<h3><span class="header-section-number">2.5.1</span> Open Reading Frames (ORFs) filtering</h3>
+<p>173 828 ORFs including a start codon (Methyonin, M) were detected (over 231 883, 75%, see figure <a href="design-of-probes-set.html#fig:orfFilterGraph">2.7</a>.</p>
+<div class="figure"><span id="fig:orfFilterGraph"></span>
+<img src="GOING_files/figure-html/orfFilterGraph-1.png" alt="Open Reading Frames left and right peptides." width="768" />
+<p class="caption">
+Figure 2.7: Open Reading Frames left and right peptides.
+</p>
+</div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="design-of-probes-set.html#cb37-1"></a>orf &lt;-<span class="st"> </span><span class="kw">src_sqlite</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;Niklas_transcripts/Trinotate/&quot;</span>,</span>
+<span id="cb37-2"><a href="design-of-probes-set.html#cb37-2"></a>                           <span class="st">&quot;symphonia.trinity500.trinotate.sqlite&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb37-3"><a href="design-of-probes-set.html#cb37-3"></a><span class="st">  </span><span class="kw">tbl</span>(<span class="st">&quot;ORF&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb37-4"><a href="design-of-probes-set.html#cb37-4"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">rename</span>(<span class="dt">orf =</span> orf_id, <span class="dt">trsc =</span> transcript_id,</span>
+<span id="cb37-5"><a href="design-of-probes-set.html#cb37-5"></a>                <span class="dt">orfSize =</span> length) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb37-6"><a href="design-of-probes-set.html#cb37-6"></a><span class="st">  </span><span class="kw">filter</span>(<span class="kw">substr</span>(peptide, <span class="dv">1</span>, <span class="dv">1</span>) <span class="op">==</span><span class="st"> &quot;M&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb37-7"><a href="design-of-probes-set.html#cb37-7"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>peptide, <span class="op">-</span>strand) <span class="op">%&gt;%</span></span>
+<span id="cb37-8"><a href="design-of-probes-set.html#cb37-8"></a><span class="st">  </span><span class="kw">collect</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb37-9"><a href="design-of-probes-set.html#cb37-9"></a><span class="st">  </span><span class="kw">rowwise</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb37-10"><a href="design-of-probes-set.html#cb37-10"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">orfStart =</span> <span class="kw">min</span>(<span class="kw">as.numeric</span>(lend), <span class="kw">as.numeric</span>(rend)),</span>
+<span id="cb37-11"><a href="design-of-probes-set.html#cb37-11"></a>         <span class="dt">orfEnd =</span> <span class="kw">max</span>(<span class="kw">as.numeric</span>(lend), <span class="kw">as.numeric</span>(rend))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb37-12"><a href="design-of-probes-set.html#cb37-12"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>lend, <span class="op">-</span>rend) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb37-13"><a href="design-of-probes-set.html#cb37-13"></a><span class="st">  </span><span class="kw">select</span>(trsc, orfStart, orfEnd, orf) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb37-14"><a href="design-of-probes-set.html#cb37-14"></a><span class="st">  </span><span class="kw">mutate_if</span>(is.numeric, as.character) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb37-15"><a href="design-of-probes-set.html#cb37-15"></a><span class="st">  </span><span class="kw">write_tsv</span>(<span class="dt">path =</span> <span class="kw">file.path</span>(path, <span class="st">&quot;functional_selection2&quot;</span>, <span class="st">&quot;orf.all.bed&quot;</span>),</span>
+<span id="cb37-16"><a href="design-of-probes-set.html#cb37-16"></a>            <span class="dt">col_names =</span> F)</span></code></pre></div>
+</div>
+<div id="orf-alignment-on-genomics-scaffolds" class="section level3">
+<h3><span class="header-section-number">2.5.2</span> ORF alignment on genomics scaffolds</h3>
+<p>7 744 scaffolds matched with ORFs (10.5% for 15.4 Mbp, see table <a href="design-of-probes-set.html#tab:blatCovORF">2.11</a> and figure <a href="design-of-probes-set.html#fig:blatFigORF">2.8</a>).</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb38-1"><a href="design-of-probes-set.html#cb38-1"></a><span class="bu">cd</span> ~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/functional_selection2</span>
+<span id="cb38-2"><a href="design-of-probes-set.html#cb38-2"></a><span class="fu">cat</span> orf.all.bed <span class="kw">|</span> <span class="fu">sort</span> -k 1,1 -k2,2n <span class="op">&gt;</span>  orf.all.sorted.bed</span>
+<span id="cb38-3"><a href="design-of-probes-set.html#cb38-3"></a><span class="va">trsc=</span>/home/sylvain/Documents/BIOGECO/PhD/data/Symphonia_Niklas/filtered_transcripts.fasta</span>
+<span id="cb38-4"><a href="design-of-probes-set.html#cb38-4"></a><span class="ex">bedtools</span> getfasta -name -fi <span class="va">$trsc</span> -bed orf.all.sorted.bed -fo orf.fasta</span>
+<span id="cb38-5"><a href="design-of-probes-set.html#cb38-5"></a><span class="va">scf=</span>~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/neutral_selection/merged.fasta</span>
+<span id="cb38-6"><a href="design-of-probes-set.html#cb38-6"></a><span class="va">orf=</span>./orf.fasta</span>
+<span id="cb38-7"><a href="design-of-probes-set.html#cb38-7"></a><span class="ex">blat</span> <span class="va">$scf</span> <span class="va">$orf</span> alignment.psl</span></code></pre></div>
+<table>
+<caption><span id="tab:blatCovORF">Table 2.11: </span>Alignment coverage of Tysklind et al. (in prep) ORFs over genomic scaffolds with blat.</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">N</th>
+<th align="right">Width (Mbp)</th>
+<th align="right">Coverage (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">aligned sequence</td>
+<td align="right">21 146</td>
+<td align="right">2.201315</td>
+<td align="right">1.499565</td>
+</tr>
+<tr class="even">
+<td align="left">selected scaffold</td>
+<td align="right">7 744</td>
+<td align="right">15.425248</td>
+<td align="right">10.507881</td>
+</tr>
+<tr class="odd">
+<td align="left">total</td>
+<td align="right">82 792</td>
+<td align="right">146.796946</td>
+<td align="right">100.000000</td>
+</tr>
+</tbody>
+</table>
+<div class="figure"><span id="fig:blatFigORF"></span>
+<img src="GOING_files/figure-html/blatFigORF-1.png" alt="Alignment result of Tysklind et al. (in prep) ORFs over genomic scaffolds with blat. Left graph represents the overlap distribution. Right graph represent the selected and deduplicated scaffolds distribution." width="768" />
+<p class="caption">
+Figure 2.8: Alignment result of Tysklind et al. (in prep) ORFs over genomic scaffolds with blat. Left graph represents the overlap distribution. Right graph represent the selected and deduplicated scaffolds distribution.
+</p>
+</div>
+</div>
+<div id="overlaping-genes-filtering" class="section level3">
+<h3><span class="header-section-number">2.5.3</span> Overlaping genes filtering</h3>
+<p>995 genes were overlapping and filtered out (figure <a href="design-of-probes-set.html#fig:orfDist">2.9</a>).</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="design-of-probes-set.html#cb39-1"></a>alignment <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb39-2"><a href="design-of-probes-set.html#cb39-2"></a><span class="st">  </span><span class="kw">separate</span>(orf, <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&quot;gene&quot;</span>, <span class="st">&quot;isoform&quot;</span>, <span class="st">&quot;geneNumber&quot;</span>, <span class="st">&quot;orfNumber&quot;</span>),</span>
+<span id="cb39-3"><a href="design-of-probes-set.html#cb39-3"></a>           <span class="dt">sep =</span> <span class="st">&quot;::&quot;</span>, <span class="dt">remove =</span> F) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb39-4"><a href="design-of-probes-set.html#cb39-4"></a><span class="st">  </span><span class="kw">select</span>(gene, orf, orfStart, orfEnd, scf, scfStart, scfEnd) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb39-5"><a href="design-of-probes-set.html#cb39-5"></a><span class="st">  </span><span class="kw">unique</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb39-6"><a href="design-of-probes-set.html#cb39-6"></a><span class="st">  </span><span class="kw">select</span>(scf, scfStart, scfEnd, orf, gene) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb39-7"><a href="design-of-probes-set.html#cb39-7"></a><span class="st">  </span><span class="kw">arrange</span>(scf, scfStart, scfEnd) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb39-8"><a href="design-of-probes-set.html#cb39-8"></a><span class="st">  </span><span class="kw">mutate_if</span>(is.numeric, as.character) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb39-9"><a href="design-of-probes-set.html#cb39-9"></a><span class="st">  </span><span class="kw">write_tsv</span>(<span class="dt">path =</span> <span class="kw">file.path</span>(path, <span class="st">&quot;functional_selection2&quot;</span>, <span class="st">&quot;genes.all.bed&quot;</span>),</span>
+<span id="cb39-10"><a href="design-of-probes-set.html#cb39-10"></a>            <span class="dt">col_names =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="design-of-probes-set.html#cb40-1"></a><span class="bu">cd</span> ~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/functional_selection2</span>
+<span id="cb40-2"><a href="design-of-probes-set.html#cb40-2"></a><span class="fu">cat</span> genes.all.bed <span class="kw">|</span> <span class="fu">sort</span> -k 1,1 -k2,2n <span class="op">&gt;</span>  genes.all.sorted.bed</span>
+<span id="cb40-3"><a href="design-of-probes-set.html#cb40-3"></a><span class="ex">bedtools</span> merge -i genes.all.sorted.bed -c 5 -o collapse <span class="op">&gt;</span> genes.merged.bed</span></code></pre></div>
+<div class="figure"><span id="fig:orfDist"></span>
+<img src="GOING_files/figure-html/orfDist-1.png" alt="Genes overlap" width="768" />
+<p class="caption">
+Figure 2.9: Genes overlap
+</p>
+</div>
+</div>
+<div id="pre-selected-genes" class="section level3">
+<h3><span class="header-section-number">2.5.4</span> Pre-selected genes</h3>
+<p>We obtained 4 076 genes pre-selected for a total length of 757 kbp (figure <a href="design-of-probes-set.html#fig:genesPlot">2.10</a>).</p>
+<div class="figure"><span id="fig:genesPlot"></span>
+<img src="GOING_files/figure-html/genesPlot-1.png" alt="Available genes for target sequences design." width="768" />
+<p class="caption">
+Figure 2.10: Available genes for target sequences design.
+</p>
+</div>
+</div>
+<div id="differential-expression-de-of-genes" class="section level3">
+<h3><span class="header-section-number">2.5.5</span> Differential Expression (DE) of genes</h3>
+<p>Figure <a href="design-of-probes-set.html#fig:diffExprFig">2.11</a> shows genes differential expression. First circle represent genes with isoforms not enriched whereas second and third circle represents respectivelly genes with isoforms <em>S. sp1</em> and <em>S. globulifera</em> enriched. Relatively few genes contained enriched isoforms, and most of them were <em>S. globulifera</em> enriched.</p>
+<div class="figure"><span id="fig:diffExprFig"></span>
+<div class="sunburst html-widget" id="htmlwidget-5a456d81f2169f28e78c" style="width:768px;height:576px; position:relative;">
+<div>
+<div class="sunburst-main">
+<div class="sunburst-sequence"></div>
+<div class="sunburst-chart">
+<div class="sunburst-explanation" style="visibility:hidden;"></div>
+</div>
+</div>
+<div class="sunburst-sidebar">
+<input type="checkbox" class="sunburst-togglelegend" style="visibility:hidden;">Legend</input>
+<div class="sunburst-legend" style="visibility:hidden;"></div>
+</div>
+</div>
+</div>
+<script type="application/json" data-for="htmlwidget-5a456d81f2169f28e78c">{"x":{"data":{"children":[{"name":"NA","children":[{"name":"NA","children":[{"name":"Globulifera enriched","size":33,"colname":"X3"}],"colname":"X2"},{"name":"Sp1 enriched","children":[{"name":"Globulifera enriched","size":2,"colname":"X3"},{"name":"NA","size":6,"colname":"X3"}],"colname":"X2"}],"colname":"X1"},{"name":"Not enriched","children":[{"name":"NA","children":[{"name":"Globulifera enriched","size":31,"colname":"X3"},{"name":"NA","size":704,"colname":"X3"}],"colname":"X2"},{"name":"Sp1 enriched","children":[{"name":"Globulifera enriched","size":1,"colname":"X3"},{"name":"NA","size":15,"colname":"X3"}],"colname":"X2"}],"colname":"X1"}],"name":"root"},"options":{"legendOrder":null,"colors":null,"valueField":"size","percent":true,"count":true,"explanation":null,"breadcrumb":[],"legend":[],"sortFunction":null,"sumNodes":true}},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 2.11: Genes differential expression.
+</p>
+</div>
+</div>
+<div id="final-subset-of-selected-functional-scaffolds" class="section level3">
+<h3><span class="header-section-number">2.5.6</span> Final subset of selected functional scaffolds</h3>
+<p>We finally selected 1150 sequences of 500 to 1-kbp with 100 bp before geneStart and a maximum of 900 bp after, resulting in 1 063, 544 kbp of targets. All differentially expressed genes between morphotypes were selected (159). And the rest of sequences were selected among non differentially expressed genes randomly (1001).</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="design-of-probes-set.html#cb41-1"></a>targets &lt;-<span class="st"> </span>genes <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb41-2"><a href="design-of-probes-set.html#cb41-2"></a><span class="st">  </span><span class="kw">left_join</span>(de) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb41-3"><a href="design-of-probes-set.html#cb41-3"></a><span class="st">  </span><span class="kw">filter</span>(deg <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Eglo&quot;</span>, <span class="st">&quot;Esp&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb41-4"><a href="design-of-probes-set.html#cb41-4"></a><span class="st">  </span><span class="kw">rbind</span>(genes <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb41-5"><a href="design-of-probes-set.html#cb41-5"></a><span class="st">          </span><span class="kw">left_join</span>(de) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb41-6"><a href="design-of-probes-set.html#cb41-6"></a><span class="st">          </span><span class="kw">filter</span>(deg <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;DE&quot;</span>, <span class="ot">NA</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb41-7"><a href="design-of-probes-set.html#cb41-7"></a><span class="st">          </span><span class="kw">sample_n</span>(<span class="dv">1309</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb41-8"><a href="design-of-probes-set.html#cb41-8"></a><span class="st">  </span><span class="kw">group_by</span>(scf, gene) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb41-9"><a href="design-of-probes-set.html#cb41-9"></a><span class="st">  </span><span class="kw">filter</span>(<span class="kw">n</span>() <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb41-10"><a href="design-of-probes-set.html#cb41-10"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">targetStart =</span> <span class="kw">max</span>(<span class="dv">0</span>, geneStart <span class="op">-</span><span class="st"> </span><span class="dv">100</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb41-11"><a href="design-of-probes-set.html#cb41-11"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">targetEnd =</span> <span class="kw">min</span>(targetStart <span class="op">+</span><span class="st"> </span><span class="dv">1000</span>, scfSize)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb41-12"><a href="design-of-probes-set.html#cb41-12"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">targetSize =</span> targetEnd <span class="op">-</span><span class="st"> </span>targetStart) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb41-13"><a href="design-of-probes-set.html#cb41-13"></a><span class="st">  </span><span class="kw">filter</span>(targetSize <span class="op">&gt;</span><span class="st"> </span><span class="dv">500</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb41-14"><a href="design-of-probes-set.html#cb41-14"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">target =</span> <span class="kw">paste0</span>(gene, <span class="st">&quot;_on_&quot;</span>, scf)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb41-15"><a href="design-of-probes-set.html#cb41-15"></a><span class="st">  </span><span class="kw">ungroup</span>()</span>
+<span id="cb41-16"><a href="design-of-probes-set.html#cb41-16"></a>targets <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb41-17"><a href="design-of-probes-set.html#cb41-17"></a><span class="st">  </span><span class="kw">select</span>(scf, targetStart, targetEnd, target) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb41-18"><a href="design-of-probes-set.html#cb41-18"></a><span class="st">  </span><span class="kw">arrange</span>(scf, targetStart, targetEnd, target) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb41-19"><a href="design-of-probes-set.html#cb41-19"></a><span class="st">  </span><span class="kw">mutate_if</span>(is.numeric, as.character) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb41-20"><a href="design-of-probes-set.html#cb41-20"></a><span class="st">  </span><span class="kw">write_tsv</span>(<span class="dt">path =</span> <span class="kw">file.path</span>(path, <span class="st">&quot;functional_selection2&quot;</span>, <span class="st">&quot;targets.all.bed&quot;</span>),</span>
+<span id="cb41-21"><a href="design-of-probes-set.html#cb41-21"></a>            <span class="dt">col_names =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb42-1"><a href="design-of-probes-set.html#cb42-1"></a><span class="bu">cd</span> ~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/functional_selection2</span>
+<span id="cb42-2"><a href="design-of-probes-set.html#cb42-2"></a><span class="fu">cat</span> targets.all.bed <span class="kw">|</span> <span class="fu">sort</span> -k 1,1 -k2,2n <span class="op">&gt;</span>  targets.all.sorted.bed</span>
+<span id="cb42-3"><a href="design-of-probes-set.html#cb42-3"></a><span class="va">scf=</span>~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/neutral_selection/merged.fasta</span>
+<span id="cb42-4"><a href="design-of-probes-set.html#cb42-4"></a><span class="ex">bedtools</span> getfasta -name -fi <span class="va">$scf</span> -bed targets.all.sorted.bed -fo targets.fasta</span></code></pre></div>
+<table>
+<caption><span id="tab:functionalSelectionTab">Table 2.12: </span>Selected functional targets</caption>
+<thead>
+<tr class="header">
+<th align="right">N</th>
+<th align="right">Width (Mbp)</th>
+<th align="right">Mask (%N)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1 165</td>
+<td align="right">1.068207</td>
+<td align="right">0.0025285</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="repetitive-regions-final-check-1" class="section level3">
+<h3><span class="header-section-number">2.5.7</span> Repetitive regions final check</h3>
+<p>Last but not least, we do not want to include repetitive regions in our targets for baits design. We consequently aligned raw reads from one library from Scotti <em>et al. (in prep)</em> on our targets with <code>bwa</code>.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb43-1"><a href="design-of-probes-set.html#cb43-1"></a><span class="bu">cd</span> ~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/functional_selection2</span>
+<span id="cb43-2"><a href="design-of-probes-set.html#cb43-2"></a><span class="va">reference=</span>targets.fasta</span>
+<span id="cb43-3"><a href="design-of-probes-set.html#cb43-3"></a><span class="va">query=</span>~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/Ivan_2018/raw_reads/globu1_symphonia_globulifera_CTTGTA_L001_R1_001.fastq.gz</span>
+<span id="cb43-4"><a href="design-of-probes-set.html#cb43-4"></a><span class="ex">bwa</span> index <span class="va">$reference</span></span>
+<span id="cb43-5"><a href="design-of-probes-set.html#cb43-5"></a><span class="ex">bwa</span> mem -M <span class="va">$reference</span> <span class="va">$query</span> <span class="op">&gt;</span> raw_read_alignment.sam</span>
+<span id="cb43-6"><a href="design-of-probes-set.html#cb43-6"></a><span class="va">picard=</span>~/Tools/picard/picard.jar</span>
+<span id="cb43-7"><a href="design-of-probes-set.html#cb43-7"></a><span class="ex">java</span> -Xmx4g -jar <span class="va">$picard</span> SortSam I=raw_read_alignment.sam O=raw_read_alignment.bam SORT_ORDER=coordinate</span>
+<span id="cb43-8"><a href="design-of-probes-set.html#cb43-8"></a><span class="ex">bedtools</span> bamtobed -i raw_read_alignment.bam <span class="op">&gt;</span> raw_read_alignment.bed</span>
+<span id="cb43-9"><a href="design-of-probes-set.html#cb43-9"></a><span class="fu">cat</span> raw_read_alignment.bed <span class="kw">|</span> <span class="fu">sort</span> -k 1,1 -k2,2n <span class="op">&gt;</span>  raw_read_alignment.sorted.bed</span>
+<span id="cb43-10"><a href="design-of-probes-set.html#cb43-10"></a><span class="ex">bedtools</span> merge -i raw_read_alignment.sorted.bed -c 1 -o count <span class="op">&gt;</span> raw_read_alignment.merged.bed</span></code></pre></div>
+<p>We obtained a continuous decreasing distribution of read coverage across our scaffolds regions (figure <a href="design-of-probes-set.html#fig:funcRepeatFilter2">2.12</a>). We fitted a <span class="math inline">\(\Gamma\)</span> distribution with positive parameters for scaffolds regions with a coverage under 5 000 (non continuous distribution with optimization issues). We obtained a distribution with a mean of 309 reads per region and a <span class="math inline">\(99^{th}\)</span> quantile of 2 606. We decided to mask regions with a coverage over the <span class="math inline">\(99^{th}\)</span> quantile and remove scaffolds with a mask superior to 75% of its total length (figure <a href="#fig:funcRepeatFilter3"><strong>??</strong></a>).</p>
+<div class="figure"><span id="fig:funcRepeatFilter2"></span>
+<img src="GOING_files/figure-html/funcRepeatFilter2-1.png" alt="Read coverage distribution." width="768" />
+<p class="caption">
+Figure 2.12: Read coverage distribution.
+</p>
+</div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="design-of-probes-set.html#cb44-1"></a>repetitive_target &lt;-<span class="st"> </span>bed <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb44-2"><a href="design-of-probes-set.html#cb44-2"></a><span class="st">  </span><span class="kw">filter</span>(coverage <span class="op">&gt;</span><span class="st"> </span><span class="kw">qgamma</span>(<span class="fl">0.99</span>, alpha, beta)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb44-3"><a href="design-of-probes-set.html#cb44-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">size =</span> end <span class="op">-</span><span class="st"> </span>start) </span>
+<span id="cb44-4"><a href="design-of-probes-set.html#cb44-4"></a>repetitive_target <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb44-5"><a href="design-of-probes-set.html#cb44-5"></a><span class="st">  </span><span class="kw">select</span>(target, start, end) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb44-6"><a href="design-of-probes-set.html#cb44-6"></a><span class="st">  </span><span class="kw">arrange</span>(target, start, end) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb44-7"><a href="design-of-probes-set.html#cb44-7"></a><span class="st">  </span><span class="kw">mutate_if</span>(is.numeric, as.character) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb44-8"><a href="design-of-probes-set.html#cb44-8"></a><span class="st">  </span><span class="kw">write_tsv</span>(<span class="dt">path =</span> <span class="kw">file.path</span>(path, <span class="st">&quot;functional_selection2&quot;</span>, <span class="st">&quot;repetitive_targets.bed&quot;</span>),</span>
+<span id="cb44-9"><a href="design-of-probes-set.html#cb44-9"></a>            <span class="dt">col_names =</span> F)</span></code></pre></div>
+<div class="figure"><span id="fig:funcRepeatFilter4"></span>
+<img src="GOING_files/figure-html/funcRepeatFilter4-1.png" alt="target regions with a coverage over the 99th quantile of the fitted Gamma distribution (2606)." width="768" />
+<p class="caption">
+Figure 2.13: target regions with a coverage over the 99th quantile of the fitted Gamma distribution (2606).
+</p>
+</div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb45-1"><a href="design-of-probes-set.html#cb45-1"></a><span class="bu">cd</span> ~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/functional_selection2</span>
+<span id="cb45-2"><a href="design-of-probes-set.html#cb45-2"></a><span class="fu">cat</span> repetitive_targets.bed <span class="kw">|</span> <span class="fu">sort</span> -k 1,1 -k2,2n <span class="op">&gt;</span>  repetitive_targets.sorted.bed</span>
+<span id="cb45-3"><a href="design-of-probes-set.html#cb45-3"></a><span class="ex">bedtools</span> maskfasta -fi targets.fasta -bed repetitive_targets.sorted.bed -fo targets.masked.fasta</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="design-of-probes-set.html#cb46-1"></a>targets &lt;-<span class="st"> </span><span class="kw">readDNAStringSet</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;functional_selection2&quot;</span>, <span class="st">&quot;targets.masked.fasta&quot;</span>))</span>
+<span id="cb46-2"><a href="design-of-probes-set.html#cb46-2"></a><span class="kw">writeXStringSet</span>(targets[<span class="kw">which</span>(<span class="kw">letterFrequency</span>(targets, <span class="st">&quot;N&quot;</span>)<span class="op">/</span><span class="kw">width</span>(targets) <span class="op">&lt;</span><span class="st"> </span><span class="fl">0.65</span>)],</span>
+<span id="cb46-3"><a href="design-of-probes-set.html#cb46-3"></a>                <span class="kw">file.path</span>(path, <span class="st">&quot;functional_selection2&quot;</span>, <span class="st">&quot;targets.filtered.masked.fasta&quot;</span>))</span></code></pre></div>
+<table>
+<caption><span id="tab:funcRepeatFilter7">Table 2.13: </span>Selected, masked and filtered funcional targets.</caption>
+<thead>
+<tr class="header">
+<th align="right">N</th>
+<th align="right">Width (Mbp)</th>
+<th align="right">Mask (%N)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">975</td>
+<td align="right">0.896759</td>
+<td align="right">0.0168273</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Chakraborty2016">
+<p>Chakraborty, M., Baldwin-Brown, J.G., Long, A.D. &amp; Emerson, J.J. (2016). Contiguous and accurate de novo assembly of metazoan genomes with modest long read coverage. <em>Nucleic Acids Research</em>, <strong>44</strong>, 1–12.</p>
+</div>
+<div id="ref-Haas2013">
+<p>Haas, B.J., Papanicolaou, A., Yassour, M., Grabherr, M., Philip, D., Bowden, J., Couger, M.B., Eccles, D., Li, B., Macmanes, M.D., Ott, M., Orvis, J., Pochet, N., Strozzi, F., Weeks, N., Westerman, R., William, T., Dewey, C.N., Henschel, R., Leduc, R.D., Friedman, N. &amp; Regev, A. (2013). <em>De novo transcript sequence recostruction from RNA-Seq: reference generation and analysis with Trinity</em>.</p>
+</div>
+<div id="ref-Kent2002">
+<p>Kent, W.J. (2002). BLAT—The BLAST-Like Alignment Tool. <em>Genome Research</em>, <strong>12</strong>, 656–664.</p>
+</div>
+<div id="ref-Li2009">
+<p>Li, H. &amp; Durbin, R. (2009). Fast and accurate short read alignment with Burrows-Wheeler transform. <em>Bioinformatics</em>, <strong>25</strong>, 1754–1760.</p>
+</div>
+<div id="ref-Lopez-Maestre2016">
+<p>Lopez-Maestre, H., Brinza, L., Marchet, C., Kielbassa, J., Bastien, S., Boutigny, M., Monnin, D., Filali, A.E., Carareto, C.M., Vieira, C., Picard, F., Kremer, N., Vavre, F., Sagot, M.F. &amp; Lacroix, V. (2016). SNP calling from RNA-seq data without a reference genome: Identification, quantification, differential analysis and impact on the protein sequence. <em>Nucleic Acids Research</em>, <strong>44</strong>, gkw655. Retrieved from <a href="https://academic.oup.com/nar/article-lookup/doi/10.1093/nar/gkw655">https://academic.oup.com/nar/article-lookup/doi/10.1093/nar/gkw655</a></p>
+</div>
+<div id="ref-Olsson2017">
+<p>Olsson, S., Seoane-Zonjic, P., Bautista, R., Claros, M.G., González-Martínez, S.C., Scotti, I., Scotti-Saintagne, C., Hardy, O.J. &amp; Heuertz, M. (2017). Development of genomic tools in a widespread tropical tree, Symphonia globulifera L.f.: a new low-coverage draft genome, SNP and SSR markers. <em>Molecular Ecology Resources</em>, <strong>17</strong>, 614–630. Retrieved from <a href="http://doi.wiley.com/10.1111/1755-0998.12605">http://doi.wiley.com/10.1111/1755-0998.12605</a></p>
+</div>
+<div id="ref-Smit2015">
+<p>Smit, A., Hubley, R. &amp; Green, P. (2015). RepeatMasker Open-4.0. &lt;http://www.repeatmasker.org&gt;.</p>
+</div>
+</div>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://going-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="study-site-sampling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="genomic-libraries-and-sequence-capture.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,3 +1,6 @@
+# GOING 0.1.9002
+* SitePlant, Probes, & Capture
+
 # GOING 0.1.9001
 * pages setup and init
 

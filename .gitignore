@@ -8,5 +8,5 @@ save
 *.rds
 # for the moment
 previous
-images
 cluster
+.httr-oauth

@@ -1,0 +1,19 @@
+# Study site & sampling
+
+## Study site
+
+The study was conducted in the Paracou field station, in the coastal forests of French Guiana, South America.
+The site is characterized by an average of 3,041 mm annual rainfall and a mean air temperature of 25.71 °C [@Aguilos2018].
+Old tropical forest with an exceptional richness (i.e. over 750 woody species) grows across the succession of small hills of this area, which rise to 10–40 m a.s.l. [@Gourlet-Fleury2004].
+The site comprises 16 permanent plots (fifteen 6.25 ha plus one 25 ha) which have been censused (DBH>10) every 1-2 years for more than 35 years. Nine of the plots were logged and subjected to human-induced disturbance in 1986 [details on the experiment in @Herault2018].
+
+## Plant material
+
+Four hundred and two individuals of *Symphonia globulifera* (Clusiaceae) were sampled in 2017 during the dry season (from September to December) in Paracou.
+*Symphonia globulifera* L.f (Clusiaceae) was previously recognized as composed of two morphotypes in French Guiana [@Ferry2007; @Molino2001; @Sabatier1997].
+*S. globulifera sensu stricto* and *Symphonia sp.1* occur in sympatry but in differentiated habitats,
+with *S. globulifera* preferentially growing in valley bottoms with an acquisitive functional strategy
+and *S. sp1* preferentially exploiting a variety of drier habitats with a conservative functional strategy [@Allie2015; @Schmitt2020a, in prep; @Schmitt2020].
+*Symphonia*  have been highlighted as a species complex with low (phylo-)genetic species resolution and high levels of plastid DNA sharing among sister species [@baraloto_using_2012-1; @Caron2019; @Gonzalez2009; @Torroba-Balmori2017].
+In addition, outgroups for genetic analysis in *Symphonia* were comprised of 13 individuals of *Symphonia globulifera* from Africa (Sao Tome, Gabon, Cameroun, Congo, Benin, Liberia, Ivory Coast, and Ghana), seven *Symphonia globulifera* from South America (Brazil, Costa Rica and Panama), two *Symphonia nectarifera* Jum. & H. Perrier from Madagascar, two *Symphonia urophylla* (Decne. ex Planch. & Triana) Benth. & Hook.f. ex Vesque from Madagascar, five *Pentadesma butyracea* Sabine from Benin and Cameroon and one *Pentadesma grandifolia* Baker f. from Cameroon.
+Leaves were collected from the 432 individuals (402 + 30 outgroups)  and  dessicated using silica gel.
