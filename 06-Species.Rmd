@@ -1,0 +1,15 @@
+```{r setup_species, include=FALSE}
+rm(list = ls()) ; invisible(gc()) ; set.seed(42)
+```
+
+
+# Genetic species delimitation
+
+We investigated population genetic structure using `admixture` [@Alexander2011], 
+using 10 repetitions of K genetic groups varying from 1 to 10 and assessed the number of gene pools with cross validation.
+We defined individuals with a membership to gene pools below 90% as admixed and the remaining individuals as genetically pure.
+We further investigated admixture with the `introgress` R package [@Gompert2010], 
+using genetically pure individuals as parental populations and all individuals as the hybrid population.
+We validated gene pool delimitation by comparison with botanical identifications using a confusion matrix, 
+and we conducted a second blind-identification of every collected individual in November 2019.
+

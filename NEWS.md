@@ -1,3 +1,6 @@
+# GOING 0.1.9003
+* SNP, Species, NCI & Gmax init
+
 # GOING 0.1.9002
 * SitePlant, Probes, & Capture
 

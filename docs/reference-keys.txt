@@ -128,3 +128,7 @@ purification-concentration
 size-assessment
 size-selection-1
 capture-1
+snp-calling-and-filtering
+genetic-species-delimitation
+neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation
+neutral-and-adaptive-genetic-variation-effect-on-individual-growth

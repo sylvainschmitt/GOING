@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 SNP calling and filtering | GOING</title>
+  <meta name="description" content="Genomic of Individual Growth in tropical tree species Symphonia globulifera." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 SNP calling and filtering | GOING" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Genomic of Individual Growth in tropical tree species Symphonia globulifera." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 SNP calling and filtering | GOING" />
+  
+  <meta name="twitter:description" content="Genomic of Individual Growth in tropical tree species Symphonia globulifera." />
+  
+
+<meta name="author" content="Sylvain Schmitt" />
+
+
+<meta name="date" content="2021-02-24" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="genomic-libraries-and-sequence-capture.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+
+<link rel="stylesheet" href="html/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">GOING</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="study-site-sampling.html"><a href="study-site-sampling.html"><i class="fa fa-check"></i><b>1</b> Study site &amp; sampling</a><ul>
+<li class="chapter" data-level="1.1" data-path="study-site-sampling.html"><a href="study-site-sampling.html#study-site"><i class="fa fa-check"></i><b>1.1</b> Study site</a></li>
+<li class="chapter" data-level="1.2" data-path="study-site-sampling.html"><a href="study-site-sampling.html#plant-material"><i class="fa fa-check"></i><b>1.2</b> Plant material</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html"><i class="fa fa-check"></i><b>2</b> Design of probes set</a><ul>
+<li class="chapter" data-level="2.1" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#scotti-et-al.-in-prep-scaffolds-preparation"><i class="fa fa-check"></i><b>2.1</b> Scotti <em>et al. (in prep)</em> scaffolds preparation</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#filtering-scaffolds-over-1kbp"><i class="fa fa-check"></i><b>2.1.1</b> Filtering scaffolds over <span class="math inline">\(1kbp\)</span></a></li>
+<li class="chapter" data-level="2.1.2" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#renaming"><i class="fa fa-check"></i><b>2.1.2</b> Renaming</a></li>
+<li class="chapter" data-level="2.1.3" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#libraries-merging"><i class="fa fa-check"></i><b>2.1.3</b> Libraries merging</a></li>
+<li class="chapter" data-level="2.1.4" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#removing-scaffolds-with-multimatch-blasted-consensus-sequence-from-torroba-balmori-et-al.-unpublished"><i class="fa fa-check"></i><b>2.1.4</b> Removing scaffolds with multimatch blasted consensus sequence from Torroba-Balmori <em>et al. (unpublished)</em></a></li>
+<li class="chapter" data-level="2.1.5" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#total-filtered-scaffolds"><i class="fa fa-check"></i><b>2.1.5</b> Total filtered scaffolds</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#olsson-et-al.-2017-scaffolds-preparation"><i class="fa fa-check"></i><b>2.2</b> Olsson <em>et al. (2017)</em> scaffolds preparation</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#renaming-1"><i class="fa fa-check"></i><b>2.2.1</b> Renaming</a></li>
+<li class="chapter" data-level="2.2.2" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#removing-scaffolds-with-multimatch-blasted-consensus-sequence-from-torroba-balmori-et-al.-unpublished-1"><i class="fa fa-check"></i><b>2.2.2</b> Removing scaffolds with multimatch blasted consensus sequence from Torroba-Balmori <em>et al. (unpublished)</em></a></li>
+<li class="chapter" data-level="2.2.3" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#total-filtered-scaffolds-1"><i class="fa fa-check"></i><b>2.2.3</b> Total filtered scaffolds</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#tysklind-et-al-in-prep-transcript-preparation"><i class="fa fa-check"></i><b>2.3</b> Tysklind <em>et al (in prep)</em> transcript preparation</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#filtering-snp-on-quality"><i class="fa fa-check"></i><b>2.3.1</b> Filtering SNP on quality</a></li>
+<li class="chapter" data-level="2.3.2" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#filtering-snp-on-type"><i class="fa fa-check"></i><b>2.3.2</b> Filtering SNP on type</a></li>
+<li class="chapter" data-level="2.3.3" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#filtering-transcripts-on-snp-frequency"><i class="fa fa-check"></i><b>2.3.3</b> Filtering transcripts on SNP frequency</a></li>
+<li class="chapter" data-level="2.3.4" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#total-filtered-transcript"><i class="fa fa-check"></i><b>2.3.4</b> Total filtered transcript</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#neutral-region-selection"><i class="fa fa-check"></i><b>2.4</b> Neutral region selection</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#raw-reads-from-torroba-balmori-et-al.-unpublished-alignment-on-scaffolds-from-scotti-et-al.-in-prep"><i class="fa fa-check"></i><b>2.4.1</b> Raw reads from Torroba-Balmori <em>et al. (unpublished)</em> alignment on scaffolds from Scotti <em>et al. (in prep)</em></a></li>
+<li class="chapter" data-level="2.4.2" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#masking-scaffolds-with-multimatch-from-scotti-et-al.-in-prep"><i class="fa fa-check"></i><b>2.4.2</b> Masking scaffolds with multimatch from Scotti <em>et al. (in prep)</em></a></li>
+<li class="chapter" data-level="2.4.3" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#raw-reads-from-torroba-balmori-et-al.-unpublished-alignment-on-scaffolds-from-olsson2017"><i class="fa fa-check"></i><b>2.4.3</b> Raw reads from Torroba-Balmori <em>et al. (unpublished)</em> alignment on scaffolds from <span class="citation">Olsson <em>et al.</em> (<span>2017</span>)</span></a></li>
+<li class="chapter" data-level="2.4.4" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#masking-scaffolds-with-multimatch-from-olsson2017"><i class="fa fa-check"></i><b>2.4.4</b> Masking scaffolds with multimatch from <span class="citation">Olsson <em>et al.</em> (<span>2017</span>)</span></a></li>
+<li class="chapter" data-level="2.4.5" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#removing-scaffolds-already-matching-transcripts"><i class="fa fa-check"></i><b>2.4.5</b> Removing scaffolds already matching transcripts</a></li>
+<li class="chapter" data-level="2.4.6" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#merge-of-selected-scaffolds"><i class="fa fa-check"></i><b>2.4.6</b> Merge of selected scaffolds</a></li>
+<li class="chapter" data-level="2.4.7" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#final-subset-of-selected-neutral-scaffolds"><i class="fa fa-check"></i><b>2.4.7</b> Final subset of selected neutral scaffolds</a></li>
+<li class="chapter" data-level="2.4.8" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#repetitive-regions-final-check"><i class="fa fa-check"></i><b>2.4.8</b> Repetitive regions final check</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#fuctional-region-selection"><i class="fa fa-check"></i><b>2.5</b> Fuctional region selection</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#open-reading-frames-orfs-filtering"><i class="fa fa-check"></i><b>2.5.1</b> Open Reading Frames (ORFs) filtering</a></li>
+<li class="chapter" data-level="2.5.2" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#orf-alignment-on-genomics-scaffolds"><i class="fa fa-check"></i><b>2.5.2</b> ORF alignment on genomics scaffolds</a></li>
+<li class="chapter" data-level="2.5.3" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#overlaping-genes-filtering"><i class="fa fa-check"></i><b>2.5.3</b> Overlaping genes filtering</a></li>
+<li class="chapter" data-level="2.5.4" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#pre-selected-genes"><i class="fa fa-check"></i><b>2.5.4</b> Pre-selected genes</a></li>
+<li class="chapter" data-level="2.5.5" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#differential-expression-de-of-genes"><i class="fa fa-check"></i><b>2.5.5</b> Differential Expression (DE) of genes</a></li>
+<li class="chapter" data-level="2.5.6" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#final-subset-of-selected-functional-scaffolds"><i class="fa fa-check"></i><b>2.5.6</b> Final subset of selected functional scaffolds</a></li>
+<li class="chapter" data-level="2.5.7" data-path="design-of-probes-set.html"><a href="design-of-probes-set.html#repetitive-regions-final-check-1"><i class="fa fa-check"></i><b>2.5.7</b> Repetitive regions final check</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html"><i class="fa fa-check"></i><b>3</b> Genomic libraries and sequence capture</a><ul>
+<li class="chapter" data-level="3.1" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#plates"><i class="fa fa-check"></i><b>3.1</b> Plates</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#extraction"><i class="fa fa-check"></i><b>3.1.1</b> Extraction</a></li>
+<li class="chapter" data-level="3.1.2" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#library-plates-design"><i class="fa fa-check"></i><b>3.1.2</b> Library plates design</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#libraries-preparation-protocol"><i class="fa fa-check"></i><b>3.2</b> Libraries preparation protocol</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#material-preparation"><i class="fa fa-check"></i><b>3.2.1</b> Material preparation</a></li>
+<li class="chapter" data-level="3.2.2" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#fragmentation"><i class="fa fa-check"></i><b>3.2.2</b> Fragmentation</a></li>
+<li class="chapter" data-level="3.2.3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#adaptor-ligation"><i class="fa fa-check"></i><b>3.2.3</b> Adaptor ligation</a></li>
+<li class="chapter" data-level="3.2.4" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#size-selection"><i class="fa fa-check"></i><b>3.2.4</b> Size selection</a></li>
+<li class="chapter" data-level="3.2.5" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#enrichment-and-purification"><i class="fa fa-check"></i><b>3.2.5</b> Enrichment and purification</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#libraries-preparation-results"><i class="fa fa-check"></i><b>3.3</b> Libraries preparation results</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#post-enrichment-pcr1-quantification"><i class="fa fa-check"></i><b>3.3.1</b> Post-enrichment PCR1 quantification</a></li>
+<li class="chapter" data-level="3.3.2" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#post-enrichment-pcr1-pcr2-and-amplification-quantification"><i class="fa fa-check"></i><b>3.3.2</b> Post-enrichment (PCR1 &amp; PCR2) and amplification quantification</a></li>
+<li class="chapter" data-level="3.3.3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#amplification-result"><i class="fa fa-check"></i><b>3.3.3</b> Amplification result</a></li>
+<li class="chapter" data-level="3.3.4" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#library-extraction-repetition-result"><i class="fa fa-check"></i><b>3.3.4</b> Library &amp; extraction repetition result</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#capture"><i class="fa fa-check"></i><b>3.4</b> Capture</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#amplifcation-1-plate-reorganization"><i class="fa fa-check"></i><b>3.4.1</b> Amplifcation 1 Plate reorganization</a></li>
+<li class="chapter" data-level="3.4.2" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#dna-dosage-1"><i class="fa fa-check"></i><b>3.4.2</b> DNA dosage 1</a></li>
+<li class="chapter" data-level="3.4.3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#amplification-2"><i class="fa fa-check"></i><b>3.4.3</b> Amplification 2</a></li>
+<li class="chapter" data-level="3.4.4" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#dna-dosage-2"><i class="fa fa-check"></i><b>3.4.4</b> DNA dosage 2</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#amplifcation-2-and-library-repeat-plates-reorganization"><i class="fa fa-check"></i><b>3.5</b> Amplifcation 2 and Library Repeat Plates reorganization</a></li>
+<li class="chapter" data-level="3.6" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#pool-building"><i class="fa fa-check"></i><b>3.6</b> Pool building</a></li>
+<li class="chapter" data-level="3.7" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#purification-concentration"><i class="fa fa-check"></i><b>3.7</b> Purification &amp; Concentration</a></li>
+<li class="chapter" data-level="3.8" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#size-assessment"><i class="fa fa-check"></i><b>3.8</b> Size assessment</a></li>
+<li class="chapter" data-level="3.9" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#size-selection-1"><i class="fa fa-check"></i><b>3.9</b> Size selection</a></li>
+<li class="chapter" data-level="3.10" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#capture-1"><i class="fa fa-check"></i><b>3.10</b> Capture</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="snp-calling-and-filtering.html"><a href="snp-calling-and-filtering.html"><i class="fa fa-check"></i><b>4</b> SNP calling and filtering</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/sylvainschmitt/GOING" target="blank">Source</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">GOING</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="snp-calling-and-filtering" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> SNP calling and filtering</h1>
+<p>We assessed the quality off raw reads using <code>multiqc</code> <span class="citation">(Ewels <em>et al.</em> <a href="#ref-Ewels2016" role="doc-biblioref">2016</a>)</span> and trimmed them with <code>trimmomatic</code> <span class="citation">(Bolger <em>et al.</em> <a href="#ref-Andrews2010" role="doc-biblioref">2014</a>)</span>.
+We kept only pair-end reads without adaptors and a phred score above 15 in a sliding window of 4.
+Seventy percent of trimmed reads mapped off-targets using <code>bwa</code> <span class="citation">(Li &amp; Durbin <a href="#ref-Li2009" role="doc-biblioref">2009</a>)</span>.
+We thus mapped trimmed reads on the hybrid reference built for the sequence capture experiment using <code>bwa</code> <span class="citation">(Li &amp; Durbin <a href="#ref-Li2009" role="doc-biblioref">2009</a>)</span>, <code>picard</code> <span class="citation">(Broad Institute <a href="#ref-BroadInstitute2018" role="doc-biblioref">2018</a>)</span>, <code>samtools</code> <span class="citation">(Li <em>et al.</em> <a href="#ref-Li2009a" role="doc-biblioref">2009</a>)</span> and <code>bedtools</code> <span class="citation">(Quinlan &amp; Hall <a href="#ref-Quinlan2010" role="doc-biblioref">2010</a>)</span>.
+We called variants for each individual using <code>HaplotypeCaller</code>, aggregated variants using <code>GenomicsDBImport</code> and jointly-genotyped individuals using <code>GenotypeGVCFs</code> all in <code>GATK4</code> software <span class="citation">(Auwera <em>et al.</em> <a href="#ref-Freksa1993" role="doc-biblioref">2013</a>)</span>.
+We filtered biallelic SNPs with a quality above 30, a quality by depth above 2, a Fisher strand bias below 60 and strand odds ratio above 3 using <code>GATK4</code> <span class="citation">(Auwera <em>et al.</em> <a href="#ref-Freksa1993" role="doc-biblioref">2013</a>)</span>.
+Finally, we filtered individuals and SNPs for missing data with a maximum of 95% and 15% of missing data per individual and SNP, respectively, using <code>plink2</code> <span class="citation">(Chen <em>et al.</em> <a href="#ref-Chen2019" role="doc-biblioref">2019</a>)</span>.
+We obtained 454,262 biallelic SNPs over 385 individuals without outgroups, that we used for population genetic analyses.
+Since low-frequency alleles and linkage disequilibrium will bias the number of fixed loci and increase the number of false-positives in genomic scans for outliers <span class="citation">(Foll &amp; Gaggiotti <a href="#ref-Foll2008" role="doc-biblioref">2008</a>)</span>,
+we built a second dataset for quantitative genomics and genomic scans, filtering variants with a minor allele frequency above 5% (18 individuals) and with linkage disequilibrium <span class="math inline">\(r^2&lt;0.99\)</span>.
+We further removed admixed individuals (see population genetic analyses for criteria) and retained 70,737 biallelic SNPs over 372 individuals.</p>
+
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Freksa1993">
+<p>Auwera, G.A., Carneiro, M.O., Hartl, C., Poplin, R., Angel, G. del, Levy-Moonshine, A., Jordan, T., Shakir, K., Roazen, D., Thibault, J., Banks, E., Garimella, K.V., Altshuler, D., Gabriel, S. &amp; DePristo, M.A. (2013). From FastQ Data to High-Confidence Variant Calls: The Genome Analysis Toolkit Best Practices Pipeline. <em>Current Protocols in Bioinformatics</em>, <strong>43</strong>, 483–492. Retrieved from <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/0471250953.bi1110s43">https://onlinelibrary.wiley.com/doi/abs/10.1002/0471250953.bi1110s43</a></p>
+</div>
+<div id="ref-Andrews2010">
+<p>Bolger, A.M., Lohse, M. &amp; Usadel, B. (2014). Trimmomatic: a flexible trimmer for Illumina sequence data. <em>Bioinformatics</em>, <strong>30</strong>, 2114–2120. Retrieved from <a href="https://academic.oup.com/bioinformatics/article-lookup/doi/10.1093/bioinformatics/btu170">https://academic.oup.com/bioinformatics/article-lookup/doi/10.1093/bioinformatics/btu170</a></p>
+</div>
+<div id="ref-BroadInstitute2018">
+<p>Broad Institute. (2018). Picard Tools. Retrieved from <a href="http://broadinstitute.github.io/picard/">http://broadinstitute.github.io/picard/</a></p>
+</div>
+<div id="ref-Chen2019">
+<p>Chen, Z.L., Meng, J.M., Cao, Y., Yin, J.L., Fang, R.Q., Fan, S.B., Liu, C., Zeng, W.F., Ding, Y.H., Tan, D., Wu, L., Zhou, W.J., Chi, H., Sun, R.X., Dong, M.Q. &amp; He, S.M. (2019). A high-speed search engine pLink 2 with systematic evaluation for proteome-scale identification of cross-linked peptides. <em>Nature Communications</em>, <strong>10</strong>. Retrieved from <a href="http://dx.doi.org/10.1038/s41467-019-11337-z">http://dx.doi.org/10.1038/s41467-019-11337-z</a></p>
+</div>
+<div id="ref-Ewels2016">
+<p>Ewels, P., Magnusson, M., Lundin, S. &amp; Käller, M. (2016). MultiQC: Summarize analysis results for multiple tools and samples in a single report. <em>Bioinformatics</em>, <strong>32</strong>, 3047–3048.</p>
+</div>
+<div id="ref-Foll2008">
+<p>Foll, M. &amp; Gaggiotti, O. (2008). A genome-scan method to identify selected loci appropriate for both dominant and codominant markers: A Bayesian perspective. <em>Genetics</em>, <strong>180</strong>, 977–993. Retrieved from <a href="http://www.ncbi.nlm.nih.gov/pubmed/17246615%20http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=PMC1201091%20http://www.ncbi.nlm.nih.gov/pubmed/18780740%20http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=PMC2567396">http://www.ncbi.nlm.nih.gov/pubmed/17246615 http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=PMC1201091 http://www.ncbi.nlm.nih.gov/pubmed/18780740 http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=PMC2567396</a></p>
+</div>
+<div id="ref-Li2009">
+<p>Li, H. &amp; Durbin, R. (2009). Fast and accurate short read alignment with Burrows-Wheeler transform. <em>Bioinformatics</em>, <strong>25</strong>, 1754–1760.</p>
+</div>
+<div id="ref-Li2009a">
+<p>Li, H., Handsaker, B., Wysoker, A., Fennell, T., Ruan, J., Homer, N., Marth, G., Abecasis, G. &amp; Durbin, R. (2009). The Sequence Alignment/Map format and SAMtools. <em>Bioinformatics</em>, <strong>25</strong>, 2078–2079.</p>
+</div>
+<div id="ref-Quinlan2010">
+<p>Quinlan, A.R. &amp; Hall, I.M. (2010). BEDTools: A flexible suite of utilities for comparing genomic features. <em>Bioinformatics</em>, <strong>26</strong>, 841–842.</p>
+</div>
+</div>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://going-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="genomic-libraries-and-sequence-capture.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

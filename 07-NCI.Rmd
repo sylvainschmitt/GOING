@@ -1,0 +1,35 @@
+```{r setup_nci, include=FALSE}
+rm(list = ls()) ; invisible(gc()) ; set.seed(42)
+```
+
+
+# Neighbour crowding effect on neutral and adaptive genetic variation
+
+We did environmental association analyses [@Rellstab2015a] in each complex using general linear mixed models developed for genome wide association studies (GWAS). 
+We used mean neighbourhood crowding index [$NCI$; @Uriarte2004] over the last 30 years,
+an indirect measurement of access to light and forest gap dynamics, 
+as the response variable and genetic structure (gene pools representing species) and relatedness (kinship matrix) as explanatory variables, as it is common practice [@Rellstab2015a]. 
+This analysis assumed that the neighbour crowding conditions where individuals have grown above 10-cm DBH are strongly correlated to the individual heritable phenotypes [e.g. @Eckert2010]. 
+The mean neighborhood crowding index $NCI_i$ from tree individual $i$ was calculated as follow:
+
+$$NCI_i=\overline{\sum_{j|\delta_{i,j}<20m}DBH^2_{j,t}.e^{-\frac14\delta_{i,j}}}$$
+
+with $DBH_{j,t}$ the diameter of the neighbouring tree $j$ in year $t$ and $\delta_{i,j}$ its distance to the individual tree $i$.
+$NCI_i$ is computed for all neighbours at a distance $\delta_{i,j}$ inferior to the maximum neighbouring distance of 20 meters.
+The power of neighbours $DBH_{j,t}$ effect was set to 2 to represent a surface. 
+The decrease of neighbours diameter effect with distance was set to -0.25 to represent trees at 20 meters of the focal trees having 1% of the effect of the same tree at 0 meters. 
+$NCI_i$ is computed as the mean of yearly $NCI_{i,t}$ over the last 30 years denoted by the overline.
+
+We used genetic species and individual kinship in an animal model [@Wilson2010] to estimate genetic variance associated with neighbour crowding index.
+We used a lognormal likelihood given that distributions of environmental variables were positive and skewed.
+We inferred individual kinship using KING [@Manichaikul2010], as the method is robust to population structure. 
+We set negative kinship values to null as they were confounding with population structure, and we further ensured that the matrix was positive-definite using the `nearPD`  function from the R package `Matrix`.
+The environment $y_{s,i}$ where individual $i$ in species $s$ grows was inferred with a lognormal distribution with the following formula:
+
+$$y_{s,i} \sim logN(log(\mu_s.a_{i}),\sigma^2_1)$$
+$$a_{i} \sim MVlogN_N(log(1),\sigma^2_2.K)$$
+
+where $\mu_s$ is the mean environment of species $s$, $a_i$ is the breeding value of the individual $i$ and $\sigma^2_1$ is the shape parameter of the lognormal. 
+Individual breeding values $a_i$ are defined following a multivariate lognormal law $\mathcal{MVlogN}$ of co-shape matrix defined as the product of the kinship matrix $K$ with estimated individual genotypic variation $\sigma^2_2$.
+To estimate variances on a normal scale, we log-transformed species fixed effect, genetic additive values, and we calculated conditional and marginal $R^2$ [@Nakagawa2013].
+A Bayesian method was used to infer parameters using `stan` language [@Carpenter2017 and `rstan` package [@Team2018] in the R environment [@RCoreTeam2020] using the No-U-Turn Sampler alogirthm [NUTS, @Hoffman2014], which performs better for estimating genetic parameters and breeding values [@Nishio2019].
