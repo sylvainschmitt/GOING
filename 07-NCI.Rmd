@@ -1,5 +1,21 @@
 ```{r setup_nci, include=FALSE}
 rm(list = ls()) ; invisible(gc()) ; set.seed(42)
+library(knitr)
+library(kableExtra)
+if(knitr:::is_html_output()) options(knitr.table.format = "html") 
+if(knitr:::is_latex_output()) options(knitr.table.format = "latex") 
+library(tidyverse)
+library(raster)
+library(bayesplot)
+library(kinship2)
+library(rstan)
+theme_set(bayesplot::theme_default())
+opts_chunk$set(
+  echo = F, message = F, warning = F, fig.height = 6, fig.width = 8,
+  cache = F, cache.lazy = F)
+options(mc.cores = parallel::detectCores())
+rstan_options(auto_write = T)
+path <- "data/Symphonia_Paracou/Sequences/populationGenomics/"
 ```
 
 
@@ -33,3 +49,291 @@ where $\mu_s$ is the mean environment of species $s$, $a_i$ is the breeding valu
 Individual breeding values $a_i$ are defined following a multivariate lognormal law $\mathcal{MVlogN}$ of co-shape matrix defined as the product of the kinship matrix $K$ with estimated individual genotypic variation $\sigma^2_2$.
 To estimate variances on a normal scale, we log-transformed species fixed effect, genetic additive values, and we calculated conditional and marginal $R^2$ [@Nakagawa2013].
 A Bayesian method was used to infer parameters using `stan` language [@Carpenter2017 and `rstan` package [@Team2018] in the R environment [@RCoreTeam2020] using the No-U-Turn Sampler alogirthm [NUTS, @Hoffman2014], which performs better for estimating genetic parameters and breeding values [@Nishio2019].
+
+## Simulated animal
+
+The aim of this sub-chapter is to explore animal model with generated data to validate their behavior and use it on *Symphonia* real data. 
+Let's consider a set of $P=3$ populations including each $Fam=3$ families composed of $I = 14$ individuals with arbitrary relationships (it's only 126 individuals to do quick tests).
+
+```{r simkinship, fig.cap="Kinship matrix"}
+simK <- function(
+  P = 3, 
+  Fam = 3
+){
+  I <- 14 # Individuals
+  ped.df <- data.frame(pop = rep(1:P, each = Fam*I),
+                       fam = rep(1:Fam, each = I),
+                       ind = rep(1:I, Fam*P),
+                       father = rep(c(NA, NA, 1, 1, 1, 1, NA, 
+                                      6, 6, 6, NA, 11, 11, 11), Fam*P),
+                       mother = rep(c(NA, NA, 2, 2, 2, 2, NA, 
+                                      7, 7, 7, NA, 3, 3, 3), Fam*P), 
+                       sex = rep(c(1, 2, 2, 3, 3, 1, 2, 3, 3, 
+                                   3, 1, 3, 3, 3), Fam*P)) %>% 
+    mutate_at(c("father", "mother"), funs(ifelse(!is.na(.), 
+                                                 paste0(pop,fam,.), NA))) %>%
+    mutate(ind = paste0(pop,fam,ind))
+  ped.ped <- kinship2::pedigree(id = ped.df$ind, dadid = ped.df$father, 
+                                momid = ped.df$mother, sex = ped.df$sex, 
+                                famid = paste0(ped.df$pop, ped.df$fam))
+  K <- as.matrix(kinship2::kinship(ped.ped))
+  K <- 2*K
+  return(list(df = ped.df, K = K))
+}
+heatmap(simK()$K)
+```
+
+We used the following animal model with a lognormal distribution to estimate population and genotypic variance:
+
+\begin{equation} 
+  y_{p,i} \sim \mathcal{logN}(log(\mu_p.a_{i}),\sigma_1) \\
+  a_{p,i} \sim \mathcal{MVlogN_N}(log(1),\sigma_2.K)
+  (\#eq:animallogth)
+\end{equation} 
+
+```{r simanimal}
+simAnimal <- function(
+  P = 3, 
+  Fam = 3,
+  sigmaP = 0.5,
+  sigmaG = 0.3,
+  sigmaR = 0.2
+){
+  K <- simK(P, Fam)
+  N <- nrow(K$K)
+  epsilon <- rnorm(N)
+  mu <- rlnorm(P, sd = sigmaP)
+  y <- rlnorm(N, 
+              log(mu[K$df$pop]) + sigmaG*as.vector(t(chol(K$K)) %*% epsilon), 
+              sigmaR)
+  mdata <- list(N = N, P = P, K = K$K, population = K$df$pop, y = y)
+  return(list(mu = mu,
+              Vp = var(log(mu[K$df$pop])), 
+              Vg = var(sigmaG*as.vector(t(chol(K$K)) %*% epsilon)), 
+              Vr = sigmaR^2,
+              mdata = mdata))
+}
+```
+
+We fitted the equivalent model with following priors:
+
+\begin{equation} 
+  y_{p,i} \sim \mathcal{logN}(log(\mu_p.\hat{a_{i}}), \sigma_1) \\ 
+  \hat{a_{i}} = e^{\sqrt{V_G}.A.\epsilon_i} \\
+  \epsilon_i \sim \mathcal{N}(0,1) \\ 
+  ~ \\
+  \mu_p \sim \mathcal{logN}(log(1),1) \\  
+  \sigma_1 \sim \mathcal N_T(0,1) \\ 
+  ~ \\
+  V_Y = Var(log(y)) \\
+  V_P = Var(log(\mu_p)) \\
+  V_R=\sigma_1^2 \\
+  V_G = V_Y - V_P - V_R \\
+  (\#eq:animallogthstan)
+\end{equation} 
+
+```{r animalTable}
+# mdata <- simAnimal(P = 3, Fam = 3)
+# animal <- stan_model("symcapture_models/AnimalLog.stan")
+# fitAnimal <- sampling(animal, chains = 2, save_warmup = F, data = mdata$mdata,
+#                       init = "0",
+#                       control = list(adapt_delta = 0.99, max_treedepth = 12))
+# save(mdata, fitAnimal, file = file.path("symcapture_save", "animal.Rdata"))
+load(file.path("save", "animal.Rdata"))
+broom.mixed::tidyMCMC(fitAnimal, pars = c("mu", "Vp", "Vg", "Vr", "lp__"), 
+                droppars = NULL, rhat = T) %>% 
+  mutate(expected = with(mdata, c(mu, Vp, Vg, Vr))) %>% 
+  dplyr::select(term, estimate, expected, std.error, rhat) %>% 
+  kable(caption = "Animal model fitted versus expected values.",
+        col.names = c("Parameter", "Estimate", "Expected",
+                      "Standard error", "$\\hat R$"))
+```
+
+```{r animalTrace, fig.cap="Parameters for Animal model traceplot and expected value in red."}
+mcmc_trace(as.array(fitAnimal, pars = c("mu", "Vp", "Vg", "Vr", "lp__")),
+           np = nuts_params(fitAnimal)) +
+  geom_hline(aes(yintercept = expected), col = "red", 
+             data = data.frame(parameter = c(paste0("mu[", 1:length(mdata$mu), "]"), 
+                                             "Vp", "Vg", "Vr"), 
+                               expected = with(mdata, c(mu, Vp, Vg, Vr)))) 
+```
+
+## Neighbour crowding index
+
+```{r NCI, eval=F, echo=T}
+trees <- src_sqlite(file.path("data", "Paracou","trees", "Paracou.sqlite")) %>% 
+  tbl("Paracou") %>% 
+  filter(Genus == "Symphonia") %>% 
+  filter(CensusYear == 2015) %>% 
+  collect()
+trees <- read_tsv(file.path(path, "..", "variantCalling", "paracou3pop",
+                                                  "symcapture.all.biallelic.snp.filtered.nonmissing.paracou3pop.fam"),
+         col_names = c("FID", "IID", "FIID", "MIID", "sex", "phenotype")) %>% 
+  mutate(Ind = gsub(".g.vcf", "", IID)) %>% 
+  mutate(X = gsub("P", "", Ind)) %>% 
+  separate(X, c("Plot", "SubPlot", "TreeFieldNum"), convert = T) %>% 
+  left_join(trees) %>% 
+  left_join(read_tsv(file.path(path, "bayescenv", "paracou3pop.popmap"),
+                     col_names = c("IID", "pop")))
+cl <- parallel::makeCluster(getOption("cl.cores", 4))
+parallel::clusterExport(cl, list("trees"))
+NC <- parallel::parLapply(cl, 1:nrow(trees), function(ind){
+  library(tidyverse)
+  src_sqlite(file.path("data", "Paracou", "trees", "Paracou.sqlite")) %>% 
+    tbl("Paracou") %>% 
+    filter(Plot == local(trees$Plot[ind])) %>% 
+    filter(idTree != local(trees$idTree[ind])) %>% 
+    mutate(dij = sqrt((local(trees$Xutm[ind]) - Xutm)^2+(local(trees$Yutm[ind]) - Yutm)^2)) %>% 
+    filter(dij < 20) %>% 
+    mutate(con = ifelse(Genus == local(trees$Genus[ind]) && Species == local(trees$Species[ind]), 1, 0)) %>% 
+    mutate(DBH = CircCorr/pi) %>% 
+    collect() %>% 
+    group_by(CensusYear) %>% 
+    summarise(NCI = sum(DBH*DBH*exp(-0.25*dij))) %>% 
+    ungroup() %>% 
+    summarise(idTree = local(trees$idTree[ind]),
+              NCI = mean(NCI))})
+parallel::stopCluster(cl) ; rm(cl)
+NC <- bind_rows(NC)
+trees <- left_join(trees, NC) %>% 
+  dplyr::select(IID, Ind, pop, NCI)
+rm(NC)
+write_tsv(trees, file = "save/NCI.tsv")
+```
+
+```{r Envmdata}
+trees <- read_tsv(file = "save/NCI.tsv")
+ids <- read_tsv(file.path(path, "..", "variantCalling", "growth", "plink2.king.id"))
+K <- read_tsv(file.path(path, "..", "variantCalling", "growth", "plink2.king"),
+         col_names = ids$IID) %>% 
+  as.data.frame()
+row.names(K) <- ids$IID
+K <- as.matrix(K)
+trees <- trees %>% 
+  filter(IID %in% colnames(K)) %>% 
+  mutate(IndNum = 1:nrow(.), popNum = as.numeric(as.factor(pop)))
+mdata <- lapply(c("NCI"), function(variable) {
+                K <- K[trees$IID, trees$IID]
+                K[K < 0] <- 0
+                K <- K*2
+                K <- as.matrix(Matrix::nearPD(K)$mat)
+                return(list(N = nrow(trees),
+                            P = length(unique(trees$pop)),
+                            y = as.vector(scale(trees[variable], center = F)),
+                                          population = trees$popNum,
+                                          K = K))})
+names(mdata) <- c("NCI")
+mdata$RE$y <- mdata$RE$y + 1 # for the lognormal
+save(mdata, file = file.path("save", 'dataEnv.Rdata'))   
+```
+
+## Genetic variance
+
+We used between individual kinship and a lognormal Animal model [@Wilson2010] to estimate genetic variance associated to individuals global phenotype leaving in a given environment [see environmental association analyses with genome wide assocaition study analyses in @Rellstab2015a]. 
+Animal model is calculated for the environmental values $y$ of the $N$ individuals with following formula:
+
+\begin{equation} 
+  y_{p,i} \sim \mathcal{logN}(log(a_{p,i}),\sigma_1) \\
+  a_{p,i} \sim \mathcal{MVlogN_N}(log(\mu_p),\sigma_2.K)
+  (\#eq:animalenv)
+\end{equation} 
+
+where individual is defined as a normal law centered on the individual genetic additive effects $a$ and associated individual remaining variance $\sigma_R$. Additive genetic variance $a$ follow a multivariate lognormal law centered on the population mean $\mu_{Population}$ of covariance $\sigma_G K$.
+
+We fitted the equivalent model with following priors:
+
+\begin{equation} 
+  y_{p,i} \sim \mathcal{logN}(log(\mu_p) + \hat{\sigma_2}.A.\epsilon_i, \sigma_1) \\ 
+  \epsilon_i \sim \mathcal{N}(0,1) \\ 
+  ~ \\
+  \mu_p \sim \mathcal{logN}(log(1),1) \\  
+  \sigma_1 \sim \mathcal N_T(0,1) \\ 
+  \hat{\sigma_2} = \sqrt(V_G)
+  ~ \\
+  V_Y = Var(log(y)) \\
+  V_P = Var(log(\mu_p)) \\
+  V_G = V_Y - V_P - V_R \\
+  V_R=\sigma_1^2
+  (\#eq:animalenvstan)
+\end{equation} 
+
+```{bash envGenoCluster, eval=F}
+vars=(NCI)
+for var in "${vars[@]}" ; do for chain in $(seq 8) ; do echo "module purge ; module load compiler/gcc-7.2.0 ; module load system/R-3.5.3 ; R_LIBS_USER=\" \" Rscript EnvGeno.R $chain $var" ; done ; done > EnvGeno.sh
+sarray -J Env -o out/%j.Env.out -e out/%j.Env.err -t 48:00:00 --constraint=broadwell --cpus-per-task=1 --mail-type=BEGIN,END,FAIL EnvGeno.sh
+```
+
+```{r envGenoTab, fig.cap="Genetic variance of individual growth potential with a lognormal animal model."}
+fitEnv <- list(NCI = list())
+for(var in c("NCI")){
+  for(sim in list.files("save/EnvGeno", 
+                        pattern = var, full.names = T)){
+    load(sim)
+    fitEnv[[var]] <- c(fitEnv[[var]], fit)
+  }
+}
+fitEnv <- lapply(fitEnv, sflist2stanfit)
+lapply(fitEnv, broom.mixed::tidyMCMC, c("mu", "Vp", "Vg", "Vr"), 
+       droppars = NULL, rhat = T) %>% 
+  bind_rows(.id = "Variable") %>% 
+  separate(term, c("parameter", "population"), convert = T) %>% 
+  mutate(population = recode(population, "1" = "S. globulifera Paracou",
+                             "2" = "S. globulifera Regina", "3" = "S. sp1")) %>% 
+  mutate(population = ifelse(is.na(population), "", population)) %>% 
+  kable(caption = "Summary table of the kinship growth model",
+        col.names = c("Variable", "Parameter",  "Population",  
+                      "Estimate", "$\\sigma$", "$\\hat{R}$"))   
+```
+
+```{r envGenoTrace, fig.cap="Traceplot for environmental variables."}
+cowplot::plot_grid(plotlist = lapply(fitEnv, mcmc_trace, 
+                                     regex_pars = c("Vp", "Vg", "Vr"), 
+                                     facet_args = list(nrow = 3)),
+                   nrow = 1, labels = names(fitEnv))
+```
+
+```{r envgenoR2, fig.cap="R2 for environmental variable"}
+lapply(fitEnv, pars = c("Vp", "Vg", "Vr"), as.data.frame) %>% 
+  bind_rows(.id = "model") %>% 
+  rowwise() %>% 
+  mutate(Vtot = sum(c(Vp, Vg, Vr))) %>% 
+  mutate(Vexp = sum(c(Vp, Vg))) %>% 
+  mutate_at(c("Vp", "Vg", "Vexp"), funs(./Vtot)) %>% 
+  dplyr::select(-Vtot, -Vr) %>% 
+  reshape2::melt(id.vars = "model") %>% 
+  group_by(model, variable) %>% 
+  summarise(q5 = quantile(value, 0.05),
+            q25 = quantile(value, 0.25),
+            mean = mean(value),
+            median = median(value),
+            sd = sd(value),
+            q75 = quantile(value, 0.75),
+            q95 = quantile(value, 0.95)) %>% 
+    mutate(variable = recode_factor(variable, 
+                           "Vexp" = "Marginal", "Vg" = "Genotype", 
+                           "Vp" = "Population")) %>% 
+  ggplot(aes(x = variable, xend = variable, col = variable)) +
+  geom_point(aes(y = median), shape = 21, size = 3, alpha = 0.5) +
+  geom_segment(aes(y = q5, yend = q95),
+               size = 1, show.legend = F, alpha = 0.5) +
+  geom_segment(aes(y = q25, yend = q75), size = 2, alpha = 0.5) +
+  ylab(expression(R^2)) +  
+  theme(axis.title.y = element_blank()) +
+  facet_wrap(~ model, nrow = 3) +
+  coord_flip()
+```
+
+```{r envGenoVarPart, fig.cap="Genetic variance partitionning for environmental variables."}
+lapply(fitEnv, mcmc_intervals_data, regex_pars = c("Vp", "Vg", "Vr")) %>% 
+  bind_rows(.id = "variable") %>% 
+  mutate(parameter = recode(parameter, "Vp" = "Population", "Vg" = "Genotype", "Vr" = "Residual")) %>% 
+  group_by(variable) %>%
+  mutate(pct = paste0(round(m / sum(m) * 100), "%")) %>%
+  ggplot(aes(x = variable, fill = parameter)) +
+  geom_col(aes(y = m)) +
+  geom_text(aes(y = m, label = pct), col = "white", position = position_stack(vjust = .5)) +
+  facet_wrap(~ variable, scales = "free") +
+  theme(axis.title.x = element_blank(), axis.title.y = element_blank(),
+        axis.text.x = element_blank(), axis.line.x = element_blank(), axis.ticks.x = element_blank()) +
+  scale_fill_discrete(expression(sigma^2))
+```

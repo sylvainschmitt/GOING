@@ -53,11 +53,6 @@
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
-<link href="libs/sequences-0.1/sequences.css" rel="stylesheet" />
-<script src="libs/sunburst-binding-2.1.5/sunburst.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -250,7 +245,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3" data-path="genetic-species-delimitation.html"><a href="genetic-species-delimitation.html#spatial-auto-correlation"><i class="fa fa-check"></i><b>5.3</b> Spatial auto-correlation</a></li>
 <li class="chapter" data-level="5.4" data-path="genetic-species-delimitation.html"><a href="genetic-species-delimitation.html#introgression"><i class="fa fa-check"></i><b>5.4</b> Introgression</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><i class="fa fa-check"></i><b>6</b> Neighbour crowding effect on neutral and adaptive genetic variation</a></li>
+<li class="chapter" data-level="6" data-path="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><i class="fa fa-check"></i><b>6</b> Neighbour crowding effect on neutral and adaptive genetic variation</a><ul>
+<li class="chapter" data-level="6.1" data-path="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#simulated-animal"><i class="fa fa-check"></i><b>6.1</b> Simulated animal</a></li>
+<li class="chapter" data-level="6.2" data-path="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#neighbour-crowding-index"><i class="fa fa-check"></i><b>6.2</b> Neighbour crowding index</a></li>
+<li class="chapter" data-level="6.3" data-path="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#genetic-variance"><i class="fa fa-check"></i><b>6.3</b> Genetic variance</a></li>
+</ul></li>
 <li class="chapter" data-level="7" data-path="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><i class="fa fa-check"></i><b>7</b> Neutral and adaptive genetic variation effect on individual growth</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -298,7 +297,404 @@ The environment <span class="math inline">\(y_{s,i}\)</span> where individual <s
 Individual breeding values <span class="math inline">\(a_i\)</span> are defined following a multivariate lognormal law <span class="math inline">\(\mathcal{MVlogN}\)</span> of co-shape matrix defined as the product of the kinship matrix <span class="math inline">\(K\)</span> with estimated individual genotypic variation <span class="math inline">\(\sigma^2_2\)</span>.
 To estimate variances on a normal scale, we log-transformed species fixed effect, genetic additive values, and we calculated conditional and marginal <span class="math inline">\(R^2\)</span> <span class="citation">(Nakagawa &amp; Schielzeth <a href="#ref-Nakagawa2013" role="doc-biblioref">2013</a>)</span>.
 A Bayesian method was used to infer parameters using <code>stan</code> language [<span class="citation">Carpenter <em>et al.</em> (<a href="#ref-Carpenter2017" role="doc-biblioref">2017</a>)</span> and <code>rstan</code> package <span class="citation">(Stan Development Team <a href="#ref-Team2018" role="doc-biblioref">2018</a>)</span> in the R environment <span class="citation">(R Core Team <a href="#ref-RCoreTeam2020" role="doc-biblioref">2020</a>)</span> using the No-U-Turn Sampler alogirthm <span class="citation">(NUTS, Hoffman &amp; Gelman <a href="#ref-Hoffman2014" role="doc-biblioref">2014</a>)</span>, which performs better for estimating genetic parameters and breeding values <span class="citation">(Nishio &amp; Arakawa <a href="#ref-Nishio2019" role="doc-biblioref">2019</a>)</span>.</p>
+<div id="simulated-animal" class="section level2">
+<h2><span class="header-section-number">6.1</span> Simulated animal</h2>
+<p>The aim of this sub-chapter is to explore animal model with generated data to validate their behavior and use it on <em>Symphonia</em> real data.
+Let’s consider a set of <span class="math inline">\(P=3\)</span> populations including each <span class="math inline">\(Fam=3\)</span> families composed of <span class="math inline">\(I = 14\)</span> individuals with arbitrary relationships (it’s only 126 individuals to do quick tests).</p>
+<div class="figure"><span id="fig:simkinship"></span>
+<img src="GOING_files/figure-html/simkinship-1.png" alt="Kinship matrix" width="768" />
+<p class="caption">
+Figure 6.1: Kinship matrix
+</p>
+</div>
+<p>We used the following animal model with a lognormal distribution to estimate population and genotypic variance:</p>
+<p><span class="math display" id="eq:animallogth">\[\begin{equation} 
+  y_{p,i} \sim \mathcal{logN}(log(\mu_p.a_{i}),\sigma_1) \\
+  a_{p,i} \sim \mathcal{MVlogN_N}(log(1),\sigma_2.K)
+  \tag{6.1}
+\end{equation}\]</span></p>
+<p>We fitted the equivalent model with following priors:</p>
+<p><span class="math display" id="eq:animallogthstan">\[\begin{equation} 
+  y_{p,i} \sim \mathcal{logN}(log(\mu_p.\hat{a_{i}}), \sigma_1) \\ 
+  \hat{a_{i}} = e^{\sqrt{V_G}.A.\epsilon_i} \\
+  \epsilon_i \sim \mathcal{N}(0,1) \\ 
+  ~ \\
+  \mu_p \sim \mathcal{logN}(log(1),1) \\  
+  \sigma_1 \sim \mathcal N_T(0,1) \\ 
+  ~ \\
+  V_Y = Var(log(y)) \\
+  V_P = Var(log(\mu_p)) \\
+  V_R=\sigma_1^2 \\
+  V_G = V_Y - V_P - V_R \\
+  \tag{6.2}
+\end{equation}\]</span></p>
+<table>
+<caption>
+<span id="tab:animalTable">Table 6.1: </span>Animal model fitted versus expected values.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Parameter
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Expected
+</th>
+<th style="text-align:right;">
+Standard error
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(\hat R\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+mu[1]
+</td>
+<td style="text-align:right;">
+0.7484767
+</td>
+<td style="text-align:right;">
+0.7357714
+</td>
+<td style="text-align:right;">
+0.0535640
+</td>
+<td style="text-align:right;">
+1.0054690
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mu[2]
+</td>
+<td style="text-align:right;">
+0.3968538
+</td>
+<td style="text-align:right;">
+0.3633681
+</td>
+<td style="text-align:right;">
+0.0308554
+</td>
+<td style="text-align:right;">
+1.0010121
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mu[3]
+</td>
+<td style="text-align:right;">
+0.5184509
+</td>
+<td style="text-align:right;">
+0.5420625
+</td>
+<td style="text-align:right;">
+0.0469693
+</td>
+<td style="text-align:right;">
+1.0023625
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Vp
+</td>
+<td style="text-align:right;">
+0.0711053
+</td>
+<td style="text-align:right;">
+0.0841187
+</td>
+<td style="text-align:right;">
+0.0151127
+</td>
+<td style="text-align:right;">
+1.0011662
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Vg
+</td>
+<td style="text-align:right;">
+0.0772814
+</td>
+<td style="text-align:right;">
+0.0837454
+</td>
+<td style="text-align:right;">
+0.0223466
+</td>
+<td style="text-align:right;">
+1.0014673
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Vr
+</td>
+<td style="text-align:right;">
+0.0385718
+</td>
+<td style="text-align:right;">
+0.0400000
+</td>
+<td style="text-align:right;">
+0.0145103
+</td>
+<td style="text-align:right;">
+0.9997977
+</td>
+</tr>
+</tbody>
+</table>
+<div class="figure"><span id="fig:animalTrace"></span>
+<img src="GOING_files/figure-html/animalTrace-1.png" alt="Parameters for Animal model traceplot and expected value in red." width="768" />
+<p class="caption">
+Figure 6.2: Parameters for Animal model traceplot and expected value in red.
+</p>
+</div>
+</div>
+<div id="neighbour-crowding-index" class="section level2">
+<h2><span class="header-section-number">6.2</span> Neighbour crowding index</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-1"></a>trees &lt;-<span class="st"> </span><span class="kw">src_sqlite</span>(<span class="kw">file.path</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;Paracou&quot;</span>,<span class="st">&quot;trees&quot;</span>, <span class="st">&quot;Paracou.sqlite&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-2"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-2"></a><span class="st">  </span><span class="kw">tbl</span>(<span class="st">&quot;Paracou&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-3"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-3"></a><span class="st">  </span><span class="kw">filter</span>(Genus <span class="op">==</span><span class="st"> &quot;Symphonia&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-4"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-4"></a><span class="st">  </span><span class="kw">filter</span>(CensusYear <span class="op">==</span><span class="st"> </span><span class="dv">2015</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-5"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-5"></a><span class="st">  </span><span class="kw">collect</span>()</span>
+<span id="cb1-6"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-6"></a>trees &lt;-<span class="st"> </span><span class="kw">read_tsv</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;..&quot;</span>, <span class="st">&quot;variantCalling&quot;</span>, <span class="st">&quot;paracou3pop&quot;</span>,</span>
+<span id="cb1-7"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-7"></a>                                                  <span class="st">&quot;symcapture.all.biallelic.snp.filtered.nonmissing.paracou3pop.fam&quot;</span>),</span>
+<span id="cb1-8"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-8"></a>         <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;FID&quot;</span>, <span class="st">&quot;IID&quot;</span>, <span class="st">&quot;FIID&quot;</span>, <span class="st">&quot;MIID&quot;</span>, <span class="st">&quot;sex&quot;</span>, <span class="st">&quot;phenotype&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-9"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-9"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Ind =</span> <span class="kw">gsub</span>(<span class="st">&quot;.g.vcf&quot;</span>, <span class="st">&quot;&quot;</span>, IID)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-10"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-10"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">X =</span> <span class="kw">gsub</span>(<span class="st">&quot;P&quot;</span>, <span class="st">&quot;&quot;</span>, Ind)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-11"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-11"></a><span class="st">  </span><span class="kw">separate</span>(X, <span class="kw">c</span>(<span class="st">&quot;Plot&quot;</span>, <span class="st">&quot;SubPlot&quot;</span>, <span class="st">&quot;TreeFieldNum&quot;</span>), <span class="dt">convert =</span> T) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-12"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-12"></a><span class="st">  </span><span class="kw">left_join</span>(trees) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-13"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-13"></a><span class="st">  </span><span class="kw">left_join</span>(<span class="kw">read_tsv</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;bayescenv&quot;</span>, <span class="st">&quot;paracou3pop.popmap&quot;</span>),</span>
+<span id="cb1-14"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-14"></a>                     <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;IID&quot;</span>, <span class="st">&quot;pop&quot;</span>)))</span>
+<span id="cb1-15"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-15"></a>cl &lt;-<span class="st"> </span>parallel<span class="op">::</span><span class="kw">makeCluster</span>(<span class="kw">getOption</span>(<span class="st">&quot;cl.cores&quot;</span>, <span class="dv">4</span>))</span>
+<span id="cb1-16"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-16"></a>parallel<span class="op">::</span><span class="kw">clusterExport</span>(cl, <span class="kw">list</span>(<span class="st">&quot;trees&quot;</span>))</span>
+<span id="cb1-17"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-17"></a>NC &lt;-<span class="st"> </span>parallel<span class="op">::</span><span class="kw">parLapply</span>(cl, <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(trees), <span class="cf">function</span>(ind){</span>
+<span id="cb1-18"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-18"></a>  <span class="kw">library</span>(tidyverse)</span>
+<span id="cb1-19"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-19"></a>  <span class="kw">src_sqlite</span>(<span class="kw">file.path</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;Paracou&quot;</span>, <span class="st">&quot;trees&quot;</span>, <span class="st">&quot;Paracou.sqlite&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-20"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-20"></a><span class="st">    </span><span class="kw">tbl</span>(<span class="st">&quot;Paracou&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-21"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-21"></a><span class="st">    </span><span class="kw">filter</span>(Plot <span class="op">==</span><span class="st"> </span><span class="kw">local</span>(trees<span class="op">$</span>Plot[ind])) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-22"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-22"></a><span class="st">    </span><span class="kw">filter</span>(idTree <span class="op">!=</span><span class="st"> </span><span class="kw">local</span>(trees<span class="op">$</span>idTree[ind])) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-23"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-23"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">dij =</span> <span class="kw">sqrt</span>((<span class="kw">local</span>(trees<span class="op">$</span>Xutm[ind]) <span class="op">-</span><span class="st"> </span>Xutm)<span class="op">^</span><span class="dv">2</span><span class="op">+</span>(<span class="kw">local</span>(trees<span class="op">$</span>Yutm[ind]) <span class="op">-</span><span class="st"> </span>Yutm)<span class="op">^</span><span class="dv">2</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-24"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-24"></a><span class="st">    </span><span class="kw">filter</span>(dij <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-25"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-25"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">con =</span> <span class="kw">ifelse</span>(Genus <span class="op">==</span><span class="st"> </span><span class="kw">local</span>(trees<span class="op">$</span>Genus[ind]) <span class="op">&amp;&amp;</span><span class="st"> </span>Species <span class="op">==</span><span class="st"> </span><span class="kw">local</span>(trees<span class="op">$</span>Species[ind]), <span class="dv">1</span>, <span class="dv">0</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-26"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-26"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">DBH =</span> CircCorr<span class="op">/</span>pi) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-27"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-27"></a><span class="st">    </span><span class="kw">collect</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-28"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-28"></a><span class="st">    </span><span class="kw">group_by</span>(CensusYear) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-29"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-29"></a><span class="st">    </span><span class="kw">summarise</span>(<span class="dt">NCI =</span> <span class="kw">sum</span>(DBH<span class="op">*</span>DBH<span class="op">*</span><span class="kw">exp</span>(<span class="op">-</span><span class="fl">0.25</span><span class="op">*</span>dij))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-30"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-30"></a><span class="st">    </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-31"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-31"></a><span class="st">    </span><span class="kw">summarise</span>(<span class="dt">idTree =</span> <span class="kw">local</span>(trees<span class="op">$</span>idTree[ind]),</span>
+<span id="cb1-32"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-32"></a>              <span class="dt">NCI =</span> <span class="kw">mean</span>(NCI))})</span>
+<span id="cb1-33"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-33"></a>parallel<span class="op">::</span><span class="kw">stopCluster</span>(cl) ; <span class="kw">rm</span>(cl)</span>
+<span id="cb1-34"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-34"></a>NC &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(NC)</span>
+<span id="cb1-35"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-35"></a>trees &lt;-<span class="st"> </span><span class="kw">left_join</span>(trees, NC) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-36"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-36"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(IID, Ind, pop, NCI)</span>
+<span id="cb1-37"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-37"></a><span class="kw">rm</span>(NC)</span>
+<span id="cb1-38"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb1-38"></a><span class="kw">write_tsv</span>(trees, <span class="dt">file =</span> <span class="st">&quot;save/NCI.tsv&quot;</span>)</span></code></pre></div>
+</div>
+<div id="genetic-variance" class="section level2">
+<h2><span class="header-section-number">6.3</span> Genetic variance</h2>
+<p>We used between individual kinship and a lognormal Animal model <span class="citation">(Wilson <em>et al.</em> <a href="#ref-Wilson2010" role="doc-biblioref">2010</a>)</span> to estimate genetic variance associated to individuals global phenotype leaving in a given environment <span class="citation">(see environmental association analyses with genome wide assocaition study analyses in Rellstab <em>et al.</em> <a href="#ref-Rellstab2015a" role="doc-biblioref">2015</a>)</span>.
+Animal model is calculated for the environmental values <span class="math inline">\(y\)</span> of the <span class="math inline">\(N\)</span> individuals with following formula:</p>
+<p><span class="math display" id="eq:animalenv">\[\begin{equation} 
+  y_{p,i} \sim \mathcal{logN}(log(a_{p,i}),\sigma_1) \\
+  a_{p,i} \sim \mathcal{MVlogN_N}(log(\mu_p),\sigma_2.K)
+  \tag{6.3}
+\end{equation}\]</span></p>
+<p>where individual is defined as a normal law centered on the individual genetic additive effects <span class="math inline">\(a\)</span> and associated individual remaining variance <span class="math inline">\(\sigma_R\)</span>. Additive genetic variance <span class="math inline">\(a\)</span> follow a multivariate lognormal law centered on the population mean <span class="math inline">\(\mu_{Population}\)</span> of covariance <span class="math inline">\(\sigma_G K\)</span>.</p>
+<p>We fitted the equivalent model with following priors:</p>
+<p><span class="math display" id="eq:animalenvstan">\[\begin{equation} 
+  y_{p,i} \sim \mathcal{logN}(log(\mu_p) + \hat{\sigma_2}.A.\epsilon_i, \sigma_1) \\ 
+  \epsilon_i \sim \mathcal{N}(0,1) \\ 
+  ~ \\
+  \mu_p \sim \mathcal{logN}(log(1),1) \\  
+  \sigma_1 \sim \mathcal N_T(0,1) \\ 
+  \hat{\sigma_2} = \sqrt(V_G)
+  ~ \\
+  V_Y = Var(log(y)) \\
+  V_P = Var(log(\mu_p)) \\
+  V_G = V_Y - V_P - V_R \\
+  V_R=\sigma_1^2
+  \tag{6.4}
+\end{equation}\]</span></p>
+<table>
+<caption>
+<span id="tab:envGenoTab">Table 6.2: </span>Summary table of the kinship growth model
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+Parameter
+</th>
+<th style="text-align:left;">
+Population
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(\sigma\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(\hat{R}\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+NCI
+</td>
+<td style="text-align:left;">
+mu
+</td>
+<td style="text-align:left;">
+S. globulifera Paracou
+</td>
+<td style="text-align:right;">
+0.7880048
+</td>
+<td style="text-align:right;">
+0.0305778
+</td>
+<td style="text-align:right;">
+0.9997771
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NCI
+</td>
+<td style="text-align:left;">
+mu
+</td>
+<td style="text-align:left;">
+S. globulifera Regina
+</td>
+<td style="text-align:right;">
+0.9443492
+</td>
+<td style="text-align:right;">
+0.0643210
+</td>
+<td style="text-align:right;">
+1.0003822
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NCI
+</td>
+<td style="text-align:left;">
+mu
+</td>
+<td style="text-align:left;">
+S. sp1
+</td>
+<td style="text-align:right;">
+0.9426952
+</td>
+<td style="text-align:right;">
+0.0290419
+</td>
+<td style="text-align:right;">
+1.0012267
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NCI
+</td>
+<td style="text-align:left;">
+Vp
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.0071862
+</td>
+<td style="text-align:right;">
+0.0033377
+</td>
+<td style="text-align:right;">
+1.0004033
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NCI
+</td>
+<td style="text-align:left;">
+Vg
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.0210950
+</td>
+<td style="text-align:right;">
+0.0193455
+</td>
+<td style="text-align:right;">
+1.0640539
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NCI
+</td>
+<td style="text-align:left;">
+Vr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.0922548
+</td>
+<td style="text-align:right;">
+0.0193773
+</td>
+<td style="text-align:right;">
+1.0615180
+</td>
+</tr>
+</tbody>
+</table>
+<div class="figure"><span id="fig:envGenoTrace"></span>
+<img src="GOING_files/figure-html/envGenoTrace-1.png" alt="Traceplot for environmental variables." width="768" />
+<p class="caption">
+Figure 6.3: Traceplot for environmental variables.
+</p>
+</div>
+<div class="figure"><span id="fig:envgenoR2"></span>
+<img src="GOING_files/figure-html/envgenoR2-1.png" alt="R2 for environmental variable" width="768" />
+<p class="caption">
+Figure 6.4: R2 for environmental variable
+</p>
+</div>
+<div class="figure"><span id="fig:envGenoVarPart"></span>
+<img src="GOING_files/figure-html/envGenoVarPart-1.png" alt="Genetic variance partitionning for environmental variables." width="768" />
+<p class="caption">
+Figure 6.5: Genetic variance partitionning for environmental variables.
+</p>
+</div>
 
+</div>
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
