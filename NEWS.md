@@ -1,3 +1,6 @@
+# GOING 0.1.9004
+* SNP
+
 # GOING 0.1.9003
 * SNP, Species, NCI & Gmax init
 

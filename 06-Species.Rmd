@@ -1,5 +1,23 @@
 ```{r setup_species, include=FALSE}
 rm(list = ls()) ; invisible(gc()) ; set.seed(42)
+library(knitr)
+library(kableExtra)
+if(knitr:::is_html_output()) options(knitr.table.format = "html") 
+if(knitr:::is_latex_output()) options(knitr.table.format = "latex") 
+library(tidyverse)
+library(pophelper)
+library(dendextend)
+library(ggtree)
+library(ggdendro)
+library(leaflet)
+library(introgress)
+library(raster)
+theme_set(bayesplot::theme_default())
+opts_chunk$set(
+  echo = F, message = F, warning = F, fig.height = 6, fig.width = 8,
+  cache = T, cache.lazy = F)
+path <- "data/Symphonia_Paracou/Sequences/populationGenomics/"
+crs <- '+proj=longlat +datum=NAD83 +no_defs +ellps=GRS80 +towgs84=0,0,0'
 ```
 
 
@@ -12,4 +30,5 @@ We further investigated admixture with the `introgress` R package [@Gompert2010]
 using genetically pure individuals as parental populations and all individuals as the hybrid population.
 We validated gene pool delimitation by comparison with botanical identifications using a confusion matrix, 
 and we conducted a second blind-identification of every collected individual in November 2019.
+
 
