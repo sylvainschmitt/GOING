@@ -16,8 +16,7 @@ theme_set(bayesplot::theme_default())
 opts_chunk$set(
   echo = F, message = F, warning = F, fig.height = 6, fig.width = 8,
   cache = T, cache.lazy = F)
-path <- "data/Symphonia_Paracou/Sequences/populationGenomics/"
-crs <- '+proj=longlat +datum=NAD83 +no_defs +ellps=GRS80 +towgs84=0,0,0'
+path <- "data/Symphonia_Paracou/Sequences/populationGenomics"
 ```
 
 
@@ -31,4 +30,383 @@ using genetically pure individuals as parental populations and all individuals a
 We validated gene pool delimitation by comparison with botanical identifications using a confusion matrix, 
 and we conducted a second blind-identification of every collected individual in November 2019.
 
+```{r popstr}
+# readxl::read_xlsx(file.path("data/Symphonia_Paracou/Symcapture.xlsx"), 
+#                                 sheet = "Pop") %>% 
+#   mutate(Ind = paste0(Ind, ".g.vcf", "")) %>% 
+#   mutate(FID = 0, IID = Ind, CLUSTER = Pop2) %>% 
+#   dplyr::select(FID, IID, CLUSTER) %>% 
+#   filter(CLUSTER %in% c("S", "G")) %>% 
+#   write_tsv(file.path(path, "paracou.2pop"), col_names = F)
+pop <- readxl::read_xlsx(file.path("data/Symphonia_Paracou/Symcapture.xlsx"), 
+                                sheet = "Pop")
+pop <- bind_rows(pop, c(Ind = "P10-3-925", Pop = "SG", Pop2 = "SG")) # to solve
+```
 
+## Populations structure
+
+*Symphonia* individuals were structured in three gene pools in Paracou corresponding to field morphotypes (Fig. \@ref(fig:admixtureParacouCV) and Fig. \@ref(fig:admixtureParacou23)). 
+The three genotypes correspond to the previously identified two morphotypes (70-80%) *S. globulifera* and *S. sp1*, with *S. globulifera* morphotype structured in two gene pools, which might match the two identified submorphotype in Paracou called *S. globulifera type Paracou* (80%) and *S. globulifera type Régina* (20%). 
+Interestingly, we noticed so-called *Paracou type* and *Régina type* within *S. globulifera* morphotype when sampling the individuals.
+And looking to few identified individuals bark, 
+the two identified gene pools correspond two this two morphotypes (Fig. \@ref(fig:populationMorphotypes)). 
+The *Paracou type* have a smoother and thinner bark compared to the thick and lashed bark of *Régina type*.
+
+```{bash admixtureParacou, eval=F, echo=T}
+module load bioinfo/admixture_linux-1.3.0
+module load bioinfo/plink-v1.90b5.3
+mkdir admixture
+mkdir admixture/paracou
+mkdir out
+cd ../variantCalling
+mkdir paracouRenamed
+# read_tsv(file.path(pathCluster, "paracou", "symcapture.all.biallelic.snp.filtered.nonmissing.paracou.bim"),
+#          col_names = F) %>% 
+#   mutate(X1 = as.numeric(as.factor(X1))) %>% 
+#   write_tsv(file.path(pathCluster, "paracouRenamed", "symcapture.all.biallelic.snp.filtered.nonmissing.paracou.bim"),
+#             col_names = F)
+cp paracou/symcapture.all.biallelic.snp.filtered.nonmissing.paracou.bed paracouRenamed
+cp paracou/symcapture.all.biallelic.snp.filtered.nonmissing.paracou.fam paracouRenamed 
+cd ../populationGenomics/admixture/paracou
+for k in $(seq 10) ; do echo "module load bioinfo/admixture_linux-1.3.0 ; admixture --cv ../../variantCalling/paracouRenamed/symcapture.all.biallelic.snp.filtered.nonmissing.paracou.bed $k | tee log$k.out" ; done > admixture.sh
+sarray -J admixture -o ../../out/%j.admixture.out -e ../../out/%j.admixture.err -t 48:00:00 --mem=8G --mail-type=BEGIN,END,FAIL admixture.sh
+scp sschmitt@genologin.toulouse.inra.fr:~/Symcapture/populationGenomics/admixture/paracou/*
+grep -h CV log*.out > CV.out
+for file in $(ls log*.out) ; do  grep "Fst divergences between estimated populations:" -A 20 $file | head -n -2 > matrices/$file ; done
+```
+
+```{r admixtureParacouCV, fig.cap="Cross-validation for the clustering of Paracou individuals. Y axis indicates corss-validation mean error, suggesting that 2 or 3 groups represent the best Paracou individuals structure."}
+read_delim(file.path(path, "admixture", "paracou", "CV.out"), delim = " ", col_names = F) %>% 
+  dplyr::select(X3, X4) %>% 
+  dplyr::rename(K = X3, CV = X4) %>% 
+  mutate(K = gsub("(K=", "", K, fixed = T)) %>% 
+  mutate(K = as.numeric(gsub("):", "", K))) %>% 
+  ggplot(aes(K, CV)) +
+  geom_point() +
+  geom_line() +
+  geom_vline(xintercept = c(2,3), col = "red", linetype = "dashed") +
+  ylab("Cross-validation error")
+```
+
+```{r admixtureParacou23, fig.cap="Population structure of Paracou individuals for K=2 and K=3. Dark blue is associated to *S. globulifera* morphotype; whereas light blue is associated to *S. sp1*; and red is associated to a subgroup within *S. globulifera* morphotype."}
+fam <- read_tsv(file.path(path, "..", "variantCalling", "paracou",
+                          "symcapture.all.biallelic.snp.filtered.nonmissing.paracou.fam"),
+         col_names = c("FID", "IID", "FIID", "MIID", "sex", "phenotype")) %>% 
+  mutate(Ind = gsub(".g.vcf", "", IID))
+symcapture.admix <- readQ(list.files(file.path(path, "admixture", "paracou"), 
+                                     full.names = T, pattern = ".Q"), indlabfromfile=F)
+symcapture.admix <- lapply(symcapture.admix, "rownames<-", fam$Ind)
+symcapture.admix <- alignK(symcapture.admix)
+p <- plotQ(symcapture.admix[2:3], exportplot = F, returnplot = T, imgoutput = "join", basesize = 11, splab = paste0("K=",2:3),
+      showindlab = F, useindlab = F, grplabsize = 4,linesize = 0.8, pointsize = 4, sortind = 'all', sharedindlab = F)
+gridExtra::grid.arrange(p$plot[[1]]) 
+```
+
+```{r admixtureParacou2, fig.height=8, fig.width=15, fig.cap="Population structure of Paracou individuals for K = 2. Dark blue is associated to *S. globulifera* morphotype; whereas light blue is associated to *S. sp1*"}
+p <- plotQMultiline(qlist = symcapture.admix[3], exportplot = F, returnplot = T, useindlab = T, ordergrp=T, sortind = "Cluster1")
+gridExtra::grid.arrange(p$plot[[1]][[1]]) 
+```
+
+```{r admixtureParacouFst, fig.cap="Clusters Fst relations for K=10."}
+symcapture.matrix <- lapply(list.files(file.path(path, "admixture", "paracou", "matrices"), 
+                                       full.names = T, pattern = "log"), read_tsv, skip = 1)
+names(symcapture.matrix) <- unlist(lapply(symcapture.matrix, nrow))
+g.matrix <- symcapture.matrix$`10` %>% 
+  dplyr::rename(C1 = X1) %>% 
+  reshape2::melt(is.vars = "C1", variable.name = "C2", value.name = "Fst") %>% 
+  filter(!is.na(Fst)) %>% 
+  ggplot(aes(C1, C2, fill = Fst)) +
+  geom_tile() +
+  coord_fixed() +
+  scale_fill_gradient(name = "Fst",
+                      low = "#FFFFFF",
+                      high = "#012345") +
+  theme(axis.text.x = element_text(angle = -90),
+        legend.position = "bottom", axis.title = element_blank())
+m <- as.matrix(symcapture.matrix$`10`[c(-1, -11)])
+rownames(m) <- unlist(symcapture.matrix$`10`[1])
+g.tree <- ggdendrogram(data = as.dendrogram(hclust(as.dist(m))), rotate = T)
+cowplot::plot_grid(g.matrix, g.tree)
+```
+
+```{r populationMorphotypes, fig.cap="The *Symphonia globulifera* morphotypes identified in the field. The three morphottypes are identified with their bark with *S. sp1* having a light grey thin and smooth bark, the *S. globulifera type Paracou* having a dark and intermediate thin and smooth bark compared to the thck and lashed bark of *S. globulifera type Regina*."}
+knitr::include_graphics("images/Sglobulifera.png")
+```
+
+```{r admixtureParacouSubpopR, eval=F, echo=F}
+paracou3pop <- symcapture.admix[[3]] %>% 
+  mutate(Ind = row.names(.)) %>% 
+  mutate(Genotype = NA) %>% 
+  mutate(Genotype = ifelse(Cluster1 > 0.9, "sp1", Genotype)) %>% 
+  mutate(Genotype = ifelse(Cluster2 > 0.9, "globuliferaTypeParacou", Genotype)) %>% 
+  mutate(Genotype = ifelse(Cluster3 > 0.9, "globuliferaTypeRegina", Genotype)) %>% 
+  filter(!is.na(Genotype)) %>% 
+  mutate(IID = paste0(Ind, ".g.vcf", ""), FID = 0) %>% 
+  dplyr::select(IID, Genotype)
+write_tsv(paracou3pop, file.path(path, "populations", "paracou3pop.popmap"), col_names = F)
+write_delim(paracou3pop, file.path(path, "populations", "paracou3pop.popmap"), 
+          col_names = F, delim = " ")
+group_by(paracou3pop, Genotype) %>% 
+  sample_n(30) %>% 
+  write_tsv(file.path(path, "populations", "paracouWeighted3pop.popmap"), col_names = F)
+# for file in $(ls *.popmap) ; do awk '{print "0\t"$1"\t0\t0\t0\t-9"}' $file > ${file%.*}.fam ; done
+```
+
+## Kinship
+
+We calculated kinship matrix (Fig. \@ref(fig:kinship)) for every individuals to be used in genomic scan to control for population structure. 
+19 individual, belonging to all gene pools, had only negative kinship values. 
+After investigation it seems that these individuals are individuals without family in Paracou with null kinship with other individuals of their gene pools and negative values  with other individuals of other gene pools. 
+Interestingly though individuals with only null or negative kinship were all located on the limit of Paracou plots.
+
+```{bash relatedness, eval=F, echo=T}
+module load bioinfo/plink-v1.90b5.3
+plink \
+  --bfile symcapture.all.biallelic.snp.filtered.nonmissing.paracou \
+  --allow-extra-chr \
+  --recode vcf-iid \
+  --out symcapture.all.biallelic.snp.filtered.nonmissing.paracou
+vcftools --gzvcf  symcapture.all.biallelic.snp.filtered.nonmissing.paracou.vcf.gz  --relatedness2
+# an estimated kinship coefficient range >0.354, [0.177, 0.354], [0.0884, 0.177] and [0.0442, 0.0884] corresponds to duplicate/MZ twin, 1st-degree, 2nd-degree, and 3rd-degree relationships respectively
+```
+
+```{r kinship, fig.cap="Individuals kinship matrix."}
+read_tsv(file.path(path, "..", "variantCalling", "paracou", "out.relatedness2")) %>% 
+  left_join(symcapture.admix[[2]] %>% 
+              dplyr::select(Cluster1) %>% 
+              dplyr::rename(Cl1Ind1 = Cluster1) %>% 
+              mutate(INDV1 = paste0(row.names(.), ".g.vcf"))) %>% 
+    left_join(symcapture.admix[[2]] %>% 
+              dplyr::select(Cluster1) %>% 
+              dplyr::rename(Cl1Ind2 = Cluster1) %>% 
+              mutate(INDV2 = paste0(row.names(.), ".g.vcf"))) %>% 
+  ggplot(aes(reorder(INDV1, Cl1Ind1), 
+             reorder(INDV2, Cl1Ind2), 
+             fill = RELATEDNESS_PHI)) +
+    geom_tile() +
+  scale_fill_gradient2("kinship", low = scales::muted("blue"), high = scales::muted("red")) +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        axis.line = element_blank())
+
+read_tsv(file.path(path, "..", "variantCalling", "paracou", "out.relatedness2")) %>% 
+  left_join(symcapture.admix[[2]] %>% 
+              dplyr::select(Cluster1) %>% 
+              dplyr::rename(Cl1Ind1 = Cluster1) %>% 
+              mutate(INDV1 = paste0(row.names(.), ".g.vcf"))) %>% 
+  left_join(symcapture.admix[[2]] %>% 
+              dplyr::select(Cluster1) %>% 
+              dplyr::rename(Cl1Ind2 = Cluster1) %>% 
+              mutate(INDV2 = paste0(row.names(.), ".g.vcf"))) %>% 
+  mutate(relation = cut(RELATEDNESS_PHI, 
+                        breaks = c(0.0442, 0.0884, 0.177, 0.354, Inf), 
+                        labels = c("3rd", "2nd", "1st", "twin"))) %>% 
+  na.omit(relation) %>%
+  ggplot(aes(reorder(INDV1, Cl1Ind1), 
+             reorder(INDV2, Cl1Ind2), 
+             fill = relation)) +
+  geom_tile() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        axis.line = element_blank())
+```
+
+## Spatial auto-correlation
+
+```{bash spagediSympho, eval=F, echo=T}
+plink=~/Tools/plink_linux_x86_64_20190617/plink 
+$plink \
+  --bfile ../paracou/symcapture.all.biallelic.snp.filtered.nonmissing.paracou \
+  --allow-extra-chr \
+  --keep sp1.fam \
+  --recode vcf-iid \
+  --thin-count 1000 \
+  --out sp1.1k
+```
+
+```{r spagedisymphofile, eval=F, echo=T}
+snps <- vroom::vroom(file.path(path, "..", "variantCalling", "spagedi", "globuliferaTypeRegina.1k.genepop"), skip = 1002, 
+                     col_names = c("Lib", "Lat", "Long", paste0("SNP", 1:1000)))
+XY <- mutate(snps, Ind = gsub(".g.vcf", "", Lib)) %>% 
+  dplyr::select(Ind) %>% 
+  left_join(dplyr::select(trees, Ind, Xutm, Yutm))
+snps$Lat <- XY$Xutm
+snps$Long <- XY$Yutm
+write_tsv(snps, path = file.path(path, "..", "variantCalling", "spagedi", "globuliferaTypeRegina.1k.spagedi.in"), col_names = T)
+```
+
+```{bash spagedi header, eval=F, echo=T}
+// #ind #cat #coord #loci #dig/loc #ploidy// this an example (lines beginning by // are comment lines)
+231	0	2	1000	3	2
+8	25	50	100	200	400	800 1600 3200
+
+spagedi
+sp1.1k.spagedi.in  
+sp1.1k.spagedi.out
+e
+return
+13
+3
+return
+1000
+34
+3
+```
+
+> Locus	intra-individual (inbreeding coef)	1	2	3	4	5	6	7	average	0-2704.88	b-lin(slope linear dist)	b-log(slope log dist)
+ALL LOCI	-0.0480	0.0079	0.0049	0.0046	0.0036	0.0035	0.0023	-0.0001	0.0001		-1.34448E-06	-0.00128963
+          F       F1      F2                                                                       b-log
+Sp = –b-log / (1 − F1)
+
+```{r}
+# Sp1
+blog <- -0.00045741
+f1 <- 0.0024
+Sp <- -blog/(1-f1)
+paste("S. sp.1 Sp =", Sp)
+# Paracou
+blog <- -0.00110023
+f1 <- 0.0063
+Sp <- -blog/(1-f1)
+paste("S. sp.2 Sp =", Sp)
+# Regina
+blog <- -0.00013177
+f1 <- 0.0037
+Sp <- -blog/(1-f1)
+paste("S. sp.3 Sp =", Sp)
+```
+## Introgression
+
+We used the method developed by @Gompert2009 implemented in `introgress` [@Gompert2010] to map admixture between Paracou genepools. 
+We used individuals with more than 90% of the genotype belonging to the genepool to define parental allele frequencies and mapped admixture between the two pairs of *S. sp1* - *S. globulifera Paracou* and *S. sp1* - *S. globulifera Regina* as the remaining pair didn't show admixture sign with the `admixture` software.
+We furthered classified individuals as (i) *pure-bred* with a hybrid index $h$ above 0.9, (ii) introgressed with $h \in [0.6-0.9]$, and (iii) admixed with $h \in [0.5-0.6]$.
+
+We obtained relatively low levels of admixture (Fig. \@ref(fig:introgress)) with 222 *S. sp1* pure-bred, 108 *S. globulifera Paracou* pure-bred, and 30 *S. globulifera Regina* pure-bred. Only 5 individuals were admixed (2 *S. sp1* - *S. globulifera Regina* and 3 *S. sp1* - *S. globulifera Paracou*). Nevertheless *S. sp1* showed 13(6%) individuals introgressed with *S. globulifera Regina* and *S. globulifera Paracou* showed 7(6%) individuals introgressed with *S. sp1*.
+
+```{r introgressCluster, eval=F, echo=F}
+# module load bioinfo/plink-v1.90b5.3
+# plink --bfile symcapture.all.biallelic.snp.filtered.nonmissing.paracou --allow-extra-chr \
+#   --extract LD.prune.in --maf 0.05 --geno 0 --out paracou.filtered --make-bed --recode structure
+paracou <- data.table::fread(file.path(path, "..", "variantCalling", "paracou", "paracou.filtered.recode.strct_in"), skip = 2) %>% as.tbl()
+inds <- gsub(".g.vcf", "", paracou$V1)
+fam <- read_tsv(file.path(path, "..", "variantCalling", "paracou",
+                                              "symcapture.all.biallelic.snp.filtered.nonmissing.paracou.fam"),
+         col_names = c("FID", "IID", "FIID", "MIID", "sex", "phenotype")) %>% 
+  mutate(Ind = gsub(".g.vcf", "", IID))
+symcapture.admix <- pophelper::readQ(list.files(file.path(path, "admixture", "paracou"), 
+                                     full.names = T, pattern = ".Q"), indlabfromfile=F)
+symcapture.admix <- lapply(symcapture.admix, "rownames<-", fam$Ind)
+symcapture.admix <- pophelper::alignK(symcapture.admix)
+pops <- symcapture.admix[[3]] %>% 
+  rownames_to_column(var = "Ind") %>%
+  mutate(type = "admixed") %>% 
+  mutate(type = ifelse(Cluster1 > 0.9, "Ssp1", type)) %>% 
+  mutate(type = ifelse(Cluster2 > 0.9, "SgParacou", type)) %>% 
+  mutate(type = ifelse(Cluster3 > 0.9, "SgRegina", type)) %>% 
+  mutate(type = ifelse(type == "admixed" & Cluster3 < 0.1, "admixedSP", type)) %>% 
+  mutate(type = ifelse(type == "admixed", "admixedSR", type))
+paracou <- paracou[-c(1:2)]
+cl <- parallel::makeCluster(getOption("cl.cores", 4))
+parallel::clusterExport(cl, list("paracou"))
+admix <- parallel::parLapply(cl, seq(1:(ncol(paracou)/2)), 
+                             function(i) paste(unlist(paracou[,i]), unlist(paracou[,(i+1)]), sep = "/"))
+parallel::stopCluster(cl) ; rm(cl)
+names(admix) <- 1:length(admix)
+admix <- bind_rows(admix)
+loci <- readr::read_tsv(file.path(path, "..", "variantCalling", "paracou", "paracou.filtered.bim"),
+         col_names = c("contig", "snp", "posCenti", "pos", "A1", "A2")) %>%
+  dplyr::mutate(snp = 1:nrow(.)) %>%
+  dplyr::mutate(locus = paste0(contig, "_snp", snp, "_pos", pos)) %>%
+  dplyr::mutate(type = "C") %>%
+  dplyr::select(locus, type, contig, pos) %>%
+  as.matrix()
+count.matrix <- list(
+  sp = prepare.data(admix.gen = t(admix[which(inds %in% filter(pops, type != "SgRegina", type != "admixedSR")$Ind),]), 
+                    parental1 = t(admix[which(inds %in% filter(pops, type == "Ssp1")$Ind),]),
+                    parental2 = t(admix[which(inds %in% filter(pops, type == "SgParacou")$Ind),]),
+                    loci.data = loci, pop.id = F, ind.id = F, fixed = F, sep.rows = F),
+  sr = prepare.data(admix.gen = t(admix[which(inds %in% filter(pops, type != "SgParacou", type != "admixedSP")$Ind),]), 
+                    parental1 = t(admix[which(inds %in% filter(pops, type == "Ssp1")$Ind),]),
+                    parental2 = t(admix[which(inds %in% filter(pops, type == "SgRegina")$Ind),]),
+                    loci.data = loci, pop.id = F, ind.id = F, fixed = F, sep.rows = F),
+  pr = prepare.data(admix.gen = t(admix[which(inds %in% filter(pops, type != "Ssp1", type != "admixedSP", type != "admixedSR")$Ind),]), 
+                    parental1 = t(admix[which(inds %in% filter(pops, type == "SgParacou")$Ind),]),
+                    parental2 = t(admix[which(inds %in% filter(pops, type == "SgRegina")$Ind),]),
+                    loci.data = loci, pop.id = F, ind.id = F, fixed = F, sep.rows = F))
+cl <- parallel::makeCluster(getOption("cl.cores", 3))
+parallel::clusterExport(cl, list("count.matrix", "loci"))
+hi.index <- parallel::parLapply(cl, count.matrix, function(m)
+  introgress::est.h(introgress.data = m, loci.data = loci, fixed = F))
+parallel::stopCluster(cl) ; rm(cl)
+hi.index$sp$Ind <- inds[which(inds %in% filter(pops, type != "SgRegina", type != "admixedSR")$Ind)]
+hi.index$sr$Ind <- inds[which(inds %in% filter(pops, type != "SgParacou", type != "admixedSP")$Ind)]
+hi.index$pr$Ind <- inds[which(inds %in% filter(pops, type != "Ssp1", type != "admixedSP", type != "admixedSR")$Ind)]
+hi.index <- bind_rows(hi.index, .id = "pair")
+save(symcapture.admix, hi.index, file = file.path("symcapture_save", "introgress.Rdata"))
+cl <- parallel::makeCluster(getOption("cl.cores", 3))
+parallel::clusterExport(cl, list("count.matrix", "loci", "hi.index"))
+clines <- parallel::parLapply(cl, names(count.matrix), function(pair){
+  library(tidyverse)
+  introgress::genomic.clines(introgress.data = count.matrix[[pair]], 
+                             hi.index = hi.index %>% 
+                               filter(pair == pair) %>% 
+                               dplyr::select(lower, h, upper),
+                             loci.data = loci,
+                             sig.test = T, method = "permutation")
+})
+parallel::stopCluster(cl) ; rm(cl)
+names(clines) <- names(count.matrix)
+clines <- clines$sp$Summary.data
+save(symcapture.admix, hi.index, clines,
+     file = file.path("symcapture_save", "introgress.Rdata"))
+```
+
+```{r introgressT}
+load(file = file.path("save", "introgress.Rdata"))
+rm(clines)
+hi.index %>% 
+  dplyr::select(Ind, pair, h) %>% 
+  reshape2::dcast(Ind ~ pair) %>% 
+  mutate(pop = NA) %>% 
+  mutate(pop = ifelse(sr < 0.1 & sp < 0.1, "S. sp1 pure", pop)) %>% 
+  mutate(pop = ifelse(is.na(pop) & sp > 0.9, "S. globulifera Paracou pure", pop)) %>% 
+  mutate(pop = ifelse(is.na(pop) & sr > 0.9, "S. globulifera Regina pure", pop)) %>%
+  mutate(pop = ifelse(is.na(pop) & !is.na(sr) & sr > 0.3, "Admixed S. sp1 - S. globulifera Regina", pop)) %>% 
+  mutate(pop = ifelse(is.na(pop) & !is.na(sr) & sr < 0.3 & sr > sp, "S. sp1 introgressed with S. globulifera Regina", pop)) %>% 
+  mutate(pop = ifelse(is.na(pop) & sp > 0.7, "S. globulifera Paracou introgressed with S. sp1", pop)) %>% 
+  mutate(pop = ifelse(is.na(pop) & sp > 0.1 & sp < 0.7, "Admixed S. globulifera - S. sp1", pop)) %>% 
+  mutate(pop = ifelse(is.na(pop), "S. sp1 pure", pop)) %>% 
+  dplyr::select(-sr, -sp) %>% 
+  write_tsv(file.path(path, "populations", "paracou.hybridmap"))
+```
+
+```{r introgress, fig.cap="Population structure and fraction of the genome inherited from S. sp1 for each individual (hybrid index or admixture coefficient). Population structure assessed with ADMIXTURE is represented with the color bar for each individual, with the percentage of membership to S. sp1 genepools represented by the bar height. The hybdrid index and it's confidence interval is represented by the black line and the white area. The white dashed line indicates levels used to define previous genepools and parental alleles frequencies."}
+hi.index %>% 
+  mutate_at(c("h", "lower", "upper"), ~ifelse(pair == "pr", 1-., .)) %>% 
+  mutate(pair = recode(pair, 
+                       sp = "S. sp1 - S. globulifera type Paracou", 
+                       sr = "S. sp1 - S. globulifera type Regina",
+                       pr = "S. globulifera type Paracou - S. globulifera type Regina")) %>% 
+  left_join(symcapture.admix[[3]] %>% 
+              rownames_to_column(var = "Ind") %>%
+              reshape2::melt(id.vars = "Ind", variable.name = "genepool") %>%
+              mutate(genepool = recode(genepool, Cluster1 = "S. sp1", 
+                                       Cluster2 = "S. globulifera type Paracou", 
+                                       Cluster3 = "S. globulifera type Regina"))) %>%
+  arrange(pair, desc(h)) %>%
+  mutate(order = 1:nrow(.)) %>% 
+  ggplot(aes(reorder(Ind, order), group = NA)) +
+  geom_col(aes(y = value, fill = genepool, col = genepool), position = position_stack(reverse = TRUE)) +
+  geom_hline(yintercept = c(0.1, 0.9), linetype = "dashed", col = "white") +
+  geom_ribbon(aes(ymin = 1 - lower, ymax = 1 - upper), alpha = 0.5, fill = "white") +
+  geom_line(aes(y = 1 - h)) +
+  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank(),
+        axis.title.x = element_blank(), axis.line.x = element_blank()) +
+  scale_fill_manual("Genepool", values =  c("#CD2626", "#1E90FF", "#0000EE")) +
+  scale_color_manual("Genepool", values =  c("#CD2626", "#1E90FF", "#0000EE")) +
+  ylab("H index") +
+  facet_wrap(~ pair, nrow = 3) +
+  theme(legend.position = "bottom") 
+```
