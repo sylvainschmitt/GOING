@@ -6,4 +6,4 @@ The analyses are available as a numeric book at the following link: https://phdp
 
 Have a nice reading.
 
-<div align="right">  *Sylvain*
+<div align="right">  Sylvain Schmitt

@@ -1,0 +1,12 @@
+.Rproj.user/
+.RData
+.Rhistory
+.Rproj.user
+_bookdown_files
+data
+save
+*.rds
+# for the moment
+previous
+images
+cluster

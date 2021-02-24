@@ -1,2 +1,5 @@
+# GOING 0.1.9001
+* pages setup and init
+
 # GOING 0.1.9000 
 * Splitting from PhD project Symcapture to GOING
