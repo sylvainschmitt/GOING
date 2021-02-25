@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 1 Study site &amp; sampling | GOING</title>
+  <title>Chapter 6 Neighbourhood crowding effect on neutral and adaptive genetic variation | GOING</title>
   <meta name="description" content="Genomic of Individual Growth in tropical tree species Symphonia globulifera." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 1 Study site &amp; sampling | GOING" />
+  <meta property="og:title" content="Chapter 6 Neighbourhood crowding effect on neutral and adaptive genetic variation | GOING" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 Study site &amp; sampling | GOING" />
+  <meta name="twitter:title" content="Chapter 6 Neighbourhood crowding effect on neutral and adaptive genetic variation | GOING" />
   
   <meta name="twitter:description" content="Genomic of Individual Growth in tropical tree species Symphonia globulifera." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="introduction.html"/>
-<link rel="next" href="design-of-probes-set.html"/>
+<link rel="prev" href="genetic-species-delimitation.html"/>
+<link rel="next" href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -280,68 +280,464 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="study-site-sampling" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Study site &amp; sampling</h1>
-<div id="study-site" class="section level2">
-<h2><span class="header-section-number">1.1</span> Study site</h2>
-<p>The study was conducted in the Paracou field station, in the coastal forests of French Guiana, South America.
-The site is characterized by an average of 3,041 mm annual rainfall and a mean air temperature of 25.71 °C <span class="citation">(Aguilos <em>et al.</em> <a href="#ref-Aguilos2018" role="doc-biblioref">2018</a>)</span>.
-Old tropical forest with an exceptional richness (i.e. over 750 woody species) grows across the succession of small hills of this area, which rise to 10–40 m a.s.l. <span class="citation">(Gourlet-Fleury <em>et al.</em> <a href="#ref-Gourlet-Fleury2004" role="doc-biblioref">2004</a>)</span>.
-The site comprises 16 permanent plots (fifteen 6.25 ha plus one 25 ha) which have been censused (DBH&gt;10) every 1-2 years for more than 35 years. Nine of the plots were logged and subjected to human-induced disturbance in 1986 <span class="citation">(details on the experiment in Hérault &amp; Piponiot <a href="#ref-Herault2018" role="doc-biblioref">2018</a>)</span>.</p>
+<div id="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> Neighbourhood crowding effect on neutral and adaptive genetic variation</h1>
+<p>We did environmental association analyses <span class="citation">(Rellstab <em>et al.</em> <a href="#ref-Rellstab2015a" role="doc-biblioref">2015</a>)</span> in each complex using general linear mixed models developed for genome wide association studies (GWAS).
+We used mean neighbourhood crowding index <span class="citation">(<span class="math inline">\(NCI\)</span>; Uriarte <em>et al.</em> <a href="#ref-Uriarte2004" role="doc-biblioref">2004</a>)</span> over the last 30 years,
+an indirect measurement of access to light and forest gap dynamics,
+as the response variable and genetic structure (gene pools representing species) and relatedness (kinship matrix) as explanatory variables, as it is common practice <span class="citation">(Rellstab <em>et al.</em> <a href="#ref-Rellstab2015a" role="doc-biblioref">2015</a>)</span>.
+This analysis assumed that the neighbour crowding conditions where individuals have grown above 10-cm DBH are strongly correlated to the individual heritable phenotypes <span class="citation">(e.g. Eckert <em>et al.</em> <a href="#ref-Eckert2010" role="doc-biblioref">2010</a>)</span>.
+The mean neighborhood crowding index <span class="math inline">\(NCI_i\)</span> from tree individual <span class="math inline">\(i\)</span> was calculated as follow:</p>
+<p><span class="math display">\[NCI_i=\overline{\sum_{j|\delta_{i,j}&lt;20m}DBH^2_{j,t}.e^{-\frac14\delta_{i,j}}}\]</span></p>
+<p>with <span class="math inline">\(DBH_{j,t}\)</span> the diameter of the neighbouring tree <span class="math inline">\(j\)</span> in year <span class="math inline">\(t\)</span> and <span class="math inline">\(\delta_{i,j}\)</span> its distance to the individual tree <span class="math inline">\(i\)</span>.
+<span class="math inline">\(NCI_i\)</span> is computed for all neighbours at a distance <span class="math inline">\(\delta_{i,j}\)</span> inferior to the maximum neighbouring distance of 20 meters.
+The power of neighbours <span class="math inline">\(DBH_{j,t}\)</span> effect was set to 2 to represent a surface.
+The decrease of neighbours diameter effect with distance was set to -0.25 to represent trees at 20 meters of the focal trees having 1% of the effect of the same tree at 0 meters.
+<span class="math inline">\(NCI_i\)</span> is computed as the mean of yearly <span class="math inline">\(NCI_{i,t}\)</span> over the last 30 years denoted by the overline.</p>
+<p>We used genetic species and individual kinship in an animal model <span class="citation">(Wilson <em>et al.</em> <a href="#ref-Wilson2010" role="doc-biblioref">2010</a>)</span> to estimate genetic variance associated with neighbour crowding index.
+We used a lognormal likelihood given that distributions of environmental variables were positive and skewed.
+We inferred individual kinship using KING <span class="citation">(Manichaikul <em>et al.</em> <a href="#ref-Manichaikul2010" role="doc-biblioref">2010</a>)</span>, as the method is robust to population structure.
+We set negative kinship values to null as they were confounding with population structure, and we further ensured that the matrix was positive-definite using the <code>nearPD</code> function from the R package <code>Matrix</code>.
+The environment <span class="math inline">\(y_{s,i}\)</span> where individual <span class="math inline">\(i\)</span> in species <span class="math inline">\(s\)</span> grows was inferred with a lognormal distribution with the following formula:</p>
+<p><span class="math display">\[y_{s,i} \sim logN(log(\mu_s.a_{i}),\sigma^2_1)\]</span>
+<span class="math display">\[a_{i} \sim MVlogN_N(log(1),\sigma^2_2.K)\]</span></p>
+<p>where <span class="math inline">\(\mu_s\)</span> is the mean environment of species <span class="math inline">\(s\)</span>, <span class="math inline">\(a_i\)</span> is the breeding value of the individual <span class="math inline">\(i\)</span> and <span class="math inline">\(\sigma^2_1\)</span> is the shape parameter of the lognormal.
+Individual breeding values <span class="math inline">\(a_i\)</span> are defined following a multivariate lognormal law <span class="math inline">\(\mathcal{MVlogN}\)</span> of co-shape matrix defined as the product of the kinship matrix <span class="math inline">\(K\)</span> with estimated individual genotypic variation <span class="math inline">\(\sigma^2_2\)</span>.
+To estimate variances on a normal scale, we log-transformed species fixed effect, genetic additive values, and we calculated conditional and marginal <span class="math inline">\(R^2\)</span> <span class="citation">(Nakagawa &amp; Schielzeth <a href="#ref-Nakagawa2013" role="doc-biblioref">2013</a>)</span>.
+A Bayesian method was used to infer parameters using <code>stan</code> language [<span class="citation">Carpenter <em>et al.</em> (<a href="#ref-Carpenter2017" role="doc-biblioref">2017</a>)</span> and <code>rstan</code> package <span class="citation">(Stan Development Team <a href="#ref-Team2018" role="doc-biblioref">2018</a>)</span> in the R environment <span class="citation">(R Core Team <a href="#ref-RCoreTeam2020" role="doc-biblioref">2020</a>)</span> using the No-U-Turn Sampler alogirthm <span class="citation">(NUTS, Hoffman &amp; Gelman <a href="#ref-Hoffman2014" role="doc-biblioref">2014</a>)</span>, which performs better for estimating genetic parameters and breeding values <span class="citation">(Nishio &amp; Arakawa <a href="#ref-Nishio2019" role="doc-biblioref">2019</a>)</span>.</p>
+<div id="simulated-animal" class="section level2">
+<h2><span class="header-section-number">6.1</span> Simulated animal</h2>
+<p>The aim of this sub-chapter is to explore animal model with generated data to validate their behavior and use it on <em>Symphonia</em> real data.
+Let’s consider a set of <span class="math inline">\(P=3\)</span> populations including each <span class="math inline">\(Fam=3\)</span> families composed of <span class="math inline">\(I = 14\)</span> individuals with arbitrary relationships (it’s only 126 individuals to do quick tests).</p>
+<div class="figure"><span id="fig:simkinship"></span>
+<img src="GOING_files/figure-html/simkinship-1.png" alt="Kinship matrix" width="768" />
+<p class="caption">
+Figure 6.1: Kinship matrix
+</p>
 </div>
-<div id="plant-material" class="section level2">
-<h2><span class="header-section-number">1.2</span> Plant material</h2>
-<p>Four hundred and two individuals of <em>Symphonia globulifera</em> (Clusiaceae) were sampled in 2017 during the dry season (from September to December) in Paracou.
-<em>Symphonia globulifera</em> L.f (Clusiaceae) was previously recognized as composed of two morphotypes in French Guiana <span class="citation">(Sabatier <em>et al.</em> <a href="#ref-Sabatier1997" role="doc-biblioref">1997</a>; Molino &amp; Sabatier <a href="#ref-Molino2001" role="doc-biblioref">2001</a>; Baraloto <em>et al.</em> <a href="#ref-Ferry2007" role="doc-biblioref">2007</a>)</span>.
-<em>S. globulifera sensu stricto</em> and <em>Symphonia sp.1</em> occur in sympatry but in differentiated habitats,
-with <em>S. globulifera</em> preferentially growing in valley bottoms with an acquisitive functional strategy
-and <em>S. sp1</em> preferentially exploiting a variety of drier habitats with a conservative functional strategy <span class="citation">(Schmitt <a href="#ref-Schmitt2020a" role="doc-biblioref">2020</a>, in prep; Allié <em>et al.</em> <a href="#ref-Allie2015" role="doc-biblioref">2015</a>; Schmitt <em>et al.</em> <a href="#ref-Schmitt2020" role="doc-biblioref">2020</a>)</span>.
-<em>Symphonia</em> have been highlighted as a species complex with low (phylo-)genetic species resolution and high levels of plastid DNA sharing among sister species <span class="citation">(Baraloto <em>et al.</em> <a href="#ref-baraloto_using_2012-1" role="doc-biblioref">2012</a>; Gonzalez <em>et al.</em> <a href="#ref-Gonzalez2009" role="doc-biblioref">2009</a>; Torroba-Balmori <em>et al.</em> <a href="#ref-Torroba-Balmori2017" role="doc-biblioref">2017</a>; Caron <em>et al.</em> <a href="#ref-Caron2019" role="doc-biblioref">2019</a>)</span>.
-In addition, outgroups for genetic analysis in <em>Symphonia</em> were comprised of 13 individuals of <em>Symphonia globulifera</em> from Africa (Sao Tome, Gabon, Cameroun, Congo, Benin, Liberia, Ivory Coast, and Ghana), seven <em>Symphonia globulifera</em> from South America (Brazil, Costa Rica and Panama), two <em>Symphonia nectarifera</em> Jum. &amp; H. Perrier from Madagascar, two <em>Symphonia urophylla</em> (Decne. ex Planch. &amp; Triana) Benth. &amp; Hook.f. ex Vesque from Madagascar, five <em>Pentadesma butyracea</em> Sabine from Benin and Cameroon and one <em>Pentadesma grandifolia</em> Baker f. from Cameroon.
-Leaves were collected from the 432 individuals (402 + 30 outgroups) and dessicated using silica gel.</p>
+<p>We used the following animal model with a lognormal distribution to estimate population and genotypic variance:</p>
+<p><span class="math display" id="eq:animallogth">\[\begin{equation} 
+  y_{p,i} \sim \mathcal{logN}(log(\mu_p.a_{i}),\sigma_1) \\
+  a_{p,i} \sim \mathcal{MVlogN_N}(log(1),\sigma_2.K)
+  \tag{6.1}
+\end{equation}\]</span></p>
+<p>We fitted the equivalent model with following priors:</p>
+<p><span class="math display" id="eq:animallogthstan">\[\begin{equation} 
+  y_{p,i} \sim \mathcal{logN}(log(\mu_p.\hat{a_{i}}), \sigma_1) \\ 
+  \hat{a_{i}} = e^{\sqrt{V_G}.A.\epsilon_i} \\
+  \epsilon_i \sim \mathcal{N}(0,1) \\ 
+  ~ \\
+  \mu_p \sim \mathcal{logN}(log(1),1) \\  
+  \sigma_1 \sim \mathcal N_T(0,1) \\ 
+  ~ \\
+  V_Y = Var(log(y)) \\
+  V_P = Var(log(\mu_p)) \\
+  V_R=\sigma_1^2 \\
+  V_G = V_Y - V_P - V_R \\
+  \tag{6.2}
+\end{equation}\]</span></p>
+<table>
+<caption>
+<span id="tab:animalTable">Table 6.1: </span>Animal model fitted versus expected values.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Parameter
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Expected
+</th>
+<th style="text-align:right;">
+Standard error
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(\hat R\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+mu[1]
+</td>
+<td style="text-align:right;">
+0.7484767
+</td>
+<td style="text-align:right;">
+0.7357714
+</td>
+<td style="text-align:right;">
+0.0535640
+</td>
+<td style="text-align:right;">
+1.0054690
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mu[2]
+</td>
+<td style="text-align:right;">
+0.3968538
+</td>
+<td style="text-align:right;">
+0.3633681
+</td>
+<td style="text-align:right;">
+0.0308554
+</td>
+<td style="text-align:right;">
+1.0010121
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mu[3]
+</td>
+<td style="text-align:right;">
+0.5184509
+</td>
+<td style="text-align:right;">
+0.5420625
+</td>
+<td style="text-align:right;">
+0.0469693
+</td>
+<td style="text-align:right;">
+1.0023625
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Vp
+</td>
+<td style="text-align:right;">
+0.0711053
+</td>
+<td style="text-align:right;">
+0.0841187
+</td>
+<td style="text-align:right;">
+0.0151127
+</td>
+<td style="text-align:right;">
+1.0011662
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Vg
+</td>
+<td style="text-align:right;">
+0.0772814
+</td>
+<td style="text-align:right;">
+0.0837454
+</td>
+<td style="text-align:right;">
+0.0223466
+</td>
+<td style="text-align:right;">
+1.0014673
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Vr
+</td>
+<td style="text-align:right;">
+0.0385718
+</td>
+<td style="text-align:right;">
+0.0400000
+</td>
+<td style="text-align:right;">
+0.0145103
+</td>
+<td style="text-align:right;">
+0.9997977
+</td>
+</tr>
+</tbody>
+</table>
+<div class="figure"><span id="fig:animalTrace"></span>
+<img src="GOING_files/figure-html/animalTrace-1.png" alt="Parameters for Animal model traceplot and expected value in red." width="768" />
+<p class="caption">
+Figure 6.2: Parameters for Animal model traceplot and expected value in red.
+</p>
+</div>
+</div>
+<div id="neighbourhood-crowding-index" class="section level2">
+<h2><span class="header-section-number">6.2</span> Neighbourhood crowding index</h2>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-1"></a>trees &lt;-<span class="st"> </span><span class="kw">src_sqlite</span>(<span class="kw">file.path</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;Paracou&quot;</span>,<span class="st">&quot;trees&quot;</span>, <span class="st">&quot;Paracou.sqlite&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-2"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-2"></a><span class="st">  </span><span class="kw">tbl</span>(<span class="st">&quot;Paracou&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-3"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-3"></a><span class="st">  </span><span class="kw">filter</span>(Genus <span class="op">==</span><span class="st"> &quot;Symphonia&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-4"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-4"></a><span class="st">  </span><span class="kw">filter</span>(CensusYear <span class="op">==</span><span class="st"> </span><span class="dv">2015</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-5"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-5"></a><span class="st">  </span><span class="kw">collect</span>()</span>
+<span id="cb84-6"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-6"></a>trees &lt;-<span class="st"> </span><span class="kw">read_tsv</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;..&quot;</span>, <span class="st">&quot;variantCalling&quot;</span>, <span class="st">&quot;paracou3pop&quot;</span>,</span>
+<span id="cb84-7"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-7"></a>                                                  <span class="st">&quot;symcapture.all.biallelic.snp.filtered.nonmissing.paracou3pop.fam&quot;</span>),</span>
+<span id="cb84-8"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-8"></a>         <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;FID&quot;</span>, <span class="st">&quot;IID&quot;</span>, <span class="st">&quot;FIID&quot;</span>, <span class="st">&quot;MIID&quot;</span>, <span class="st">&quot;sex&quot;</span>, <span class="st">&quot;phenotype&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-9"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-9"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Ind =</span> <span class="kw">gsub</span>(<span class="st">&quot;.g.vcf&quot;</span>, <span class="st">&quot;&quot;</span>, IID)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-10"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-10"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">X =</span> <span class="kw">gsub</span>(<span class="st">&quot;P&quot;</span>, <span class="st">&quot;&quot;</span>, Ind)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-11"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-11"></a><span class="st">  </span><span class="kw">separate</span>(X, <span class="kw">c</span>(<span class="st">&quot;Plot&quot;</span>, <span class="st">&quot;SubPlot&quot;</span>, <span class="st">&quot;TreeFieldNum&quot;</span>), <span class="dt">convert =</span> T) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-12"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-12"></a><span class="st">  </span><span class="kw">left_join</span>(trees) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-13"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-13"></a><span class="st">  </span><span class="kw">left_join</span>(<span class="kw">read_tsv</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;bayescenv&quot;</span>, <span class="st">&quot;paracou3pop.popmap&quot;</span>),</span>
+<span id="cb84-14"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-14"></a>                     <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;IID&quot;</span>, <span class="st">&quot;pop&quot;</span>)))</span>
+<span id="cb84-15"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-15"></a>cl &lt;-<span class="st"> </span>parallel<span class="op">::</span><span class="kw">makeCluster</span>(<span class="kw">getOption</span>(<span class="st">&quot;cl.cores&quot;</span>, <span class="dv">4</span>))</span>
+<span id="cb84-16"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-16"></a>parallel<span class="op">::</span><span class="kw">clusterExport</span>(cl, <span class="kw">list</span>(<span class="st">&quot;trees&quot;</span>))</span>
+<span id="cb84-17"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-17"></a>NC &lt;-<span class="st"> </span>parallel<span class="op">::</span><span class="kw">parLapply</span>(cl, <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(trees), <span class="cf">function</span>(ind){</span>
+<span id="cb84-18"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-18"></a>  <span class="kw">library</span>(tidyverse)</span>
+<span id="cb84-19"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-19"></a>  <span class="kw">src_sqlite</span>(<span class="kw">file.path</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;Paracou&quot;</span>, <span class="st">&quot;trees&quot;</span>, <span class="st">&quot;Paracou.sqlite&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-20"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-20"></a><span class="st">    </span><span class="kw">tbl</span>(<span class="st">&quot;Paracou&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-21"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-21"></a><span class="st">    </span><span class="kw">filter</span>(Plot <span class="op">==</span><span class="st"> </span><span class="kw">local</span>(trees<span class="op">$</span>Plot[ind])) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-22"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-22"></a><span class="st">    </span><span class="kw">filter</span>(idTree <span class="op">!=</span><span class="st"> </span><span class="kw">local</span>(trees<span class="op">$</span>idTree[ind])) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-23"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-23"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">dij =</span> <span class="kw">sqrt</span>((<span class="kw">local</span>(trees<span class="op">$</span>Xutm[ind]) <span class="op">-</span><span class="st"> </span>Xutm)<span class="op">^</span><span class="dv">2</span><span class="op">+</span>(<span class="kw">local</span>(trees<span class="op">$</span>Yutm[ind]) <span class="op">-</span><span class="st"> </span>Yutm)<span class="op">^</span><span class="dv">2</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-24"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-24"></a><span class="st">    </span><span class="kw">filter</span>(dij <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-25"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-25"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">con =</span> <span class="kw">ifelse</span>(Genus <span class="op">==</span><span class="st"> </span><span class="kw">local</span>(trees<span class="op">$</span>Genus[ind]) <span class="op">&amp;&amp;</span><span class="st"> </span>Species <span class="op">==</span><span class="st"> </span><span class="kw">local</span>(trees<span class="op">$</span>Species[ind]), <span class="dv">1</span>, <span class="dv">0</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-26"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-26"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">DBH =</span> CircCorr<span class="op">/</span>pi) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-27"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-27"></a><span class="st">    </span><span class="kw">collect</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-28"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-28"></a><span class="st">    </span><span class="kw">group_by</span>(CensusYear) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-29"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-29"></a><span class="st">    </span><span class="kw">summarise</span>(<span class="dt">NCI =</span> <span class="kw">sum</span>(DBH<span class="op">*</span>DBH<span class="op">*</span><span class="kw">exp</span>(<span class="op">-</span><span class="fl">0.25</span><span class="op">*</span>dij))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-30"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-30"></a><span class="st">    </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-31"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-31"></a><span class="st">    </span><span class="kw">summarise</span>(<span class="dt">idTree =</span> <span class="kw">local</span>(trees<span class="op">$</span>idTree[ind]),</span>
+<span id="cb84-32"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-32"></a>              <span class="dt">NCI =</span> <span class="kw">mean</span>(NCI))})</span>
+<span id="cb84-33"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-33"></a>parallel<span class="op">::</span><span class="kw">stopCluster</span>(cl) ; <span class="kw">rm</span>(cl)</span>
+<span id="cb84-34"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-34"></a>NC &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(NC)</span>
+<span id="cb84-35"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-35"></a>trees &lt;-<span class="st"> </span><span class="kw">left_join</span>(trees, NC) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-36"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-36"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(IID, Ind, pop, NCI)</span>
+<span id="cb84-37"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-37"></a><span class="kw">rm</span>(NC)</span>
+<span id="cb84-38"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#cb84-38"></a><span class="kw">write_tsv</span>(trees, <span class="dt">file =</span> <span class="st">&quot;save/NCI.tsv&quot;</span>)</span></code></pre></div>
+</div>
+<div id="genetic-variance" class="section level2">
+<h2><span class="header-section-number">6.3</span> Genetic variance</h2>
+<p>We used between individual kinship and a lognormal Animal model <span class="citation">(Wilson <em>et al.</em> <a href="#ref-Wilson2010" role="doc-biblioref">2010</a>)</span> to estimate genetic variance associated to individuals global phenotype leaving in a given environment <span class="citation">(see environmental association analyses with genome wide assocaition study analyses in Rellstab <em>et al.</em> <a href="#ref-Rellstab2015a" role="doc-biblioref">2015</a>)</span>.
+Animal model is calculated for the environmental values <span class="math inline">\(y\)</span> of the <span class="math inline">\(N\)</span> individuals with following formula:</p>
+<p><span class="math display" id="eq:animalenv">\[\begin{equation} 
+  y_{p,i} \sim \mathcal{logN}(log(a_{p,i}),\sigma_1) \\
+  a_{p,i} \sim \mathcal{MVlogN_N}(log(\mu_p),\sigma_2.K)
+  \tag{6.3}
+\end{equation}\]</span></p>
+<p>where individual is defined as a normal law centered on the individual genetic additive effects <span class="math inline">\(a\)</span> and associated individual remaining variance <span class="math inline">\(\sigma_R\)</span>. Additive genetic variance <span class="math inline">\(a\)</span> follow a multivariate lognormal law centered on the population mean <span class="math inline">\(\mu_{Population}\)</span> of covariance <span class="math inline">\(\sigma_G K\)</span>.</p>
+<p>We fitted the equivalent model with following priors:</p>
+<p><span class="math display" id="eq:animalenvstan">\[\begin{equation} 
+  y_{p,i} \sim \mathcal{logN}(log(\mu_p) + \hat{\sigma_2}.A.\epsilon_i, \sigma_1) \\ 
+  \epsilon_i \sim \mathcal{N}(0,1) \\ 
+  ~ \\
+  \mu_p \sim \mathcal{logN}(log(1),1) \\  
+  \sigma_1 \sim \mathcal N_T(0,1) \\ 
+  \hat{\sigma_2} = \sqrt(V_G)
+  ~ \\
+  V_Y = Var(log(y)) \\
+  V_P = Var(log(\mu_p)) \\
+  V_G = V_Y - V_P - V_R \\
+  V_R=\sigma_1^2
+  \tag{6.4}
+\end{equation}\]</span></p>
+<table>
+<caption>
+<span id="tab:envGenoTab">Table 6.2: </span>Summary table of the kinship growth model
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+Parameter
+</th>
+<th style="text-align:left;">
+Population
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(\sigma\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(\hat{R}\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+NCI
+</td>
+<td style="text-align:left;">
+mu
+</td>
+<td style="text-align:left;">
+S. globulifera Paracou
+</td>
+<td style="text-align:right;">
+0.7880048
+</td>
+<td style="text-align:right;">
+0.0305778
+</td>
+<td style="text-align:right;">
+0.9997771
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NCI
+</td>
+<td style="text-align:left;">
+mu
+</td>
+<td style="text-align:left;">
+S. globulifera Regina
+</td>
+<td style="text-align:right;">
+0.9443492
+</td>
+<td style="text-align:right;">
+0.0643210
+</td>
+<td style="text-align:right;">
+1.0003822
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NCI
+</td>
+<td style="text-align:left;">
+mu
+</td>
+<td style="text-align:left;">
+S. sp1
+</td>
+<td style="text-align:right;">
+0.9426952
+</td>
+<td style="text-align:right;">
+0.0290419
+</td>
+<td style="text-align:right;">
+1.0012267
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NCI
+</td>
+<td style="text-align:left;">
+Vp
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.0071862
+</td>
+<td style="text-align:right;">
+0.0033377
+</td>
+<td style="text-align:right;">
+1.0004033
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NCI
+</td>
+<td style="text-align:left;">
+Vg
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.0210950
+</td>
+<td style="text-align:right;">
+0.0193455
+</td>
+<td style="text-align:right;">
+1.0640539
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NCI
+</td>
+<td style="text-align:left;">
+Vr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.0922548
+</td>
+<td style="text-align:right;">
+0.0193773
+</td>
+<td style="text-align:right;">
+1.0615180
+</td>
+</tr>
+</tbody>
+</table>
+<div class="figure"><span id="fig:envGenoTrace"></span>
+<img src="GOING_files/figure-html/envGenoTrace-1.png" alt="Traceplot for environmental variables." width="768" />
+<p class="caption">
+Figure 6.3: Traceplot for environmental variables.
+</p>
+</div>
+<div class="figure"><span id="fig:envgenoR2"></span>
+<img src="GOING_files/figure-html/envgenoR2-1.png" alt="R2 for environmental variable" width="768" />
+<p class="caption">
+Figure 6.4: R2 for environmental variable
+</p>
+</div>
+<div class="figure"><span id="fig:envGenoVarPart"></span>
+<img src="GOING_files/figure-html/envGenoVarPart-1.png" alt="Genetic variance partitionning for environmental variables." width="768" />
+<p class="caption">
+Figure 6.5: Genetic variance partitionning for environmental variables.
+</p>
+</div>
 
 </div>
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
-<div id="ref-Aguilos2018">
-<p>Aguilos, M., Stahl, C., Burban, B., Hérault, B., Courtois, E., Coste, S., Wagner, F., Ziegler, C., Takagi, K. &amp; Bonal, D. (2018). Interannual and Seasonal Variations in Ecosystem Transpiration and Water Use Efficiency in a Tropical Rainforest. <em>Forests</em>, <strong>10</strong>, 14. Retrieved from <a href="http://www.mdpi.com/1999-4907/10/1/14">http://www.mdpi.com/1999-4907/10/1/14</a></p>
+<div id="ref-Carpenter2017">
+<p>Carpenter, B., Gelman, A., Hoffman, M.D., Lee, D., Goodrich, B., Betancourt, M., Brubaker, M., Guo, J., Li, P. &amp; Riddell, A. (2017). Stan : A Probabilistic Programming Language. <em>Journal of Statistical Software</em>, <strong>76</strong>. Retrieved from <a href="http://www.jstatsoft.org/v76/i01/">http://www.jstatsoft.org/v76/i01/</a></p>
 </div>
-<div id="ref-Allie2015">
-<p>Allié, E., Pélissier, R., Engel, J., Petronelli, P., Freycon, V., Deblauwe, V., Soucémarianadin, L., Weigel, J. &amp; Baraloto, C. (2015). Pervasive local-scale tree-soil habitat association in a tropical forest community. <em>PLoS ONE</em>, <strong>10</strong>, e0141488. Retrieved from <a href="http://dx.plos.org/10.1371/journal.pone.0141488">http://dx.plos.org/10.1371/journal.pone.0141488</a></p>
+<div id="ref-Eckert2010">
+<p>Eckert, A.J., Van Heerwaarden, J., Wegrzyn, J.L., Nelson, C.D., Ross-Ibarra, J., González-Martínez, S.C. &amp; Neale, D.B. (2010). Patterns of population structure and environmental associations to aridity across the range of loblolly pine (Pinus taeda L., Pinaceae). <em>Genetics</em>, <strong>185</strong>, 969–982.</p>
 </div>
-<div id="ref-baraloto_using_2012-1">
-<p>Baraloto, C., Hardy, O.J., Paine, C.E.T., Dexter, K.G., Cruaud, C., Dunning, L.T., Gonzalez, M.-A., Molino, J.-F., Sabatier, D., Savolainen, V. &amp; Chave, J. (2012). Using functional traits and phylogenetic trees to examine the assembly of tropical tree communities. <em>Journal of Ecology</em>, <strong>100</strong>, 690–701. Retrieved from <a href="http://onlinelibrary.wiley.com/doi/10.1111/j.1365-2745.2012.01966.x/abstract">http://onlinelibrary.wiley.com/doi/10.1111/j.1365-2745.2012.01966.x/abstract</a></p>
+<div id="ref-Hoffman2014">
+<p>Hoffman, M.D. &amp; Gelman, A. (2014). The no-U-turn sampler: Adaptively setting path lengths in Hamiltonian Monte Carlo. <em>Journal of Machine Learning Research</em>, <strong>15</strong>, 1593–1623. Retrieved from <a href="http://arxiv.org/abs/1111.4246">http://arxiv.org/abs/1111.4246</a></p>
 </div>
-<div id="ref-Ferry2007">
-<p>Baraloto, C., Morneau, F., Bonal, D., Blanc, L. &amp; Ferry, B. (2007). Seasonal water stress tolerance and habitat associations within four Neotropical tree genera. <em>Ecology</em>, <strong>88</strong>, 478–489.</p>
+<div id="ref-Manichaikul2010">
+<p>Manichaikul, A., Mychaleckyj, J.C., Rich, S.S., Daly, K., Sale, M. &amp; Chen, W.M. (2010). Robust relationship inference in genome-wide association studies. <em>Bioinformatics</em>, <strong>26</strong>, 2867–2873.</p>
 </div>
-<div id="ref-Caron2019">
-<p>Caron, H., Molino, J., Sabatier, D., Léger, P., Chaumeil, P., Scotti-Saintagne, C., Frigério, J., Scotti, I., Franc, A. &amp; Petit, R.J. (2019). Chloroplast DNA variation in a hyperdiverse tropical tree community. <em>Ecology and Evolution</em>, <strong>9</strong>, ece3.5096. Retrieved from <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/ece3.5096">https://onlinelibrary.wiley.com/doi/abs/10.1002/ece3.5096</a></p>
+<div id="ref-Nakagawa2013">
+<p>Nakagawa, S. &amp; Schielzeth, H. (2013). A general and simple method for obtaining R2 from generalized linear mixed-effects models. <em>Methods in Ecology and Evolution</em>, <strong>4</strong>, 133–142.</p>
 </div>
-<div id="ref-Gonzalez2009">
-<p>Gonzalez, M.A., Baraloto, C., Engel, J., Mori, S.A., Pétronelli, P., Riéra, B., Roger, A., Thébaud, C. &amp; Chave, J. (2009). Identification of amazonian trees with DNA barcodes. <em>PLoS ONE</em>, <strong>4</strong>, e7483. Retrieved from <a href="http://dx.plos.org/10.1371/journal.pone.0007483">http://dx.plos.org/10.1371/journal.pone.0007483</a></p>
+<div id="ref-Nishio2019">
+<p>Nishio, M. &amp; Arakawa, A. (2019). Performance of Hamiltonian Monte Carlo and No-U-Turn Sampler for estimating genetic parameters and breeding values. <em>Genetics Selection Evolution</em>, <strong>51</strong>, 1–12. Retrieved from <a href="https://doi.org/10.1186/s12711-019-0515-1">https://doi.org/10.1186/s12711-019-0515-1</a></p>
 </div>
-<div id="ref-Gourlet-Fleury2004">
-<p>Gourlet-Fleury, S., Guehl, J.-M. &amp; Laroussine, O. (2004). <em>Ecology and management of a neotropical rainforest : lessons drawn from Paracou, a long-term experimental research site in French Guiana Ecology and management of a neotropical rainforest : lessons drawn from Paracou, a long-term experimental research sit</em>. Paris: Elsevier. Retrieved from <a href="http://agritrop.cirad.fr/522004/">http://agritrop.cirad.fr/522004/</a></p>
+<div id="ref-RCoreTeam2020">
+<p>R Core Team. (2020). R: A Language and Environment for Statistical Computing. </p>
 </div>
-<div id="ref-Herault2018">
-<p>Hérault, B. &amp; Piponiot, C. (2018). Key drivers of ecosystem recovery after disturbance in a neotropical forest. <em>Forest Ecosystems</em>, <strong>5</strong>, 2. Retrieved from <a href="https://forestecosyst.springeropen.com/articles/10.1186/s40663-017-0126-7">https://forestecosyst.springeropen.com/articles/10.1186/s40663-017-0126-7</a></p>
+<div id="ref-Rellstab2015a">
+<p>Rellstab, C., Gugerli, F., Eckert, A.J., Hancock, A.M. &amp; Holderegger, R. (2015). A practical guide to environmental association analysis in landscape genomics. <strong>24</strong>, 4348–4370. Retrieved from <a href="http://doi.wiley.com/10.1111/mec.13322">http://doi.wiley.com/10.1111/mec.13322</a></p>
 </div>
-<div id="ref-Molino2001">
-<p>Molino, J.-F. &amp; Sabatier, D. (2001). Tree Diversity in Tropical Rain Forests: A Validation of the Intermediate Disturbance Hypothesis. <em>Science</em>, <strong>294</strong>, 1702–1704. Retrieved from <a href="http://science.sciencemag.org/content/294/5547/1702%20http://www.sciencemag.org/cgi/doi/10.1126/science.1060284">http://science.sciencemag.org/content/294/5547/1702 http://www.sciencemag.org/cgi/doi/10.1126/science.1060284</a></p>
+<div id="ref-Team2018">
+<p>Stan Development Team. (2018). Rstan: the R interface to Stan. Retrieved from <a href="http://mc-stan.org/">http://mc-stan.org/</a></p>
 </div>
-<div id="ref-Sabatier1997">
-<p>Sabatier, D., Grimaldi, M., Prévost, M.F., Guillaume, J., Godron, M., Dosso, M. &amp; Curmi, P. (1997). The influence of soil cover organization on the floristic and structural heterogeneity of a Guianan rain forest. <em>Plant Ecology</em>, <strong>131</strong>, 81–108.</p>
+<div id="ref-Uriarte2004">
+<p>Uriarte, M., Condit, R., Canham, C.D. &amp; Hubbell, S.P. (2004). A spatially explicit model of sapling growth in a tropical forest: Does the identity of neighbours matter? <em>Journal of Ecology</em>, <strong>92</strong>, 348–360. Retrieved from <a href="http://doi.wiley.com/10.1111/j.0022-0477.2004.00867.x">http://doi.wiley.com/10.1111/j.0022-0477.2004.00867.x</a></p>
 </div>
-<div id="ref-Schmitt2020a">
-<p>Schmitt, S. (2020). <em>Génomique écologique de l’exploitation de niche et de la performance individuelle chez les arbres forestiers tropicaux</em>. PhD thesis, University of Bordeaux. Retrieved from <a href="https://phdthesissylvainschmitt.netlify.app/">https://phdthesissylvainschmitt.netlify.app/</a></p>
-</div>
-<div id="ref-Schmitt2020">
-<p>Schmitt, S., Hérault, B., Ducouret, É., Baranger, A., Tysklind, N., Heuertz, M., Marcon, É., Cazal, S.O. &amp; Derroire, G. (2020). Topography consistently drives intra- and inter-specific leaf trait variation within tree species complexes in a Neotropical forest. <em>Oikos</em>, <strong>129</strong>, 1521–1530. Retrieved from <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/oik.07488%20https://onlinelibrary.wiley.com/doi/10.1111/oik.07488">https://onlinelibrary.wiley.com/doi/abs/10.1111/oik.07488 https://onlinelibrary.wiley.com/doi/10.1111/oik.07488</a></p>
-</div>
-<div id="ref-Torroba-Balmori2017">
-<p>Torroba-Balmori, P., Budde, K.B., Heer, K., González-Martínez, S.C., Olsson, S., Scotti-Saintagne, C., Casalis, M., Sonké, B., Dick, C.W. &amp; Heuertz, M. (2017). Altitudinal gradients, biogeographic history and microhabitat adaptation affect fine-scale spatial genetic structure in African and Neotropical populations of an ancient tropical tree species. <em>PLOS ONE</em>, <strong>12</strong>, e0182515. Retrieved from <a href="http://dx.plos.org/10.1371/journal.pone.0182515">http://dx.plos.org/10.1371/journal.pone.0182515</a></p>
+<div id="ref-Wilson2010">
+<p>Wilson, A.J., Réale, D., Clements, M.N., Morrissey, M.M., Postma, E., Walling, C.A., Kruuk, L.E.B. &amp; Nussey, D.H. (2010). An ecologist’s guide to the animal model. <em>Journal of Animal Ecology</em>, <strong>79</strong>, 13–26. Retrieved from <a href="https://pdfs.semanticscholar.org/931b/921e07dc932e3f34e78bc3ca5a7bfe472e04.pdf">https://pdfs.semanticscholar.org/931b/921e07dc932e3f34e78bc3ca5a7bfe472e04.pdf</a></p>
 </div>
 </div>
 <div id="disqus_thread"></div>
@@ -369,8 +765,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="design-of-probes-set.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="genetic-species-delimitation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

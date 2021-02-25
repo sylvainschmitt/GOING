@@ -1,6 +1,6 @@
 --- 
 title: "GOING"
-subtitle: "Genomic of Individual Growth"
+subtitle: "Genomics of Individual Growth"
 author: "Sylvain Schmitt"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -15,7 +15,7 @@ description: "Genomic of Individual Growth in tropical tree species *Symphonia g
 
 # Preface {-}
 
-This numeric book support all the analyses of the GOING project on the Genomic of Individual Growth in tropical tree species *Symphonia globulifera*.
+This numeric book support all the analyses of the GOING project on the Genomics of Individual Growth in tropical tree species *Symphonia globulifera*.
 
 
 Have a nice reading.

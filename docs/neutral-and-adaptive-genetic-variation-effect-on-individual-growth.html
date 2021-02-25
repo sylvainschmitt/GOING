@@ -24,14 +24,14 @@
 <meta name="author" content="Sylvain Schmitt" />
 
 
-<meta name="date" content="2021-02-24" />
+<meta name="date" content="2021-02-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"/>
+<link rel="prev" href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"/>
 <link rel="next" href="references.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -250,12 +250,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3" data-path="genetic-species-delimitation.html"><a href="genetic-species-delimitation.html#spatial-auto-correlation"><i class="fa fa-check"></i><b>5.3</b> Spatial auto-correlation</a></li>
 <li class="chapter" data-level="5.4" data-path="genetic-species-delimitation.html"><a href="genetic-species-delimitation.html#introgression"><i class="fa fa-check"></i><b>5.4</b> Introgression</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><i class="fa fa-check"></i><b>6</b> Neighbour crowding effect on neutral and adaptive genetic variation</a><ul>
-<li class="chapter" data-level="6.1" data-path="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#simulated-animal"><i class="fa fa-check"></i><b>6.1</b> Simulated animal</a></li>
-<li class="chapter" data-level="6.2" data-path="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#neighbour-crowding-index"><i class="fa fa-check"></i><b>6.2</b> Neighbour crowding index</a></li>
-<li class="chapter" data-level="6.3" data-path="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#genetic-variance"><i class="fa fa-check"></i><b>6.3</b> Genetic variance</a></li>
+<li class="chapter" data-level="6" data-path="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><i class="fa fa-check"></i><b>6</b> Neighbourhood crowding effect on neutral and adaptive genetic variation</a><ul>
+<li class="chapter" data-level="6.1" data-path="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#simulated-animal"><i class="fa fa-check"></i><b>6.1</b> Simulated animal</a></li>
+<li class="chapter" data-level="6.2" data-path="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#neighbourhood-crowding-index"><i class="fa fa-check"></i><b>6.2</b> Neighbourhood crowding index</a></li>
+<li class="chapter" data-level="6.3" data-path="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#genetic-variance"><i class="fa fa-check"></i><b>6.3</b> Genetic variance</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><i class="fa fa-check"></i><b>7</b> Neutral and adaptive genetic variation effect on individual growth</a></li>
+<li class="chapter" data-level="7" data-path="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><i class="fa fa-check"></i><b>7</b> Neutral and adaptive genetic variation effect on individual growth</a><ul>
+<li class="chapter" data-level="7.1" data-path="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#growth-data"><i class="fa fa-check"></i><b>7.1</b> Growth data</a></li>
+<li class="chapter" data-level="7.2" data-path="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#genetic-variance-1"><i class="fa fa-check"></i><b>7.2</b> Genetic variance</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/sylvainschmitt/GOING" target="blank">Source</a></li>
@@ -300,7 +303,308 @@ with a co-shape matrix defined as the product of the kinship matrix <span class=
 To estimate variances on a normal-scale, we log-transformed population fixed effect, genetic additive values,
 and calculated conditional and marginal <span class="math inline">\(R^2\)</span> <span class="citation">(Nakagawa &amp; Schielzeth <a href="#ref-Nakagawa2013" role="doc-biblioref">2013</a>)</span>.
 We used Bayesian inference with No-U-Turn Sampler <span class="citation">(NUTS, Hoffman &amp; Gelman <a href="#ref-Hoffman2014" role="doc-biblioref">2014</a>)</span> using <code>stan</code> language <span class="citation">(Carpenter <em>et al.</em> <a href="#ref-Carpenter2017" role="doc-biblioref">2017</a>)</span>.</p>
+<div id="growth-data" class="section level2">
+<h2><span class="header-section-number">7.1</span> Growth data</h2>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-1"></a>trees &lt;-<span class="st"> </span><span class="kw">src_sqlite</span>(<span class="kw">file.path</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;Paracou&quot;</span>,<span class="st">&quot;trees&quot;</span>, <span class="st">&quot;Paracou.sqlite&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb85-2"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-2"></a><span class="st">  </span><span class="kw">tbl</span>(<span class="st">&quot;Paracou&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb85-3"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-3"></a><span class="st">  </span><span class="kw">filter</span>(Genus <span class="op">==</span><span class="st"> &quot;Symphonia&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb85-4"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">DBH =</span> CircCorr<span class="op">/</span>pi) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb85-5"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-5"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>(CodeMeas <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb85-6"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-6"></a><span class="st">  </span><span class="kw">collect</span>()</span>
+<span id="cb85-7"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-7"></a>trees &lt;-<span class="st"> </span><span class="kw">read_tsv</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;..&quot;</span>, <span class="st">&quot;variantCalling&quot;</span>, <span class="st">&quot;paracou&quot;</span>,</span>
+<span id="cb85-8"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-8"></a>                          <span class="st">&quot;symcapture.all.biallelic.snp.filtered.nonmissing.paracou.fam&quot;</span>),</span>
+<span id="cb85-9"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-9"></a>         <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;FID&quot;</span>, <span class="st">&quot;IID&quot;</span>, <span class="st">&quot;FIID&quot;</span>, <span class="st">&quot;MIID&quot;</span>, <span class="st">&quot;sex&quot;</span>, <span class="st">&quot;phenotype&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb85-10"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-10"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Ind =</span> <span class="kw">gsub</span>(<span class="st">&quot;.g.vcf&quot;</span>, <span class="st">&quot;&quot;</span>, IID)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb85-11"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-11"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">X =</span> <span class="kw">gsub</span>(<span class="st">&quot;P&quot;</span>, <span class="st">&quot;&quot;</span>, Ind)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb85-12"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-12"></a><span class="st">  </span><span class="kw">separate</span>(X, <span class="kw">c</span>(<span class="st">&quot;Plot&quot;</span>, <span class="st">&quot;SubPlot&quot;</span>, <span class="st">&quot;TreeFieldNum&quot;</span>), <span class="dt">convert =</span> T) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb85-13"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-13"></a><span class="st">  </span><span class="kw">left_join</span>(trees) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb85-14"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-14"></a><span class="st">  </span><span class="kw">left_join</span>(<span class="kw">read_tsv</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;bayescenv&quot;</span>, <span class="st">&quot;paracou3pop.popmap&quot;</span>),</span>
+<span id="cb85-15"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-15"></a>                     <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;IID&quot;</span>, <span class="st">&quot;pop&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb85-16"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-16"></a><span class="st">  </span><span class="kw">left_join</span>(<span class="kw">read_tsv</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;populations&quot;</span>, <span class="st">&quot;paracou.hybridmap&quot;</span>)),</span>
+<span id="cb85-17"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-17"></a>            <span class="dt">by =</span> <span class="st">&quot;Ind&quot;</span>, <span class="dt">suffix =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;.hybrid&quot;</span>))</span>
+<span id="cb85-18"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-18"></a>trees &lt;-<span class="st"> </span>trees <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb85-19"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-19"></a><span class="st">  </span><span class="kw">group_by</span>(Ind) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb85-20"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-20"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Y0 =</span> dplyr<span class="op">::</span><span class="kw">first</span>(CensusYear), <span class="dt">DBH0 =</span> dplyr<span class="op">::</span><span class="kw">first</span>(DBH), </span>
+<span id="cb85-21"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-21"></a>         <span class="dt">DBHtoday =</span> dplyr<span class="op">::</span><span class="kw">last</span>(DBH), <span class="dt">N =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st">  </span></span>
+<span id="cb85-22"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-22"></a><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb85-23"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-23"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(Ind, Xutm, Yutm, IID, pop, Y0, DBH0, DBHtoday, N) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb85-24"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-24"></a><span class="st">  </span><span class="kw">unique</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb85-25"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-25"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">DBHtoday =</span> <span class="kw">ifelse</span>(DBHtoday <span class="op">==</span><span class="st"> </span>DBH0, DBHtoday <span class="op">+</span><span class="st"> </span><span class="fl">0.1</span>, DBHtoday))</span>
+<span id="cb85-26"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-26"></a><span class="kw">write_tsv</span>(trees, <span class="dt">file =</span> <span class="st">&quot;save/Growth.tsv&quot;</span>)</span></code></pre></div>
+</div>
+<div id="genetic-variance-1" class="section level2">
+<h2><span class="header-section-number">7.2</span> Genetic variance</h2>
+<p>We used the following growth model with a lognormal distribution to estimate individual growth potential and associated genotypic variation:</p>
+<p><span class="math display" id="eq:gmaxgeno">\[\begin{equation} 
+  DBH_{y=today,p,i}  - DBH_{y=y0,p,i} \sim \\
+  \mathcal{logN} (log(\sum _{y=y_0} ^{y=today} \theta_{1,p,i}.exp(-\frac12.[\frac{log(\frac{DBH_{y,p,i}}{100.\theta_{2,p}})}{\theta_{3,p}}]^2)), \sigma_1) \\ 
+  \theta_{1,p,i} \sim \mathcal {logN}(log(\theta_{1,p}.a_{1,i}), \sigma_2) \\ 
+  \theta_{2,p} \sim \mathcal {logN}(log(\theta_2),\sigma_3) \\ 
+  \theta_{3,p} \sim \mathcal {logN}(log(\theta_3),\sigma_4) \\
+  a_{1,i} \sim \mathcal{MVlogN}(log(1), \sigma_5.K)
+  \tag{7.1}
+\end{equation}\]</span></p>
+<p>We fitted the equivalent model with following priors:</p>
+<p><span class="math display" id="eq:gmaxgenostan">\[\begin{equation} 
+  DBH_{y=today,p,i}  - DBH_{y=y0,p,i} \sim \\
+  \mathcal{logN} (log(\sum _{y=y_0} ^{y=today} \hat{\theta_{1,p,i}}.exp(-\frac12.[\frac{log(\frac{DBH_{y,p,i}}{100.\hat{\theta_{2,p}}})}{\hat{\theta_{3,p}}}]^2)), \sigma_1) \\ 
+  \hat{\theta_{1,p,i}} = e^{log(\theta_{1,p}.\hat{a_{1,i}}) + \sigma_2.\epsilon_{1,i}} \\ 
+  \hat{\theta_{2,p}}  = e^{log(\theta_2) + \sigma_3.\epsilon_{2,p}} \\ 
+  \hat{\theta_{3,p}}  = e^{log(\theta_3) + \sigma_4.\epsilon_{3,p}} \\  
+  \hat{a_{1,i}} = e^{\sigma_5.A.\epsilon_{4,i}} \\
+  \epsilon_{1,i} \sim \mathcal{N}(0,1) \\
+  \epsilon_{2,p} \sim \mathcal{N}(0,1) \\
+  \epsilon_{3,p} \sim \mathcal{N}(0,1) \\
+  \epsilon_{4,i} \sim \mathcal{N}(0,1) \\
+  ~ \\
+  (\theta_{1,p}, \theta_2, \theta_3) \sim \mathcal{logN}^3(log(1),1) \\ 
+  (\sigma_1, \sigma_2, \sigma_3, \sigma_4, \sigma_5) \sim \mathcal{N}^5_T(0,1) \\ 
+    ~ \\ 
+    V_P = Var(log(\mu_p)) \\
+    V_G=\sigma_5^2\\
+    V_R=\sigma_2^2
+  \tag{7.2}
+\end{equation}\]</span></p>
+<table>
+<caption>
+<span id="tab:gmaxgenoParTab">Table 7.1: </span>Individual growth potential model.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Parameter
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Standard error
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(\hat R\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(N_{eff}\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+thetap1[1]
+</td>
+<td style="text-align:right;">
+0.5423337
+</td>
+<td style="text-align:right;">
+0.0699702
+</td>
+<td style="text-align:right;">
+1.002517
+</td>
+<td style="text-align:right;">
+1993
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+thetap1[2]
+</td>
+<td style="text-align:right;">
+0.5596376
+</td>
+<td style="text-align:right;">
+0.1084135
+</td>
+<td style="text-align:right;">
+1.001838
+</td>
+<td style="text-align:right;">
+2331
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+thetap1[3]
+</td>
+<td style="text-align:right;">
+0.3485849
+</td>
+<td style="text-align:right;">
+0.0301761
+</td>
+<td style="text-align:right;">
+1.002514
+</td>
+<td style="text-align:right;">
+1218
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+theta2
+</td>
+<td style="text-align:right;">
+0.2528277
+</td>
+<td style="text-align:right;">
+0.0858377
+</td>
+<td style="text-align:right;">
+1.005150
+</td>
+<td style="text-align:right;">
+2249
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+theta3
+</td>
+<td style="text-align:right;">
+0.6963378
+</td>
+<td style="text-align:right;">
+0.1038580
+</td>
+<td style="text-align:right;">
+1.006909
+</td>
+<td style="text-align:right;">
+1345
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sigma[1]
+</td>
+<td style="text-align:right;">
+0.1373708
+</td>
+<td style="text-align:right;">
+0.0742090
+</td>
+<td style="text-align:right;">
+1.356851
+</td>
+<td style="text-align:right;">
+22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sigma[2]
+</td>
+<td style="text-align:right;">
+0.5075622
+</td>
+<td style="text-align:right;">
+0.1714122
+</td>
+<td style="text-align:right;">
+1.107800
+</td>
+<td style="text-align:right;">
+61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sigma[3]
+</td>
+<td style="text-align:right;">
+0.2805989
+</td>
+<td style="text-align:right;">
+0.2994495
+</td>
+<td style="text-align:right;">
+1.000577
+</td>
+<td style="text-align:right;">
+2627
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sigma[4]
+</td>
+<td style="text-align:right;">
+0.1377079
+</td>
+<td style="text-align:right;">
+0.2346745
+</td>
+<td style="text-align:right;">
+1.002896
+</td>
+<td style="text-align:right;">
+2934
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sigma[5]
+</td>
+<td style="text-align:right;">
+0.4684783
+</td>
+<td style="text-align:right;">
+0.1850532
+</td>
+<td style="text-align:right;">
+1.068632
+</td>
+<td style="text-align:right;">
+87
+</td>
+</tr>
+</tbody>
+</table>
+<div class="figure"><span id="fig:gmaxgenoParTrace"></span>
+<img src="GOING_files/figure-html/gmaxgenoParTrace-1.png" alt="Traceplot of model parameters." width="768" />
+<p class="caption">
+Figure 7.1: Traceplot of model parameters.
+</p>
+</div>
+<div class="figure"><span id="fig:gmaxgenoParEnergy"></span>
+<img src="GOING_files/figure-html/gmaxgenoParEnergy-1.png" alt="Energy of the model." width="768" />
+<p class="caption">
+Figure 7.2: Energy of the model.
+</p>
+</div>
+<div class="figure"><span id="fig:gmaxgeno1ParPred"></span>
+<img src="GOING_files/figure-html/gmaxgeno1ParPred-1.png" alt="Species predicted growth curve." width="768" />
+<p class="caption">
+Figure 7.3: Species predicted growth curve.
+</p>
+</div>
+<div class="figure"><span id="fig:GmaxGenoR2"></span>
+<img src="GOING_files/figure-html/GmaxGenoR2-1.png" alt="R2 for Gmax." width="768" />
+<p class="caption">
+Figure 7.4: R2 for Gmax.
+</p>
+</div>
+<div class="figure"><span id="fig:GmaxGenoVarPart"></span>
+<img src="GOING_files/figure-html/GmaxGenoVarPart-1.png" alt="Genetic variance partitionning for Gmax." width="768" />
+<p class="caption">
+Figure 7.5: Genetic variance partitionning for Gmax.
+</p>
+</div>
+<div class="figure"><span id="fig:unnamed-chunk-6"></span>
+<img src="GOING_files/figure-html/unnamed-chunk-6-1.png" alt="Relation between genotypic values for individual growth potential (Gmax) and neighbourhood crowding index (NCI), an indirect measurement of access to light, for different classes of diameters. Regression lines represent a linear model of form y ~ x. Annotations give for each diameter class the Pearson’s R correlation coefficient and the associated p-value." width="768" />
+<p class="caption">
+Figure 7.6: Relation between genotypic values for individual growth potential (Gmax) and neighbourhood crowding index (NCI), an indirect measurement of access to light, for different classes of diameters. Regression lines represent a linear model of form y ~ x. Annotations give for each diameter class the Pearson’s R correlation coefficient and the associated p-value.
+</p>
+</div>
+<div class="figure"><span id="fig:spcorrelo"></span>
+<img src="GOING_files/figure-html/spcorrelo-1.png" alt="Spatial autocorrelogram (Moran's I) of variables and associated genetic multiplicative values." width="768" />
+<p class="caption">
+Figure 7.7: Spatial autocorrelogram (Moran’s I) of variables and associated genetic multiplicative values.
+</p>
+</div>
 
+</div>
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
@@ -345,7 +649,7 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="neighbour-crowding-effect-on-neutral-and-adaptive-genetic-variation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

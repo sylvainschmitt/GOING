@@ -6,6 +6,3 @@ _bookdown_files
 data
 save
 *.rds
-.httr-oauth
-# for the moment
-previous

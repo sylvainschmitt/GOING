@@ -1,5 +1,20 @@
 ```{r setup_gmax, include=FALSE}
 rm(list = ls()) ; invisible(gc()) ; set.seed(42)
+library(knitr)
+library(kableExtra)
+if(knitr:::is_html_output()) options(knitr.table.format = "html") 
+if(knitr:::is_latex_output()) options(knitr.table.format = "latex") 
+library(tidyverse)
+library(raster)
+library(bayesplot)
+library(rstan)
+theme_set(bayesplot::theme_default())
+opts_chunk$set(
+  echo = F, message = F, warning = F, fig.height = 6, fig.width = 8,
+  cache = T, cache.lazy = F, eval=T)
+options(mc.cores = parallel::detectCores())
+rstan_options(auto_write = T)
+path <- "data/Symphonia_Paracou/Sequences/populationGenomics/"
 ```
 
 # Neutral and adaptive genetic variation effect on individual growth
@@ -31,3 +46,249 @@ with a co-shape matrix defined as the product of the kinship matrix $K$ and the 
 To estimate variances on a normal-scale, we log-transformed population fixed effect, genetic additive values, 
 and calculated conditional and marginal $R^2$ [@Nakagawa2013].
 We used Bayesian inference with No-U-Turn Sampler [NUTS, @Hoffman2014] using `stan` language [@Carpenter2017].
+
+## Growth data
+
+```{r Growth, eval=F, echo=T}
+trees <- src_sqlite(file.path("data", "Paracou","trees", "Paracou.sqlite")) %>% 
+  tbl("Paracou") %>% 
+  filter(Genus == "Symphonia") %>% 
+  mutate(DBH = CircCorr/pi) %>% 
+  filter(!(CodeMeas %in% c(4))) %>% 
+  collect()
+trees <- read_tsv(file.path(path, "..", "variantCalling", "paracou",
+                          "symcapture.all.biallelic.snp.filtered.nonmissing.paracou.fam"),
+         col_names = c("FID", "IID", "FIID", "MIID", "sex", "phenotype")) %>% 
+  mutate(Ind = gsub(".g.vcf", "", IID)) %>% 
+  mutate(X = gsub("P", "", Ind)) %>% 
+  separate(X, c("Plot", "SubPlot", "TreeFieldNum"), convert = T) %>% 
+  left_join(trees) %>% 
+  left_join(read_tsv(file.path(path, "bayescenv", "paracou3pop.popmap"),
+                     col_names = c("IID", "pop"))) %>% 
+  left_join(read_tsv(file.path(path, "populations", "paracou.hybridmap")),
+            by = "Ind", suffix = c("", ".hybrid"))
+trees <- trees %>% 
+  group_by(Ind) %>% 
+  mutate(Y0 = dplyr::first(CensusYear), DBH0 = dplyr::first(DBH), 
+         DBHtoday = dplyr::last(DBH), N = n()) %>%  
+  ungroup() %>% 
+  dplyr::select(Ind, Xutm, Yutm, IID, pop, Y0, DBH0, DBHtoday, N) %>% 
+  unique() %>% 
+  mutate(DBHtoday = ifelse(DBHtoday == DBH0, DBHtoday + 0.1, DBHtoday))
+write_tsv(trees, file = "save/Growth.tsv")
+```
+
+```{r mdata, eval=F}
+trees <- read_tsv(file = "save/Growth.tsv") %>% 
+  na.omit(pop) %>% # remove admixed
+  mutate(IndNum = 1:nrow(.), popNum = as.numeric(as.factor(pop)))
+ids <- read_tsv(file.path(path, "..", "variantCalling", "growth", "plink2.king.id"))
+K <- read_tsv(file.path(path, "..", "variantCalling", "growth", "plink2.king"),
+         col_names = ids$IID) %>% 
+  as.data.frame()
+row.names(K) <- ids$IID
+K <- as.matrix(K)
+model_data <- function(data) {
+  K <- K[trees$IID, trees$IID]
+  K[K < 0] <- 0
+  K <- K*2
+  K <- as.matrix(Matrix::nearPD(K)$mat)
+  list(I = nrow(data),
+       Y = 2017 - min(data$Y0) + 1,
+       P = length(unique(data$popNum)),
+       years = min(data$Y0):2017,
+       DBH0 = data$DBH0,
+       Y0 = data$Y0,
+       DBHtoday = data$DBHtoday + 10^-6,
+       ind = data$IndNum,
+       pop = data$popNum,
+       K = K)
+}
+mdata <- model_data(trees)
+save(mdata, file = file.path("save", "dataGrowthPar.Rdata")) 
+```
+
+## Genetic variance
+
+We used the following growth model with a lognormal distribution to estimate individual growth potential and associated genotypic variation:
+
+\begin{equation} 
+  DBH_{y=today,p,i}  - DBH_{y=y0,p,i} \sim \\
+  \mathcal{logN} (log(\sum _{y=y_0} ^{y=today} \theta_{1,p,i}.exp(-\frac12.[\frac{log(\frac{DBH_{y,p,i}}{100.\theta_{2,p}})}{\theta_{3,p}}]^2)), \sigma_1) \\ 
+  \theta_{1,p,i} \sim \mathcal {logN}(log(\theta_{1,p}.a_{1,i}), \sigma_2) \\ 
+  \theta_{2,p} \sim \mathcal {logN}(log(\theta_2),\sigma_3) \\ 
+  \theta_{3,p} \sim \mathcal {logN}(log(\theta_3),\sigma_4) \\
+  a_{1,i} \sim \mathcal{MVlogN}(log(1), \sigma_5.K)
+  (\#eq:gmaxgeno)
+\end{equation} 
+
+We fitted the equivalent model with following priors:
+
+\begin{equation} 
+  DBH_{y=today,p,i}  - DBH_{y=y0,p,i} \sim \\
+  \mathcal{logN} (log(\sum _{y=y_0} ^{y=today} \hat{\theta_{1,p,i}}.exp(-\frac12.[\frac{log(\frac{DBH_{y,p,i}}{100.\hat{\theta_{2,p}}})}{\hat{\theta_{3,p}}}]^2)), \sigma_1) \\ 
+  \hat{\theta_{1,p,i}} = e^{log(\theta_{1,p}.\hat{a_{1,i}}) + \sigma_2.\epsilon_{1,i}} \\ 
+  \hat{\theta_{2,p}}  = e^{log(\theta_2) + \sigma_3.\epsilon_{2,p}} \\ 
+  \hat{\theta_{3,p}}  = e^{log(\theta_3) + \sigma_4.\epsilon_{3,p}} \\  
+  \hat{a_{1,i}} = e^{\sigma_5.A.\epsilon_{4,i}} \\
+  \epsilon_{1,i} \sim \mathcal{N}(0,1) \\
+  \epsilon_{2,p} \sim \mathcal{N}(0,1) \\
+  \epsilon_{3,p} \sim \mathcal{N}(0,1) \\
+  \epsilon_{4,i} \sim \mathcal{N}(0,1) \\
+  ~ \\
+  (\theta_{1,p}, \theta_2, \theta_3) \sim \mathcal{logN}^3(log(1),1) \\ 
+  (\sigma_1, \sigma_2, \sigma_3, \sigma_4, \sigma_5) \sim \mathcal{N}^5_T(0,1) \\ 
+    ~ \\ 
+    V_P = Var(log(\mu_p)) \\
+    V_G=\sigma_5^2\\
+    V_R=\sigma_2^2
+  (\#eq:gmaxgenostan)
+\end{equation} 
+
+```{bash fitGmaxGenoParCluster, eval=F}
+for chain in $(seq 8) ; do echo "module purge ; module load compiler/gcc-7.2.0 ; module load system/R-3.5.3 ; R_LIBS_USER=\" \" Rscript GmaxGeno.R $chain" ; done > GmaxGeno.sh
+sarray -J GmaxGeno -o out/%j.GmaxGeno.out -e out/%j.GmaxGeno.err -t 48:00:00 --constraint=broadwell --cpus-per-task=1 --mail-type=BEGIN,END,FAIL GmaxGeno.sh
+```
+
+```{r gmaxgenoParTab}
+load(file.path("save", "dataGrowthPar.Rdata")) 
+trees <- read_tsv(file = "save/Growth.tsv") %>% 
+  column_to_rownames("IID")
+trees <- trees[row.names(mdata$K),]
+trees$IndNum <- mdata$ind
+fitGmaxGeno <- list()
+for(sim in list.files("save/GmaxGeno", full.names = T)){
+  load(sim)
+  fitGmaxGeno <- c(fitGmaxGeno, fit)
+}
+fitGmaxGeno <- sflist2stanfit(fitGmaxGeno)
+broom.mixed::tidyMCMC(fitGmaxGeno, pars = c("thetap1", "theta2", "theta3", "sigma", "lp__"),
+                droppars = NULL, ess = T, rhat = T, estimate.method = "median") %>%
+  dplyr::select(term, estimate, std.error, rhat, ess) %>%
+  kable(caption = "Individual growth potential model.",
+        col.names = c("Parameter", "Estimate", "Standard error",
+                      "$\\hat R$", "$N_{eff}$"))
+```
+
+```{r gmaxgenoParTrace, fig.cap="Traceplot of model parameters."}
+mcmc_trace(as.array(fitGmaxGeno, 
+                    pars = c("thetap1", "theta2", "theta3", "sigma", "lp__")),
+           np = nuts_params(fitGmaxGeno)) +
+  viridis::scale_color_viridis(discrete = T)
+```
+
+```{r gmaxgenoParEnergy, fig.cap="Energy of the model."}
+mcmc_nuts_energy(nuts_params(fitGmaxGeno))
+```
+
+```{r gmaxgeno1ParPred, fig.cap="Species predicted growth curve."}
+ggplot(data.frame(DBH = 0:200, AGR = 2), aes(x = DBH, y = AGR)) +
+  geom_vline(xintercept = mdata$DBH0, alpha = 0.1) +
+  stat_function(aes(col = "S. globulifera Paracou"), fun = function(.x) 
+    median(as.array(fitGmaxGeno, "thetap1[1]"))*
+      exp(-.5*(log(.x/(100*median(as.array(fitGmaxGeno, "thetap2[1]"))))/
+                 median(as.array(fitGmaxGeno, "thetap3[1]")))^2)) +
+    stat_function(aes(col = "S. globulifera Regina"), fun = function(.x) 
+    median(as.array(fitGmaxGeno, "thetap1[2]"))*
+      exp(-.5*(log(.x/(100*median(as.array(fitGmaxGeno, "thetap2[2]"))))/
+                 median(as.array(fitGmaxGeno, "thetap3[2]")))^2)) +
+    stat_function(aes(col = "S. sp1"), fun = function(.x) 
+    median(as.array(fitGmaxGeno, "thetap1[3]"))*
+      exp(-.5*(log(.x/(100*median(as.array(fitGmaxGeno, "thetap2[3]"))))/
+                 median(as.array(fitGmaxGeno, "thetap3[3]")))^2))
+```
+
+```{r GmaxGenoR2, fig.cap="R2 for Gmax."}
+as.data.frame(fitGmaxGeno, c("Vp", "Vg", "Vr")) %>% 
+  rowwise() %>% 
+  mutate(Vtot = sum(c(Vp, Vg, Vr))) %>% 
+  mutate(Vexp = sum(c(Vp, Vg))) %>% 
+  mutate_at(c("Vp", "Vg", "Vexp"), funs(./Vtot)) %>% 
+  dplyr::select(-Vtot, -Vr) %>% 
+  reshape2::melt(id.vars = NULL) %>% 
+  group_by(variable) %>% 
+  summarise(q5 = quantile(value, 0.05),
+            q25 = quantile(value, 0.25),
+            mean = mean(value),
+            median = median(value),
+            sd = sd(value),
+            q75 = quantile(value, 0.75),
+            q95 = quantile(value, 0.95)) %>% 
+    mutate(variable = recode_factor(variable, 
+                           "Vexp" = "Marginal", "Vg" = "Genotype", 
+                           "Vp" = "Population")) %>% 
+  ggplot(aes(x = variable, xend = variable, col = variable)) +
+  geom_point(aes(y = median), shape = 21, size = 3, alpha = 0.5) +
+  geom_segment(aes(y = q5, yend = q95),
+               size = 1, show.legend = F, alpha = 0.5) +
+  geom_segment(aes(y = q25, yend = q75), size = 2, alpha = 0.5) +
+  ylab(expression(R^2)) +
+  theme(axis.title.y = element_blank()) +
+  coord_flip()
+```
+
+```{r GmaxGenoVarPart, fig.cap="Genetic variance partitionning for Gmax."}
+ mcmc_intervals_data(fitGmaxGeno, regex_pars = c("Vp", "Vg", "Vr")) %>% 
+  mutate(parameter = recode(parameter, "Vp" = "Population", 
+                            "Vg" = "Genotype", "Vr" = "Residual")) %>% 
+  mutate(pct = paste0(round(m / sum(m) * 100), "%")) %>%
+  ggplot(aes(x = "Gmax", fill = parameter)) +
+  geom_col(aes(y = m)) +
+  geom_text(aes(y = m, label = pct), col = "white", position = position_stack(vjust = .5)) +
+  theme(axis.title.x = element_blank(), axis.title.y = element_blank(),
+        axis.text.x = element_blank(), axis.line.x = element_blank(), axis.ticks.x = element_blank()) +
+  scale_fill_discrete(expression(sigma^2)) 
+```
+
+```{r  fig.cap="Relation between genotypic values for individual growth potential (Gmax) and neighbourhood crowding index (NCI), an indirect measurement of access to light, for different classes of diameters. Regression lines represent a linear model of form y ~ x. Annotations give for each diameter class the Pearson’s R correlation coefficient and the associated p-value.", fig.width=8}
+fitNCI <- list()
+for(sim in list.files("save/EnvGeno", 
+                      pattern = "NCI", full.names = T)){
+  load(sim)
+  fitNCI <- c(fitNCI, fit)
+}
+rm(fit)
+fitNCI <- sflist2stanfit(fitNCI)
+t <- lapply(c(fitNCI, fitGmaxGeno), function(fit)
+  as.data.frame(fit, "alog") %>%
+  summarise_all(median) %>%
+  reshape2::melt(NULL)) %>%
+  bind_rows(.id = "fit") %>% 
+  mutate(fit = recode(fit, "1" = "aNCI", "2" = "aGmax")) %>% 
+  separate(variable, c("X1", "IndNum", "X2"), convert = T) %>% 
+  mutate(value = exp(value)) %>% 
+  reshape2::dcast(IndNum ~ fit, value.var = "value") %>% 
+  left_join(trees) %>% 
+  left_join(read_tsv("save/NCI.tsv"))
+n <- 6
+t %>% 
+  arrange(DBHtoday) %>% 
+  mutate(DBHclass = rep(1:n, each = ceiling(nrow(.)/n))[1:nrow(.)]) %>%
+  mutate(significance = ifelse(DBHclass %in% c(1,6), "0", "1")) %>% 
+  group_by(DBHclass) %>% 
+  mutate(DBHclassCm = paste0(round(min(DBHtoday)), " - ", round(max(DBHtoday)), " cm")) %>% 
+  ggplot(aes(aGmax, aNCI)) +
+  geom_point(alpha = 0.5) +
+  facet_wrap(~ DBHclassCm, scales = "free") +
+  geom_smooth(method = "lm", aes(col = significance)) +
+  scale_size_continuous(guide = "none") +
+  ggpubr::stat_cor(method = "pearson", label.x = 0.5, label.y = 0.85, ) +
+  xlab("Genetic additive values for individual growth potential (Gmax)") +
+  ylab("Genetic additive values for \n neighbourhood crowding index (NCI)") +
+  scale_color_manual(guide = "none", values = c("darkgrey", "black"))
+```
+
+```{r spcorrelo, fig.cap="Spatial autocorrelogram (Moran\'s I) of variables and associated genetic multiplicative values."}
+cor <- lapply(c(gNCI = "aNCI", gGmax = "aGmax"), function(var) 
+  pgirmess::correlog(data.frame(t$Xutm, t$Yutm), t[,var], method = "Moran", nbclass = 100) %>% 
+    as.data.frame()) %>% 
+  bind_rows(.id = "variable")
+cor %>% 
+  filter(dist.class < 10^3) %>% 
+  ggplot(aes(x = dist.class, y = coef, col = variable)) + geom_hline(yintercept = 0) +
+  geom_point(aes(alpha = p.value < 0.01)) + geom_line() +
+  scale_alpha_manual("p < 0.01", values = c(0.3, 1)) + scale_x_log10() +
+  geom_vline(xintercept = c(27, 53), col = "lightgrey", linetype = "dashed") +
+  geom_vline(xintercept = 150, col = "lightgrey", linetype = "dotted") +
+  xlab("Distance (m)") + ylab("Moran\'s I") + scale_color_discrete("Variable")
+```
