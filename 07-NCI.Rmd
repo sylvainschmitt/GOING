@@ -50,7 +50,7 @@ Individual breeding values $a_i$ are defined following a multivariate lognormal 
 To estimate variances on a normal scale, we log-transformed species fixed effect, genetic additive values, and we calculated conditional and marginal $R^2$ [@Nakagawa2013].
 A Bayesian method was used to infer parameters using `stan` language [@Carpenter2017 and `rstan` package [@Team2018] in the R environment [@RCoreTeam2020] using the No-U-Turn Sampler alogirthm [NUTS, @Hoffman2014], which performs better for estimating genetic parameters and breeding values [@Nishio2019].
 
-## Simulated animal
+## Simulated Animal Model
 
 The aim of this sub-chapter is to explore animal model with generated data to validate their behavior and use it on *Symphonia* real data. 
 Let's consider a set of $P=3$ populations including each $Fam=3$ families composed of $I = 14$ individuals with arbitrary relationships (it's only 126 individuals to do quick tests).

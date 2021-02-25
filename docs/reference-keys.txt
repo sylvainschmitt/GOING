@@ -91,6 +91,10 @@ tab:envGenoTab
 fig:envGenoTrace
 fig:envgenoR2
 fig:envGenoVarPart
+eq:gmaxgenoth
+eq:gmaxgenothstan
+tab:gmaxgenoTable
+fig:gmaxgenoTrace
 eq:gmaxgeno
 eq:gmaxgenostan
 tab:gmaxgenoParTab
@@ -205,9 +209,10 @@ kinship
 spatial-auto-correlation
 introgression
 neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation
-simulated-animal
+simulated-animal-model
 neighbourhood-crowding-index
 genetic-variance
 neutral-and-adaptive-genetic-variation-effect-on-individual-growth
 growth-data
+simulated-growth-and-animal-model
 genetic-variance-1
