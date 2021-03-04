@@ -24,7 +24,7 @@
 <meta name="author" content="Sylvain Schmitt" />
 
 
-<meta name="date" content="2021-02-25" />
+<meta name="date" content="2021-03-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,8 +51,6 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
 <link href="libs/sequences-0.1/sequences.css" rel="stylesheet" />
 <script src="libs/sunburst-binding-2.1.5/sunburst.js"></script>
@@ -198,7 +196,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.4" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#size-selection"><i class="fa fa-check"></i><b>3.2.4</b> Size selection</a></li>
 <li class="chapter" data-level="3.2.5" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#enrichment-and-purification"><i class="fa fa-check"></i><b>3.2.5</b> Enrichment and purification</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#libraries-preparation-results"><i class="fa fa-check"></i><b>3.3</b> Libraries preparation results</a><ul>
+<li class="chapter" data-level="3.3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#library-preparation-results"><i class="fa fa-check"></i><b>3.3</b> Library preparation results</a><ul>
 <li class="chapter" data-level="3.3.1" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#post-enrichment-pcr1-quantification"><i class="fa fa-check"></i><b>3.3.1</b> Post-enrichment PCR1 quantification</a></li>
 <li class="chapter" data-level="3.3.2" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#post-enrichment-pcr1-pcr2-and-amplification-quantification"><i class="fa fa-check"></i><b>3.3.2</b> Post-enrichment (PCR1 &amp; PCR2) and amplification quantification</a></li>
 <li class="chapter" data-level="3.3.3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#amplification-result"><i class="fa fa-check"></i><b>3.3.3</b> Amplification result</a></li>
@@ -209,7 +207,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4.2" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#dna-dosage-1"><i class="fa fa-check"></i><b>3.4.2</b> DNA dosage 1</a></li>
 <li class="chapter" data-level="3.4.3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#amplification-2"><i class="fa fa-check"></i><b>3.4.3</b> Amplification 2</a></li>
 <li class="chapter" data-level="3.4.4" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#dna-dosage-2"><i class="fa fa-check"></i><b>3.4.4</b> DNA dosage 2</a></li>
-<li class="chapter" data-level="3.4.5" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#amplifcation-2-and-library-repeat-plates-reorganization"><i class="fa fa-check"></i><b>3.4.5</b> Amplifcation 2 and Library Repeat Plates reorganization</a></li>
+<li class="chapter" data-level="3.4.5" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#amplification-2-and-library-repeat-plates-reorganization"><i class="fa fa-check"></i><b>3.4.5</b> Amplification 2 and Library Repeat Plates reorganization</a></li>
 <li class="chapter" data-level="3.4.6" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#pool-building"><i class="fa fa-check"></i><b>3.4.6</b> Pool building</a></li>
 <li class="chapter" data-level="3.4.7" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#purification-concentration"><i class="fa fa-check"></i><b>3.4.7</b> Purification &amp; Concentration</a></li>
 <li class="chapter" data-level="3.4.8" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#size-assessment"><i class="fa fa-check"></i><b>3.4.8</b> Size assessment</a></li>
@@ -289,12 +287,12 @@ and libraries built with the ‘NEBNext Ultra II FS DNA Library Prep kit for Ill
 We amplified and tagged libraries using 5 <span class="math inline">\(\mu L\)</span> of adaptor-ligated DNA, 8.3 <span class="math inline">\(\mu L\)</span> of ‘NEBNext Ultra II Q5 Master Mix’ (new England Biolabs Inc, MA, USA), 2x 1.6 <span class="math inline">\(\mu L\)</span> of Index Primer i5 and i7 from ‘NEBNext Multiplex Oligos for Illumina (Dual Index Primers Set 1 and Set 2)’ (new England Biolabs Inc, MA, USA).
 Initial denaturation (98°C for 30 s) was followed by 8 cycles (98°C for 10 s and 65°C for 1 min 30 s) and a final extension (65°C for 5 min).
 We pooled libraries in four equimolar multiplexes for each genus.
-We obtained a custom made set of 20,000 80-mer probes for each genus using myBaits Custom 1-20K (Arbor Biosciences, MI, USA)
+We obtained a custom made set of 20,000 80-mer probes using myBaits Custom 1-20K (Arbor Biosciences, MI, USA)
 and conducted the capture experiments using the corresponding myBaits V4 protocol with a hybridization time of 80 hours.
-We pooled the four multiplexes and sequenced them in two lanes of an Illumina HiSeq 4000 instrument obtaining 2x150bp pair-end reads for each genus.</p>
+We pooled the four multiplexes and sequenced them in two lanes of an Illumina HiSeq 4000 instrument obtaining 2x150bp pair-end reads.</p>
 <div id="plates" class="section level2">
 <h2><span class="header-section-number">3.1</span> Plates</h2>
-<p>This sub-chapter describes plates preparation after the extraction and before libraries preparation.
+<p>This sub-chapter describes preparation of plates after the extraction and before library preparation.
 First we looked into plates design after extraction.
 Then we quantified their concentration, volume and DNA quantity, before rearranging them based on their concentration.
 Finally plates concentration was adjusted to 20 <span class="math inline">\(ng.\mu L^{-1}\)</span> and sorted by electrophoresis evaluation.</p>
@@ -309,8 +307,8 @@ Finally plates concentration was adjusted to 20 <span class="math inline">\(ng.\
 Figure 3.1: Extraction plates organization
 </p>
 </div>
-<p>All plates were quantified through NanoDrop and some of them with Qbit which is more accurate
-We used Qbit-NanoDrop relation to have an estimation of concentration for all samples. Finally electrophoresis were also used to asses DNA quality and degradation.</p>
+<p>All plates were quantified through NanoDrop and some of them with Qubit which is more accurate.
+We used Qubit-NanoDrop relation to have an estimation of concentration for all samples. Finally electrophoreses were also used to assess DNA quality and degradation.</p>
 </div>
 <div id="extraction-nanodrop" class="section level4">
 <h4><span class="header-section-number">3.1.1.2</span> Extraction NanoDrop</h4>
@@ -323,34 +321,14 @@ Figure 3.2: Extraction plate NanoDrop concentration (in ng/microL)
 </p>
 </div>
 </div>
-<div id="extraction-qbit" class="section level4">
-<h4><span class="header-section-number">3.1.1.3</span> Extraction QBit</h4>
-<p>We used Qbit on 12 samples to have a more precise idea of samples concentration.
-Qbit uses fluorescence to measure samples concentration in <span class="math inline">\(ng.\mu L^{-1}\)</span>.
-We compared QBit estimation of concentration to NanoDrop estimation.
-We used a bayesian approach to fit the model <span class="math inline">\(Concentration_{Qbit} \sim \mathcal{N}(\beta*Concentration_{NanoDrop},\sigma)\)</span> with a null intercept.
+<div id="extraction-qubit" class="section level4">
+<h4><span class="header-section-number">3.1.1.3</span> Extraction Qubit</h4>
+<p>We used Qubit on 12 samples to have a more precise idea of samples concentration.
+Qubit uses fluorescence to measure samples concentration in <span class="math inline">\(ng.\mu L^{-1}\)</span>.
+We compared Qubit estimation of concentration to NanoDrop estimation.
+We used a bayesian approach to fit the model <span class="math inline">\(Concentration_{Qubit} \sim \mathcal{N}(\beta*Concentration_{NanoDrop},\sigma)\)</span> with a null intercept.
 We found a pretty strong relation with a beta around 0.3.
 We used this relation to better estimate the concentration of all samples.</p>
-<pre><code>## Running /usr/lib/R/bin/R CMD SHLIB foo.c
-## gcc -std=gnu99 -I&quot;/usr/share/R/include&quot; -DNDEBUG   -I&quot;/home/sylvain/R/x86_64-pc-linux-gnu-library/3.6/Rcpp/include/&quot;  -I&quot;/home/sylvain/R/x86_64-pc-linux-gnu-library/3.6/RcppEigen/include/&quot;  -I&quot;/home/sylvain/R/x86_64-pc-linux-gnu-library/3.6/RcppEigen/include/unsupported&quot;  -I&quot;/home/sylvain/R/x86_64-pc-linux-gnu-library/3.6/BH/include&quot; -I&quot;/home/sylvain/R/x86_64-pc-linux-gnu-library/3.6/StanHeaders/include/src/&quot;  -I&quot;/home/sylvain/R/x86_64-pc-linux-gnu-library/3.6/StanHeaders/include/&quot;  -I&quot;/home/sylvain/R/x86_64-pc-linux-gnu-library/3.6/RcppParallel/include/&quot;  -I&quot;/home/sylvain/R/x86_64-pc-linux-gnu-library/3.6/rstan/include&quot; -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DBOOST_NO_AUTO_PTR  -include &#39;/home/sylvain/R/x86_64-pc-linux-gnu-library/3.6/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp&#39;  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1     -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-jbaK_j/r-base-3.6.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c foo.c -o foo.o
-## In file included from /home/sylvain/R/x86_64-pc-linux-gnu-library/3.6/RcppEigen/include/Eigen/Core:88,
-##                  from /home/sylvain/R/x86_64-pc-linux-gnu-library/3.6/RcppEigen/include/Eigen/Dense:1,
-##                  from /home/sylvain/R/x86_64-pc-linux-gnu-library/3.6/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,
-##                  from &lt;command-line&gt;:
-## /home/sylvain/R/x86_64-pc-linux-gnu-library/3.6/RcppEigen/include/Eigen/src/Core/util/Macros.h:613:1: error: unknown type name ‘namespace’
-##   613 | namespace Eigen {
-##       | ^~~~~~~~~
-## /home/sylvain/R/x86_64-pc-linux-gnu-library/3.6/RcppEigen/include/Eigen/src/Core/util/Macros.h:613:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
-##   613 | namespace Eigen {
-##       |                 ^
-## In file included from /home/sylvain/R/x86_64-pc-linux-gnu-library/3.6/RcppEigen/include/Eigen/Dense:1,
-##                  from /home/sylvain/R/x86_64-pc-linux-gnu-library/3.6/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,
-##                  from &lt;command-line&gt;:
-## /home/sylvain/R/x86_64-pc-linux-gnu-library/3.6/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: Aucun fichier ou dossier de ce type
-##    96 | #include &lt;complex&gt;
-##       |          ^~~~~~~~~
-## compilation terminated.
-## make: *** [/usr/lib/R/etc/Makeconf:168 : foo.o] Erreur 1</code></pre>
 <table>
 <caption>
 <span id="tab:fit">Table 3.1: </span>Summary table of the model
@@ -377,13 +355,13 @@ rhat
 beta
 </td>
 <td style="text-align:right;">
-0.2947404
+0.294358
 </td>
 <td style="text-align:right;">
-0.0216958
+0.0226327
 </td>
 <td style="text-align:right;">
-1.001771
+0.9998834
 </td>
 </tr>
 <tr>
@@ -391,21 +369,21 @@ beta
 sigma
 </td>
 <td style="text-align:right;">
-7.8998422
+7.881824
 </td>
 <td style="text-align:right;">
-2.2102589
+2.2547057
 </td>
 <td style="text-align:right;">
-1.004300
+1.0013069
 </td>
 </tr>
 </tbody>
 </table>
 <div class="figure"><span id="fig:pred"></span>
-<img src="GOING_files/figure-html/pred-1.png" alt="Model result of the relation between DNA concentration measured with Qbit and NanoDrop. Color indicates the electrophoresis classification of the samples." width="768" />
+<img src="GOING_files/figure-html/pred-1.png" alt="Model result of the relation between DNA concentration measured with Qubit and NanoDrop. Color indicates the electrophoresis classification of the samples." width="768" />
 <p class="caption">
-Figure 3.3: Model result of the relation between DNA concentration measured with Qbit and NanoDrop. Color indicates the electrophoresis classification of the samples.
+Figure 3.3: Model result of the relation between DNA concentration measured with Qubit and NanoDrop. Color indicates the electrophoresis classification of the samples.
 </p>
 </div>
 </div>
@@ -414,7 +392,7 @@ Figure 3.3: Model result of the relation between DNA concentration measured with
 <p>We evaluated samples quality and degradation by an electrophoresis of 1 to 1.5 <span class="math inline">\(\mu L\)</span> of sample DNA with 1 to 1.5 <span class="math inline">\(\mu L\)</span> of <strong>weight</strong> migrating 20 minutes with 20 V on an agarose gel with 80 <span class="math inline">\(mL\)</span> of 0.1 X TAE with 1 <span class="math inline">\(\mu L\)</span> of red gel.
 Samples were classified as good, medium and bad.
 “Good” samples only included a band at high molecular weight.
-“Bad” samples only included a smir at low molecular weight indicating degraded DNA.
+“Bad” samples only included a smear at low molecular weight indicating degraded DNA.
 “Medium” samples included both.</p>
 <div class="figure"><span id="fig:electrophoresis"></span>
 <img src="GOING_files/figure-html/electrophoresis-1.png" alt="Extraction plate Electrophoresis quality" width="768" />
@@ -426,10 +404,10 @@ Figure 3.4: Extraction plate Electrophoresis quality
 </div>
 <div id="library-plates-design" class="section level3">
 <h3><span class="header-section-number">3.1.2</span> Library plates design</h3>
-<p>We first designed new plates based on the samples concentration in order to bring all samples to the same concentration for further easier manipulations in libraries preparation.</p>
+<p>We first designed new plates based on the samples concentration in order to bring all samples to the same concentration for further easier manipulations in library preparation.</p>
 <div id="pool" class="section level4">
 <h4><span class="header-section-number">3.1.2.1</span> Pool</h4>
-<p>We pooled all individuals with 2 extraction and with a nanodrop concentration inferior to 25 <span class="math inline">\(ng.\mu L^{-1}\)</span>. Individuals with only one extraction will be further concentrated. <strong>Warning, P7-3-2812 has been pooled from P2.C12 to P7.C12 instead of P7.D12.</strong></p>
+<p>We pooled all individuals with 2 extractions and with a nanodrop concentration inferior to 25 <span class="math inline">\(ng.\mu L^{-1}\)</span>. Individuals with only one extraction were further concentrated. <strong>Warning, P7-3-2812 has been pooled from P2.C12 to P7.C12 instead of P7.D12.</strong></p>
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:pool">Table 3.2: </span>Preview of Samples to be pooled. From plates 1, 2 and 3 to plate 5, 6 and 7
@@ -540,7 +518,7 @@ F5
 </div>
 <div id="pool-and-new-samples-nanodrop" class="section level4">
 <h4><span class="header-section-number">3.1.2.2</span> Pool and new samples nanodrop</h4>
-<p>Pooled individuals and new individuals from Itubera Brazil (n = 3), La Selva Costa Rica (n = 2) and Baro Colorado Island Panama (n = 2) has been quantified again with the nanodrop.</p>
+<p>Pooled individuals and new individuals from Itubera Brazil (n = 3), La Selva Costa Rica (n = 2) and Barro Colorado Island Panama (n = 2) have been quantified again with the nanodrop.</p>
 <table>
 <caption>
 <span id="tab:nanodrop2">Table 3.3: </span>Preview of New nanodrops.
@@ -564,10 +542,10 @@ Position
 <tbody>
 <tr>
 <td style="text-align:left;">
-P7-3-2837
+P4-2-3487
 </td>
 <td style="text-align:right;">
-16.180
+20.71
 </td>
 <td style="text-align:left;">
 Pull
@@ -578,27 +556,13 @@ NA
 </tr>
 <tr>
 <td style="text-align:left;">
-IT_H4
+LS-SG18
 </td>
 <td style="text-align:right;">
-9.486
+49.53
 </td>
 <td style="text-align:left;">
-Itubera
-</td>
-<td style="text-align:left;">
-H4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P11-1-742
-</td>
-<td style="text-align:right;">
-23.470
-</td>
-<td style="text-align:left;">
-Pull
+America
 </td>
 <td style="text-align:left;">
 NA
@@ -606,30 +570,44 @@ NA
 </tr>
 <tr>
 <td style="text-align:left;">
-IT_G3
+IT_H5
 </td>
 <td style="text-align:right;">
-39.320
+12.86
 </td>
 <td style="text-align:left;">
 Itubera
 </td>
 <td style="text-align:left;">
-G3
+H5
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-IT_E4
+IT_H3
 </td>
 <td style="text-align:right;">
--27.780
+16.37
 </td>
 <td style="text-align:left;">
 Itubera
 </td>
 <td style="text-align:left;">
-E4
+H3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IT_B4
+</td>
+<td style="text-align:right;">
+19.42
+</td>
+<td style="text-align:left;">
+Itubera
+</td>
+<td style="text-align:left;">
+B4
 </td>
 </tr>
 </tbody>
@@ -655,13 +633,13 @@ Figure 3.6: Concentration in plates arranged by concentration.
 <h4><span class="header-section-number">3.1.2.4</span> Samples volume</h4>
 <p>In order to adjust samples concentration we needed first to assess their current volume, see figure <a href="genomic-libraries-and-sequence-capture.html#fig:volumes">3.7</a>.
 Volume after extraction was around 45 <span class="math inline">\(\mu L\)</span> (estimated loss).
-Samples have lost volume with NanoDrop, Qbit, electrophoresis, and libraries trial, one or two times.
-Some sample won volume with pooling.
+Samples have lost volume with NanoDrop, Qubit, electrophoresis, and libraries trial, one or two times.
+Some samples gained volume with pooling.
 We can consider all samples to have lost 1 <span class="math inline">\(\mu L\)</span> with NanoDrop.
-Samples used in Qbit lost an additional 1.5 to 3 <span class="math inline">\(\mu L\)</span>.
+Samples used in Qubit lost an additional 1.5 to 3 <span class="math inline">\(\mu L\)</span>.
 Finally samples used in trial libraries lost between 0.5 and 5 <span class="math inline">\(\mu L\)</span> (with library test II repeated).
-Pooled samples from plate 5, 6 an 7 won 49 <span class="math inline">\(\mu L\)</span> from NanoDroped samples from plate 1, 2, 3 and 4 unused for NanoDrop, Qbit nor libraries trial (original 50 minus 1 nanodropped).
-Added samples from Itubera, La Selva and Baro Colorado Island have an estimated volume of 10 <span class="math inline">\(\mu L\)</span> (overestimated).</p>
+Pooled samples from plate 5, 6 an 7 gained 49 <span class="math inline">\(\mu L\)</span> from NanoDrop samples from plate 1, 2, 3 and 4 unused for NanoDrop, Qubit nor libraries trial (original 50 minus 1 due to NanoDrop measurement).
+Added samples from Itubera, La Selva and Barro Colorado Island have an estimated volume of 10 <span class="math inline">\(\mu L\)</span> (overestimated).</p>
 <div class="figure"><span id="fig:volumes"></span>
 <img src="GOING_files/figure-html/volumes-1.png" alt="Samples estimated volumes." width="768" />
 <p class="caption">
@@ -676,16 +654,16 @@ Figure 3.7: Samples estimated volumes.
 ## # Groups:   ID [192]
 ##    ID    source_Plate source_Position volumeplus5 concentration dest_Plate
 ##    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;                 &lt;dbl&gt;         &lt;dbl&gt; &lt;chr&gt;     
-##  1 MHDN… PCR1         B1                       49          1.45 PCR2      
-##  2 P15_… PCR1         D1                       50          3.01 PCR2      
+##  1 MHDN… PCR1         B1                       49          1.44 PCR2      
+##  2 P15_… PCR1         D1                       50          3.00 PCR2      
 ##  3 P3_2… PCR1         E1                       50          3.10 PCR2      
 ##  4 MHDN… PCR1         F1                       49          3.17 PCR2      
 ##  5 P5_4… PCR1         G1                       50          3.36 PCR2      
 ##  6 P13_… PCR1         H1                       50          3.45 PCR2      
 ##  7 P13_… PCR1         F2                       50          3.93 PCR2      
-##  8 P7_3… PCR1         G2                       50          4.77 PCR2      
+##  8 P7_3… PCR1         G2                       50          4.76 PCR2      
 ##  9 EE16… PCR1         A3                       49          5.44 PCR2      
-## 10 MH31… PCR1         B3                       49          5.48 PCR2      
+## 10 MH31… PCR1         B3                       49          5.47 PCR2      
 ## # … with 182 more rows, and 1 more variable: dest_Position &lt;chr&gt;</code></pre>
 <pre><code>## # A tibble: 192 x 7
 ## # Groups:   ID [192]
@@ -695,12 +673,12 @@ Figure 3.7: Samples estimated volumes.
 ##  2 P1_4… PCR1         H3                     49            23.2 PCR2      
 ##  3 OH29… PCR1         D5                     44.1          24.2 PCR2      
 ##  4 P4_2… PCR1         F5                     49            24.2 PCR2      
-##  5 P13_… PCR1         G5                     49            24.3 PCR2      
+##  5 P13_… PCR1         G5                     49            24.2 PCR2      
 ##  6 P7_2… PCR1         C6                     49            24.8 PCR2      
 ##  7 P4_1… PCR1         E6                     49            25.1 PCR2      
 ##  8 P16_… PCR1         A7                     49            25.5 PCR2      
 ##  9 P10_… PCR1         D7                     49            25.6 PCR2      
-## 10 P10_… PCR1         F7                     49            25.8 PCR2      
+## 10 P10_… PCR1         F7                     49            25.7 PCR2      
 ## # … with 182 more rows, and 1 more variable: dest_Position &lt;chr&gt;</code></pre>
 <pre><code>## # A tibble: 48 x 7
 ## # Groups:   ID [48]
@@ -709,13 +687,13 @@ Figure 3.7: Samples estimated volumes.
 ##  1 P3_2… PCR1         A1                     49            56.0 PCR2      
 ##  2 P7_2… PCR1         B1                     49            57.7 PCR2      
 ##  3 P13_… PCR1         F1                     49            60.5 PCR2      
-##  4 P6_4… PCR1         H1                     49            63.7 PCR2      
-##  5 P7_3… PCR1         A2                     49            63.8 PCR2      
-##  6 P15_… PCR1         B2                     49            64.5 PCR2      
-##  7 P7_3… PCR1         C2                     49            69.6 PCR2      
-##  8 P13_… PCR1         D2                     49            70.2 PCR2      
-##  9 P7_3… PCR1         H2                     49            73.2 PCR2      
-## 10 P15_… PCR1         C3                     47.7          75.1 PCR2      
+##  4 P6_4… PCR1         H1                     49            63.6 PCR2      
+##  5 P7_3… PCR1         A2                     49            63.7 PCR2      
+##  6 P15_… PCR1         B2                     49            64.4 PCR2      
+##  7 P7_3… PCR1         C2                     49            69.5 PCR2      
+##  8 P13_… PCR1         D2                     49            70.1 PCR2      
+##  9 P7_3… PCR1         H2                     49            73.1 PCR2      
+## 10 P15_… PCR1         C3                     47.7          75.0 PCR2      
 ## # … with 38 more rows, and 1 more variable: dest_Position &lt;chr&gt;</code></pre>
 <table>
 <thead>
@@ -758,7 +736,7 @@ D1
 98
 </td>
 <td style="text-align:right;">
-3.006352
+3.002452
 </td>
 <td style="text-align:right;">
 1
@@ -781,7 +759,7 @@ E1
 98
 </td>
 <td style="text-align:right;">
-3.100669
+3.096646
 </td>
 <td style="text-align:right;">
 1
@@ -804,7 +782,7 @@ G1
 98
 </td>
 <td style="text-align:right;">
-3.360040
+3.355682
 </td>
 <td style="text-align:right;">
 1
@@ -827,7 +805,7 @@ H1
 98
 </td>
 <td style="text-align:right;">
-3.451410
+3.446932
 </td>
 <td style="text-align:right;">
 1
@@ -850,7 +828,7 @@ F2
 98
 </td>
 <td style="text-align:right;">
-3.934784
+3.929680
 </td>
 <td style="text-align:right;">
 1
@@ -873,7 +851,7 @@ G2
 98
 </td>
 <td style="text-align:right;">
-4.768899
+4.762713
 </td>
 <td style="text-align:right;">
 1
@@ -896,7 +874,7 @@ C3
 98
 </td>
 <td style="text-align:right;">
-5.903650
+5.895991
 </td>
 <td style="text-align:right;">
 1
@@ -919,7 +897,7 @@ E3
 98
 </td>
 <td style="text-align:right;">
-6.180706
+6.172688
 </td>
 <td style="text-align:right;">
 1
@@ -942,7 +920,7 @@ G3
 98
 </td>
 <td style="text-align:right;">
-6.917557
+6.908583
 </td>
 <td style="text-align:right;">
 1
@@ -965,7 +943,7 @@ B2
 98
 </td>
 <td style="text-align:right;">
-3.766782
+3.761896
 </td>
 <td style="text-align:right;">
 1
@@ -988,7 +966,7 @@ C2
 98
 </td>
 <td style="text-align:right;">
-3.834572
+3.829598
 </td>
 <td style="text-align:right;">
 1
@@ -1011,7 +989,7 @@ D2
 98
 </td>
 <td style="text-align:right;">
-3.852257
+3.847259
 </td>
 <td style="text-align:right;">
 1
@@ -1034,7 +1012,7 @@ E2
 95
 </td>
 <td style="text-align:right;">
-3.917100
+3.912018
 </td>
 <td style="text-align:right;">
 1
@@ -1057,7 +1035,7 @@ H2
 98
 </td>
 <td style="text-align:right;">
-5.093114
+5.086507
 </td>
 <td style="text-align:right;">
 1
@@ -1080,7 +1058,7 @@ D3
 98
 </td>
 <td style="text-align:right;">
-6.104073
+6.096155
 </td>
 <td style="text-align:right;">
 1
@@ -1103,7 +1081,7 @@ D4
 98
 </td>
 <td style="text-align:right;">
-8.008096
+7.997708
 </td>
 <td style="text-align:right;">
 1
@@ -1126,7 +1104,7 @@ A11
 98
 </td>
 <td style="text-align:right;">
-19.143388
+19.118554
 </td>
 <td style="text-align:right;">
 2
@@ -1153,7 +1131,7 @@ Figure 3.9: Plates electrophoresis status after rearrangement.
 <div id="concentration" class="section level4">
 <h4><span class="header-section-number">3.1.2.6</span> Concentration</h4>
 <p>All individuals with an estimated concentration inferior to 19 <span class="math inline">\(ng.\mu L^{-1}\)</span> (Plates 1 and 2) have been dried in the speed vacuum centrifuge.
-And corresponding volume of miliQ water will be added to reach a concentration of 20 <span class="math inline">\(ng.\mu L^{-1}\)</span> (or at least 6.5 <span class="math inline">\(\mu L\)</span> to reach sample volume).
+And corresponding volume of milliQ water will be added to reach a concentration of 20 <span class="math inline">\(ng.\mu L^{-1}\)</span> (or at least 6.5 <span class="math inline">\(\mu L\)</span> to reach sample volume).
 Their DNA content in <span class="math inline">\(ng\)</span> has been computed multiplying concentration with volume.
 The volume of water to add is thus the DNA content divided by the objective concentration of 20 <span class="math inline">\(ng.\mu L^{-1}\)</span>: <span class="math inline">\(V = \frac{C_0*V_0}{20}\)</span>.
 Corresponding volumes are shown in figure <a href="genomic-libraries-and-sequence-capture.html#fig:concentrationVolume">3.11</a>.</p>
@@ -1164,9 +1142,9 @@ Figure 3.10: Samples to be concentrated. Estimated concentration in ng/microL
 </p>
 </div>
 <div class="figure"><span id="fig:concentrationVolume"></span>
-<img src="GOING_files/figure-html/concentrationVolume-1.png" alt="Volume to resupspend dry samples." width="768" />
+<img src="GOING_files/figure-html/concentrationVolume-1.png" alt="Volume to resuspend dry samples." width="768" />
 <p class="caption">
-Figure 3.11: Volume to resupspend dry samples.
+Figure 3.11: Volume to resuspend dry samples.
 </p>
 </div>
 <pre><code>## # A tibble: 192 x 6
@@ -1179,9 +1157,9 @@ Figure 3.11: Volume to resupspend dry samples.
 ##  5 PCR1         E1                          0       15.6 PCR2      
 ##  6 PCR1         F1                          0       16   PCR2      
 ##  7 PCR1         G1                          0       18.3 PCR2      
-##  8 PCR1         H1                          0       22.2 PCR2      
+##  8 PCR1         H1                          0       22.1 PCR2      
 ##  9 PCR1         A2                          0       12   PCR2      
-## 10 PCR1         B2                          0       12.1 PCR2      
+## 10 PCR1         B2                          0       12   PCR2      
 ## # … with 182 more rows, and 1 more variable: dest_Position &lt;chr&gt;</code></pre>
 </div>
 <div id="samples-volume-1" class="section level4">
@@ -1220,7 +1198,7 @@ Figure 3.12: Sample volume (microL)
 ##  5 P7_3… PCR1         E1                        3.1          9.9 PCR2      
 ##  6 P15_… PCR1         F1                        3.1          9.9 PCR2      
 ##  7 P7_3… PCR1         G1                        2.9         10.1 PCR2      
-##  8 P13_… PCR1         H1                        2.8         10.2 PCR2      
+##  8 P13_… PCR1         H1                        2.9         10.1 PCR2      
 ##  9 P7_3… PCR1         A2                        2.7         10.3 PCR2      
 ## 10 P15_… PCR1         B2                        2.7         10.3 PCR2      
 ## # … with 38 more rows, and 1 more variable: dest_Position &lt;chr&gt;</code></pre>
@@ -1250,10 +1228,10 @@ water_volume
 F3
 </td>
 <td style="text-align:right;">
-4.775924
+4.782128
 </td>
 <td style="text-align:right;">
-1.724076
+1.717872
 </td>
 </tr>
 <tr>
@@ -1264,10 +1242,10 @@ F3
 G3
 </td>
 <td style="text-align:right;">
-4.736586
+4.742738
 </td>
 <td style="text-align:right;">
-1.763414
+1.757262
 </td>
 </tr>
 <tr>
@@ -1278,10 +1256,10 @@ G3
 H3
 </td>
 <td style="text-align:right;">
-4.670727
+4.676794
 </td>
 <td style="text-align:right;">
-1.829273
+1.823206
 </td>
 </tr>
 <tr>
@@ -1292,10 +1270,10 @@ H3
 A4
 </td>
 <td style="text-align:right;">
-4.573145
+4.579085
 </td>
 <td style="text-align:right;">
-1.926855
+1.920915
 </td>
 </tr>
 <tr>
@@ -1306,10 +1284,10 @@ A4
 C7
 </td>
 <td style="text-align:right;">
-4.997520
+5.004011
 </td>
 <td style="text-align:right;">
-1.502480
+1.495988
 </td>
 </tr>
 <tr>
@@ -1320,10 +1298,10 @@ C7
 D7
 </td>
 <td style="text-align:right;">
-4.929270
+4.935673
 </td>
 <td style="text-align:right;">
-1.570730
+1.564327
 </td>
 </tr>
 <tr>
@@ -1334,10 +1312,10 @@ D7
 E7
 </td>
 <td style="text-align:right;">
-4.927122
+4.933522
 </td>
 <td style="text-align:right;">
-1.572878
+1.566478
 </td>
 </tr>
 <tr>
@@ -1348,10 +1326,10 @@ E7
 F7
 </td>
 <td style="text-align:right;">
-4.890194
+4.896546
 </td>
 <td style="text-align:right;">
-1.609806
+1.603454
 </td>
 </tr>
 <tr>
@@ -1362,10 +1340,10 @@ F7
 G7
 </td>
 <td style="text-align:right;">
-4.854509
+4.860815
 </td>
 <td style="text-align:right;">
-1.645491
+1.639185
 </td>
 </tr>
 <tr>
@@ -1376,10 +1354,10 @@ G7
 H7
 </td>
 <td style="text-align:right;">
-4.837206
+4.843489
 </td>
 <td style="text-align:right;">
-1.662794
+1.656511
 </td>
 </tr>
 <tr>
@@ -1390,10 +1368,10 @@ H7
 A8
 </td>
 <td style="text-align:right;">
-4.792790
+4.799016
 </td>
 <td style="text-align:right;">
-1.707210
+1.700984
 </td>
 </tr>
 <tr>
@@ -1404,10 +1382,10 @@ A8
 B8
 </td>
 <td style="text-align:right;">
-4.757841
+4.764021
 </td>
 <td style="text-align:right;">
-1.742159
+1.735979
 </td>
 </tr>
 <tr>
@@ -1418,10 +1396,10 @@ B8
 C8
 </td>
 <td style="text-align:right;">
-4.751178
+4.757350
 </td>
 <td style="text-align:right;">
-1.748822
+1.742650
 </td>
 </tr>
 <tr>
@@ -1432,10 +1410,10 @@ C8
 D8
 </td>
 <td style="text-align:right;">
-4.702448
+4.708556
 </td>
 <td style="text-align:right;">
-1.797552
+1.791444
 </td>
 </tr>
 <tr>
@@ -1446,10 +1424,10 @@ D8
 E8
 </td>
 <td style="text-align:right;">
-4.663665
+4.669723
 </td>
 <td style="text-align:right;">
-1.836335
+1.830277
 </td>
 </tr>
 <tr>
@@ -1460,10 +1438,10 @@ E8
 F8
 </td>
 <td style="text-align:right;">
-4.659822
+4.665875
 </td>
 <td style="text-align:right;">
-1.840178
+1.834125
 </td>
 </tr>
 <tr>
@@ -1474,10 +1452,10 @@ F8
 G8
 </td>
 <td style="text-align:right;">
-4.633729
+4.639748
 </td>
 <td style="text-align:right;">
-1.866271
+1.860252
 </td>
 </tr>
 <tr>
@@ -1488,10 +1466,10 @@ G8
 H8
 </td>
 <td style="text-align:right;">
-4.576847
+4.582792
 </td>
 <td style="text-align:right;">
-1.923153
+1.917208
 </td>
 </tr>
 <tr>
@@ -1502,10 +1480,10 @@ H8
 A9
 </td>
 <td style="text-align:right;">
-4.514726
+4.520590
 </td>
 <td style="text-align:right;">
-1.985274
+1.979410
 </td>
 </tr>
 </tbody>
@@ -1788,7 +1766,7 @@ Total
 <li><a href="mailto:5&#39;@65" class="email">5'@65</a>°C</li>
 <li><a href="mailto:Hold@4" class="email">Hold@4</a>°C</li>
 </ul></li>
-<li><em>Optionally, amplify only the first plate, assess it with electrophoresis, and adjust cycles number for the second amplifcation depending on gel migration</em></li>
+<li><em>Optionally, amplify only the first plate, assess it with electrophoresis, and adjust cycles number for the second amplification depending on gel migration</em></li>
 <li>Pool PCR results (~16.5 <span class="math inline">\(\mu L\)</span> per sample) from the 2 plates into one (~33.3K <span class="math inline">\(\mu L\)</span> per sample)</li>
 <li>Vortex <strong>PGTB beads from batch E</strong> at room temperature</li>
 <li>Add <strong>30 <span class="math inline">\(\mu L\)</span> (~0.9X) of beads</strong> (2 880 <span class="math inline">\(\mu L\)</span> per plate), mix, vortex 5" keeping beads, spin, place on magnet, wait 5’, and remove supernatant (~ 63 <span class="math inline">\(\mu L\)</span> per sample)</li>
@@ -1800,25 +1778,23 @@ Total
 </ol>
 </div>
 </div>
-<div id="libraries-preparation-results" class="section level2">
-<h2><span class="header-section-number">3.3</span> Libraries preparation results</h2>
+<div id="library-preparation-results" class="section level2">
+<h2><span class="header-section-number">3.3</span> Library preparation results</h2>
 <div id="post-enrichment-pcr1-quantification" class="section level3">
 <h3><span class="header-section-number">3.3.1</span> Post-enrichment PCR1 quantification</h3>
-<p>After the enrichment and the purification of the first PCR (PCR1),
-we quantified double strand DNA in every plates in order to adjust the second PCR (PCR2), and more especially in order to increase the number of cycles in PCR2.
-We used both Quant-It and few samples on Qbit and transformed raw absorbance results into concentration with regressions.</p>
-<p><img src="GOING_files/figure-html/quantitConcentrationQbit1-1.png" width="768" /></p>
+<p>After the enrichment and the purification of the first PCR (PCR1), we quantified double strand DNA in every plate in order to adjust the second PCR (PCR2), and more specifically in order to increase the number of cycles in PCR2. We used both Quant-It and a few samples on Qubit and transformed raw absorbance results into concentration with regressions.</p>
+<p><img src="GOING_files/figure-html/quantitConcentrationQubit1-1.png" width="768" /></p>
 </div>
 <div id="post-enrichment-pcr1-pcr2-and-amplification-quantification" class="section level3">
 <h3><span class="header-section-number">3.3.2</span> Post-enrichment (PCR1 &amp; PCR2) and amplification quantification</h3>
-<p>Library showing no band or light smir in the electrophoresis have been amplified,
+<p>Libraries showing no band or light smear in the electrophoresis have been amplified,
 resulting in amplified plates A1 and A2.
 We used the Quant-It to dose all samples (original libraries and amplified libraries).</p>
 <p><img src="GOING_files/figure-html/quantitConcentrationPlot4-1.png" width="768" /></p>
 </div>
 <div id="amplification-result" class="section level3">
 <h3><span class="header-section-number">3.3.3</span> Amplification result</h3>
-<p>We used electrophoresis and noticed if re-amplified sampled had a band (B), a light smir (L) or nothing (A). Samples without anything (A) had their library repeated.</p>
+<p>We used electrophoresis and noticed if re-amplified samples had a band (B), a light smear (L) or nothing (A). Samples without anything (A) had their library repeated.</p>
 <div class="figure"><span id="fig:elecrtophoresisAmplified"></span>
 <img src="GOING_files/figure-html/elecrtophoresisAmplified-1.png" alt="Electrophoresis Amplified" width="768" />
 <p class="caption">
@@ -1828,33 +1804,29 @@ Figure 3.13: Electrophoresis Amplified
 </div>
 <div id="library-extraction-repetition-result" class="section level3">
 <h3><span class="header-section-number">3.3.4</span> Library &amp; extraction repetition result</h3>
-<p>69 libraries were still not satisfying after amplification.
-Those library have been rebuilt from source DNA.
-Among them, 43 were still not good at the electrophoresis and have bee re-extracted. Electrophoresis of re-extracted samples show a high heterogeneity of size,
-and around 8 of them seem to have not worked.
-All new samples habe been quantified.</p>
+<p>69 libraries were still not satisfying after amplification. Those libraries have been rebuilt from source DNA. Among them, 43 were still not good at the electrophoresis and DNA has been re-extracted. Electrophoresis of re-extracted samples show a high heterogeneity of size, and around 8 of them seem to have not worked. All new samples have been quantified and libraries re-prepared according to the previously detailed protocol.</p>
 </div>
 </div>
 <div id="capture" class="section level2">
 <h2><span class="header-section-number">3.4</span> Capture</h2>
 <p>We did 16 reactions of gene capture by hybridization.
 Each reaction had up to 32 samples.
-We proceeded as follow:</p>
+We proceeded as follows:</p>
 <ol style="list-style-type: decimal">
-<li><strong>Amplifcation 1 Plate reorganization</strong>: plates state and volme have been assessed and 6 new plates (P1 to P6) have been build from (i) original libraries (P1-P5), (ii) reamplified libraries (A1-A2), and (iii) extraction and library repeat (P6). In order to do so, P6 staid unchanged, and new plate 1 to 5 were either reamplified libraries or original libraries if not reamplified. <em>Tip: remove unwanted cone from boxes when transfering original P1 to P5 to new ones to work with multi-channel pipette and prepare correspondance table to transfer reamplified plates A1 and A2 to new P1 to P5 plates crossing each line one-by-one.</em></li>
-<li><strong>DNA dosage 1</strong>: with <a href="https://www.thermofisher.com/document-connect/document-connect.html?url=https%3A%2F%2Fassets.thermofisher.com%2FTFS-Assets%2FLSG%2Fmanuals%2Fmp07581.pdf&amp;title=UXVhbnQtaVQgUGljb0dyZWVuIGRzRE5BIFJlYWdlbnQgYW5kIEtpdHM">PicoGreen</a>, we will assess DNA concentration of each sample with a lader from 5 to 30 <span class="math inline">\(ng.\mu L^{-1}\)</span> in order to correctly dose low concentration samples. <em>Tip: PicoGreen have to be used before the 26/03 12h or after the 1/04.</em></li>
+<li><strong>Amplifcation 1 Plate reorganization</strong>: plates state and volume have been assessed and 6 new plates (P1 to P6) have been built from (i) original libraries (P1-P5), (ii) reamplified libraries (A1-A2), and (iii) extraction and library repeat (P6). In order to do so, P6 stayed unchanged, and new plates 1 to 5 were either reamplified libraries or original libraries if not reamplified. <em>Tip: remove unwanted cone from boxes when transferring original P1 to P5 to new ones to work with multi-channel pipette and prepare correspondence table to transfer reamplified plates A1 and A2 to new P1 to P5 plates crossing each line one-by-one.</em></li>
+<li><strong>DNA dosage 1</strong>: with <a href="https://www.thermofisher.com/document-connect/document-connect.html?url=https%3A%2F%2Fassets.thermofisher.com%2FTFS-Assets%2FLSG%2Fmanuals%2Fmp07581.pdf&amp;title=UXVhbnQtaVQgUGljb0dyZWVuIGRzRE5BIFJlYWdlbnQgYW5kIEtpdHM">PicoGreen</a>, we will assess DNA concentration of each sample with a ladder from 5 to 30 <span class="math inline">\(ng.\mu L^{-1}\)</span> in order to correctly dose low concentration samples.</li>
 <li><strong>Amplification 2</strong>: Samples that have never been reamplified with a concentration below 1 <span class="math inline">\(ng.\mu L^{-1}\)</span> have been reorganized on a new plate (A3) and reamplified with 8 cycles.</li>
 <li><strong>DNA dosage 2</strong>: Re-amplified samples (A3) have been dosed through NanoDrop and other more accurate technology depending on the availability.</li>
-<li><strong>Amplifcation 2 and Library Repeat Plates reorganization</strong>: Re-amplified samples (A3) have been redistributed in their original position within library plates, and plates and 6.2 eorganized in a unique plate 6.3 for pools building.</li>
+<li><strong>Amplifcation 2 and Library Repeat Plates reorganization</strong>: Re-amplified samples (A3) have been redistributed in their original position within library plates, and plates and 6.2 reorganized in a unique plate 6.3 for pools building.</li>
 <li><strong>Pool building</strong>: Pool building followed plate organization, with re-extracted samples (P6.2) pooled together due to high fragment size heterogeneity. Pool building must be equimolar and thus depended on DNA dosage. Because we won’t pipette less than 0.5 <span class="math inline">\(\mu L\)</span> of the most concentrated sample of one pool, depending on the concentration of the less concentrated sample, we needed to do dilution.</li>
 <li><strong>Purification &amp; Concentration</strong>: AMPure beads have been used to clean pools. We also used this step to concentrate samples in a smaller volume for the reaction (targeted volume of reaction is <a href="https://arborbiosci.com/wp-content/uploads/2018/04/myBaits-Manual-v4.pdf">7 <span class="math inline">\(\mu L\)</span> with 100 to 500 <span class="math inline">\(ng\)</span> of DNA</a>).</li>
-<li><strong>Size assessment</strong>: Pools fragments size have been assessed with <a href="https://www.agilent.com/en/promotions/agilent-4200-tapestation-system?gclid=Cj0KCQjwj9LkBRDnARIsAGQ-hUcY74n88A8zk5NB8XdzdlXYtE0IiZF7aUzKr9-RG1duhTQ7_5PoMykaAgByEALw_wcB&amp;gclsrc=aw.ds">TapeStation</a>, in order to check for correct fragment size distribution, and eventually further clean library pools.</li>
-<li><strong>Size selection</strong>: if size distribution result was not good enough, we further cleaned library pools through size selection with a <a href="http://www.sagescience.com/products/bluepippin/">Pippin</a>. <em>Info: we thus avoid capture fail with too small fragments but we risk losing libraries.</em></li>
+<li><strong>Size assessment</strong>: Pools fragments size have been assessed with <a href="https://www.agilent.com/en/promotions/agilent-4200-tapestation-system?gclid=Cj0KCQjwj9LkBRDnARIsAGQ-hUcY74n88A8zk5NB8XdzdlXYtE0IiZF7aUzKr9-RG1duhTQ7_5PoMykaAgByEALw_wcB&amp;gclsrc=aw.ds">TapeStation</a>, in order to check for correct fragment size distribution, and, if needed, further clean library pools.</li>
+<li><strong>Size selection</strong>: if size distribution result was not good enough, we further cleaned library pools through size selection with a <a href="http://www.sagescience.com/products/bluepippin/">Pippin</a>. <em>Info: we thus avoid failure of capture with too small fragments but we risk losing libraries.</em></li>
 <li><strong>Capture</strong>: Finally we realized capture by hybridization following <a href="https://arborbiosci.com/wp-content/uploads/2018/04/myBaits-Manual-v4.pdf">ArborScience protocol</a></li>
 </ol>
 <div id="amplifcation-1-plate-reorganization" class="section level3">
 <h3><span class="header-section-number">3.4.1</span> Amplifcation 1 Plate reorganization</h3>
-<p>First amplification plates (A1 and A2) have been redistributed within their original library plates removing previous libraries.</p>
+<p>First amplification plates (A1 and A2) have been redistributed within their original library plates, removing previous libraries.</p>
 <div class="figure"><span id="fig:originToKeep"></span>
 <img src="GOING_files/figure-html/originToKeep-1.png" alt="Original libraries to be kept (P1-P5)." width="768" />
 <p class="caption">
@@ -1872,9 +1844,9 @@ Figure 3.15: Original position of amplified samples.
 <h3><span class="header-section-number">3.4.2</span> DNA dosage 1</h3>
 <p>Samples concentration has been assessed by PicoGreen with ca 60 samples having a concentration below <span class="math inline">\(1 ng.\mu L^{-1}\)</span> among which 50 have not been reamplified (34 among original libraries, and the rest among repeated libraries or extractions). Those samples have been reamplified.</p>
 <div class="figure"><span id="fig:PicoGreen"></span>
-<img src="GOING_files/figure-html/PicoGreen-1.png" alt="Sampled dosage by PicoGreen (concetration in ng.uL)." width="768" />
+<img src="GOING_files/figure-html/PicoGreen-1.png" alt="Sampled dosage by PicoGreen (concentration in ng.uL)." width="768" />
 <p class="caption">
-Figure 3.16: Sampled dosage by PicoGreen (concetration in ng.uL).
+Figure 3.16: Sampled dosage by PicoGreen (concentration in ng.uL).
 </p>
 </div>
 <div class="figure"><span id="fig:secondAmplification"></span>
@@ -1896,14 +1868,14 @@ Figure 3.18: Original position of amplified samples in A3.
 <div id="dna-dosage-2" class="section level3">
 <h3><span class="header-section-number">3.4.4</span> DNA dosage 2</h3>
 <div class="figure"><span id="fig:PicoGreen2"></span>
-<img src="GOING_files/figure-html/PicoGreen2-1.png" alt="Reampified sampled dosage by PicoGreen (concetration in ng.uL)." width="768" />
+<img src="GOING_files/figure-html/PicoGreen2-1.png" alt="Reampified sampled dosage by PicoGreen (concentration in ng.uL)." width="768" />
 <p class="caption">
-Figure 3.19: Reampified sampled dosage by PicoGreen (concetration in ng.uL).
+Figure 3.19: Reampified sampled dosage by PicoGreen (concentration in ng.uL).
 </p>
 </div>
 </div>
-<div id="amplifcation-2-and-library-repeat-plates-reorganization" class="section level3">
-<h3><span class="header-section-number">3.4.5</span> Amplifcation 2 and Library Repeat Plates reorganization</h3>
+<div id="amplification-2-and-library-repeat-plates-reorganization" class="section level3">
+<h3><span class="header-section-number">3.4.5</span> Amplification 2 and Library Repeat Plates reorganization</h3>
 <div class="figure"><span id="fig:P6reorganizationFig"></span>
 <img src="GOING_files/figure-html/P6reorganizationFig-1.png" alt="Original position of plate 6.1 and 6.2 reorganization in 6.3." width="768" />
 <p class="caption">
@@ -1915,9 +1887,9 @@ Figure 3.20: Original position of plate 6.1 and 6.2 reorganization in 6.3.
 <h3><span class="header-section-number">3.4.6</span> Pool building</h3>
 <p>Due to non uniformity of fragment size,
 re-extracted samples from P6 (P6.2) have been treated in a single separated reaction (so 15 remaining).
-All other samples have been pulled by batch of 32 following plate order.
-We wanted 100 to 500 ng of DNA per reaction, and the reaction with the least samples have 16 samples.
-Consequently we used 15 ng of each sample, resulting in 240 to 645 ng of DNA per sample (but we may lost material in purification, so we aimed for extra).
+All other samples have been pulled by batches of 32 following plate order.
+We wanted 100 to 500 ng of DNA per reaction, and the reaction with the least samples had 16 samples.
+Consequently we used 15 ng of each sample, resulting in 240 to 645 ng of DNA per sample (but we may lose material in purification, so we aimed for extra).
 Samples reaching to high concentration,
 for which we should sample less than 0.5 <span class="math inline">\(\mu L\)</span> have been diluted 2 to 4 times.</p>
 <div class="figure"><span id="fig:captureReactions"></span>
@@ -1961,7 +1933,7 @@ But the Pippin used 30 <span class="math inline">\(\mu L\)</span> and we wanted 
 So we reduced pool volume to 60 <span class="math inline">\(\mu L\)</span> per pool with the speed vac.
 Then we used Pippin with a repeat of the 4 pools with 30 <span class="math inline">\(\mu L\)</span> per pool.
 We used Pippin to filter fragments between 330 and 750 bp.
-After the Pippin, we cleaned the sampled with 1.8X PGTB Beads from Batch J,
+After the Pippin, we cleaned the samples with 1.8X PGTB Beads from Batch J,
 and assessed their concentration with QuBIT and their fragment size distribution with TapeStation.
 We obtained between 180 and 280 ng of DNA (Table <a href="genomic-libraries-and-sequence-capture.html#tab:PoolsConcentration">3.4</a>),
 with fragments distributed between 300 and 700 bp (Fig. <a href="genomic-libraries-and-sequence-capture.html#fig:TapeStationPoolOfPools">3.26</a>).</p>
@@ -2035,7 +2007,7 @@ Figure 3.26: Size selected pools assessment.
 <p>We split the 4 pools in 16 reactions (4 replicates for each) and realized the capture following <a href="https://arborbiosci.com/wp-content/uploads/2018/04/myBaits-Manual-v4.pdf">ArborScience protocol</a>. After amplification we obtained between 227 and 987 ng of DNA per pool assessed by Qubit (with the four replicates summed, Table <a href="genomic-libraries-and-sequence-capture.html#tab:QubitCapture">3.5</a>).
 We then pooled back the reaction, assessed their concentration by qPCR and adjust final samples for sequencing by an equimolar pooling Pool 1 and 2 and 3 and 4 together.
 We thus obtained 22 <span class="math inline">\(\mu L\)</span> of Lane 1 at <span class="math inline">\(7.19~nM\)</span> and 19 <span class="math inline">\(\mu L\)</span> of Lane 2 at <span class="math inline">\(10.18~nM\)</span> (<a href="https://docs.google.com/spreadsheets/d/1gdmz0qpck8b5sfThmtcSo_sRkU8Vu_2ifrm8B3b_YYk/edit?usp=sharing">see google sheets for more details</a>).
-The material has been sent to Genotoul Get team for sequencing on Illumina HiSeq 3000 on two lanes of pair-ends 150 bp sequences.</p>
+The material has been sent to the Genotoul Get team for sequencing on Illumina HiSeq 4000 on two lanes of pair-ends 150 bp sequences.</p>
 <table>
 <caption><span id="tab:QubitCapture">Table 3.5: </span>Capture result (Qubit).</caption>
 <thead>
@@ -2165,7 +2137,7 @@ The material has been sent to Genotoul Get team for sequencing on Illumina HiSeq
 <p><span class="math display">\[ C~in~nM = \frac{C~in~ng/\mu L}{660 .average~fragment~size}.10^6\]</span></p>
 <blockquote>
 <p><strong>Dilution for qPCR (1 pM)</strong>
-Dilute in cascade your samples from 20.4 - 4.9 nM to almost 1 pM. So we need a 10 000 times dilution. We will do 4 1:10 dilutuions with <span class="math inline">\(1 \mu L\)</span> of sample in <span class="math inline">\(9 \mu L\)</span> of <span class="math inline">\(H_2O~miliQ\)</span>. Change of tips for every step and better use pipette in the middle of their range than in their extreme (<em>e.g.</em> for <span class="math inline">\(100 \mu L\)</span> better use a <span class="math inline">\(200 \mu L\)</span> than a <span class="math inline">\(100 \mu L\)</span> pipette).</p>
+Dilute in cascade your samples from 20.4 - 4.9 nM to almost 1 pM. So we need a 10 000 times dilution. We will do 4 1:10 dilutions with <span class="math inline">\(1 \mu L\)</span> of sample in <span class="math inline">\(9 \mu L\)</span> of <span class="math inline">\(H_2O~milliQ\)</span>. Change of tips for every step and better use pipette in the middle of their range than in their extreme (<em>e.g.</em> for <span class="math inline">\(100 \mu L\)</span> better use a <span class="math inline">\(200 \mu L\)</span> than a <span class="math inline">\(100 \mu L\)</span> pipette).</p>
 </blockquote>
 
 </div>
@@ -2177,26 +2149,6 @@ Dilute in cascade your samples from 20.4 - 4.9 nM to almost 1 pM. So we need a 1
 <p>Doyle, J. &amp; Doyle, J. (1987). Genomic plant DNA preparation from fresh tissue-CTAB method. <em>Phytochem Bull</em>, <strong>19</strong>, 11–15.</p>
 </div>
 </div>
-<div id="disqus_thread"></div>
-<script>
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://going-1.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
             </section>
 
           </div>

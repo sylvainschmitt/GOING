@@ -46,11 +46,11 @@ pop <- bind_rows(pop, c(Ind = "P10-3-925", Pop = "SG", Pop2 = "SG")) # to solve
 ## Populations structure
 
 *Symphonia* individuals were structured in three gene pools in Paracou corresponding to field morphotypes (Fig. \@ref(fig:admixtureParacouCV) and Fig. \@ref(fig:admixtureParacou23)). 
-The three genotypes correspond to the previously identified two morphotypes (70-80%) *S. globulifera* and *S. sp1*, with *S. globulifera* morphotype structured in two gene pools, which might match the two identified submorphotype in Paracou called *S. globulifera type Paracou* (80%) and *S. globulifera type Régina* (20%). 
-Interestingly, we noticed so-called *Paracou type* and *Régina type* within *S. globulifera* morphotype when sampling the individuals.
-And looking to few identified individuals bark, 
-the two identified gene pools correspond two this two morphotypes (Fig. \@ref(fig:populationMorphotypes)). 
-The *Paracou type* have a smoother and thinner bark compared to the thick and lashed bark of *Régina type*.
+The three genotypes correspond to the previously identified two morphotypes (70-80%) *S. globulifera* and *S. sp1*, with *S. globulifera* morphotype structured in two gene pools, which might match the two identified sub-morphotype in Paracou called *S. globulifera type Paracou* (80%) and *S. globulifera type Régina* (20%). 
+Interestingly, we noticed the so-called *Paracou type* and *Régina type* within *S. globulifera* morphotype when sampling the individuals.
+And looking at a few identified individuals' bark, 
+the two identified gene pools correspond two these two morphotypes (Fig. \@ref(fig:populationMorphotypes)). 
+The *Paracou type* has a smoother and thinner bark compared to the thick and lashed bark of the *Régina type*.
 
 ```{bash admixtureParacou, eval=F, echo=T}
 module load bioinfo/admixture_linux-1.3.0
@@ -75,7 +75,7 @@ grep -h CV log*.out > CV.out
 for file in $(ls log*.out) ; do  grep "Fst divergences between estimated populations:" -A 20 $file | head -n -2 > matrices/$file ; done
 ```
 
-```{r admixtureParacouCV, fig.cap="Cross-validation for the clustering of Paracou individuals. Y axis indicates corss-validation mean error, suggesting that 2 or 3 groups represent the best Paracou individuals structure."}
+```{r admixtureParacouCV, fig.cap="Cross-validation for the clustering of Paracou individuals. Y axis indicates cross-validation mean error, suggesting that 2 or 3 groups represent the best Paracou individuals structure."}
 read_delim(file.path(path, "admixture", "paracou", "CV.out"), delim = " ", col_names = F) %>% 
   dplyr::select(X3, X4) %>% 
   dplyr::rename(K = X3, CV = X4) %>% 
@@ -88,7 +88,7 @@ read_delim(file.path(path, "admixture", "paracou", "CV.out"), delim = " ", col_n
   ylab("Cross-validation error")
 ```
 
-```{r admixtureParacou23, fig.cap="Population structure of Paracou individuals for K=2 and K=3. Dark blue is associated to *S. globulifera* morphotype; whereas light blue is associated to *S. sp1*; and red is associated to a subgroup within *S. globulifera* morphotype."}
+```{r admixtureParacou23, fig.cap="Population structure of Paracou individuals for K=2 and K=3. Dark blue is associated with *S. globulifera* morphotype; whereas light blue is associated with *S. sp1*; and red is associated to a subgroup within *S. globulifera* morphotype."}
 fam <- read_tsv(file.path(path, "..", "variantCalling", "paracou",
                           "symcapture.all.biallelic.snp.filtered.nonmissing.paracou.fam"),
          col_names = c("FID", "IID", "FIID", "MIID", "sex", "phenotype")) %>% 
@@ -129,7 +129,7 @@ g.tree <- ggdendrogram(data = as.dendrogram(hclust(as.dist(m))), rotate = T)
 cowplot::plot_grid(g.matrix, g.tree)
 ```
 
-```{r populationMorphotypes, fig.cap="The *Symphonia globulifera* morphotypes identified in the field. The three morphottypes are identified with their bark with *S. sp1* having a light grey thin and smooth bark, the *S. globulifera type Paracou* having a dark and intermediate thin and smooth bark compared to the thck and lashed bark of *S. globulifera type Regina*."}
+```{r populationMorphotypes, fig.cap="The *Symphonia globulifera* morphotypes identified in the field. The three morphotypes are identified with their bark with *S. sp1* having a light grey thin and smooth bark, the *S. globulifera type Paracou* having a dark and intermediate thin and smooth bark compared to the thick and lashed bark of *S. globulifera type Regina*."}
 knitr::include_graphics("images/Sglobulifera.png")
 ```
 
@@ -154,8 +154,8 @@ group_by(paracou3pop, Genotype) %>%
 
 ## Kinship
 
-We calculated kinship matrix (Fig. \@ref(fig:kinship)) for every individuals to be used in genomic scan to control for population structure. 
-19 individual, belonging to all gene pools, had only negative kinship values. 
+We calculated kinship matrix for every individual to be used in genomic scan to control for population structure. 
+19 individuals, belonging to all gene pools, had only negative kinship values. 
 After investigation it seems that these individuals are individuals without family in Paracou with null kinship with other individuals of their gene pools and negative values  with other individuals of other gene pools. 
 Interestingly though individuals with only null or negative kinship were all located on the limit of Paracou plots.
 
@@ -382,7 +382,7 @@ hi.index %>%
   write_tsv(file.path(path, "populations", "paracou.hybridmap"))
 ```
 
-```{r introgress, fig.cap="Population structure and fraction of the genome inherited from S. sp1 for each individual (hybrid index or admixture coefficient). Population structure assessed with ADMIXTURE is represented with the color bar for each individual, with the percentage of membership to S. sp1 genepools represented by the bar height. The hybdrid index and it's confidence interval is represented by the black line and the white area. The white dashed line indicates levels used to define previous genepools and parental alleles frequencies."}
+```{r introgress, fig.cap="Population structure and fraction of the genome inherited from S. sp1 for each individual (hybrid index or admixture coefficient). Population structure assessed with ADMIXTURE is represented with the color bar for each individual, with the percentage of membership to the S. sp1 gene pool represented by the bar height. The hybrid index and it's confidence interval is represented by the black line and the white area. The white dashed line indicates levels used to define previous gene pools and parental alleles frequencies."}
 hi.index %>% 
   mutate_at(c("h", "lower", "upper"), ~ifelse(pair == "pr", 1-., .)) %>% 
   mutate(pair = recode(pair, 

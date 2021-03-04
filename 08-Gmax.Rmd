@@ -231,7 +231,7 @@ broom.mixed::tidyMCMC(fitGmaxGeno, pars = c("thetap1", "theta2", "theta3",
                       "Expected", "$\\hat R$"))
 ```
 
-```{r gmaxgenoTrace, fig.cap="Parameters for Growth & Animal model traceplot and expected value in red."}
+```{r gmaxgenoTrace, fig.cap="Parameters for Growth & Animal model trace plot and expected value in red."}
 mcmc_trace(as.array(fitGmaxGeno, pars = c("thetap1", "theta2", "theta3",
                                           "Vp", "Vg", "Vr")), 
            np = nuts_params(fitGmaxGeno)) +
@@ -361,7 +361,7 @@ as.data.frame(fitGmaxGeno, c("Vp", "Vg", "Vr")) %>%
   coord_flip()
 ```
 
-```{r GmaxGenoVarPart, fig.cap="Genetic variance partitionning for Gmax."}
+```{r GmaxGenoVarPart, fig.cap="Genetic variance partitioning for Gmax."}
  mcmc_intervals_data(fitGmaxGeno, regex_pars = c("Vp", "Vg", "Vr")) %>% 
   mutate(parameter = recode(parameter, "Vp" = "Population", 
                             "Vg" = "Genotype", "Vr" = "Residual")) %>% 

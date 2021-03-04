@@ -7,4 +7,5 @@ bookdown::gitbook:
       after: |
         <li><a href="https://github.com/sylvainschmitt/GOING" target="blank">Source</a></li>
   includes:
-    after_body: html/disqus.html
+    after_b1ody: html/disqus.html
+bookdown::word_document2: default

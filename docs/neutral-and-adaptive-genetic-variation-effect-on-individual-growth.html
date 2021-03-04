@@ -24,7 +24,7 @@
 <meta name="author" content="Sylvain Schmitt" />
 
 
-<meta name="date" content="2021-02-25" />
+<meta name="date" content="2021-03-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,8 +51,6 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
 <link href="libs/sequences-0.1/sequences.css" rel="stylesheet" />
 <script src="libs/sunburst-binding-2.1.5/sunburst.js"></script>
@@ -198,7 +196,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.4" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#size-selection"><i class="fa fa-check"></i><b>3.2.4</b> Size selection</a></li>
 <li class="chapter" data-level="3.2.5" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#enrichment-and-purification"><i class="fa fa-check"></i><b>3.2.5</b> Enrichment and purification</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#libraries-preparation-results"><i class="fa fa-check"></i><b>3.3</b> Libraries preparation results</a><ul>
+<li class="chapter" data-level="3.3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#library-preparation-results"><i class="fa fa-check"></i><b>3.3</b> Library preparation results</a><ul>
 <li class="chapter" data-level="3.3.1" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#post-enrichment-pcr1-quantification"><i class="fa fa-check"></i><b>3.3.1</b> Post-enrichment PCR1 quantification</a></li>
 <li class="chapter" data-level="3.3.2" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#post-enrichment-pcr1-pcr2-and-amplification-quantification"><i class="fa fa-check"></i><b>3.3.2</b> Post-enrichment (PCR1 &amp; PCR2) and amplification quantification</a></li>
 <li class="chapter" data-level="3.3.3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#amplification-result"><i class="fa fa-check"></i><b>3.3.3</b> Amplification result</a></li>
@@ -209,7 +207,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4.2" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#dna-dosage-1"><i class="fa fa-check"></i><b>3.4.2</b> DNA dosage 1</a></li>
 <li class="chapter" data-level="3.4.3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#amplification-2"><i class="fa fa-check"></i><b>3.4.3</b> Amplification 2</a></li>
 <li class="chapter" data-level="3.4.4" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#dna-dosage-2"><i class="fa fa-check"></i><b>3.4.4</b> DNA dosage 2</a></li>
-<li class="chapter" data-level="3.4.5" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#amplifcation-2-and-library-repeat-plates-reorganization"><i class="fa fa-check"></i><b>3.4.5</b> Amplifcation 2 and Library Repeat Plates reorganization</a></li>
+<li class="chapter" data-level="3.4.5" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#amplification-2-and-library-repeat-plates-reorganization"><i class="fa fa-check"></i><b>3.4.5</b> Amplification 2 and Library Repeat Plates reorganization</a></li>
 <li class="chapter" data-level="3.4.6" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#pool-building"><i class="fa fa-check"></i><b>3.4.6</b> Pool building</a></li>
 <li class="chapter" data-level="3.4.7" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#purification-concentration"><i class="fa fa-check"></i><b>3.4.7</b> Purification &amp; Concentration</a></li>
 <li class="chapter" data-level="3.4.8" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#size-assessment"><i class="fa fa-check"></i><b>3.4.8</b> Size assessment</a></li>
@@ -306,32 +304,32 @@ and calculated conditional and marginal <span class="math inline">\(R^2\)</span>
 We used Bayesian inference with No-U-Turn Sampler <span class="citation">(NUTS, Hoffman &amp; Gelman <a href="#ref-Hoffman2014" role="doc-biblioref">2014</a>)</span> using <code>stan</code> language <span class="citation">(Carpenter <em>et al.</em> <a href="#ref-Carpenter2017" role="doc-biblioref">2017</a>)</span>.</p>
 <div id="growth-data" class="section level2">
 <h2><span class="header-section-number">7.1</span> Growth data</h2>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-1"></a>trees &lt;-<span class="st"> </span><span class="kw">src_sqlite</span>(<span class="kw">file.path</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;Paracou&quot;</span>,<span class="st">&quot;trees&quot;</span>, <span class="st">&quot;Paracou.sqlite&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb85-2"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-2"></a><span class="st">  </span><span class="kw">tbl</span>(<span class="st">&quot;Paracou&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb85-3"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-3"></a><span class="st">  </span><span class="kw">filter</span>(Genus <span class="op">==</span><span class="st"> &quot;Symphonia&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb85-4"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">DBH =</span> CircCorr<span class="op">/</span>pi) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb85-5"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-5"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>(CodeMeas <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb85-6"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-6"></a><span class="st">  </span><span class="kw">collect</span>()</span>
-<span id="cb85-7"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-7"></a>trees &lt;-<span class="st"> </span><span class="kw">read_tsv</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;..&quot;</span>, <span class="st">&quot;variantCalling&quot;</span>, <span class="st">&quot;paracou&quot;</span>,</span>
-<span id="cb85-8"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-8"></a>                          <span class="st">&quot;symcapture.all.biallelic.snp.filtered.nonmissing.paracou.fam&quot;</span>),</span>
-<span id="cb85-9"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-9"></a>         <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;FID&quot;</span>, <span class="st">&quot;IID&quot;</span>, <span class="st">&quot;FIID&quot;</span>, <span class="st">&quot;MIID&quot;</span>, <span class="st">&quot;sex&quot;</span>, <span class="st">&quot;phenotype&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb85-10"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-10"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Ind =</span> <span class="kw">gsub</span>(<span class="st">&quot;.g.vcf&quot;</span>, <span class="st">&quot;&quot;</span>, IID)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb85-11"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-11"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">X =</span> <span class="kw">gsub</span>(<span class="st">&quot;P&quot;</span>, <span class="st">&quot;&quot;</span>, Ind)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb85-12"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-12"></a><span class="st">  </span><span class="kw">separate</span>(X, <span class="kw">c</span>(<span class="st">&quot;Plot&quot;</span>, <span class="st">&quot;SubPlot&quot;</span>, <span class="st">&quot;TreeFieldNum&quot;</span>), <span class="dt">convert =</span> T) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb85-13"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-13"></a><span class="st">  </span><span class="kw">left_join</span>(trees) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb85-14"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-14"></a><span class="st">  </span><span class="kw">left_join</span>(<span class="kw">read_tsv</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;bayescenv&quot;</span>, <span class="st">&quot;paracou3pop.popmap&quot;</span>),</span>
-<span id="cb85-15"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-15"></a>                     <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;IID&quot;</span>, <span class="st">&quot;pop&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb85-16"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-16"></a><span class="st">  </span><span class="kw">left_join</span>(<span class="kw">read_tsv</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;populations&quot;</span>, <span class="st">&quot;paracou.hybridmap&quot;</span>)),</span>
-<span id="cb85-17"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-17"></a>            <span class="dt">by =</span> <span class="st">&quot;Ind&quot;</span>, <span class="dt">suffix =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;.hybrid&quot;</span>))</span>
-<span id="cb85-18"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-18"></a>trees &lt;-<span class="st"> </span>trees <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb85-19"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-19"></a><span class="st">  </span><span class="kw">group_by</span>(Ind) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb85-20"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-20"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Y0 =</span> dplyr<span class="op">::</span><span class="kw">first</span>(CensusYear), <span class="dt">DBH0 =</span> dplyr<span class="op">::</span><span class="kw">first</span>(DBH), </span>
-<span id="cb85-21"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-21"></a>         <span class="dt">DBHtoday =</span> dplyr<span class="op">::</span><span class="kw">last</span>(DBH), <span class="dt">N =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st">  </span></span>
-<span id="cb85-22"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-22"></a><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb85-23"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-23"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(Ind, Xutm, Yutm, IID, pop, Y0, DBH0, DBHtoday, N) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb85-24"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-24"></a><span class="st">  </span><span class="kw">unique</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb85-25"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-25"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">DBHtoday =</span> <span class="kw">ifelse</span>(DBHtoday <span class="op">==</span><span class="st"> </span>DBH0, DBHtoday <span class="op">+</span><span class="st"> </span><span class="fl">0.1</span>, DBHtoday))</span>
-<span id="cb85-26"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb85-26"></a><span class="kw">write_tsv</span>(trees, <span class="dt">file =</span> <span class="st">&quot;save/Growth.tsv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb84-1"></a>trees &lt;-<span class="st"> </span><span class="kw">src_sqlite</span>(<span class="kw">file.path</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;Paracou&quot;</span>,<span class="st">&quot;trees&quot;</span>, <span class="st">&quot;Paracou.sqlite&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-2"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb84-2"></a><span class="st">  </span><span class="kw">tbl</span>(<span class="st">&quot;Paracou&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-3"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb84-3"></a><span class="st">  </span><span class="kw">filter</span>(Genus <span class="op">==</span><span class="st"> &quot;Symphonia&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-4"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb84-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">DBH =</span> CircCorr<span class="op">/</span>pi) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-5"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb84-5"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>(CodeMeas <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-6"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb84-6"></a><span class="st">  </span><span class="kw">collect</span>()</span>
+<span id="cb84-7"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb84-7"></a>trees &lt;-<span class="st"> </span><span class="kw">read_tsv</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;..&quot;</span>, <span class="st">&quot;variantCalling&quot;</span>, <span class="st">&quot;paracou&quot;</span>,</span>
+<span id="cb84-8"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb84-8"></a>                          <span class="st">&quot;symcapture.all.biallelic.snp.filtered.nonmissing.paracou.fam&quot;</span>),</span>
+<span id="cb84-9"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb84-9"></a>         <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;FID&quot;</span>, <span class="st">&quot;IID&quot;</span>, <span class="st">&quot;FIID&quot;</span>, <span class="st">&quot;MIID&quot;</span>, <span class="st">&quot;sex&quot;</span>, <span class="st">&quot;phenotype&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-10"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb84-10"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Ind =</span> <span class="kw">gsub</span>(<span class="st">&quot;.g.vcf&quot;</span>, <span class="st">&quot;&quot;</span>, IID)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-11"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb84-11"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">X =</span> <span class="kw">gsub</span>(<span class="st">&quot;P&quot;</span>, <span class="st">&quot;&quot;</span>, Ind)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-12"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb84-12"></a><span class="st">  </span><span class="kw">separate</span>(X, <span class="kw">c</span>(<span class="st">&quot;Plot&quot;</span>, <span class="st">&quot;SubPlot&quot;</span>, <span class="st">&quot;TreeFieldNum&quot;</span>), <span class="dt">convert =</span> T) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-13"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb84-13"></a><span class="st">  </span><span class="kw">left_join</span>(trees) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-14"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb84-14"></a><span class="st">  </span><span class="kw">left_join</span>(<span class="kw">read_tsv</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;bayescenv&quot;</span>, <span class="st">&quot;paracou3pop.popmap&quot;</span>),</span>
+<span id="cb84-15"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb84-15"></a>                     <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;IID&quot;</span>, <span class="st">&quot;pop&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-16"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb84-16"></a><span class="st">  </span><span class="kw">left_join</span>(<span class="kw">read_tsv</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;populations&quot;</span>, <span class="st">&quot;paracou.hybridmap&quot;</span>)),</span>
+<span id="cb84-17"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb84-17"></a>            <span class="dt">by =</span> <span class="st">&quot;Ind&quot;</span>, <span class="dt">suffix =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;.hybrid&quot;</span>))</span>
+<span id="cb84-18"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb84-18"></a>trees &lt;-<span class="st"> </span>trees <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-19"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb84-19"></a><span class="st">  </span><span class="kw">group_by</span>(Ind) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-20"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb84-20"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Y0 =</span> dplyr<span class="op">::</span><span class="kw">first</span>(CensusYear), <span class="dt">DBH0 =</span> dplyr<span class="op">::</span><span class="kw">first</span>(DBH), </span>
+<span id="cb84-21"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb84-21"></a>         <span class="dt">DBHtoday =</span> dplyr<span class="op">::</span><span class="kw">last</span>(DBH), <span class="dt">N =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st">  </span></span>
+<span id="cb84-22"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb84-22"></a><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-23"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb84-23"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(Ind, Xutm, Yutm, IID, pop, Y0, DBH0, DBHtoday, N) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-24"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb84-24"></a><span class="st">  </span><span class="kw">unique</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb84-25"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb84-25"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">DBHtoday =</span> <span class="kw">ifelse</span>(DBHtoday <span class="op">==</span><span class="st"> </span>DBH0, DBHtoday <span class="op">+</span><span class="st"> </span><span class="fl">0.1</span>, DBHtoday))</span>
+<span id="cb84-26"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#cb84-26"></a><span class="kw">write_tsv</span>(trees, <span class="dt">file =</span> <span class="st">&quot;save/Growth.tsv&quot;</span>)</span></code></pre></div>
 </div>
 <div id="simulated-growth-and-animal-model" class="section level2">
 <h2><span class="header-section-number">7.2</span> Simulated Growth and Animal Model</h2>
@@ -529,9 +527,9 @@ Vr
 </tbody>
 </table>
 <div class="figure"><span id="fig:gmaxgenoTrace"></span>
-<img src="GOING_files/figure-html/gmaxgenoTrace-1.png" alt="Parameters for Growth &amp; Animal model traceplot and expected value in red." width="768" />
+<img src="GOING_files/figure-html/gmaxgenoTrace-1.png" alt="Parameters for Growth &amp; Animal model trace plot and expected value in red." width="768" />
 <p class="caption">
-Figure 7.1: Parameters for Growth &amp; Animal model traceplot and expected value in red.
+Figure 7.1: Parameters for Growth &amp; Animal model trace plot and expected value in red.
 </p>
 </div>
 </div>
@@ -789,9 +787,9 @@ Figure 7.5: R2 for Gmax.
 </p>
 </div>
 <div class="figure"><span id="fig:GmaxGenoVarPart"></span>
-<img src="GOING_files/figure-html/GmaxGenoVarPart-1.png" alt="Genetic variance partitionning for Gmax." width="768" />
+<img src="GOING_files/figure-html/GmaxGenoVarPart-1.png" alt="Genetic variance partitioning for Gmax." width="768" />
 <p class="caption">
-Figure 7.6: Genetic variance partitionning for Gmax.
+Figure 7.6: Genetic variance partitioning for Gmax.
 </p>
 </div>
 <div class="figure"><span id="fig:unnamed-chunk-6"></span>
@@ -827,26 +825,6 @@ Figure 7.8: Spatial autocorrelogram (Moran’s I) of variables and associated ge
 <p>Nakagawa, S. &amp; Schielzeth, H. (2013). A general and simple method for obtaining R2 from generalized linear mixed-effects models. <em>Methods in Ecology and Evolution</em>, <strong>4</strong>, 133–142.</p>
 </div>
 </div>
-<div id="disqus_thread"></div>
-<script>
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://going-1.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
             </section>
 
           </div>

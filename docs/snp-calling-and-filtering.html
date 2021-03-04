@@ -24,7 +24,7 @@
 <meta name="author" content="Sylvain Schmitt" />
 
 
-<meta name="date" content="2021-02-25" />
+<meta name="date" content="2021-03-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,8 +51,6 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
 <link href="libs/sequences-0.1/sequences.css" rel="stylesheet" />
 <script src="libs/sunburst-binding-2.1.5/sunburst.js"></script>
@@ -198,7 +196,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.4" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#size-selection"><i class="fa fa-check"></i><b>3.2.4</b> Size selection</a></li>
 <li class="chapter" data-level="3.2.5" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#enrichment-and-purification"><i class="fa fa-check"></i><b>3.2.5</b> Enrichment and purification</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#libraries-preparation-results"><i class="fa fa-check"></i><b>3.3</b> Libraries preparation results</a><ul>
+<li class="chapter" data-level="3.3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#library-preparation-results"><i class="fa fa-check"></i><b>3.3</b> Library preparation results</a><ul>
 <li class="chapter" data-level="3.3.1" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#post-enrichment-pcr1-quantification"><i class="fa fa-check"></i><b>3.3.1</b> Post-enrichment PCR1 quantification</a></li>
 <li class="chapter" data-level="3.3.2" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#post-enrichment-pcr1-pcr2-and-amplification-quantification"><i class="fa fa-check"></i><b>3.3.2</b> Post-enrichment (PCR1 &amp; PCR2) and amplification quantification</a></li>
 <li class="chapter" data-level="3.3.3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#amplification-result"><i class="fa fa-check"></i><b>3.3.3</b> Amplification result</a></li>
@@ -209,7 +207,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4.2" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#dna-dosage-1"><i class="fa fa-check"></i><b>3.4.2</b> DNA dosage 1</a></li>
 <li class="chapter" data-level="3.4.3" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#amplification-2"><i class="fa fa-check"></i><b>3.4.3</b> Amplification 2</a></li>
 <li class="chapter" data-level="3.4.4" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#dna-dosage-2"><i class="fa fa-check"></i><b>3.4.4</b> DNA dosage 2</a></li>
-<li class="chapter" data-level="3.4.5" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#amplifcation-2-and-library-repeat-plates-reorganization"><i class="fa fa-check"></i><b>3.4.5</b> Amplifcation 2 and Library Repeat Plates reorganization</a></li>
+<li class="chapter" data-level="3.4.5" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#amplification-2-and-library-repeat-plates-reorganization"><i class="fa fa-check"></i><b>3.4.5</b> Amplification 2 and Library Repeat Plates reorganization</a></li>
 <li class="chapter" data-level="3.4.6" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#pool-building"><i class="fa fa-check"></i><b>3.4.6</b> Pool building</a></li>
 <li class="chapter" data-level="3.4.7" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#purification-concentration"><i class="fa fa-check"></i><b>3.4.7</b> Purification &amp; Concentration</a></li>
 <li class="chapter" data-level="3.4.8" data-path="genomic-libraries-and-sequence-capture.html"><a href="genomic-libraries-and-sequence-capture.html#size-assessment"><i class="fa fa-check"></i><b>3.4.8</b> Size assessment</a></li>
@@ -283,7 +281,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="snp-calling-and-filtering" class="section level1">
 <h1><span class="header-section-number">Chapter 4</span> SNP calling and filtering</h1>
-<p>We assessed the quality off raw reads using <code>multiqc</code> <span class="citation">(Ewels <em>et al.</em> <a href="#ref-Ewels2016" role="doc-biblioref">2016</a>)</span> and trimmed them with <code>trimmomatic</code> <span class="citation">(Bolger <em>et al.</em> <a href="#ref-Andrews2010" role="doc-biblioref">2014</a>)</span>.
+<p>We assessed the quality of raw reads using <code>multiqc</code> <span class="citation">(Ewels <em>et al.</em> <a href="#ref-Ewels2016" role="doc-biblioref">2016</a>)</span> and trimmed them with <code>trimmomatic</code> <span class="citation">(Bolger <em>et al.</em> <a href="#ref-Andrews2010" role="doc-biblioref">2014</a>)</span>.
 We kept only pair-end reads without adaptors and a phred score above 15 in a sliding window of 4.
 Seventy percent of trimmed reads mapped off-targets using <code>bwa</code> <span class="citation">(Li &amp; Durbin <a href="#ref-Li2009" role="doc-biblioref">2009</a>)</span>.
 We thus mapped trimmed reads on the hybrid reference built for the sequence capture experiment using <code>bwa</code> <span class="citation">(Li &amp; Durbin <a href="#ref-Li2009" role="doc-biblioref">2009</a>)</span>, <code>picard</code> <span class="citation">(Broad Institute <a href="#ref-BroadInstitute2018" role="doc-biblioref">2018</a>)</span>, <code>samtools</code> <span class="citation">(Li <em>et al.</em> <a href="#ref-Li2009a" role="doc-biblioref">2009</a>)</span> and <code>bedtools</code> <span class="citation">(Quinlan &amp; Hall <a href="#ref-Quinlan2010" role="doc-biblioref">2010</a>)</span>.
@@ -297,7 +295,7 @@ We further removed admixed individuals (see population genetic analyses for crit
 <div id="quality-check" class="section level2">
 <h2><span class="header-section-number">4.1</span> Quality Check</h2>
 <p>We received demultiplexed libraries from sequencing.
-We check edsequences quality combining already produced fastqc and compare them with originally furnished (i) baits, (ii) targets, and (iii) references:</p>
+We cchecked sequences quality combining already produced fastqc and compare them with originally furnished (i) baits, (ii) targets, and (iii) references:</p>
 <ol style="list-style-type: decimal">
 <li><strong>Multi Quality Check</strong>: we used <code>multiqc</code> to combined <code>fastqc</code> inputs for every library (1002 for forward and reverse individuals) and check sequences, counts, quality and GC content</li>
 <li><strong>Trimming</strong>: we trimmed sequences removing bad quality and adaptors sequences</li>
@@ -306,15 +304,15 @@ We check edsequences quality combining already produced fastqc and compare them 
 </ol>
 <div id="multi-quality-check" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> Multi Quality Check</h3>
-<p>We used <code>multiqc</code> to combined <code>fastqc</code> inputs for every library (1002 for forward and reverse individuals) and check sequences, counts, quality and GC content.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb54-1"><a href="snp-calling-and-filtering.html#cb54-1"></a><span class="bu">cd</span> ~/Documents/BIOGECO/PhD/data/Eschweilera_Paracou/Sequences/quality</span>
-<span id="cb54-2"><a href="snp-calling-and-filtering.html#cb54-2"></a><span class="ex">multiqc</span> fastqc</span>
-<span id="cb54-3"><a href="snp-calling-and-filtering.html#cb54-3"></a><span class="fu">mkdir</span> multiqc</span>
-<span id="cb54-4"><a href="snp-calling-and-filtering.html#cb54-4"></a><span class="fu">mv</span> multiqc_data/ multiqc_report.html L1.fastqc.tar.gz L2.fastqc.tar.gz multiqc</span></code></pre></div>
+<p>We used <code>multiqc</code> to combine <code>fastqc</code> inputs for every library (1002 for forward and reverse individuals) and check sequences, counts, quality and GC content.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb53-1"><a href="snp-calling-and-filtering.html#cb53-1"></a><span class="bu">cd</span> ~/Documents/BIOGECO/PhD/data/Eschweilera_Paracou/Sequences/quality</span>
+<span id="cb53-2"><a href="snp-calling-and-filtering.html#cb53-2"></a><span class="ex">multiqc</span> fastqc</span>
+<span id="cb53-3"><a href="snp-calling-and-filtering.html#cb53-3"></a><span class="fu">mkdir</span> multiqc</span>
+<span id="cb53-4"><a href="snp-calling-and-filtering.html#cb53-4"></a><span class="fu">mv</span> multiqc_data/ multiqc_report.html L1.fastqc.tar.gz L2.fastqc.tar.gz multiqc</span></code></pre></div>
 <div id="counts" class="section level4">
 <h4><span class="header-section-number">4.1.1.1</span> Counts</h4>
 <p>We had a big heterogeneity of sample representativity (215 000 folds),
-but 85% of samples had more than 66 6667 sequences (ca 1M targets / 150 bp * 10X). Moreover duplicated sequences were obviously more present in over-representated individuals,
+but 85% of samples had more than 66 6667 sequences (ca 1M targets / 150 bp * 10X). Moreover, duplicated sequences were obviously more present in over-represented individuals,
 probably more linked to PCR biased than sequencing issues.</p>
 <div class="figure"><span id="fig:seqcounts"></span>
 <img src="GOING_files/figure-html/seqcounts-1.png" alt="Sequence counts." width="768" />
@@ -325,7 +323,7 @@ Figure 4.1: Sequence counts.
 </div>
 <div id="quality" class="section level4">
 <h4><span class="header-section-number">4.1.1.2</span> Quality</h4>
-<p>Sequences quality was very good as the Phred score is above 25 for every bases on all positions across all sequences.</p>
+<p>Sequence quality was very good as the Phred score is above 25 for every bases on all positions across all sequences.</p>
 <div class="figure"><span id="fig:phred"></span>
 <img src="data/Symphonia_Paracou/Sequences/quality/multiqc/plots/phred.png" alt="Phred score." width="695" />
 <p class="caption">
@@ -352,52 +350,52 @@ Figure 4.4: GC content within sequences.
 </div>
 <div id="trimming" class="section level3">
 <h3><span class="header-section-number">4.1.2</span> Trimming</h3>
-<p>We listed all libraries in a text files and trimmed all libraries with <code>trimmomatic</code> in pair end (<code>PE</code>) into paired and unpaired compressed fastq files (<code>fq.gz</code>).
+<p>We listed all libraries in text files and trimmed all libraries with <code>trimmomatic</code> in pair end (<code>PE</code>) into paired and unpaired compressed fastq files (<code>fq.gz</code>).
 We trimmed the adaptor (<code>ILLUMINACLIP</code>) of our protocol (<code>TruSeq3-PE</code>) with a seed mismatches of 2 (mismatched count allowed),
 a threshold for clipping palindrome of 30 (authorized match for ligated adapters),
 a threshold for simple clip of 10 (match between adapter and sequence),
 a minimum adaptor length of 2,
 and keeping both reads each time (<code>keepBothReads</code>).
-We trimmed sequences on phred score with a minimum of 15 in sliding window of 4 (<code>SLIDINGWINDOW:4:15</code>)
+We trimmed sequences on phred score with a minimum of 15 in a sliding window of 4 (<code>SLIDINGWINDOW:4:15</code>)
 without trimming the beginning (<code>LEADING:X</code>) or the end (<code>TRAILING:X</code>).
 Without surprise due to the high quality check of sequencing,
 trimming resulted in 99.91% of paired trimmed reads compared to raw reads (<a href="snp-calling-and-filtering.html#fig:trimmingStat">4.5</a>).
 Thus the main issue of our dataset &lt;as more the representativity of sequences more than their quality.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="snp-calling-and-filtering.html#cb55-1"></a><span class="kw">data.frame</span>(<span class="dt">libraries =</span> <span class="kw">list.files</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;Sequences&quot;</span>, <span class="st">&quot;raw&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb55-2"><a href="snp-calling-and-filtering.html#cb55-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">libraries =</span> <span class="kw">gsub</span>(<span class="st">&quot;_R[12].fastq.gz&quot;</span>, <span class="st">&quot;&quot;</span>, libraries)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb55-3"><a href="snp-calling-and-filtering.html#cb55-3"></a><span class="st">  </span><span class="kw">unique</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb55-4"><a href="snp-calling-and-filtering.html#cb55-4"></a><span class="st">  </span><span class="kw">write_tsv</span>(<span class="dt">path =</span> <span class="kw">file.path</span>(path, <span class="st">&quot;Sequences&quot;</span>, <span class="st">&quot;libraries.txt&quot;</span>), <span class="dt">col_names =</span> F)</span></code></pre></div>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="snp-calling-and-filtering.html#cb56-1"></a><span class="kw">read_tsv</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;Sequences&quot;</span>, <span class="st">&quot;libraries.txt&quot;</span>), <span class="dt">col_names =</span> <span class="st">&quot;Library&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb56-2"><a href="snp-calling-and-filtering.html#cb56-2"></a><span class="st">  </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb56-3"><a href="snp-calling-and-filtering.html#cb56-3"></a><span class="st">  </span><span class="kw">write_tsv</span>(<span class="dt">path =</span> <span class="kw">file.path</span>(path, <span class="st">&quot;Sequences&quot;</span>, <span class="st">&quot;libraries_mapping.txt&quot;</span>), <span class="dt">col_names =</span> F)</span></code></pre></div>
-<div class="sourceCode" id="cb57"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb57-1"><a href="snp-calling-and-filtering.html#cb57-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb57-2"><a href="snp-calling-and-filtering.html#cb57-2"></a><span class="co">#SBATCH --time=36:00:00</span></span>
-<span id="cb57-3"><a href="snp-calling-and-filtering.html#cb57-3"></a><span class="co">#SBATCH -J trimming</span></span>
-<span id="cb57-4"><a href="snp-calling-and-filtering.html#cb57-4"></a><span class="co">#SBATCH -o trimming_output.out</span></span>
-<span id="cb57-5"><a href="snp-calling-and-filtering.html#cb57-5"></a><span class="co">#SBATCH -e trimming_error.out</span></span>
-<span id="cb57-6"><a href="snp-calling-and-filtering.html#cb57-6"></a><span class="co">#SBATCH --mem=20G</span></span>
-<span id="cb57-7"><a href="snp-calling-and-filtering.html#cb57-7"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
-<span id="cb57-8"><a href="snp-calling-and-filtering.html#cb57-8"></a><span class="co">#SBATCH --mail-type=</span><span class="re">BEGIN</span><span class="co">,</span><span class="re">END</span><span class="co">,FAIL</span></span>
-<span id="cb57-9"><a href="snp-calling-and-filtering.html#cb57-9"></a><span class="ex">module</span> load bioinfo/Trimmomatic-0.36</span>
-<span id="cb57-10"><a href="snp-calling-and-filtering.html#cb57-10"></a><span class="kw">for</span> <span class="ex">library</span> in <span class="va">$(</span><span class="fu">cat</span> libraries.txt<span class="va">)</span></span>
-<span id="cb57-11"><a href="snp-calling-and-filtering.html#cb57-11"></a><span class="kw">do</span></span>
-<span id="cb57-12"><a href="snp-calling-and-filtering.html#cb57-12"></a>  <span class="ex">java</span> -jar <span class="va">$TRIM_HOME</span>/trimmomatic.jar PE \</span>
-<span id="cb57-13"><a href="snp-calling-and-filtering.html#cb57-13"></a>    raw/<span class="st">&quot;</span><span class="va">$library</span><span class="st">&quot;</span>_R1.fastq.gz raw/<span class="st">&quot;</span><span class="va">$library</span><span class="st">&quot;</span>_R2.fastq.gz \</span>
-<span id="cb57-14"><a href="snp-calling-and-filtering.html#cb57-14"></a>    trimmed/paired/<span class="st">&quot;</span><span class="va">$library</span><span class="st">&quot;</span>_R1_paired.fq.gz trimmed/unpaired/<span class="st">&quot;</span><span class="va">$library</span><span class="st">&quot;</span>_R1_unpaired.fq.gz \</span>
-<span id="cb57-15"><a href="snp-calling-and-filtering.html#cb57-15"></a>    trimmed/paired/<span class="st">&quot;</span><span class="va">$library</span><span class="st">&quot;</span>_R2_paired.fq.gz trimmed/unpaired/<span class="st">&quot;</span><span class="va">$library</span><span class="st">&quot;</span>_R2_unpaired.fq.gz \</span>
-<span id="cb57-16"><a href="snp-calling-and-filtering.html#cb57-16"></a>    ILLUMINACLIP:TruSeq3-PE.fa:2:30:10:2:keepBothReads \</span>
-<span id="cb57-17"><a href="snp-calling-and-filtering.html#cb57-17"></a>    SLIDINGWINDOW:4:15</span>
-<span id="cb57-18"><a href="snp-calling-and-filtering.html#cb57-18"></a><span class="kw">done</span></span>
-<span id="cb57-19"><a href="snp-calling-and-filtering.html#cb57-19"></a><span class="fu">cat</span> trimmed/paired_stat.txt</span>
-<span id="cb57-20"><a href="snp-calling-and-filtering.html#cb57-20"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> trimmed/paired<span class="va">)</span></span>
-<span id="cb57-21"><a href="snp-calling-and-filtering.html#cb57-21"></a><span class="kw">do</span></span>
-<span id="cb57-22"><a href="snp-calling-and-filtering.html#cb57-22"></a>  <span class="fu">zcat</span> trimmed/paired/<span class="va">$file</span> <span class="kw">|</span> <span class="bu">echo</span> <span class="va">$file</span><span class="st">&quot;   &quot;</span><span class="va">$((</span><span class="kw">`</span><span class="fu">wc</span> -l<span class="kw">`</span>/4<span class="va">))</span> <span class="op">&gt;&gt;</span> trimmed/paired_stat.txt</span>
-<span id="cb57-23"><a href="snp-calling-and-filtering.html#cb57-23"></a><span class="kw">done</span></span>
-<span id="cb57-24"><a href="snp-calling-and-filtering.html#cb57-24"></a><span class="fu">cat</span> trimmed/unpaired_stat.txt</span>
-<span id="cb57-25"><a href="snp-calling-and-filtering.html#cb57-25"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> trimmed/unpaired<span class="va">)</span></span>
-<span id="cb57-26"><a href="snp-calling-and-filtering.html#cb57-26"></a><span class="kw">do</span></span>
-<span id="cb57-27"><a href="snp-calling-and-filtering.html#cb57-27"></a>  <span class="fu">zcat</span> trimmed/unpaired/<span class="va">$file</span> <span class="kw">|</span> <span class="bu">echo</span> <span class="va">$file</span><span class="st">&quot;   &quot;</span><span class="va">$((</span><span class="kw">`</span><span class="fu">wc</span> -l<span class="kw">`</span>/4<span class="va">))</span> <span class="op">&gt;&gt;</span> trimmed/unpaired_stat.txt</span>
-<span id="cb57-28"><a href="snp-calling-and-filtering.html#cb57-28"></a><span class="kw">done</span></span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="snp-calling-and-filtering.html#cb54-1"></a><span class="kw">data.frame</span>(<span class="dt">libraries =</span> <span class="kw">list.files</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;Sequences&quot;</span>, <span class="st">&quot;raw&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb54-2"><a href="snp-calling-and-filtering.html#cb54-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">libraries =</span> <span class="kw">gsub</span>(<span class="st">&quot;_R[12].fastq.gz&quot;</span>, <span class="st">&quot;&quot;</span>, libraries)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb54-3"><a href="snp-calling-and-filtering.html#cb54-3"></a><span class="st">  </span><span class="kw">unique</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb54-4"><a href="snp-calling-and-filtering.html#cb54-4"></a><span class="st">  </span><span class="kw">write_tsv</span>(<span class="dt">path =</span> <span class="kw">file.path</span>(path, <span class="st">&quot;Sequences&quot;</span>, <span class="st">&quot;libraries.txt&quot;</span>), <span class="dt">col_names =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="snp-calling-and-filtering.html#cb55-1"></a><span class="kw">read_tsv</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;Sequences&quot;</span>, <span class="st">&quot;libraries.txt&quot;</span>), <span class="dt">col_names =</span> <span class="st">&quot;Library&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb55-2"><a href="snp-calling-and-filtering.html#cb55-2"></a><span class="st">  </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb55-3"><a href="snp-calling-and-filtering.html#cb55-3"></a><span class="st">  </span><span class="kw">write_tsv</span>(<span class="dt">path =</span> <span class="kw">file.path</span>(path, <span class="st">&quot;Sequences&quot;</span>, <span class="st">&quot;libraries_mapping.txt&quot;</span>), <span class="dt">col_names =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb56-1"><a href="snp-calling-and-filtering.html#cb56-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb56-2"><a href="snp-calling-and-filtering.html#cb56-2"></a><span class="co">#SBATCH --time=36:00:00</span></span>
+<span id="cb56-3"><a href="snp-calling-and-filtering.html#cb56-3"></a><span class="co">#SBATCH -J trimming</span></span>
+<span id="cb56-4"><a href="snp-calling-and-filtering.html#cb56-4"></a><span class="co">#SBATCH -o trimming_output.out</span></span>
+<span id="cb56-5"><a href="snp-calling-and-filtering.html#cb56-5"></a><span class="co">#SBATCH -e trimming_error.out</span></span>
+<span id="cb56-6"><a href="snp-calling-and-filtering.html#cb56-6"></a><span class="co">#SBATCH --mem=20G</span></span>
+<span id="cb56-7"><a href="snp-calling-and-filtering.html#cb56-7"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
+<span id="cb56-8"><a href="snp-calling-and-filtering.html#cb56-8"></a><span class="co">#SBATCH --mail-type=</span><span class="re">BEGIN</span><span class="co">,</span><span class="re">END</span><span class="co">,FAIL</span></span>
+<span id="cb56-9"><a href="snp-calling-and-filtering.html#cb56-9"></a><span class="ex">module</span> load bioinfo/Trimmomatic-0.36</span>
+<span id="cb56-10"><a href="snp-calling-and-filtering.html#cb56-10"></a><span class="kw">for</span> <span class="ex">library</span> in <span class="va">$(</span><span class="fu">cat</span> libraries.txt<span class="va">)</span></span>
+<span id="cb56-11"><a href="snp-calling-and-filtering.html#cb56-11"></a><span class="kw">do</span></span>
+<span id="cb56-12"><a href="snp-calling-and-filtering.html#cb56-12"></a>  <span class="ex">java</span> -jar <span class="va">$TRIM_HOME</span>/trimmomatic.jar PE \</span>
+<span id="cb56-13"><a href="snp-calling-and-filtering.html#cb56-13"></a>    raw/<span class="st">&quot;</span><span class="va">$library</span><span class="st">&quot;</span>_R1.fastq.gz raw/<span class="st">&quot;</span><span class="va">$library</span><span class="st">&quot;</span>_R2.fastq.gz \</span>
+<span id="cb56-14"><a href="snp-calling-and-filtering.html#cb56-14"></a>    trimmed/paired/<span class="st">&quot;</span><span class="va">$library</span><span class="st">&quot;</span>_R1_paired.fq.gz trimmed/unpaired/<span class="st">&quot;</span><span class="va">$library</span><span class="st">&quot;</span>_R1_unpaired.fq.gz \</span>
+<span id="cb56-15"><a href="snp-calling-and-filtering.html#cb56-15"></a>    trimmed/paired/<span class="st">&quot;</span><span class="va">$library</span><span class="st">&quot;</span>_R2_paired.fq.gz trimmed/unpaired/<span class="st">&quot;</span><span class="va">$library</span><span class="st">&quot;</span>_R2_unpaired.fq.gz \</span>
+<span id="cb56-16"><a href="snp-calling-and-filtering.html#cb56-16"></a>    ILLUMINACLIP:TruSeq3-PE.fa:2:30:10:2:keepBothReads \</span>
+<span id="cb56-17"><a href="snp-calling-and-filtering.html#cb56-17"></a>    SLIDINGWINDOW:4:15</span>
+<span id="cb56-18"><a href="snp-calling-and-filtering.html#cb56-18"></a><span class="kw">done</span></span>
+<span id="cb56-19"><a href="snp-calling-and-filtering.html#cb56-19"></a><span class="fu">cat</span> trimmed/paired_stat.txt</span>
+<span id="cb56-20"><a href="snp-calling-and-filtering.html#cb56-20"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> trimmed/paired<span class="va">)</span></span>
+<span id="cb56-21"><a href="snp-calling-and-filtering.html#cb56-21"></a><span class="kw">do</span></span>
+<span id="cb56-22"><a href="snp-calling-and-filtering.html#cb56-22"></a>  <span class="fu">zcat</span> trimmed/paired/<span class="va">$file</span> <span class="kw">|</span> <span class="bu">echo</span> <span class="va">$file</span><span class="st">&quot;   &quot;</span><span class="va">$((</span><span class="kw">`</span><span class="fu">wc</span> -l<span class="kw">`</span>/4<span class="va">))</span> <span class="op">&gt;&gt;</span> trimmed/paired_stat.txt</span>
+<span id="cb56-23"><a href="snp-calling-and-filtering.html#cb56-23"></a><span class="kw">done</span></span>
+<span id="cb56-24"><a href="snp-calling-and-filtering.html#cb56-24"></a><span class="fu">cat</span> trimmed/unpaired_stat.txt</span>
+<span id="cb56-25"><a href="snp-calling-and-filtering.html#cb56-25"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> trimmed/unpaired<span class="va">)</span></span>
+<span id="cb56-26"><a href="snp-calling-and-filtering.html#cb56-26"></a><span class="kw">do</span></span>
+<span id="cb56-27"><a href="snp-calling-and-filtering.html#cb56-27"></a>  <span class="fu">zcat</span> trimmed/unpaired/<span class="va">$file</span> <span class="kw">|</span> <span class="bu">echo</span> <span class="va">$file</span><span class="st">&quot;   &quot;</span><span class="va">$((</span><span class="kw">`</span><span class="fu">wc</span> -l<span class="kw">`</span>/4<span class="va">))</span> <span class="op">&gt;&gt;</span> trimmed/unpaired_stat.txt</span>
+<span id="cb56-28"><a href="snp-calling-and-filtering.html#cb56-28"></a><span class="kw">done</span></span></code></pre></div>
 <div class="figure"><span id="fig:trimmingStat"></span>
 <img src="GOING_files/figure-html/trimmingStat-1.png" alt="Trimming results." width="768" />
 <p class="caption">
@@ -407,41 +405,41 @@ Figure 4.5: Trimming results.
 </div>
 <div id="targets-mapping" class="section level3">
 <h3><span class="header-section-number">4.1.3</span> Targets mapping</h3>
-<p>We mapped 10 libraries on targets to check of-targets sequences and targets loss.
-Globally we had a good coverage of targets (median of 90%, <a href="snp-calling-and-filtering.html#fig:targetsAlignmentCoverage">4.6</a>),
+<p>We mapped 10 libraries on targets to check off-targets sequences and targets loss.
+Globally we had good coverage of targets (median of 90%, <a href="snp-calling-and-filtering.html#fig:targetsAlignmentCoverage">4.6</a>),
 but reads were 70% to 81% of-targets (<a href="snp-calling-and-filtering.html#tab:targetsAlignmentReadsMapped">4.1</a>). Consequently we could not only use targets as reference for reads mapping.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb58-1"><a href="snp-calling-and-filtering.html#cb58-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb58-2"><a href="snp-calling-and-filtering.html#cb58-2"></a><span class="co">#SBATCH --time=36:00:00</span></span>
-<span id="cb58-3"><a href="snp-calling-and-filtering.html#cb58-3"></a><span class="co">#SBATCH -J targetsMapping</span></span>
-<span id="cb58-4"><a href="snp-calling-and-filtering.html#cb58-4"></a><span class="co">#SBATCH -o targetsMapping_output.out</span></span>
-<span id="cb58-5"><a href="snp-calling-and-filtering.html#cb58-5"></a><span class="co">#SBATCH -e targetsMapping_error.out</span></span>
-<span id="cb58-6"><a href="snp-calling-and-filtering.html#cb58-6"></a><span class="co">#SBATCH --mem=20G</span></span>
-<span id="cb58-7"><a href="snp-calling-and-filtering.html#cb58-7"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
-<span id="cb58-8"><a href="snp-calling-and-filtering.html#cb58-8"></a><span class="co">#SBATCH --mail-type=</span><span class="re">BEGIN</span><span class="co">,</span><span class="re">END</span><span class="co">,FAIL</span></span>
-<span id="cb58-9"><a href="snp-calling-and-filtering.html#cb58-9"></a></span>
-<span id="cb58-10"><a href="snp-calling-and-filtering.html#cb58-10"></a><span class="ex">module</span> purge</span>
-<span id="cb58-11"><a href="snp-calling-and-filtering.html#cb58-11"></a><span class="ex">module</span> load bioinfo/bwa-0.7.15</span>
-<span id="cb58-12"><a href="snp-calling-and-filtering.html#cb58-12"></a><span class="ex">module</span> load bioinfo/picard-2.14.1</span>
-<span id="cb58-13"><a href="snp-calling-and-filtering.html#cb58-13"></a><span class="ex">module</span> load bioinfo/samtools-1.4</span>
-<span id="cb58-14"><a href="snp-calling-and-filtering.html#cb58-14"></a><span class="ex">module</span> load bioinfo/bedtools-2.26.0</span>
-<span id="cb58-15"><a href="snp-calling-and-filtering.html#cb58-15"></a></span>
-<span id="cb58-16"><a href="snp-calling-and-filtering.html#cb58-16"></a><span class="va">targets=</span>../Baits/files-Symphonia/target-sequences.fas</span>
-<span id="cb58-17"><a href="snp-calling-and-filtering.html#cb58-17"></a><span class="ex">bwa</span> index <span class="va">$targets</span></span>
-<span id="cb58-18"><a href="snp-calling-and-filtering.html#cb58-18"></a><span class="kw">for</span> <span class="ex">library</span> in <span class="va">$(</span><span class="fu">cat</span> libraries_mapping.txt<span class="va">)</span></span>
-<span id="cb58-19"><a href="snp-calling-and-filtering.html#cb58-19"></a><span class="kw">do</span></span>
-<span id="cb58-20"><a href="snp-calling-and-filtering.html#cb58-20"></a>  <span class="va">rg=</span><span class="st">&quot;@RG\tID:</span><span class="va">${library}</span><span class="st">\tSM:</span><span class="va">${library}</span><span class="st">\tPL:HiSeq4K&quot;</span></span>
-<span id="cb58-21"><a href="snp-calling-and-filtering.html#cb58-21"></a>  <span class="ex">bwa</span> mem -M -R <span class="st">&quot;</span><span class="va">${rg}</span><span class="st">&quot;</span> -t 16 <span class="va">$targets</span> trimmed/paired/<span class="st">&quot;</span><span class="va">$library</span><span class="st">&quot;</span>_R1_paired.fq.gz trimmed/paired/<span class="st">&quot;</span><span class="va">$library</span><span class="st">&quot;</span>_R2_paired.fq.gz <span class="op">&gt;</span> targetsMapping/sam/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">.sam&quot;</span></span>
-<span id="cb58-22"><a href="snp-calling-and-filtering.html#cb58-22"></a>  <span class="ex">java</span> -Xmx4g -jar <span class="va">$PICARD</span> SortSam I=targetsMapping/sam/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">.sam&quot;</span> O=targetsMapping/bam/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bam SORT_ORDER=coordinate</span>
-<span id="cb58-23"><a href="snp-calling-and-filtering.html#cb58-23"></a>  <span class="ex">java</span> -Xmx4g -jar <span class="va">$PICARD</span> BuildBamIndex I=targetsMapping/bam/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bam O=targetsMapping/bam/<span class="st">&quot;</span><span class="va">${filename}</span><span class="st">&quot;</span>.bai</span>
-<span id="cb58-24"><a href="snp-calling-and-filtering.html#cb58-24"></a>  <span class="ex">samtools</span> index targetsMapping/bam/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bam</span>
-<span id="cb58-25"><a href="snp-calling-and-filtering.html#cb58-25"></a>  <span class="ex">bedtools</span> bamtobed -i =targetsMapping/bam/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bam <span class="op">&gt;</span> targetsMapping/bed/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bed</span>
-<span id="cb58-26"><a href="snp-calling-and-filtering.html#cb58-26"></a>  <span class="ex">bedtools</span> merge -i targetsMapping/bed/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bed <span class="op">&gt;</span> targetsMapping/merged_bed/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bed</span>
-<span id="cb58-27"><a href="snp-calling-and-filtering.html#cb58-27"></a><span class="kw">done</span></span>
-<span id="cb58-28"><a href="snp-calling-and-filtering.html#cb58-28"></a><span class="fu">touch</span> readsMappingStat.txt</span>
-<span id="cb58-29"><a href="snp-calling-and-filtering.html#cb58-29"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> bam/*.bam<span class="va">)</span></span>
-<span id="cb58-30"><a href="snp-calling-and-filtering.html#cb58-30"></a><span class="kw">do</span></span>
-<span id="cb58-31"><a href="snp-calling-and-filtering.html#cb58-31"></a>  <span class="ex">samtools</span> flagstat <span class="va">$file</span> <span class="kw">|</span> <span class="bu">echo</span> <span class="va">$file</span><span class="st">&quot;   &quot;</span><span class="va">$(</span><span class="fu">grep</span> <span class="st">&quot;mapped (&quot;</span><span class="va">)</span> <span class="op">&gt;&gt;</span> readsMappingStat.txt</span>
-<span id="cb58-32"><a href="snp-calling-and-filtering.html#cb58-32"></a><span class="kw">done</span></span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb57-1"><a href="snp-calling-and-filtering.html#cb57-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb57-2"><a href="snp-calling-and-filtering.html#cb57-2"></a><span class="co">#SBATCH --time=36:00:00</span></span>
+<span id="cb57-3"><a href="snp-calling-and-filtering.html#cb57-3"></a><span class="co">#SBATCH -J targetsMapping</span></span>
+<span id="cb57-4"><a href="snp-calling-and-filtering.html#cb57-4"></a><span class="co">#SBATCH -o targetsMapping_output.out</span></span>
+<span id="cb57-5"><a href="snp-calling-and-filtering.html#cb57-5"></a><span class="co">#SBATCH -e targetsMapping_error.out</span></span>
+<span id="cb57-6"><a href="snp-calling-and-filtering.html#cb57-6"></a><span class="co">#SBATCH --mem=20G</span></span>
+<span id="cb57-7"><a href="snp-calling-and-filtering.html#cb57-7"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
+<span id="cb57-8"><a href="snp-calling-and-filtering.html#cb57-8"></a><span class="co">#SBATCH --mail-type=</span><span class="re">BEGIN</span><span class="co">,</span><span class="re">END</span><span class="co">,FAIL</span></span>
+<span id="cb57-9"><a href="snp-calling-and-filtering.html#cb57-9"></a></span>
+<span id="cb57-10"><a href="snp-calling-and-filtering.html#cb57-10"></a><span class="ex">module</span> purge</span>
+<span id="cb57-11"><a href="snp-calling-and-filtering.html#cb57-11"></a><span class="ex">module</span> load bioinfo/bwa-0.7.15</span>
+<span id="cb57-12"><a href="snp-calling-and-filtering.html#cb57-12"></a><span class="ex">module</span> load bioinfo/picard-2.14.1</span>
+<span id="cb57-13"><a href="snp-calling-and-filtering.html#cb57-13"></a><span class="ex">module</span> load bioinfo/samtools-1.4</span>
+<span id="cb57-14"><a href="snp-calling-and-filtering.html#cb57-14"></a><span class="ex">module</span> load bioinfo/bedtools-2.26.0</span>
+<span id="cb57-15"><a href="snp-calling-and-filtering.html#cb57-15"></a></span>
+<span id="cb57-16"><a href="snp-calling-and-filtering.html#cb57-16"></a><span class="va">targets=</span>../Baits/files-Symphonia/target-sequences.fas</span>
+<span id="cb57-17"><a href="snp-calling-and-filtering.html#cb57-17"></a><span class="ex">bwa</span> index <span class="va">$targets</span></span>
+<span id="cb57-18"><a href="snp-calling-and-filtering.html#cb57-18"></a><span class="kw">for</span> <span class="ex">library</span> in <span class="va">$(</span><span class="fu">cat</span> libraries_mapping.txt<span class="va">)</span></span>
+<span id="cb57-19"><a href="snp-calling-and-filtering.html#cb57-19"></a><span class="kw">do</span></span>
+<span id="cb57-20"><a href="snp-calling-and-filtering.html#cb57-20"></a>  <span class="va">rg=</span><span class="st">&quot;@RG\tID:</span><span class="va">${library}</span><span class="st">\tSM:</span><span class="va">${library}</span><span class="st">\tPL:HiSeq4K&quot;</span></span>
+<span id="cb57-21"><a href="snp-calling-and-filtering.html#cb57-21"></a>  <span class="ex">bwa</span> mem -M -R <span class="st">&quot;</span><span class="va">${rg}</span><span class="st">&quot;</span> -t 16 <span class="va">$targets</span> trimmed/paired/<span class="st">&quot;</span><span class="va">$library</span><span class="st">&quot;</span>_R1_paired.fq.gz trimmed/paired/<span class="st">&quot;</span><span class="va">$library</span><span class="st">&quot;</span>_R2_paired.fq.gz <span class="op">&gt;</span> targetsMapping/sam/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">.sam&quot;</span></span>
+<span id="cb57-22"><a href="snp-calling-and-filtering.html#cb57-22"></a>  <span class="ex">java</span> -Xmx4g -jar <span class="va">$PICARD</span> SortSam I=targetsMapping/sam/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">.sam&quot;</span> O=targetsMapping/bam/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bam SORT_ORDER=coordinate</span>
+<span id="cb57-23"><a href="snp-calling-and-filtering.html#cb57-23"></a>  <span class="ex">java</span> -Xmx4g -jar <span class="va">$PICARD</span> BuildBamIndex I=targetsMapping/bam/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bam O=targetsMapping/bam/<span class="st">&quot;</span><span class="va">${filename}</span><span class="st">&quot;</span>.bai</span>
+<span id="cb57-24"><a href="snp-calling-and-filtering.html#cb57-24"></a>  <span class="ex">samtools</span> index targetsMapping/bam/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bam</span>
+<span id="cb57-25"><a href="snp-calling-and-filtering.html#cb57-25"></a>  <span class="ex">bedtools</span> bamtobed -i =targetsMapping/bam/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bam <span class="op">&gt;</span> targetsMapping/bed/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bed</span>
+<span id="cb57-26"><a href="snp-calling-and-filtering.html#cb57-26"></a>  <span class="ex">bedtools</span> merge -i targetsMapping/bed/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bed <span class="op">&gt;</span> targetsMapping/merged_bed/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bed</span>
+<span id="cb57-27"><a href="snp-calling-and-filtering.html#cb57-27"></a><span class="kw">done</span></span>
+<span id="cb57-28"><a href="snp-calling-and-filtering.html#cb57-28"></a><span class="fu">touch</span> readsMappingStat.txt</span>
+<span id="cb57-29"><a href="snp-calling-and-filtering.html#cb57-29"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> bam/*.bam<span class="va">)</span></span>
+<span id="cb57-30"><a href="snp-calling-and-filtering.html#cb57-30"></a><span class="kw">do</span></span>
+<span id="cb57-31"><a href="snp-calling-and-filtering.html#cb57-31"></a>  <span class="ex">samtools</span> flagstat <span class="va">$file</span> <span class="kw">|</span> <span class="bu">echo</span> <span class="va">$file</span><span class="st">&quot;   &quot;</span><span class="va">$(</span><span class="fu">grep</span> <span class="st">&quot;mapped (&quot;</span><span class="va">)</span> <span class="op">&gt;&gt;</span> readsMappingStat.txt</span>
+<span id="cb57-32"><a href="snp-calling-and-filtering.html#cb57-32"></a><span class="kw">done</span></span></code></pre></div>
 <div class="figure"><span id="fig:targetsAlignmentCoverage"></span>
 <img src="GOING_files/figure-html/targetsAlignmentCoverage-1.png" alt="Reads alignment coverage on targets. Distribution has been cut at 2000X." width="768" />
 <p class="caption">
@@ -518,40 +516,40 @@ Figure 4.6: Reads alignment coverage on targets. Distribution has been cut at 20
 </div>
 <div id="reference-mapping" class="section level3">
 <h3><span class="header-section-number">4.1.4</span> Reference mapping</h3>
-<p>We mapped every libraries on hybrid reference to check of-reference sequences, and assess <em>de novo</em> usefulness. Globally we had a low coverage of the reference (median of 19%, <a href="snp-calling-and-filtering.html#fig:referenceAlignmentCoverage">4.7</a>) but reads were 79% to 88% on-reference (<a href="snp-calling-and-filtering.html#tab:referenceAlignmentReadsMapped">4.2</a>) ! Finally, we had a median of 4Mb covered with 10X on reference, which is 4 times what we designed in probes. Consequently, we won’t need <em>de novo</em> assembly and will proceed to read mapping for every libraries on the built reference, already partly annotated.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb59-1"><a href="snp-calling-and-filtering.html#cb59-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb59-2"><a href="snp-calling-and-filtering.html#cb59-2"></a><span class="co">#SBATCH --time=36:00:00</span></span>
-<span id="cb59-3"><a href="snp-calling-and-filtering.html#cb59-3"></a><span class="co">#SBATCH -J referenceMapping</span></span>
-<span id="cb59-4"><a href="snp-calling-and-filtering.html#cb59-4"></a><span class="co">#SBATCH -o treferenceMapping_output.out</span></span>
-<span id="cb59-5"><a href="snp-calling-and-filtering.html#cb59-5"></a><span class="co">#SBATCH -e referenceMapping_error.out</span></span>
-<span id="cb59-6"><a href="snp-calling-and-filtering.html#cb59-6"></a><span class="co">#SBATCH --mem=20G</span></span>
-<span id="cb59-7"><a href="snp-calling-and-filtering.html#cb59-7"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
-<span id="cb59-8"><a href="snp-calling-and-filtering.html#cb59-8"></a><span class="co">#SBATCH --mail-type=</span><span class="re">BEGIN</span><span class="co">,</span><span class="re">END</span><span class="co">,FAIL</span></span>
-<span id="cb59-9"><a href="snp-calling-and-filtering.html#cb59-9"></a></span>
-<span id="cb59-10"><a href="snp-calling-and-filtering.html#cb59-10"></a><span class="ex">module</span> purge</span>
-<span id="cb59-11"><a href="snp-calling-and-filtering.html#cb59-11"></a><span class="ex">module</span> load bioinfo/bwa-0.7.15</span>
-<span id="cb59-12"><a href="snp-calling-and-filtering.html#cb59-12"></a><span class="ex">module</span> load bioinfo/picard-2.14.1</span>
-<span id="cb59-13"><a href="snp-calling-and-filtering.html#cb59-13"></a><span class="ex">module</span> load bioinfo/samtools-1.4</span>
-<span id="cb59-14"><a href="snp-calling-and-filtering.html#cb59-14"></a><span class="ex">module</span> load bioinfo/bedtools-2.26.0</span>
-<span id="cb59-15"><a href="snp-calling-and-filtering.html#cb59-15"></a></span>
-<span id="cb59-16"><a href="snp-calling-and-filtering.html#cb59-16"></a><span class="fu">cat</span> ../../Symphonia_Genomic/neutral_selection/merged.fasta <span class="op">&gt;</span> referenceMapping/reference.fasta</span>
-<span id="cb59-17"><a href="snp-calling-and-filtering.html#cb59-17"></a><span class="va">reference=</span>referenceMapping/reference.fasta </span>
-<span id="cb59-18"><a href="snp-calling-and-filtering.html#cb59-18"></a><span class="ex">bwa</span> index <span class="va">$reference</span></span>
-<span id="cb59-19"><a href="snp-calling-and-filtering.html#cb59-19"></a><span class="kw">for</span> <span class="ex">library</span> in <span class="va">$(</span><span class="fu">cat</span> libraries_mapping.txt<span class="va">)</span></span>
-<span id="cb59-20"><a href="snp-calling-and-filtering.html#cb59-20"></a><span class="kw">do</span></span>
-<span id="cb59-21"><a href="snp-calling-and-filtering.html#cb59-21"></a>  <span class="va">rg=</span><span class="st">&quot;@RG\tID:</span><span class="va">${library}</span><span class="st">\tSM:</span><span class="va">${library}</span><span class="st">\tPL:HiSeq4K&quot;</span></span>
-<span id="cb59-22"><a href="snp-calling-and-filtering.html#cb59-22"></a>  <span class="ex">bwa</span> mem -M -R <span class="st">&quot;</span><span class="va">${rg}</span><span class="st">&quot;</span> -t 16 <span class="va">$reference</span> trimmed/paired/<span class="st">&quot;</span><span class="va">$library</span><span class="st">&quot;</span>_R1_paired.fq.gz trimmed/paired/<span class="st">&quot;</span><span class="va">$library</span><span class="st">&quot;</span>_R2_paired.fq.gz <span class="op">&gt;</span> referenceMapping/sam/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">.sam&quot;</span></span>
-<span id="cb59-23"><a href="snp-calling-and-filtering.html#cb59-23"></a>  <span class="ex">java</span> -Xmx4g -jar <span class="va">$PICARD</span> SortSam I=referenceMapping/sam/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">.sam&quot;</span> O=referenceMapping/bam/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bam SORT_ORDER=coordinate</span>
-<span id="cb59-24"><a href="snp-calling-and-filtering.html#cb59-24"></a>  <span class="ex">java</span> -Xmx4g -jar <span class="va">$PICARD</span> BuildBamIndex I=referenceMapping/bam/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bam O=referenceMapping/bam/<span class="st">&quot;</span><span class="va">${filename}</span><span class="st">&quot;</span>.bai</span>
-<span id="cb59-25"><a href="snp-calling-and-filtering.html#cb59-25"></a>  <span class="ex">samtools</span> index targetsMapping/bam/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bam</span>
-<span id="cb59-26"><a href="snp-calling-and-filtering.html#cb59-26"></a>  <span class="ex">bedtools</span> bamtobed -i =referenceMapping/bam/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bam <span class="op">&gt;</span> referenceMapping/bed/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bed</span>
-<span id="cb59-27"><a href="snp-calling-and-filtering.html#cb59-27"></a>  <span class="ex">bedtools</span> merge -i referenceMapping/bed/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bed <span class="op">&gt;</span> referenceMapping/merged_bed/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bed</span>
-<span id="cb59-28"><a href="snp-calling-and-filtering.html#cb59-28"></a><span class="kw">done</span></span>
-<span id="cb59-29"><a href="snp-calling-and-filtering.html#cb59-29"></a><span class="fu">touch</span> readsMappingStat.txt</span>
-<span id="cb59-30"><a href="snp-calling-and-filtering.html#cb59-30"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> bam/*.bam<span class="va">)</span></span>
-<span id="cb59-31"><a href="snp-calling-and-filtering.html#cb59-31"></a><span class="kw">do</span></span>
-<span id="cb59-32"><a href="snp-calling-and-filtering.html#cb59-32"></a>  <span class="ex">samtools</span> flagstat <span class="va">$file</span> <span class="kw">|</span> <span class="bu">echo</span> <span class="va">$file</span><span class="st">&quot;   &quot;</span><span class="va">$(</span><span class="fu">grep</span> <span class="st">&quot;mapped (&quot;</span><span class="va">)</span> <span class="op">&gt;&gt;</span> readsMappingStat.txt</span>
-<span id="cb59-33"><a href="snp-calling-and-filtering.html#cb59-33"></a><span class="kw">done</span></span></code></pre></div>
+<p>We mapped every library on hybrid reference to check off-reference sequences, and assess <em>de novo</em> usefulness. Globally we had a low coverage of the reference (median of 19%, <a href="snp-calling-and-filtering.html#fig:referenceAlignmentCoverage">4.7</a>) but reads were 79% to 88% on-reference (<a href="snp-calling-and-filtering.html#tab:referenceAlignmentReadsMapped">4.2</a>) ! Finally, we had a median of 4Mb covered with 10X on reference, which is 4 times what we designed in probes. Consequently, we won’t need <em>de novo</em> assembly and will proceed to read mapping for every library on the built reference, already partly annotated.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb58-1"><a href="snp-calling-and-filtering.html#cb58-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb58-2"><a href="snp-calling-and-filtering.html#cb58-2"></a><span class="co">#SBATCH --time=36:00:00</span></span>
+<span id="cb58-3"><a href="snp-calling-and-filtering.html#cb58-3"></a><span class="co">#SBATCH -J referenceMapping</span></span>
+<span id="cb58-4"><a href="snp-calling-and-filtering.html#cb58-4"></a><span class="co">#SBATCH -o treferenceMapping_output.out</span></span>
+<span id="cb58-5"><a href="snp-calling-and-filtering.html#cb58-5"></a><span class="co">#SBATCH -e referenceMapping_error.out</span></span>
+<span id="cb58-6"><a href="snp-calling-and-filtering.html#cb58-6"></a><span class="co">#SBATCH --mem=20G</span></span>
+<span id="cb58-7"><a href="snp-calling-and-filtering.html#cb58-7"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
+<span id="cb58-8"><a href="snp-calling-and-filtering.html#cb58-8"></a><span class="co">#SBATCH --mail-type=</span><span class="re">BEGIN</span><span class="co">,</span><span class="re">END</span><span class="co">,FAIL</span></span>
+<span id="cb58-9"><a href="snp-calling-and-filtering.html#cb58-9"></a></span>
+<span id="cb58-10"><a href="snp-calling-and-filtering.html#cb58-10"></a><span class="ex">module</span> purge</span>
+<span id="cb58-11"><a href="snp-calling-and-filtering.html#cb58-11"></a><span class="ex">module</span> load bioinfo/bwa-0.7.15</span>
+<span id="cb58-12"><a href="snp-calling-and-filtering.html#cb58-12"></a><span class="ex">module</span> load bioinfo/picard-2.14.1</span>
+<span id="cb58-13"><a href="snp-calling-and-filtering.html#cb58-13"></a><span class="ex">module</span> load bioinfo/samtools-1.4</span>
+<span id="cb58-14"><a href="snp-calling-and-filtering.html#cb58-14"></a><span class="ex">module</span> load bioinfo/bedtools-2.26.0</span>
+<span id="cb58-15"><a href="snp-calling-and-filtering.html#cb58-15"></a></span>
+<span id="cb58-16"><a href="snp-calling-and-filtering.html#cb58-16"></a><span class="fu">cat</span> ../../Symphonia_Genomic/neutral_selection/merged.fasta <span class="op">&gt;</span> referenceMapping/reference.fasta</span>
+<span id="cb58-17"><a href="snp-calling-and-filtering.html#cb58-17"></a><span class="va">reference=</span>referenceMapping/reference.fasta </span>
+<span id="cb58-18"><a href="snp-calling-and-filtering.html#cb58-18"></a><span class="ex">bwa</span> index <span class="va">$reference</span></span>
+<span id="cb58-19"><a href="snp-calling-and-filtering.html#cb58-19"></a><span class="kw">for</span> <span class="ex">library</span> in <span class="va">$(</span><span class="fu">cat</span> libraries_mapping.txt<span class="va">)</span></span>
+<span id="cb58-20"><a href="snp-calling-and-filtering.html#cb58-20"></a><span class="kw">do</span></span>
+<span id="cb58-21"><a href="snp-calling-and-filtering.html#cb58-21"></a>  <span class="va">rg=</span><span class="st">&quot;@RG\tID:</span><span class="va">${library}</span><span class="st">\tSM:</span><span class="va">${library}</span><span class="st">\tPL:HiSeq4K&quot;</span></span>
+<span id="cb58-22"><a href="snp-calling-and-filtering.html#cb58-22"></a>  <span class="ex">bwa</span> mem -M -R <span class="st">&quot;</span><span class="va">${rg}</span><span class="st">&quot;</span> -t 16 <span class="va">$reference</span> trimmed/paired/<span class="st">&quot;</span><span class="va">$library</span><span class="st">&quot;</span>_R1_paired.fq.gz trimmed/paired/<span class="st">&quot;</span><span class="va">$library</span><span class="st">&quot;</span>_R2_paired.fq.gz <span class="op">&gt;</span> referenceMapping/sam/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">.sam&quot;</span></span>
+<span id="cb58-23"><a href="snp-calling-and-filtering.html#cb58-23"></a>  <span class="ex">java</span> -Xmx4g -jar <span class="va">$PICARD</span> SortSam I=referenceMapping/sam/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">.sam&quot;</span> O=referenceMapping/bam/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bam SORT_ORDER=coordinate</span>
+<span id="cb58-24"><a href="snp-calling-and-filtering.html#cb58-24"></a>  <span class="ex">java</span> -Xmx4g -jar <span class="va">$PICARD</span> BuildBamIndex I=referenceMapping/bam/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bam O=referenceMapping/bam/<span class="st">&quot;</span><span class="va">${filename}</span><span class="st">&quot;</span>.bai</span>
+<span id="cb58-25"><a href="snp-calling-and-filtering.html#cb58-25"></a>  <span class="ex">samtools</span> index targetsMapping/bam/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bam</span>
+<span id="cb58-26"><a href="snp-calling-and-filtering.html#cb58-26"></a>  <span class="ex">bedtools</span> bamtobed -i =referenceMapping/bam/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bam <span class="op">&gt;</span> referenceMapping/bed/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bed</span>
+<span id="cb58-27"><a href="snp-calling-and-filtering.html#cb58-27"></a>  <span class="ex">bedtools</span> merge -i referenceMapping/bed/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bed <span class="op">&gt;</span> referenceMapping/merged_bed/<span class="st">&quot;</span><span class="va">${library}</span><span class="st">&quot;</span>.bed</span>
+<span id="cb58-28"><a href="snp-calling-and-filtering.html#cb58-28"></a><span class="kw">done</span></span>
+<span id="cb58-29"><a href="snp-calling-and-filtering.html#cb58-29"></a><span class="fu">touch</span> readsMappingStat.txt</span>
+<span id="cb58-30"><a href="snp-calling-and-filtering.html#cb58-30"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> bam/*.bam<span class="va">)</span></span>
+<span id="cb58-31"><a href="snp-calling-and-filtering.html#cb58-31"></a><span class="kw">do</span></span>
+<span id="cb58-32"><a href="snp-calling-and-filtering.html#cb58-32"></a>  <span class="ex">samtools</span> flagstat <span class="va">$file</span> <span class="kw">|</span> <span class="bu">echo</span> <span class="va">$file</span><span class="st">&quot;   &quot;</span><span class="va">$(</span><span class="fu">grep</span> <span class="st">&quot;mapped (&quot;</span><span class="va">)</span> <span class="op">&gt;&gt;</span> readsMappingStat.txt</span>
+<span id="cb58-33"><a href="snp-calling-and-filtering.html#cb58-33"></a><span class="kw">done</span></span></code></pre></div>
 <div class="figure"><span id="fig:referenceAlignmentCoverage"></span>
 <img src="GOING_files/figure-html/referenceAlignmentCoverage-1.png" alt="Reads alignment coverage on reference. Distribution has been cut at 2000X." width="768" />
 <p class="caption">
@@ -635,102 +633,102 @@ already partly annotated:</p>
 <h3><span class="header-section-number">4.2.1</span> Repeats merging</h3>
 <p>41 libraries were repeated, we merged their FASTQ to increase their information before variant calling.
 Merging repeats confirmed the presence of all 430 individuals at the end of the alignment (402 from Paracou, 20 from herbariums, and 8 from BCI, Itubera and La Selva).</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb60-1"><a href="snp-calling-and-filtering.html#cb60-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb60-2"><a href="snp-calling-and-filtering.html#cb60-2"></a><span class="co">#SBATCH --time=36:00:00</span></span>
-<span id="cb60-3"><a href="snp-calling-and-filtering.html#cb60-3"></a><span class="co">#SBATCH -J compression</span></span>
-<span id="cb60-4"><a href="snp-calling-and-filtering.html#cb60-4"></a><span class="co">#SBATCH -o compression_output.out</span></span>
-<span id="cb60-5"><a href="snp-calling-and-filtering.html#cb60-5"></a><span class="co">#SBATCH -e compression_error.out</span></span>
-<span id="cb60-6"><a href="snp-calling-and-filtering.html#cb60-6"></a><span class="co">#SBATCH --mem=4G</span></span>
-<span id="cb60-7"><a href="snp-calling-and-filtering.html#cb60-7"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
-<span id="cb60-8"><a href="snp-calling-and-filtering.html#cb60-8"></a><span class="co">#SBATCH --mail-type=</span><span class="re">BEGIN</span><span class="co">,</span><span class="re">END</span><span class="co">,FAIL</span></span>
-<span id="cb60-9"><a href="snp-calling-and-filtering.html#cb60-9"></a></span>
-<span id="cb60-10"><a href="snp-calling-and-filtering.html#cb60-10"></a><span class="va">folder=</span>trimmed.paired.joined/</span>
-<span id="cb60-11"><a href="snp-calling-and-filtering.html#cb60-11"></a><span class="va">name=</span>symcapture.trimmed.paired.joined</span>
-<span id="cb60-12"><a href="snp-calling-and-filtering.html#cb60-12"></a></span>
-<span id="cb60-13"><a href="snp-calling-and-filtering.html#cb60-13"></a><span class="ex">module</span> purge</span>
-<span id="cb60-14"><a href="snp-calling-and-filtering.html#cb60-14"></a><span class="fu">mkdir</span> trimmed.paired</span>
-<span id="cb60-15"><a href="snp-calling-and-filtering.html#cb60-15"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> paired/*<span class="va">)</span></span>
-<span id="cb60-16"><a href="snp-calling-and-filtering.html#cb60-16"></a><span class="kw">do</span></span>
-<span id="cb60-17"><a href="snp-calling-and-filtering.html#cb60-17"></a>  <span class="fu">mv</span> <span class="va">$file</span> trimmed.paired/<span class="va">$(</span><span class="fu">basename</span> <span class="va">$(</span><span class="bu">echo</span> <span class="va">$file</span> <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&#39;s/_[[:alpha:]]*-[[:alpha:]]*-[[:alnum:]]*//&#39;</span><span class="va">))</span></span>
-<span id="cb60-18"><a href="snp-calling-and-filtering.html#cb60-18"></a><span class="kw">done</span></span>
-<span id="cb60-19"><a href="snp-calling-and-filtering.html#cb60-19"></a><span class="fu">rm</span> -r paired</span>
-<span id="cb60-20"><a href="snp-calling-and-filtering.html#cb60-20"></a><span class="fu">cp</span> ../libraries.txt ./</span>
-<span id="cb60-21"><a href="snp-calling-and-filtering.html#cb60-21"></a><span class="fu">cat</span> libraries.txt <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&#39;s/_[[:alpha:]]*-[[:alpha:]]*-[[:alnum:]]*_L00[56]//&#39;</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&#39;s/-b//&#39;</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="op">&gt;</span> libraries.uniq.txt</span>
-<span id="cb60-22"><a href="snp-calling-and-filtering.html#cb60-22"></a><span class="fu">mkdir</span> trimmed.paired.joined</span>
-<span id="cb60-23"><a href="snp-calling-and-filtering.html#cb60-23"></a><span class="kw">for</span> <span class="ex">ind</span> in <span class="va">$(</span><span class="fu">cat</span> libraries.uniq.txt<span class="va">)</span></span>
-<span id="cb60-24"><a href="snp-calling-and-filtering.html#cb60-24"></a><span class="kw">do</span></span>
-<span id="cb60-25"><a href="snp-calling-and-filtering.html#cb60-25"></a>  <span class="bu">echo</span> <span class="va">$ind</span></span>
-<span id="cb60-26"><a href="snp-calling-and-filtering.html#cb60-26"></a>  <span class="fu">cat</span> trimmed.paired/<span class="va">$ind</span>*_R1_paired.fq.gz <span class="op">&gt;</span> trimmed.paired.joined/<span class="st">&quot;</span><span class="va">$ind</span><span class="st">&quot;</span>_R1_paired.fq.gz</span>
-<span id="cb60-27"><a href="snp-calling-and-filtering.html#cb60-27"></a>  <span class="fu">cat</span> trimmed.paired/<span class="va">$ind</span>*_R2_paired.fq.gz <span class="op">&gt;</span> trimmed.paired.joined/<span class="st">&quot;</span><span class="va">$ind</span><span class="st">&quot;</span>_R2_paired.fq.gz</span>
-<span id="cb60-28"><a href="snp-calling-and-filtering.html#cb60-28"></a><span class="kw">done</span></span>
-<span id="cb60-29"><a href="snp-calling-and-filtering.html#cb60-29"></a><span class="fu">rm</span> -r trimmed.paired</span>
-<span id="cb60-30"><a href="snp-calling-and-filtering.html#cb60-30"></a><span class="fu">tar</span> -zcvf <span class="va">$name</span>.tar.gz <span class="va">$folder</span></span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb59-1"><a href="snp-calling-and-filtering.html#cb59-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb59-2"><a href="snp-calling-and-filtering.html#cb59-2"></a><span class="co">#SBATCH --time=36:00:00</span></span>
+<span id="cb59-3"><a href="snp-calling-and-filtering.html#cb59-3"></a><span class="co">#SBATCH -J compression</span></span>
+<span id="cb59-4"><a href="snp-calling-and-filtering.html#cb59-4"></a><span class="co">#SBATCH -o compression_output.out</span></span>
+<span id="cb59-5"><a href="snp-calling-and-filtering.html#cb59-5"></a><span class="co">#SBATCH -e compression_error.out</span></span>
+<span id="cb59-6"><a href="snp-calling-and-filtering.html#cb59-6"></a><span class="co">#SBATCH --mem=4G</span></span>
+<span id="cb59-7"><a href="snp-calling-and-filtering.html#cb59-7"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
+<span id="cb59-8"><a href="snp-calling-and-filtering.html#cb59-8"></a><span class="co">#SBATCH --mail-type=</span><span class="re">BEGIN</span><span class="co">,</span><span class="re">END</span><span class="co">,FAIL</span></span>
+<span id="cb59-9"><a href="snp-calling-and-filtering.html#cb59-9"></a></span>
+<span id="cb59-10"><a href="snp-calling-and-filtering.html#cb59-10"></a><span class="va">folder=</span>trimmed.paired.joined/</span>
+<span id="cb59-11"><a href="snp-calling-and-filtering.html#cb59-11"></a><span class="va">name=</span>symcapture.trimmed.paired.joined</span>
+<span id="cb59-12"><a href="snp-calling-and-filtering.html#cb59-12"></a></span>
+<span id="cb59-13"><a href="snp-calling-and-filtering.html#cb59-13"></a><span class="ex">module</span> purge</span>
+<span id="cb59-14"><a href="snp-calling-and-filtering.html#cb59-14"></a><span class="fu">mkdir</span> trimmed.paired</span>
+<span id="cb59-15"><a href="snp-calling-and-filtering.html#cb59-15"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> paired/*<span class="va">)</span></span>
+<span id="cb59-16"><a href="snp-calling-and-filtering.html#cb59-16"></a><span class="kw">do</span></span>
+<span id="cb59-17"><a href="snp-calling-and-filtering.html#cb59-17"></a>  <span class="fu">mv</span> <span class="va">$file</span> trimmed.paired/<span class="va">$(</span><span class="fu">basename</span> <span class="va">$(</span><span class="bu">echo</span> <span class="va">$file</span> <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&#39;s/_[[:alpha:]]*-[[:alpha:]]*-[[:alnum:]]*//&#39;</span><span class="va">))</span></span>
+<span id="cb59-18"><a href="snp-calling-and-filtering.html#cb59-18"></a><span class="kw">done</span></span>
+<span id="cb59-19"><a href="snp-calling-and-filtering.html#cb59-19"></a><span class="fu">rm</span> -r paired</span>
+<span id="cb59-20"><a href="snp-calling-and-filtering.html#cb59-20"></a><span class="fu">cp</span> ../libraries.txt ./</span>
+<span id="cb59-21"><a href="snp-calling-and-filtering.html#cb59-21"></a><span class="fu">cat</span> libraries.txt <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&#39;s/_[[:alpha:]]*-[[:alpha:]]*-[[:alnum:]]*_L00[56]//&#39;</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&#39;s/-b//&#39;</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="op">&gt;</span> libraries.uniq.txt</span>
+<span id="cb59-22"><a href="snp-calling-and-filtering.html#cb59-22"></a><span class="fu">mkdir</span> trimmed.paired.joined</span>
+<span id="cb59-23"><a href="snp-calling-and-filtering.html#cb59-23"></a><span class="kw">for</span> <span class="ex">ind</span> in <span class="va">$(</span><span class="fu">cat</span> libraries.uniq.txt<span class="va">)</span></span>
+<span id="cb59-24"><a href="snp-calling-and-filtering.html#cb59-24"></a><span class="kw">do</span></span>
+<span id="cb59-25"><a href="snp-calling-and-filtering.html#cb59-25"></a>  <span class="bu">echo</span> <span class="va">$ind</span></span>
+<span id="cb59-26"><a href="snp-calling-and-filtering.html#cb59-26"></a>  <span class="fu">cat</span> trimmed.paired/<span class="va">$ind</span>*_R1_paired.fq.gz <span class="op">&gt;</span> trimmed.paired.joined/<span class="st">&quot;</span><span class="va">$ind</span><span class="st">&quot;</span>_R1_paired.fq.gz</span>
+<span id="cb59-27"><a href="snp-calling-and-filtering.html#cb59-27"></a>  <span class="fu">cat</span> trimmed.paired/<span class="va">$ind</span>*_R2_paired.fq.gz <span class="op">&gt;</span> trimmed.paired.joined/<span class="st">&quot;</span><span class="va">$ind</span><span class="st">&quot;</span>_R2_paired.fq.gz</span>
+<span id="cb59-28"><a href="snp-calling-and-filtering.html#cb59-28"></a><span class="kw">done</span></span>
+<span id="cb59-29"><a href="snp-calling-and-filtering.html#cb59-29"></a><span class="fu">rm</span> -r trimmed.paired</span>
+<span id="cb59-30"><a href="snp-calling-and-filtering.html#cb59-30"></a><span class="fu">tar</span> -zcvf <span class="va">$name</span>.tar.gz <span class="va">$folder</span></span></code></pre></div>
 </div>
 <div id="reads-mapping" class="section level3">
 <h3><span class="header-section-number">4.2.2</span> Reads mapping</h3>
-<p>We mapped every libraries in pair end with <code>bwa mem</code> on the hybrid reference from Ivan Scotti et Sana Olson used to built the targets (32 alignement with 2 process on 64 cores of 1 node of genologin).
+<p>We mapped every library in pair end with <code>bwa mem</code> on the hybrid reference from Ivan Scotti et Sana Olson used to build the targets (32 alignments with 2 processes on 64 cores of 1 node of genologin).
 We had globally a good mapping with more than 80% of the reads mapped for 98% of the libraries <a href="snp-calling-and-filtering.html#fig:mappingStat">4.8</a>.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb61-1"><a href="snp-calling-and-filtering.html#cb61-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb61-2"><a href="snp-calling-and-filtering.html#cb61-2"></a><span class="co">#SBATCH --time=48:00:00</span></span>
-<span id="cb61-3"><a href="snp-calling-and-filtering.html#cb61-3"></a><span class="co">#SBATCH -J mapping</span></span>
-<span id="cb61-4"><a href="snp-calling-and-filtering.html#cb61-4"></a><span class="co">#SBATCH -o mapping_output.out</span></span>
-<span id="cb61-5"><a href="snp-calling-and-filtering.html#cb61-5"></a><span class="co">#SBATCH -e mapping_error.out</span></span>
-<span id="cb61-6"><a href="snp-calling-and-filtering.html#cb61-6"></a><span class="co">#SBATCH --mem=160G</span></span>
-<span id="cb61-7"><a href="snp-calling-and-filtering.html#cb61-7"></a><span class="co">#SBATCH --cpus-per-task=64</span></span>
-<span id="cb61-8"><a href="snp-calling-and-filtering.html#cb61-8"></a><span class="co">#SBATCH --mail-type=</span><span class="re">BEGIN</span><span class="co">,</span><span class="re">END</span><span class="co">,FAIL</span></span>
-<span id="cb61-9"><a href="snp-calling-and-filtering.html#cb61-9"></a></span>
-<span id="cb61-10"><a href="snp-calling-and-filtering.html#cb61-10"></a><span class="ex">module</span> purge</span>
-<span id="cb61-11"><a href="snp-calling-and-filtering.html#cb61-11"></a><span class="ex">module</span> load bioinfo/bwa-0.7.15</span>
-<span id="cb61-12"><a href="snp-calling-and-filtering.html#cb61-12"></a><span class="ex">module</span> load bioinfo/picard-2.14.1</span>
-<span id="cb61-13"><a href="snp-calling-and-filtering.html#cb61-13"></a><span class="ex">module</span> load bioinfo/samtools-1.4</span>
-<span id="cb61-14"><a href="snp-calling-and-filtering.html#cb61-14"></a><span class="ex">module</span> load bioinfo/bedtools-2.26.0</span>
+<div class="sourceCode" id="cb60"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb60-1"><a href="snp-calling-and-filtering.html#cb60-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb60-2"><a href="snp-calling-and-filtering.html#cb60-2"></a><span class="co">#SBATCH --time=48:00:00</span></span>
+<span id="cb60-3"><a href="snp-calling-and-filtering.html#cb60-3"></a><span class="co">#SBATCH -J mapping</span></span>
+<span id="cb60-4"><a href="snp-calling-and-filtering.html#cb60-4"></a><span class="co">#SBATCH -o mapping_output.out</span></span>
+<span id="cb60-5"><a href="snp-calling-and-filtering.html#cb60-5"></a><span class="co">#SBATCH -e mapping_error.out</span></span>
+<span id="cb60-6"><a href="snp-calling-and-filtering.html#cb60-6"></a><span class="co">#SBATCH --mem=160G</span></span>
+<span id="cb60-7"><a href="snp-calling-and-filtering.html#cb60-7"></a><span class="co">#SBATCH --cpus-per-task=64</span></span>
+<span id="cb60-8"><a href="snp-calling-and-filtering.html#cb60-8"></a><span class="co">#SBATCH --mail-type=</span><span class="re">BEGIN</span><span class="co">,</span><span class="re">END</span><span class="co">,FAIL</span></span>
+<span id="cb60-9"><a href="snp-calling-and-filtering.html#cb60-9"></a></span>
+<span id="cb60-10"><a href="snp-calling-and-filtering.html#cb60-10"></a><span class="ex">module</span> purge</span>
+<span id="cb60-11"><a href="snp-calling-and-filtering.html#cb60-11"></a><span class="ex">module</span> load bioinfo/bwa-0.7.15</span>
+<span id="cb60-12"><a href="snp-calling-and-filtering.html#cb60-12"></a><span class="ex">module</span> load bioinfo/picard-2.14.1</span>
+<span id="cb60-13"><a href="snp-calling-and-filtering.html#cb60-13"></a><span class="ex">module</span> load bioinfo/samtools-1.4</span>
+<span id="cb60-14"><a href="snp-calling-and-filtering.html#cb60-14"></a><span class="ex">module</span> load bioinfo/bedtools-2.26.0</span>
+<span id="cb60-15"><a href="snp-calling-and-filtering.html#cb60-15"></a></span>
+<span id="cb60-16"><a href="snp-calling-and-filtering.html#cb60-16"></a><span class="fu">task()</span><span class="kw">{</span></span>
+<span id="cb60-17"><a href="snp-calling-and-filtering.html#cb60-17"></a>    <span class="bu">echo</span> MAPPING <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span></span>
+<span id="cb60-18"><a href="snp-calling-and-filtering.html#cb60-18"></a>    <span class="ex">bwa</span> mem -M -R <span class="st">&quot;@RG\tID:</span><span class="va">$1</span><span class="st">\tSM:</span><span class="va">$1</span><span class="st">\tPL:HiSeq4K&quot;</span> \</span>
+<span id="cb60-19"><a href="snp-calling-and-filtering.html#cb60-19"></a>        -t 2 \</span>
+<span id="cb60-20"><a href="snp-calling-and-filtering.html#cb60-20"></a>        reference/reference.fasta \</span>
+<span id="cb60-21"><a href="snp-calling-and-filtering.html#cb60-21"></a>        trimming/trimmed.paired.joined/<span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span>_R1_paired.fq.gz \</span>
+<span id="cb60-22"><a href="snp-calling-and-filtering.html#cb60-22"></a>        trimming/trimmed.paired.joined/<span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span>_R2_paired.fq.gz \</span>
+<span id="cb60-23"><a href="snp-calling-and-filtering.html#cb60-23"></a>        <span class="op">&gt;</span> mapping/sam/<span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span>.sam</span>
+<span id="cb60-24"><a href="snp-calling-and-filtering.html#cb60-24"></a>    <span class="fu">rm</span> trimming/trimmed.paired.joined/<span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span>_R1_paired.fq.gz</span>
+<span id="cb60-25"><a href="snp-calling-and-filtering.html#cb60-25"></a>    <span class="fu">rm</span> trimming/trimmed.paired.joined/<span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span>_R2_paired.fq.gz</span>
+<span id="cb60-26"><a href="snp-calling-and-filtering.html#cb60-26"></a>    <span class="ex">java</span> -Xmx4g -jar <span class="va">$PICARD</span> SortSam \</span>
+<span id="cb60-27"><a href="snp-calling-and-filtering.html#cb60-27"></a>        I=mapping/sam/<span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span>.sam \</span>
+<span id="cb60-28"><a href="snp-calling-and-filtering.html#cb60-28"></a>        O=mapping/bam2/<span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span>.bam</span>
+<span id="cb60-29"><a href="snp-calling-and-filtering.html#cb60-29"></a>        <span class="va">SORT_ORDER=</span>coordinate</span>
+<span id="cb60-30"><a href="snp-calling-and-filtering.html#cb60-30"></a>    <span class="fu">rm</span> mapping/sam/<span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span>.sam</span>
+<span id="cb60-31"><a href="snp-calling-and-filtering.html#cb60-31"></a>    <span class="ex">samtools</span> index mapping/bam2/<span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span>.bam</span>
+<span id="cb60-32"><a href="snp-calling-and-filtering.html#cb60-32"></a><span class="kw">}</span></span>
+<span id="cb60-33"><a href="snp-calling-and-filtering.html#cb60-33"></a></span>
+<span id="cb60-34"><a href="snp-calling-and-filtering.html#cb60-34"></a><span class="fu">mkdir</span> mapping/sam</span>
+<span id="cb60-35"><a href="snp-calling-and-filtering.html#cb60-35"></a><span class="fu">mkdir</span> mapping/bam2</span>
+<span id="cb60-36"><a href="snp-calling-and-filtering.html#cb60-36"></a><span class="va">N=</span>32</span>
+<span id="cb60-37"><a href="snp-calling-and-filtering.html#cb60-37"></a><span class="kw">(</span></span>
+<span id="cb60-38"><a href="snp-calling-and-filtering.html#cb60-38"></a><span class="kw">for</span> <span class="ex">library</span> in <span class="va">$(</span><span class="fu">cat</span> unmapped.txt<span class="va">)</span></span>
+<span id="cb60-39"><a href="snp-calling-and-filtering.html#cb60-39"></a><span class="kw">do</span> </span>
+<span id="cb60-40"><a href="snp-calling-and-filtering.html#cb60-40"></a>   <span class="kw">((</span>i=i%N<span class="kw">))</span>; <span class="kw">((</span>i++==0<span class="kw">))</span> <span class="kw">&amp;&amp;</span> <span class="bu">wait</span></span>
+<span id="cb60-41"><a href="snp-calling-and-filtering.html#cb60-41"></a>   <span class="ex">task</span> <span class="st">&quot;</span><span class="va">$library</span><span class="st">&quot;</span> <span class="kw">&amp;</span></span>
+<span id="cb60-42"><a href="snp-calling-and-filtering.html#cb60-42"></a><span class="kw">done</span></span>
+<span id="cb60-43"><a href="snp-calling-and-filtering.html#cb60-43"></a><span class="kw">)</span></span>
+<span id="cb60-44"><a href="snp-calling-and-filtering.html#cb60-44"></a><span class="fu">rm</span> -r mapping/sam</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb61-1"><a href="snp-calling-and-filtering.html#cb61-1"></a><span class="co"># folders</span></span>
+<span id="cb61-2"><a href="snp-calling-and-filtering.html#cb61-2"></a><span class="fu">mkdir</span> mappingStat</span>
+<span id="cb61-3"><a href="snp-calling-and-filtering.html#cb61-3"></a><span class="fu">touch</span> readsMappingStat.txt</span>
+<span id="cb61-4"><a href="snp-calling-and-filtering.html#cb61-4"></a></span>
+<span id="cb61-5"><a href="snp-calling-and-filtering.html#cb61-5"></a><span class="co"># test</span></span>
+<span id="cb61-6"><a href="snp-calling-and-filtering.html#cb61-6"></a><span class="va">file=$(</span><span class="fu">ls</span> bam*/*.bam <span class="kw">|</span> <span class="fu">head</span> -n 1<span class="va">)</span></span>
+<span id="cb61-7"><a href="snp-calling-and-filtering.html#cb61-7"></a><span class="ex">module</span> load bioinfo/samtools-1.4 <span class="kw">;</span> <span class="ex">samtools</span> flagstat <span class="va">$file</span> <span class="kw">|</span> <span class="bu">echo</span> <span class="va">$file</span><span class="st">&quot;   &quot;</span><span class="va">$(</span><span class="fu">grep</span> <span class="st">&quot;mapped (&quot;</span><span class="va">)</span> <span class="op">&gt;&gt;</span> readsMappingStat.txt</span>
+<span id="cb61-8"><a href="snp-calling-and-filtering.html#cb61-8"></a><span class="fu">cat</span> readsMappingStat.txt</span>
+<span id="cb61-9"><a href="snp-calling-and-filtering.html#cb61-9"></a><span class="fu">rm</span> readsMappingStat.txt</span>
+<span id="cb61-10"><a href="snp-calling-and-filtering.html#cb61-10"></a><span class="fu">touch</span> readsMappingStat.txt</span>
+<span id="cb61-11"><a href="snp-calling-and-filtering.html#cb61-11"></a></span>
+<span id="cb61-12"><a href="snp-calling-and-filtering.html#cb61-12"></a><span class="co"># sarray</span></span>
+<span id="cb61-13"><a href="snp-calling-and-filtering.html#cb61-13"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> bam*/*.bam<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span> <span class="bu">echo</span> <span class="st">&#39;module load bioinfo/samtools-1.4 ; samtools flagstat &#39;</span><span class="va">$file</span><span class="st">&#39; | echo &#39;</span><span class="va">$file</span><span class="st">&#39;&quot;   &quot;$(grep &quot;mapped (&quot;) &gt;&gt; readsMappingStat.txt&#39;</span><span class="kw">;</span> <span class="kw">done</span> <span class="op">&gt;</span> <span class="ex">mappingStat.sh</span></span>
+<span id="cb61-14"><a href="snp-calling-and-filtering.html#cb61-14"></a><span class="ex">sarray</span> -J mappingStat -o mappingStat/%j.out -e mappingStat/%j.err -t 1:00:00 --mail-type=BEGIN,END,FAIL  mappingStat.sh</span>
 <span id="cb61-15"><a href="snp-calling-and-filtering.html#cb61-15"></a></span>
-<span id="cb61-16"><a href="snp-calling-and-filtering.html#cb61-16"></a><span class="fu">task()</span><span class="kw">{</span></span>
-<span id="cb61-17"><a href="snp-calling-and-filtering.html#cb61-17"></a>    <span class="bu">echo</span> MAPPING <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span></span>
-<span id="cb61-18"><a href="snp-calling-and-filtering.html#cb61-18"></a>    <span class="ex">bwa</span> mem -M -R <span class="st">&quot;@RG\tID:</span><span class="va">$1</span><span class="st">\tSM:</span><span class="va">$1</span><span class="st">\tPL:HiSeq4K&quot;</span> \</span>
-<span id="cb61-19"><a href="snp-calling-and-filtering.html#cb61-19"></a>        -t 2 \</span>
-<span id="cb61-20"><a href="snp-calling-and-filtering.html#cb61-20"></a>        reference/reference.fasta \</span>
-<span id="cb61-21"><a href="snp-calling-and-filtering.html#cb61-21"></a>        trimming/trimmed.paired.joined/<span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span>_R1_paired.fq.gz \</span>
-<span id="cb61-22"><a href="snp-calling-and-filtering.html#cb61-22"></a>        trimming/trimmed.paired.joined/<span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span>_R2_paired.fq.gz \</span>
-<span id="cb61-23"><a href="snp-calling-and-filtering.html#cb61-23"></a>        <span class="op">&gt;</span> mapping/sam/<span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span>.sam</span>
-<span id="cb61-24"><a href="snp-calling-and-filtering.html#cb61-24"></a>    <span class="fu">rm</span> trimming/trimmed.paired.joined/<span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span>_R1_paired.fq.gz</span>
-<span id="cb61-25"><a href="snp-calling-and-filtering.html#cb61-25"></a>    <span class="fu">rm</span> trimming/trimmed.paired.joined/<span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span>_R2_paired.fq.gz</span>
-<span id="cb61-26"><a href="snp-calling-and-filtering.html#cb61-26"></a>    <span class="ex">java</span> -Xmx4g -jar <span class="va">$PICARD</span> SortSam \</span>
-<span id="cb61-27"><a href="snp-calling-and-filtering.html#cb61-27"></a>        I=mapping/sam/<span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span>.sam \</span>
-<span id="cb61-28"><a href="snp-calling-and-filtering.html#cb61-28"></a>        O=mapping/bam2/<span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span>.bam</span>
-<span id="cb61-29"><a href="snp-calling-and-filtering.html#cb61-29"></a>        <span class="va">SORT_ORDER=</span>coordinate</span>
-<span id="cb61-30"><a href="snp-calling-and-filtering.html#cb61-30"></a>    <span class="fu">rm</span> mapping/sam/<span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span>.sam</span>
-<span id="cb61-31"><a href="snp-calling-and-filtering.html#cb61-31"></a>    <span class="ex">samtools</span> index mapping/bam2/<span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span>.bam</span>
-<span id="cb61-32"><a href="snp-calling-and-filtering.html#cb61-32"></a><span class="kw">}</span></span>
-<span id="cb61-33"><a href="snp-calling-and-filtering.html#cb61-33"></a></span>
-<span id="cb61-34"><a href="snp-calling-and-filtering.html#cb61-34"></a><span class="fu">mkdir</span> mapping/sam</span>
-<span id="cb61-35"><a href="snp-calling-and-filtering.html#cb61-35"></a><span class="fu">mkdir</span> mapping/bam2</span>
-<span id="cb61-36"><a href="snp-calling-and-filtering.html#cb61-36"></a><span class="va">N=</span>32</span>
-<span id="cb61-37"><a href="snp-calling-and-filtering.html#cb61-37"></a><span class="kw">(</span></span>
-<span id="cb61-38"><a href="snp-calling-and-filtering.html#cb61-38"></a><span class="kw">for</span> <span class="ex">library</span> in <span class="va">$(</span><span class="fu">cat</span> unmapped.txt<span class="va">)</span></span>
-<span id="cb61-39"><a href="snp-calling-and-filtering.html#cb61-39"></a><span class="kw">do</span> </span>
-<span id="cb61-40"><a href="snp-calling-and-filtering.html#cb61-40"></a>   <span class="kw">((</span>i=i%N<span class="kw">))</span>; <span class="kw">((</span>i++==0<span class="kw">))</span> <span class="kw">&amp;&amp;</span> <span class="bu">wait</span></span>
-<span id="cb61-41"><a href="snp-calling-and-filtering.html#cb61-41"></a>   <span class="ex">task</span> <span class="st">&quot;</span><span class="va">$library</span><span class="st">&quot;</span> <span class="kw">&amp;</span></span>
-<span id="cb61-42"><a href="snp-calling-and-filtering.html#cb61-42"></a><span class="kw">done</span></span>
-<span id="cb61-43"><a href="snp-calling-and-filtering.html#cb61-43"></a><span class="kw">)</span></span>
-<span id="cb61-44"><a href="snp-calling-and-filtering.html#cb61-44"></a><span class="fu">rm</span> -r mapping/sam</span></code></pre></div>
-<div class="sourceCode" id="cb62"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb62-1"><a href="snp-calling-and-filtering.html#cb62-1"></a><span class="co"># folders</span></span>
-<span id="cb62-2"><a href="snp-calling-and-filtering.html#cb62-2"></a><span class="fu">mkdir</span> mappingStat</span>
-<span id="cb62-3"><a href="snp-calling-and-filtering.html#cb62-3"></a><span class="fu">touch</span> readsMappingStat.txt</span>
-<span id="cb62-4"><a href="snp-calling-and-filtering.html#cb62-4"></a></span>
-<span id="cb62-5"><a href="snp-calling-and-filtering.html#cb62-5"></a><span class="co"># test</span></span>
-<span id="cb62-6"><a href="snp-calling-and-filtering.html#cb62-6"></a><span class="va">file=$(</span><span class="fu">ls</span> bam*/*.bam <span class="kw">|</span> <span class="fu">head</span> -n 1<span class="va">)</span></span>
-<span id="cb62-7"><a href="snp-calling-and-filtering.html#cb62-7"></a><span class="ex">module</span> load bioinfo/samtools-1.4 <span class="kw">;</span> <span class="ex">samtools</span> flagstat <span class="va">$file</span> <span class="kw">|</span> <span class="bu">echo</span> <span class="va">$file</span><span class="st">&quot;   &quot;</span><span class="va">$(</span><span class="fu">grep</span> <span class="st">&quot;mapped (&quot;</span><span class="va">)</span> <span class="op">&gt;&gt;</span> readsMappingStat.txt</span>
-<span id="cb62-8"><a href="snp-calling-and-filtering.html#cb62-8"></a><span class="fu">cat</span> readsMappingStat.txt</span>
-<span id="cb62-9"><a href="snp-calling-and-filtering.html#cb62-9"></a><span class="fu">rm</span> readsMappingStat.txt</span>
-<span id="cb62-10"><a href="snp-calling-and-filtering.html#cb62-10"></a><span class="fu">touch</span> readsMappingStat.txt</span>
-<span id="cb62-11"><a href="snp-calling-and-filtering.html#cb62-11"></a></span>
-<span id="cb62-12"><a href="snp-calling-and-filtering.html#cb62-12"></a><span class="co"># sarray</span></span>
-<span id="cb62-13"><a href="snp-calling-and-filtering.html#cb62-13"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> bam*/*.bam<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span> <span class="bu">echo</span> <span class="st">&#39;module load bioinfo/samtools-1.4 ; samtools flagstat &#39;</span><span class="va">$file</span><span class="st">&#39; | echo &#39;</span><span class="va">$file</span><span class="st">&#39;&quot;   &quot;$(grep &quot;mapped (&quot;) &gt;&gt; readsMappingStat.txt&#39;</span><span class="kw">;</span> <span class="kw">done</span> <span class="op">&gt;</span> <span class="ex">mappingStat.sh</span></span>
-<span id="cb62-14"><a href="snp-calling-and-filtering.html#cb62-14"></a><span class="ex">sarray</span> -J mappingStat -o mappingStat/%j.out -e mappingStat/%j.err -t 1:00:00 --mail-type=BEGIN,END,FAIL  mappingStat.sh</span>
-<span id="cb62-15"><a href="snp-calling-and-filtering.html#cb62-15"></a></span>
-<span id="cb62-16"><a href="snp-calling-and-filtering.html#cb62-16"></a><span class="co"># clean</span></span>
-<span id="cb62-17"><a href="snp-calling-and-filtering.html#cb62-17"></a><span class="fu">rm</span> -r mappingStat</span></code></pre></div>
+<span id="cb61-16"><a href="snp-calling-and-filtering.html#cb61-16"></a><span class="co"># clean</span></span>
+<span id="cb61-17"><a href="snp-calling-and-filtering.html#cb61-17"></a><span class="fu">rm</span> -r mappingStat</span></code></pre></div>
 <div class="figure"><span id="fig:mappingStat"></span>
 <img src="GOING_files/figure-html/mappingStat-1.png" alt="Mapping result" width="768" />
 <p class="caption">
@@ -740,33 +738,33 @@ Figure 4.8: Mapping result
 </div>
 <div id="reference-sequences" class="section level3">
 <h3><span class="header-section-number">4.2.3</span> Reference sequences</h3>
-<p>We built bedtools for every alignment in order to list sequences with matches in the reference to be used to reduce explored reference area in variant calling.
+<p>We built bedtools for every alignment in order to list sequences with matches in the reference to be used to reduce explored reference areas in variant calling.
 99.98% of reference sequences had at least one library matching (<a href="snp-calling-and-filtering.html#fig:referenceSequences">4.9</a>).
 Consequently we used all sequences from the reference in the variant calling,
-besides few sequences our libraries were under represented,
+besides a few sequences our libraries were under-represented,
 but they have been removed at the SNP filtering.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb63-1"><a href="snp-calling-and-filtering.html#cb63-1"></a><span class="co"># folders</span></span>
-<span id="cb63-2"><a href="snp-calling-and-filtering.html#cb63-2"></a><span class="fu">mkdir</span> bed</span>
-<span id="cb63-3"><a href="snp-calling-and-filtering.html#cb63-3"></a><span class="fu">mkdir</span> bed.out</span>
-<span id="cb63-4"><a href="snp-calling-and-filtering.html#cb63-4"></a></span>
-<span id="cb63-5"><a href="snp-calling-and-filtering.html#cb63-5"></a><span class="co"># test</span></span>
-<span id="cb63-6"><a href="snp-calling-and-filtering.html#cb63-6"></a><span class="va">file=$(</span><span class="fu">ls</span> bam*/*.bam <span class="kw">|</span> <span class="fu">head</span> -n 1<span class="va">)</span></span>
-<span id="cb63-7"><a href="snp-calling-and-filtering.html#cb63-7"></a><span class="ex">module</span> load bioinfo/bedtools-2.26.0 <span class="kw">;</span> <span class="ex">bedtools</span> bamtobed -i <span class="va">$file</span> <span class="op">&gt;</span> bed/<span class="va">$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">${file%</span>.*<span class="va">}</span><span class="st">&quot;</span><span class="va">)</span>.bed</span>
-<span id="cb63-8"><a href="snp-calling-and-filtering.html#cb63-8"></a><span class="fu">rm</span> bed/*</span>
-<span id="cb63-9"><a href="snp-calling-and-filtering.html#cb63-9"></a></span>
-<span id="cb63-10"><a href="snp-calling-and-filtering.html#cb63-10"></a><span class="co"># sarray</span></span>
-<span id="cb63-11"><a href="snp-calling-and-filtering.html#cb63-11"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> bam*/*.bam<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span> <span class="bu">echo</span> <span class="st">&#39;module load bioinfo/bedtools-2.26.0 ; file=&#39;</span><span class="va">$file</span><span class="st">&#39; ; bedtools bamtobed -i $file &gt; bed/$(basename &quot;${file%.*}&quot;).bed&#39;</span><span class="kw">;</span> <span class="kw">done</span> <span class="op">&gt;</span> <span class="ex">bed.sh</span></span>
-<span id="cb63-12"><a href="snp-calling-and-filtering.html#cb63-12"></a><span class="ex">sarray</span> -J bed -o bed.out/%j.out -e bed.out/%j.err -t 1:00:00 --mail-type=BEGIN,END,FAIL  bed.sh</span>
-<span id="cb63-13"><a href="snp-calling-and-filtering.html#cb63-13"></a></span>
-<span id="cb63-14"><a href="snp-calling-and-filtering.html#cb63-14"></a><span class="co"># clean</span></span>
-<span id="cb63-15"><a href="snp-calling-and-filtering.html#cb63-15"></a><span class="fu">rm</span> -r bed.out</span>
-<span id="cb63-16"><a href="snp-calling-and-filtering.html#cb63-16"></a>  </span>
-<span id="cb63-17"><a href="snp-calling-and-filtering.html#cb63-17"></a><span class="co"># statistics</span></span>
-<span id="cb63-18"><a href="snp-calling-and-filtering.html#cb63-18"></a><span class="fu">mkdir</span> bed.out</span>
-<span id="cb63-19"><a href="snp-calling-and-filtering.html#cb63-19"></a><span class="fu">touch</span> referenceMappedStats.txt</span>
-<span id="cb63-20"><a href="snp-calling-and-filtering.html#cb63-20"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> bed/*.bed<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span> <span class="bu">echo</span> <span class="st">&quot;cut </span><span class="va">$file</span><span class="st"> -f1 | sort | uniq | awk -v file=&quot;</span><span class="va">$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">${file%</span>.*<span class="va">}</span><span class="st">&quot;</span><span class="va">)</span><span class="st">&quot; &#39;{print </span><span class="dt">\$</span><span class="st">1, file}&#39; &gt;&gt; referenceMappedStats.txt&quot;</span> <span class="kw">;</span> <span class="kw">done</span> <span class="op">&gt;</span> <span class="ex">bed.sh</span></span>
-<span id="cb63-21"><a href="snp-calling-and-filtering.html#cb63-21"></a><span class="ex">sarray</span> -J bed -o bed.out/%j.out -e bed.out/%j.err -t 1:00:00 --mail-type=BEGIN,END,FAIL  bed.sh</span>
-<span id="cb63-22"><a href="snp-calling-and-filtering.html#cb63-22"></a><span class="fu">rm</span> -r bed.out</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb62-1"><a href="snp-calling-and-filtering.html#cb62-1"></a><span class="co"># folders</span></span>
+<span id="cb62-2"><a href="snp-calling-and-filtering.html#cb62-2"></a><span class="fu">mkdir</span> bed</span>
+<span id="cb62-3"><a href="snp-calling-and-filtering.html#cb62-3"></a><span class="fu">mkdir</span> bed.out</span>
+<span id="cb62-4"><a href="snp-calling-and-filtering.html#cb62-4"></a></span>
+<span id="cb62-5"><a href="snp-calling-and-filtering.html#cb62-5"></a><span class="co"># test</span></span>
+<span id="cb62-6"><a href="snp-calling-and-filtering.html#cb62-6"></a><span class="va">file=$(</span><span class="fu">ls</span> bam*/*.bam <span class="kw">|</span> <span class="fu">head</span> -n 1<span class="va">)</span></span>
+<span id="cb62-7"><a href="snp-calling-and-filtering.html#cb62-7"></a><span class="ex">module</span> load bioinfo/bedtools-2.26.0 <span class="kw">;</span> <span class="ex">bedtools</span> bamtobed -i <span class="va">$file</span> <span class="op">&gt;</span> bed/<span class="va">$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">${file%</span>.*<span class="va">}</span><span class="st">&quot;</span><span class="va">)</span>.bed</span>
+<span id="cb62-8"><a href="snp-calling-and-filtering.html#cb62-8"></a><span class="fu">rm</span> bed/*</span>
+<span id="cb62-9"><a href="snp-calling-and-filtering.html#cb62-9"></a></span>
+<span id="cb62-10"><a href="snp-calling-and-filtering.html#cb62-10"></a><span class="co"># sarray</span></span>
+<span id="cb62-11"><a href="snp-calling-and-filtering.html#cb62-11"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> bam*/*.bam<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span> <span class="bu">echo</span> <span class="st">&#39;module load bioinfo/bedtools-2.26.0 ; file=&#39;</span><span class="va">$file</span><span class="st">&#39; ; bedtools bamtobed -i $file &gt; bed/$(basename &quot;${file%.*}&quot;).bed&#39;</span><span class="kw">;</span> <span class="kw">done</span> <span class="op">&gt;</span> <span class="ex">bed.sh</span></span>
+<span id="cb62-12"><a href="snp-calling-and-filtering.html#cb62-12"></a><span class="ex">sarray</span> -J bed -o bed.out/%j.out -e bed.out/%j.err -t 1:00:00 --mail-type=BEGIN,END,FAIL  bed.sh</span>
+<span id="cb62-13"><a href="snp-calling-and-filtering.html#cb62-13"></a></span>
+<span id="cb62-14"><a href="snp-calling-and-filtering.html#cb62-14"></a><span class="co"># clean</span></span>
+<span id="cb62-15"><a href="snp-calling-and-filtering.html#cb62-15"></a><span class="fu">rm</span> -r bed.out</span>
+<span id="cb62-16"><a href="snp-calling-and-filtering.html#cb62-16"></a>  </span>
+<span id="cb62-17"><a href="snp-calling-and-filtering.html#cb62-17"></a><span class="co"># statistics</span></span>
+<span id="cb62-18"><a href="snp-calling-and-filtering.html#cb62-18"></a><span class="fu">mkdir</span> bed.out</span>
+<span id="cb62-19"><a href="snp-calling-and-filtering.html#cb62-19"></a><span class="fu">touch</span> referenceMappedStats.txt</span>
+<span id="cb62-20"><a href="snp-calling-and-filtering.html#cb62-20"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> bed/*.bed<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span> <span class="bu">echo</span> <span class="st">&quot;cut </span><span class="va">$file</span><span class="st"> -f1 | sort | uniq | awk -v file=&quot;</span><span class="va">$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">${file%</span>.*<span class="va">}</span><span class="st">&quot;</span><span class="va">)</span><span class="st">&quot; &#39;{print </span><span class="dt">\$</span><span class="st">1, file}&#39; &gt;&gt; referenceMappedStats.txt&quot;</span> <span class="kw">;</span> <span class="kw">done</span> <span class="op">&gt;</span> <span class="ex">bed.sh</span></span>
+<span id="cb62-21"><a href="snp-calling-and-filtering.html#cb62-21"></a><span class="ex">sarray</span> -J bed -o bed.out/%j.out -e bed.out/%j.err -t 1:00:00 --mail-type=BEGIN,END,FAIL  bed.sh</span>
+<span id="cb62-22"><a href="snp-calling-and-filtering.html#cb62-22"></a><span class="fu">rm</span> -r bed.out</span></code></pre></div>
 <div class="figure"><span id="fig:referenceSequences"></span>
 <img src="images/seqAligned.png" alt="Sequences from reference alignment with reads from library." width="1050" />
 <p class="caption">
@@ -787,121 +785,121 @@ For that we used the following pipeline:</p>
 <div id="variant-calling" class="section level3">
 <h3><span class="header-section-number">4.3.1</span> Variant calling</h3>
 <p>Run the <code>HaplotypeCaller</code> on each sample’s BAM files to create single-sample gVCFs using the <code>.g.vcf</code> extension for the output file.<br />
-We used <code>sarray</code> which is much powerful than <code>sbatch</code> in parallel computing.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb64-1"><a href="snp-calling-and-filtering.html#cb64-1"></a><span class="co"># folders</span></span>
-<span id="cb64-2"><a href="snp-calling-and-filtering.html#cb64-2"></a><span class="fu">mkdir</span> variantCalling/gvcf5</span>
-<span id="cb64-3"><a href="snp-calling-and-filtering.html#cb64-3"></a></span>
-<span id="cb64-4"><a href="snp-calling-and-filtering.html#cb64-4"></a><span class="co"># test</span></span>
-<span id="cb64-5"><a href="snp-calling-and-filtering.html#cb64-5"></a><span class="va">file=$(</span><span class="fu">ls</span> mapping/bam5/*.bam <span class="kw">|</span> <span class="fu">head</span> -n 1<span class="va">)</span></span>
-<span id="cb64-6"><a href="snp-calling-and-filtering.html#cb64-6"></a><span class="ex">srun</span> --mem=20G --pty bash</span>
-<span id="cb64-7"><a href="snp-calling-and-filtering.html#cb64-7"></a><span class="ex">module</span> load bioinfo/gatk-4.1.2.0 <span class="kw">;</span> <span class="ex">gatk</span> --java-options <span class="st">&quot;-Xmx20G&quot;</span> HaplotypeCaller -R reference/reference.fasta -I <span class="va">$file</span> -O variantCalling/gvcf4/<span class="va">$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">${file%</span>.*<span class="va">}</span><span class="st">&quot;</span><span class="va">)</span>.g.vcf.gz  -ERC GVCF</span>
-<span id="cb64-8"><a href="snp-calling-and-filtering.html#cb64-8"></a><span class="bu">exit</span></span>
-<span id="cb64-9"><a href="snp-calling-and-filtering.html#cb64-9"></a><span class="fu">rm</span> variantCalling/gvcf4/*</span>
-<span id="cb64-10"><a href="snp-calling-and-filtering.html#cb64-10"></a></span>
-<span id="cb64-11"><a href="snp-calling-and-filtering.html#cb64-11"></a><span class="co"># sarray</span></span>
-<span id="cb64-12"><a href="snp-calling-and-filtering.html#cb64-12"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> mapping/bam5/*.bam<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span> <span class="bu">echo</span> <span class="st">&quot;module load bioinfo/gatk-4.1.2.0 ; gatk --java-options </span><span class="dt">\&quot;</span><span class="st">-Xmx20G</span><span class="dt">\&quot;</span><span class="st"> HaplotypeCaller -R reference/reference.fasta -I </span><span class="va">$file</span><span class="st"> -O variantCalling/gvcf5/</span><span class="va">$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">${file%</span>.*<span class="va">}</span><span class="st">&quot;</span><span class="va">)</span><span class="st">.g.vcf.gz  -ERC GVCF&quot;</span><span class="kw">;</span> <span class="kw">done</span> <span class="op">&gt;</span> <span class="ex">haplo5.sh</span></span>
-<span id="cb64-13"><a href="snp-calling-and-filtering.html#cb64-13"></a><span class="fu">mkdir</span> haplo5</span>
-<span id="cb64-14"><a href="snp-calling-and-filtering.html#cb64-14"></a><span class="ex">sarray</span> -J haplo5 -o haplo5/%j.out -e haplo5/%j.err -t 48:00:00 --mem=20G --mail-type=BEGIN,END,FAIL  haplo5.sh</span>
-<span id="cb64-15"><a href="snp-calling-and-filtering.html#cb64-15"></a></span>
-<span id="cb64-16"><a href="snp-calling-and-filtering.html#cb64-16"></a><span class="co"># clean</span></span>
-<span id="cb64-17"><a href="snp-calling-and-filtering.html#cb64-17"></a><span class="fu">rm</span> -r haplo5</span>
-<span id="cb64-18"><a href="snp-calling-and-filtering.html#cb64-18"></a><span class="fu">rm</span> -r tmp</span></code></pre></div>
+We used <code>sarray</code> which is much more powerful than <code>sbatch</code> in parallel computing.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb63-1"><a href="snp-calling-and-filtering.html#cb63-1"></a><span class="co"># folders</span></span>
+<span id="cb63-2"><a href="snp-calling-and-filtering.html#cb63-2"></a><span class="fu">mkdir</span> variantCalling/gvcf5</span>
+<span id="cb63-3"><a href="snp-calling-and-filtering.html#cb63-3"></a></span>
+<span id="cb63-4"><a href="snp-calling-and-filtering.html#cb63-4"></a><span class="co"># test</span></span>
+<span id="cb63-5"><a href="snp-calling-and-filtering.html#cb63-5"></a><span class="va">file=$(</span><span class="fu">ls</span> mapping/bam5/*.bam <span class="kw">|</span> <span class="fu">head</span> -n 1<span class="va">)</span></span>
+<span id="cb63-6"><a href="snp-calling-and-filtering.html#cb63-6"></a><span class="ex">srun</span> --mem=20G --pty bash</span>
+<span id="cb63-7"><a href="snp-calling-and-filtering.html#cb63-7"></a><span class="ex">module</span> load bioinfo/gatk-4.1.2.0 <span class="kw">;</span> <span class="ex">gatk</span> --java-options <span class="st">&quot;-Xmx20G&quot;</span> HaplotypeCaller -R reference/reference.fasta -I <span class="va">$file</span> -O variantCalling/gvcf4/<span class="va">$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">${file%</span>.*<span class="va">}</span><span class="st">&quot;</span><span class="va">)</span>.g.vcf.gz  -ERC GVCF</span>
+<span id="cb63-8"><a href="snp-calling-and-filtering.html#cb63-8"></a><span class="bu">exit</span></span>
+<span id="cb63-9"><a href="snp-calling-and-filtering.html#cb63-9"></a><span class="fu">rm</span> variantCalling/gvcf4/*</span>
+<span id="cb63-10"><a href="snp-calling-and-filtering.html#cb63-10"></a></span>
+<span id="cb63-11"><a href="snp-calling-and-filtering.html#cb63-11"></a><span class="co"># sarray</span></span>
+<span id="cb63-12"><a href="snp-calling-and-filtering.html#cb63-12"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> mapping/bam5/*.bam<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span> <span class="bu">echo</span> <span class="st">&quot;module load bioinfo/gatk-4.1.2.0 ; gatk --java-options </span><span class="dt">\&quot;</span><span class="st">-Xmx20G</span><span class="dt">\&quot;</span><span class="st"> HaplotypeCaller -R reference/reference.fasta -I </span><span class="va">$file</span><span class="st"> -O variantCalling/gvcf5/</span><span class="va">$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">${file%</span>.*<span class="va">}</span><span class="st">&quot;</span><span class="va">)</span><span class="st">.g.vcf.gz  -ERC GVCF&quot;</span><span class="kw">;</span> <span class="kw">done</span> <span class="op">&gt;</span> <span class="ex">haplo5.sh</span></span>
+<span id="cb63-13"><a href="snp-calling-and-filtering.html#cb63-13"></a><span class="fu">mkdir</span> haplo5</span>
+<span id="cb63-14"><a href="snp-calling-and-filtering.html#cb63-14"></a><span class="ex">sarray</span> -J haplo5 -o haplo5/%j.out -e haplo5/%j.err -t 48:00:00 --mem=20G --mail-type=BEGIN,END,FAIL  haplo5.sh</span>
+<span id="cb63-15"><a href="snp-calling-and-filtering.html#cb63-15"></a></span>
+<span id="cb63-16"><a href="snp-calling-and-filtering.html#cb63-16"></a><span class="co"># clean</span></span>
+<span id="cb63-17"><a href="snp-calling-and-filtering.html#cb63-17"></a><span class="fu">rm</span> -r haplo5</span>
+<span id="cb63-18"><a href="snp-calling-and-filtering.html#cb63-18"></a><span class="fu">rm</span> -r tmp</span></code></pre></div>
 </div>
 <div id="data-aggregation" class="section level3">
 <h3><span class="header-section-number">4.3.2</span> Data aggregation</h3>
-<p>We aggregated the GVCF files and feed in one GVCF database with <code>GenomicsDBImport</code> to be genotyped.
+<p>We aggregated the GVCF files and fed them into one GVCF database with <code>GenomicsDBImport</code> to be genotyped.
 <strong>Beware</strong>, <code>GATK 4.0.0.0</code> does not deal with multiple intervals when using <code>GenomicsDBImport</code>, so we used <code>GATK 4.1.2.0</code>.
-We divided the step on several intervals files of a maximum of 1000 sequences computed in parallel to speed up the operation.
+We divided the step into several intervals files of a maximum of 1000 sequences computed in parallel to speed up the operation.
 <strong>NB</strong>, we tested the pipeline with 3 individual haplotypes and 10 intervals of 100 sequences ran in parallel; and it took 24 minutes.
-Consequently with 10 fold more sequences per intervals we may increase to 4H, and the effect of 10 fold more individual haplotypes is hard to assess.</p>
-<p>Due to a memory overload on the cluster I boosted the <code>sarray</code> to 24G per node beside limiting <code>gatk</code> java session to 20G, still the overload is strange as if <code>gatk</code> was opening parallel session of 20G java.
-We should not decrease batch size as batch of 50 individuals means that we will use 9 batches !
+Consequently with 10 fold more sequences per interval we may increase to 4H, and the effect of 10 fold more individual haplotypes is hard to assess.</p>
+<p>Due to a memory overload on the cluster I boosted the <code>sarray</code> to 24G per node beside limiting <code>gatk</code> java session to 20G, still the overload is strange as if <code>gatk</code> was opening a parallel session of 20G java.
+We should not decrease batch size as a batch of 50 individuals means that we will use 9 batches !
 If memory issues persist we may decrease the intervals length (currently 1000 sequences) and increase the number of jobs in <code>sarray</code>.
 We may even decrease intervals to 100 sequences resulting in more than 800 jobs and run them by batch of 100 hundreds if they are really more efficient.</p>
 <p>Running a first batch of 10 samples on 100 sequences took 35 minutes.
-Thus 432 samples should took ca 1 day and 40 minutes.
+Thus 432 samples should take ca 1 day and 40 minutes.
 This is the first run of DB among 8, so in total DB built should take 8 days !
-But on the other hand joint genotyping might be launch on each run as soon as they finish. So we might clean the first vcf and obtained a preview of population genetics structure with the first 100 sequences.</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb65-1"><a href="snp-calling-and-filtering.html#cb65-1"></a><span class="co"># Sample map</span></span>
-<span id="cb65-2"><a href="snp-calling-and-filtering.html#cb65-2"></a><span class="fu">touch</span> sample_map.txt</span>
-<span id="cb65-3"><a href="snp-calling-and-filtering.html#cb65-3"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> gvcf*/*.g.vcf.gz<span class="va">)</span></span>
-<span id="cb65-4"><a href="snp-calling-and-filtering.html#cb65-4"></a><span class="kw">do</span> </span>
-<span id="cb65-5"><a href="snp-calling-and-filtering.html#cb65-5"></a>   <span class="bu">echo</span> -e <span class="va">$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">${file%</span>.*<span class="va">}</span><span class="st">&quot;</span><span class="va">)</span><span class="st">&quot;\t&quot;</span><span class="va">$file</span> <span class="op">&gt;&gt;</span> sample_map.txt</span>
-<span id="cb65-6"><a href="snp-calling-and-filtering.html#cb65-6"></a><span class="kw">done</span></span>
-<span id="cb65-7"><a href="snp-calling-and-filtering.html#cb65-7"></a></span>
-<span id="cb65-8"><a href="snp-calling-and-filtering.html#cb65-8"></a><span class="co"># seq lists</span></span>
-<span id="cb65-9"><a href="snp-calling-and-filtering.html#cb65-9"></a><span class="fu">mkdir</span> reference.sequences.lists</span>
-<span id="cb65-10"><a href="snp-calling-and-filtering.html#cb65-10"></a><span class="fu">cut</span> ../reference/reference.fasta.fai -f1 <span class="op">&gt;</span> reference.sequences.lists/reference.sequences.list</span>
-<span id="cb65-11"><a href="snp-calling-and-filtering.html#cb65-11"></a><span class="bu">cd</span> reference.sequences.lists</span>
-<span id="cb65-12"><a href="snp-calling-and-filtering.html#cb65-12"></a><span class="fu">split</span> -l 100 -d reference.sequences.list reference.sequences_ --additional-suffix=.list</span>
-<span id="cb65-13"><a href="snp-calling-and-filtering.html#cb65-13"></a><span class="fu">rm</span> reference.sequences.list</span>
-<span id="cb65-14"><a href="snp-calling-and-filtering.html#cb65-14"></a><span class="fu">ls</span> <span class="kw">|</span> <span class="fu">wc</span> -l</span>
-<span id="cb65-15"><a href="snp-calling-and-filtering.html#cb65-15"></a><span class="bu">cd</span> ..</span>
-<span id="cb65-16"><a href="snp-calling-and-filtering.html#cb65-16"></a></span>
-<span id="cb65-17"><a href="snp-calling-and-filtering.html#cb65-17"></a><span class="co"># folders</span></span>
-<span id="cb65-18"><a href="snp-calling-and-filtering.html#cb65-18"></a><span class="fu">mkdir</span> tmp</span>
-<span id="cb65-19"><a href="snp-calling-and-filtering.html#cb65-19"></a><span class="fu">mkdir</span> symcaptureDB</span>
-<span id="cb65-20"><a href="snp-calling-and-filtering.html#cb65-20"></a></span>
-<span id="cb65-21"><a href="snp-calling-and-filtering.html#cb65-21"></a><span class="co"># test</span></span>
-<span id="cb65-22"><a href="snp-calling-and-filtering.html#cb65-22"></a><span class="ex">srun</span> --mem=24G --pty bash</span>
-<span id="cb65-23"><a href="snp-calling-and-filtering.html#cb65-23"></a><span class="va">file=$(</span><span class="fu">ls</span> reference.sequences.lists/ <span class="kw">|</span> <span class="fu">head</span> -n 1<span class="va">)</span></span>
-<span id="cb65-24"><a href="snp-calling-and-filtering.html#cb65-24"></a><span class="ex">module</span> load bioinfo/gatk-4.1.2.0 <span class="kw">;</span> <span class="ex">gatk</span> --java-options <span class="st">&quot;-Xmx20g -Xms20g&quot;</span> GenomicsDBImport --genomicsdb-workspace-path symcaptureDB/<span class="st">&quot;</span><span class="va">${file%</span>.*<span class="va">}</span><span class="st">&quot;</span>.DB -L reference.sequences.lists/<span class="va">$file</span> --sample-name-map sample_map.txt --batch-size 50 --tmp-dir=tmp</span>
-<span id="cb65-25"><a href="snp-calling-and-filtering.html#cb65-25"></a><span class="bu">exit</span></span>
-<span id="cb65-26"><a href="snp-calling-and-filtering.html#cb65-26"></a><span class="fu">rm</span> -r symcaptureDB/*</span>
-<span id="cb65-27"><a href="snp-calling-and-filtering.html#cb65-27"></a><span class="fu">rm</span> tmp/*</span>
-<span id="cb65-28"><a href="snp-calling-and-filtering.html#cb65-28"></a></span>
-<span id="cb65-29"><a href="snp-calling-and-filtering.html#cb65-29"></a><span class="co"># sarray</span></span>
-<span id="cb65-30"><a href="snp-calling-and-filtering.html#cb65-30"></a></span>
-<span id="cb65-31"><a href="snp-calling-and-filtering.html#cb65-31"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> reference.sequences.lists/<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span> <span class="bu">echo</span> <span class="st">&quot;module load bioinfo/gatk-4.1.2.0 ; gatk --java-options </span><span class="dt">\&quot;</span><span class="st">-Xmx20g -Xms20g</span><span class="dt">\&quot;</span><span class="st"> GenomicsDBImport --genomicsdb-workspace-path symcaptureDB/</span><span class="dt">\&quot;</span><span class="va">${file%</span>.*<span class="va">}</span><span class="dt">\&quot;</span><span class="st">.DB -L reference.sequences.lists/</span><span class="va">$file</span><span class="st"> --sample-name-map sample_map.txt --batch-size 10 --consolidate&quot;</span><span class="kw">;</span> <span class="kw">done</span> <span class="op">&gt;</span> <span class="ex">combine.sh</span></span>
-<span id="cb65-32"><a href="snp-calling-and-filtering.html#cb65-32"></a><span class="fu">split</span> -l 207 -d combine.sh combine_ --additional-suffix=.sh</span>
-<span id="cb65-33"><a href="snp-calling-and-filtering.html#cb65-33"></a><span class="fu">rm</span> combine.sh</span>
-<span id="cb65-34"><a href="snp-calling-and-filtering.html#cb65-34"></a><span class="fu">mkdir</span> combine</span>
-<span id="cb65-35"><a href="snp-calling-and-filtering.html#cb65-35"></a><span class="ex">sarray</span> -J combine -o combine/%j.out -e combine/%j.err -t 48:00:00 --mem=40G --mail-type=BEGIN,END,FAIL combine.sh</span>
-<span id="cb65-36"><a href="snp-calling-and-filtering.html#cb65-36"></a><span class="fu">rm</span> combine_00.sh</span>
-<span id="cb65-37"><a href="snp-calling-and-filtering.html#cb65-37"></a><span class="fu">rm</span> -r combine</span>
-<span id="cb65-38"><a href="snp-calling-and-filtering.html#cb65-38"></a><span class="fu">rm</span> -r tmp</span>
-<span id="cb65-39"><a href="snp-calling-and-filtering.html#cb65-39"></a></span>
-<span id="cb65-40"><a href="snp-calling-and-filtering.html#cb65-40"></a><span class="co"># clean</span></span>
-<span id="cb65-41"><a href="snp-calling-and-filtering.html#cb65-41"></a><span class="fu">rm</span> -r combine</span>
-<span id="cb65-42"><a href="snp-calling-and-filtering.html#cb65-42"></a><span class="fu">rm</span> -r tmp</span></code></pre></div>
+But on the other hand joint genotyping might be launched on each run as soon as they finish. So we might clean the first vcf and obtain a preview of population genetics structure with the first 100 sequences.</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb64-1"><a href="snp-calling-and-filtering.html#cb64-1"></a><span class="co"># Sample map</span></span>
+<span id="cb64-2"><a href="snp-calling-and-filtering.html#cb64-2"></a><span class="fu">touch</span> sample_map.txt</span>
+<span id="cb64-3"><a href="snp-calling-and-filtering.html#cb64-3"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> gvcf*/*.g.vcf.gz<span class="va">)</span></span>
+<span id="cb64-4"><a href="snp-calling-and-filtering.html#cb64-4"></a><span class="kw">do</span> </span>
+<span id="cb64-5"><a href="snp-calling-and-filtering.html#cb64-5"></a>   <span class="bu">echo</span> -e <span class="va">$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">${file%</span>.*<span class="va">}</span><span class="st">&quot;</span><span class="va">)</span><span class="st">&quot;\t&quot;</span><span class="va">$file</span> <span class="op">&gt;&gt;</span> sample_map.txt</span>
+<span id="cb64-6"><a href="snp-calling-and-filtering.html#cb64-6"></a><span class="kw">done</span></span>
+<span id="cb64-7"><a href="snp-calling-and-filtering.html#cb64-7"></a></span>
+<span id="cb64-8"><a href="snp-calling-and-filtering.html#cb64-8"></a><span class="co"># seq lists</span></span>
+<span id="cb64-9"><a href="snp-calling-and-filtering.html#cb64-9"></a><span class="fu">mkdir</span> reference.sequences.lists</span>
+<span id="cb64-10"><a href="snp-calling-and-filtering.html#cb64-10"></a><span class="fu">cut</span> ../reference/reference.fasta.fai -f1 <span class="op">&gt;</span> reference.sequences.lists/reference.sequences.list</span>
+<span id="cb64-11"><a href="snp-calling-and-filtering.html#cb64-11"></a><span class="bu">cd</span> reference.sequences.lists</span>
+<span id="cb64-12"><a href="snp-calling-and-filtering.html#cb64-12"></a><span class="fu">split</span> -l 100 -d reference.sequences.list reference.sequences_ --additional-suffix=.list</span>
+<span id="cb64-13"><a href="snp-calling-and-filtering.html#cb64-13"></a><span class="fu">rm</span> reference.sequences.list</span>
+<span id="cb64-14"><a href="snp-calling-and-filtering.html#cb64-14"></a><span class="fu">ls</span> <span class="kw">|</span> <span class="fu">wc</span> -l</span>
+<span id="cb64-15"><a href="snp-calling-and-filtering.html#cb64-15"></a><span class="bu">cd</span> ..</span>
+<span id="cb64-16"><a href="snp-calling-and-filtering.html#cb64-16"></a></span>
+<span id="cb64-17"><a href="snp-calling-and-filtering.html#cb64-17"></a><span class="co"># folders</span></span>
+<span id="cb64-18"><a href="snp-calling-and-filtering.html#cb64-18"></a><span class="fu">mkdir</span> tmp</span>
+<span id="cb64-19"><a href="snp-calling-and-filtering.html#cb64-19"></a><span class="fu">mkdir</span> symcaptureDB</span>
+<span id="cb64-20"><a href="snp-calling-and-filtering.html#cb64-20"></a></span>
+<span id="cb64-21"><a href="snp-calling-and-filtering.html#cb64-21"></a><span class="co"># test</span></span>
+<span id="cb64-22"><a href="snp-calling-and-filtering.html#cb64-22"></a><span class="ex">srun</span> --mem=24G --pty bash</span>
+<span id="cb64-23"><a href="snp-calling-and-filtering.html#cb64-23"></a><span class="va">file=$(</span><span class="fu">ls</span> reference.sequences.lists/ <span class="kw">|</span> <span class="fu">head</span> -n 1<span class="va">)</span></span>
+<span id="cb64-24"><a href="snp-calling-and-filtering.html#cb64-24"></a><span class="ex">module</span> load bioinfo/gatk-4.1.2.0 <span class="kw">;</span> <span class="ex">gatk</span> --java-options <span class="st">&quot;-Xmx20g -Xms20g&quot;</span> GenomicsDBImport --genomicsdb-workspace-path symcaptureDB/<span class="st">&quot;</span><span class="va">${file%</span>.*<span class="va">}</span><span class="st">&quot;</span>.DB -L reference.sequences.lists/<span class="va">$file</span> --sample-name-map sample_map.txt --batch-size 50 --tmp-dir=tmp</span>
+<span id="cb64-25"><a href="snp-calling-and-filtering.html#cb64-25"></a><span class="bu">exit</span></span>
+<span id="cb64-26"><a href="snp-calling-and-filtering.html#cb64-26"></a><span class="fu">rm</span> -r symcaptureDB/*</span>
+<span id="cb64-27"><a href="snp-calling-and-filtering.html#cb64-27"></a><span class="fu">rm</span> tmp/*</span>
+<span id="cb64-28"><a href="snp-calling-and-filtering.html#cb64-28"></a></span>
+<span id="cb64-29"><a href="snp-calling-and-filtering.html#cb64-29"></a><span class="co"># sarray</span></span>
+<span id="cb64-30"><a href="snp-calling-and-filtering.html#cb64-30"></a></span>
+<span id="cb64-31"><a href="snp-calling-and-filtering.html#cb64-31"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> reference.sequences.lists/<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span> <span class="bu">echo</span> <span class="st">&quot;module load bioinfo/gatk-4.1.2.0 ; gatk --java-options </span><span class="dt">\&quot;</span><span class="st">-Xmx20g -Xms20g</span><span class="dt">\&quot;</span><span class="st"> GenomicsDBImport --genomicsdb-workspace-path symcaptureDB/</span><span class="dt">\&quot;</span><span class="va">${file%</span>.*<span class="va">}</span><span class="dt">\&quot;</span><span class="st">.DB -L reference.sequences.lists/</span><span class="va">$file</span><span class="st"> --sample-name-map sample_map.txt --batch-size 10 --consolidate&quot;</span><span class="kw">;</span> <span class="kw">done</span> <span class="op">&gt;</span> <span class="ex">combine.sh</span></span>
+<span id="cb64-32"><a href="snp-calling-and-filtering.html#cb64-32"></a><span class="fu">split</span> -l 207 -d combine.sh combine_ --additional-suffix=.sh</span>
+<span id="cb64-33"><a href="snp-calling-and-filtering.html#cb64-33"></a><span class="fu">rm</span> combine.sh</span>
+<span id="cb64-34"><a href="snp-calling-and-filtering.html#cb64-34"></a><span class="fu">mkdir</span> combine</span>
+<span id="cb64-35"><a href="snp-calling-and-filtering.html#cb64-35"></a><span class="ex">sarray</span> -J combine -o combine/%j.out -e combine/%j.err -t 48:00:00 --mem=40G --mail-type=BEGIN,END,FAIL combine.sh</span>
+<span id="cb64-36"><a href="snp-calling-and-filtering.html#cb64-36"></a><span class="fu">rm</span> combine_00.sh</span>
+<span id="cb64-37"><a href="snp-calling-and-filtering.html#cb64-37"></a><span class="fu">rm</span> -r combine</span>
+<span id="cb64-38"><a href="snp-calling-and-filtering.html#cb64-38"></a><span class="fu">rm</span> -r tmp</span>
+<span id="cb64-39"><a href="snp-calling-and-filtering.html#cb64-39"></a></span>
+<span id="cb64-40"><a href="snp-calling-and-filtering.html#cb64-40"></a><span class="co"># clean</span></span>
+<span id="cb64-41"><a href="snp-calling-and-filtering.html#cb64-41"></a><span class="fu">rm</span> -r combine</span>
+<span id="cb64-42"><a href="snp-calling-and-filtering.html#cb64-42"></a><span class="fu">rm</span> -r tmp</span></code></pre></div>
 </div>
 <div id="joint-genotyping" class="section level3">
 <h3><span class="header-section-number">4.3.3</span> Joint genotyping</h3>
-<p>We joint-genotyped individuals with <code>GenotypeGVCFs</code> on all of them together to create the raw SNP and indel VCFs that are usually emitted by the callers.
-We divided the step on several intervals files of a maximum of 1000 sequences computed in parallel to speed up the operation (similarly to previous step).
+<p>We joint-genotyped individuals with GenotypeGVCFs on all of them together to create the raw SNP and indel VCFs that are usually emitted by the callers.
+We divided the step into several intervals with a maximum of 1000 sequences computed in parallel to speed up the operation (similarly to the previous step).
 <strong>NB</strong>, we tested the pipeline with 3 individual haplotypes and 10 intervals of 100 sequences ran in parallel; and it took 6 minutes.
-Consequently with 10 fold more sequences per intervals we may increase to 1H,
+Consequently with 10 fold more sequences per interval we may increase to 1H,
 and the effect of 10 fold more individual haplotypes is hard to assess.
 Then we merged genotypes of all intervals with <code>GatherVcfs</code> from <code>Picard</code> in one raw VCF to be filtered.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb66-1"><a href="snp-calling-and-filtering.html#cb66-1"></a><span class="co"># folders</span></span>
-<span id="cb66-2"><a href="snp-calling-and-filtering.html#cb66-2"></a><span class="fu">mkdir</span> tmp</span>
-<span id="cb66-3"><a href="snp-calling-and-filtering.html#cb66-3"></a><span class="fu">mkdir</span> symcapture.vcf.gz</span>
-<span id="cb66-4"><a href="snp-calling-and-filtering.html#cb66-4"></a></span>
-<span id="cb66-5"><a href="snp-calling-and-filtering.html#cb66-5"></a><span class="co"># test</span></span>
-<span id="cb66-6"><a href="snp-calling-and-filtering.html#cb66-6"></a><span class="va">file=$(</span><span class="fu">ls</span> reference.sequences.lists/ <span class="kw">|</span> <span class="fu">head</span> -n 1<span class="va">)</span></span>
-<span id="cb66-7"><a href="snp-calling-and-filtering.html#cb66-7"></a><span class="ex">srun</span> --mem=20G --pty bash</span>
-<span id="cb66-8"><a href="snp-calling-and-filtering.html#cb66-8"></a><span class="ex">module</span> load bioinfo/gatk-4.1.2.0 <span class="kw">;</span> <span class="ex">gatk</span> --java-options <span class="st">&quot;-Xmx20g&quot;</span> GenotypeGVCFs -R ../reference/reference.fasta -L reference.sequences.lists/<span class="va">$file</span> -V gendb://symcaptureDB/<span class="va">$file</span> -O symcapture.vcf.gz/<span class="st">&quot;</span><span class="va">${file%</span>.*<span class="va">}</span><span class="st">&quot;</span>.vcf.gz</span>
-<span id="cb66-9"><a href="snp-calling-and-filtering.html#cb66-9"></a><span class="bu">exit</span></span>
-<span id="cb66-10"><a href="snp-calling-and-filtering.html#cb66-10"></a><span class="fu">rm</span> tmp/*</span>
-<span id="cb66-11"><a href="snp-calling-and-filtering.html#cb66-11"></a><span class="fu">rm</span> symcapture.vcf.gz/*</span>
-<span id="cb66-12"><a href="snp-calling-and-filtering.html#cb66-12"></a></span>
-<span id="cb66-13"><a href="snp-calling-and-filtering.html#cb66-13"></a><span class="co"># sarray</span></span>
-<span id="cb66-14"><a href="snp-calling-and-filtering.html#cb66-14"></a></span>
-<span id="cb66-15"><a href="snp-calling-and-filtering.html#cb66-15"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> reference.sequences.lists<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span> <span class="bu">echo</span> <span class="st">&quot;module load bioinfo/gatk-4.1.2.0 ; gatk --java-options </span><span class="dt">\&quot;</span><span class="st">-Xmx20g</span><span class="dt">\&quot;</span><span class="st"> GenotypeGVCFs -R ../reference/reference.fasta -L reference.sequences.lists/</span><span class="va">$file</span><span class="st"> -V gendb://symcaptureDB/</span><span class="va">${file%</span>.*<span class="va">}</span><span class="st">.DB -O symcapture.vcf.gz/</span><span class="va">${file%</span>.*<span class="va">}</span><span class="st">.vcf.gz&quot;</span><span class="kw">;</span> <span class="kw">done</span> <span class="op">&gt;</span> <span class="ex">genotype.sh</span></span>
-<span id="cb66-16"><a href="snp-calling-and-filtering.html#cb66-16"></a><span class="fu">mkdir</span> genotype</span>
-<span id="cb66-17"><a href="snp-calling-and-filtering.html#cb66-17"></a><span class="ex">sarray</span> -J genotype -o genotype.array/%j.out -e genotype.array/%j.err -t 48:00:00 --mem=20G --mail-type=BEGIN,END,FAIL genotype.array.sh</span>
-<span id="cb66-18"><a href="snp-calling-and-filtering.html#cb66-18"></a></span>
-<span id="cb66-19"><a href="snp-calling-and-filtering.html#cb66-19"></a><span class="co"># clean</span></span>
-<span id="cb66-20"><a href="snp-calling-and-filtering.html#cb66-20"></a><span class="fu">rm</span> -r genotype.array</span>
-<span id="cb66-21"><a href="snp-calling-and-filtering.html#cb66-21"></a><span class="fu">rm</span> -r tmp</span>
-<span id="cb66-22"><a href="snp-calling-and-filtering.html#cb66-22"></a></span>
-<span id="cb66-23"><a href="snp-calling-and-filtering.html#cb66-23"></a><span class="co"># merge</span></span>
-<span id="cb66-24"><a href="snp-calling-and-filtering.html#cb66-24"></a><span class="bu">echo</span> -e <span class="st">&#39;#!/bin/bash\n#SBATCH --time=48:00:00\n#SBATCH -J gather\n#SBATCH -o gather.out\n#SBATCH -e gather.err\n#SBATCH --mem=20G\n#SBATCH --cpus-per-task=1\n#SBATCH --mail-type=BEGIN,END,FAIL\nmodule load bioinfo/picard-2.14.1\njava -Xmx20g -jar $PICARD GatherVcfs \&#39;</span> <span class="op">&gt;</span> gather.sh</span>
-<span id="cb66-25"><a href="snp-calling-and-filtering.html#cb66-25"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> symcapture.vcf.gz/*.gz<span class="va">)</span></span>
-<span id="cb66-26"><a href="snp-calling-and-filtering.html#cb66-26"></a><span class="kw">do</span></span>
-<span id="cb66-27"><a href="snp-calling-and-filtering.html#cb66-27"></a>    <span class="bu">echo</span> -e <span class="st">&#39;\tI=&#39;</span><span class="va">$file</span><span class="st">&#39; \&#39;</span> <span class="op">&gt;&gt;</span> gather.sh</span>
-<span id="cb66-28"><a href="snp-calling-and-filtering.html#cb66-28"></a><span class="kw">done</span></span>
-<span id="cb66-29"><a href="snp-calling-and-filtering.html#cb66-29"></a><span class="bu">echo</span> -e <span class="st">&#39;\tO=symcapture.all.raw.vcf.gz\n&#39;</span> <span class="op">&gt;&gt;</span> gather.sh</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb65-1"><a href="snp-calling-and-filtering.html#cb65-1"></a><span class="co"># folders</span></span>
+<span id="cb65-2"><a href="snp-calling-and-filtering.html#cb65-2"></a><span class="fu">mkdir</span> tmp</span>
+<span id="cb65-3"><a href="snp-calling-and-filtering.html#cb65-3"></a><span class="fu">mkdir</span> symcapture.vcf.gz</span>
+<span id="cb65-4"><a href="snp-calling-and-filtering.html#cb65-4"></a></span>
+<span id="cb65-5"><a href="snp-calling-and-filtering.html#cb65-5"></a><span class="co"># test</span></span>
+<span id="cb65-6"><a href="snp-calling-and-filtering.html#cb65-6"></a><span class="va">file=$(</span><span class="fu">ls</span> reference.sequences.lists/ <span class="kw">|</span> <span class="fu">head</span> -n 1<span class="va">)</span></span>
+<span id="cb65-7"><a href="snp-calling-and-filtering.html#cb65-7"></a><span class="ex">srun</span> --mem=20G --pty bash</span>
+<span id="cb65-8"><a href="snp-calling-and-filtering.html#cb65-8"></a><span class="ex">module</span> load bioinfo/gatk-4.1.2.0 <span class="kw">;</span> <span class="ex">gatk</span> --java-options <span class="st">&quot;-Xmx20g&quot;</span> GenotypeGVCFs -R ../reference/reference.fasta -L reference.sequences.lists/<span class="va">$file</span> -V gendb://symcaptureDB/<span class="va">$file</span> -O symcapture.vcf.gz/<span class="st">&quot;</span><span class="va">${file%</span>.*<span class="va">}</span><span class="st">&quot;</span>.vcf.gz</span>
+<span id="cb65-9"><a href="snp-calling-and-filtering.html#cb65-9"></a><span class="bu">exit</span></span>
+<span id="cb65-10"><a href="snp-calling-and-filtering.html#cb65-10"></a><span class="fu">rm</span> tmp/*</span>
+<span id="cb65-11"><a href="snp-calling-and-filtering.html#cb65-11"></a><span class="fu">rm</span> symcapture.vcf.gz/*</span>
+<span id="cb65-12"><a href="snp-calling-and-filtering.html#cb65-12"></a></span>
+<span id="cb65-13"><a href="snp-calling-and-filtering.html#cb65-13"></a><span class="co"># sarray</span></span>
+<span id="cb65-14"><a href="snp-calling-and-filtering.html#cb65-14"></a></span>
+<span id="cb65-15"><a href="snp-calling-and-filtering.html#cb65-15"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> reference.sequences.lists<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span> <span class="bu">echo</span> <span class="st">&quot;module load bioinfo/gatk-4.1.2.0 ; gatk --java-options </span><span class="dt">\&quot;</span><span class="st">-Xmx20g</span><span class="dt">\&quot;</span><span class="st"> GenotypeGVCFs -R ../reference/reference.fasta -L reference.sequences.lists/</span><span class="va">$file</span><span class="st"> -V gendb://symcaptureDB/</span><span class="va">${file%</span>.*<span class="va">}</span><span class="st">.DB -O symcapture.vcf.gz/</span><span class="va">${file%</span>.*<span class="va">}</span><span class="st">.vcf.gz&quot;</span><span class="kw">;</span> <span class="kw">done</span> <span class="op">&gt;</span> <span class="ex">genotype.sh</span></span>
+<span id="cb65-16"><a href="snp-calling-and-filtering.html#cb65-16"></a><span class="fu">mkdir</span> genotype</span>
+<span id="cb65-17"><a href="snp-calling-and-filtering.html#cb65-17"></a><span class="ex">sarray</span> -J genotype -o genotype.array/%j.out -e genotype.array/%j.err -t 48:00:00 --mem=20G --mail-type=BEGIN,END,FAIL genotype.array.sh</span>
+<span id="cb65-18"><a href="snp-calling-and-filtering.html#cb65-18"></a></span>
+<span id="cb65-19"><a href="snp-calling-and-filtering.html#cb65-19"></a><span class="co"># clean</span></span>
+<span id="cb65-20"><a href="snp-calling-and-filtering.html#cb65-20"></a><span class="fu">rm</span> -r genotype.array</span>
+<span id="cb65-21"><a href="snp-calling-and-filtering.html#cb65-21"></a><span class="fu">rm</span> -r tmp</span>
+<span id="cb65-22"><a href="snp-calling-and-filtering.html#cb65-22"></a></span>
+<span id="cb65-23"><a href="snp-calling-and-filtering.html#cb65-23"></a><span class="co"># merge</span></span>
+<span id="cb65-24"><a href="snp-calling-and-filtering.html#cb65-24"></a><span class="bu">echo</span> -e <span class="st">&#39;#!/bin/bash\n#SBATCH --time=48:00:00\n#SBATCH -J gather\n#SBATCH -o gather.out\n#SBATCH -e gather.err\n#SBATCH --mem=20G\n#SBATCH --cpus-per-task=1\n#SBATCH --mail-type=BEGIN,END,FAIL\nmodule load bioinfo/picard-2.14.1\njava -Xmx20g -jar $PICARD GatherVcfs \&#39;</span> <span class="op">&gt;</span> gather.sh</span>
+<span id="cb65-25"><a href="snp-calling-and-filtering.html#cb65-25"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> symcapture.vcf.gz/*.gz<span class="va">)</span></span>
+<span id="cb65-26"><a href="snp-calling-and-filtering.html#cb65-26"></a><span class="kw">do</span></span>
+<span id="cb65-27"><a href="snp-calling-and-filtering.html#cb65-27"></a>    <span class="bu">echo</span> -e <span class="st">&#39;\tI=&#39;</span><span class="va">$file</span><span class="st">&#39; \&#39;</span> <span class="op">&gt;&gt;</span> gather.sh</span>
+<span id="cb65-28"><a href="snp-calling-and-filtering.html#cb65-28"></a><span class="kw">done</span></span>
+<span id="cb65-29"><a href="snp-calling-and-filtering.html#cb65-29"></a><span class="bu">echo</span> -e <span class="st">&#39;\tO=symcapture.all.raw.vcf.gz\n&#39;</span> <span class="op">&gt;&gt;</span> gather.sh</span></code></pre></div>
 </div>
 </div>
 <div id="variant-filtering" class="section level2">
@@ -918,107 +916,107 @@ Then we merged genotypes of all intervals with <code>GatherVcfs</code> from <cod
 <div id="gather" class="section level3">
 <h3><span class="header-section-number">4.4.1</span> Gather</h3>
 <p>We first gathered all raw vcf.
-42 sequences subset lost individuals in genotype call (over 878, 4%),
-blocking the functionning of <code>gatk CombineVariants</code>,
-so we first removed the variants associated to those subset of reference sequences.
+42 sequences of subset lost individuals in genotype call (over 878, 4%),
+blocking the functioning of <code>gatk CombineVariants</code>,
+so we first removed the variants associated with those subset of reference sequences.
 This resulted in 26 813 513 variants.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb67-1"><a href="snp-calling-and-filtering.html#cb67-1"></a><span class="fu">mkdir</span> out</span>
-<span id="cb67-2"><a href="snp-calling-and-filtering.html#cb67-2"></a><span class="fu">mkdir</span> missing_ind</span>
-<span id="cb67-3"><a href="snp-calling-and-filtering.html#cb67-3"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> symcapture.filtered.vcf/*.vcf.gz<span class="va">)</span> <span class="kw">;</span> <span class="kw">do</span> <span class="va">file=$(</span><span class="fu">basename</span> <span class="va">$file)</span> ; <span class="va">file=${file%</span>.*<span class="va">}</span> ; <span class="bu">echo</span> <span class="st">&quot;module load bioinfo/tabix-0.2.5 ; module load bioinfo/vcftools-0.1.15 ; vcftools --gzvcf symcapture.filtered.vcf/</span><span class="va">$file</span><span class="st">.gz --missing-indv -c &gt; missing_ind/</span><span class="va">$file</span><span class="st">.missing.txt&quot;</span><span class="kw">;</span> <span class="kw">done</span> <span class="op">&gt;</span> <span class="ex">missingInd.sh</span></span>
-<span id="cb67-4"><a href="snp-calling-and-filtering.html#cb67-4"></a><span class="ex">sarray</span> -J missingInd -o out/%j.missingInd.out -e out/%j.missingInd.err -t 1:00:00 --mail-type=BEGIN,END,FAIL missingInd.sh</span>
-<span id="cb67-5"><a href="snp-calling-and-filtering.html#cb67-5"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> missing_ind/*.missing.txt<span class="va">)</span> <span class="kw">;</span> <span class="kw">do</span> <span class="fu">awk</span> <span class="st">&#39;{{if (NR!=1) print FILENAME&quot;\t&quot;$0}}&#39;</span> <span class="va">$file</span> <span class="kw">;</span> <span class="kw">done</span> <span class="op">&gt;</span> <span class="ex">missingInd.txt</span></span>
-<span id="cb67-6"><a href="snp-calling-and-filtering.html#cb67-6"></a><span class="fu">rm</span> - r out</span>
-<span id="cb67-7"><a href="snp-calling-and-filtering.html#cb67-7"></a><span class="fu">rm</span> -r missing_ind</span></code></pre></div>
-<div class="sourceCode" id="cb68"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb68-1"><a href="snp-calling-and-filtering.html#cb68-1"></a><span class="bu">echo</span> -e <span class="st">&#39;#!/bin/bash\n#SBATCH --time=48:00:00\n#SBATCH -J gather\n#SBATCH -o gather.out\n#SBATCH -e gather.err\n#SBATCH --mem=20G\n#SBATCH --cpus-per-task=1\n#SBATCH --mail-type=BEGIN,END,FAIL\nmodule load bioinfo/picard-2.14.1\njava -Xmx20g -jar $PICARD GatherVcfs \&#39;</span> <span class="op">&gt;</span> gather.sh</span>
-<span id="cb68-2"><a href="snp-calling-and-filtering.html#cb68-2"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">cat</span> nonmissing.list<span class="va">)</span></span>
-<span id="cb68-3"><a href="snp-calling-and-filtering.html#cb68-3"></a><span class="kw">do</span></span>
-<span id="cb68-4"><a href="snp-calling-and-filtering.html#cb68-4"></a>    <span class="bu">echo</span> -e <span class="st">&#39;\tI=symcapture.raw.vcf/&#39;</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">$file)</span><span class="st">&#39; \&#39;</span> <span class="op">&gt;&gt;</span> gather.sh</span>
-<span id="cb68-5"><a href="snp-calling-and-filtering.html#cb68-5"></a><span class="kw">done</span></span>
-<span id="cb68-6"><a href="snp-calling-and-filtering.html#cb68-6"></a><span class="bu">echo</span> -e <span class="st">&#39;\tO=symcapture.all.raw.vcf.gz\n&#39;</span> <span class="op">&gt;&gt;</span> gather.sh</span>
-<span id="cb68-7"><a href="snp-calling-and-filtering.html#cb68-7"></a><span class="fu">zcat</span> symcapture.all.raw.vcf.gz <span class="kw">|</span> <span class="fu">grep</span> <span class="st">&quot;#contig&quot;</span> <span class="kw">|</span> <span class="fu">wc</span> -l</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb66-1"><a href="snp-calling-and-filtering.html#cb66-1"></a><span class="fu">mkdir</span> out</span>
+<span id="cb66-2"><a href="snp-calling-and-filtering.html#cb66-2"></a><span class="fu">mkdir</span> missing_ind</span>
+<span id="cb66-3"><a href="snp-calling-and-filtering.html#cb66-3"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> symcapture.filtered.vcf/*.vcf.gz<span class="va">)</span> <span class="kw">;</span> <span class="kw">do</span> <span class="va">file=$(</span><span class="fu">basename</span> <span class="va">$file)</span> ; <span class="va">file=${file%</span>.*<span class="va">}</span> ; <span class="bu">echo</span> <span class="st">&quot;module load bioinfo/tabix-0.2.5 ; module load bioinfo/vcftools-0.1.15 ; vcftools --gzvcf symcapture.filtered.vcf/</span><span class="va">$file</span><span class="st">.gz --missing-indv -c &gt; missing_ind/</span><span class="va">$file</span><span class="st">.missing.txt&quot;</span><span class="kw">;</span> <span class="kw">done</span> <span class="op">&gt;</span> <span class="ex">missingInd.sh</span></span>
+<span id="cb66-4"><a href="snp-calling-and-filtering.html#cb66-4"></a><span class="ex">sarray</span> -J missingInd -o out/%j.missingInd.out -e out/%j.missingInd.err -t 1:00:00 --mail-type=BEGIN,END,FAIL missingInd.sh</span>
+<span id="cb66-5"><a href="snp-calling-and-filtering.html#cb66-5"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> missing_ind/*.missing.txt<span class="va">)</span> <span class="kw">;</span> <span class="kw">do</span> <span class="fu">awk</span> <span class="st">&#39;{{if (NR!=1) print FILENAME&quot;\t&quot;$0}}&#39;</span> <span class="va">$file</span> <span class="kw">;</span> <span class="kw">done</span> <span class="op">&gt;</span> <span class="ex">missingInd.txt</span></span>
+<span id="cb66-6"><a href="snp-calling-and-filtering.html#cb66-6"></a><span class="fu">rm</span> - r out</span>
+<span id="cb66-7"><a href="snp-calling-and-filtering.html#cb66-7"></a><span class="fu">rm</span> -r missing_ind</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb67-1"><a href="snp-calling-and-filtering.html#cb67-1"></a><span class="bu">echo</span> -e <span class="st">&#39;#!/bin/bash\n#SBATCH --time=48:00:00\n#SBATCH -J gather\n#SBATCH -o gather.out\n#SBATCH -e gather.err\n#SBATCH --mem=20G\n#SBATCH --cpus-per-task=1\n#SBATCH --mail-type=BEGIN,END,FAIL\nmodule load bioinfo/picard-2.14.1\njava -Xmx20g -jar $PICARD GatherVcfs \&#39;</span> <span class="op">&gt;</span> gather.sh</span>
+<span id="cb67-2"><a href="snp-calling-and-filtering.html#cb67-2"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">cat</span> nonmissing.list<span class="va">)</span></span>
+<span id="cb67-3"><a href="snp-calling-and-filtering.html#cb67-3"></a><span class="kw">do</span></span>
+<span id="cb67-4"><a href="snp-calling-and-filtering.html#cb67-4"></a>    <span class="bu">echo</span> -e <span class="st">&#39;\tI=symcapture.raw.vcf/&#39;</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">$file)</span><span class="st">&#39; \&#39;</span> <span class="op">&gt;&gt;</span> gather.sh</span>
+<span id="cb67-5"><a href="snp-calling-and-filtering.html#cb67-5"></a><span class="kw">done</span></span>
+<span id="cb67-6"><a href="snp-calling-and-filtering.html#cb67-6"></a><span class="bu">echo</span> -e <span class="st">&#39;\tO=symcapture.all.raw.vcf.gz\n&#39;</span> <span class="op">&gt;&gt;</span> gather.sh</span>
+<span id="cb67-7"><a href="snp-calling-and-filtering.html#cb67-7"></a><span class="fu">zcat</span> symcapture.all.raw.vcf.gz <span class="kw">|</span> <span class="fu">grep</span> <span class="st">&quot;#contig&quot;</span> <span class="kw">|</span> <span class="fu">wc</span> -l</span></code></pre></div>
 </div>
 <div id="biallelic" class="section level3">
 <h3><span class="header-section-number">4.4.2</span> Biallelic</h3>
 <p>We then used <code>bcftools</code> to limit data to biallelic variants (<code>--max-alleles 2</code>), resulting in 19 242 294 biallelic variants.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb69-1"><a href="snp-calling-and-filtering.html#cb69-1"></a><span class="ex">srun</span> --mem=80G --cpus-per-task=8 --pty bash</span>
-<span id="cb69-2"><a href="snp-calling-and-filtering.html#cb69-2"></a><span class="ex">module</span> load bioinfo/bcftools-1.8</span>
-<span id="cb69-3"><a href="snp-calling-and-filtering.html#cb69-3"></a><span class="ex">bcftools</span> view --max-alleles 2 --threads 8 symcapture.all.raw.vcf.gz <span class="kw">|</span> <span class="ex">bgzip</span> -c --threads 8 <span class="op">&gt;</span> symcapture.all.biallelic.vcf.gz</span>
-<span id="cb69-4"><a href="snp-calling-and-filtering.html#cb69-4"></a><span class="ex">bcftools</span> stats  --threads 8 symcapture.all.biallelic.vcf.gz</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb68-1"><a href="snp-calling-and-filtering.html#cb68-1"></a><span class="ex">srun</span> --mem=80G --cpus-per-task=8 --pty bash</span>
+<span id="cb68-2"><a href="snp-calling-and-filtering.html#cb68-2"></a><span class="ex">module</span> load bioinfo/bcftools-1.8</span>
+<span id="cb68-3"><a href="snp-calling-and-filtering.html#cb68-3"></a><span class="ex">bcftools</span> view --max-alleles 2 --threads 8 symcapture.all.raw.vcf.gz <span class="kw">|</span> <span class="ex">bgzip</span> -c --threads 8 <span class="op">&gt;</span> symcapture.all.biallelic.vcf.gz</span>
+<span id="cb68-4"><a href="snp-calling-and-filtering.html#cb68-4"></a><span class="ex">bcftools</span> stats  --threads 8 symcapture.all.biallelic.vcf.gz</span></code></pre></div>
 </div>
 <div id="snp" class="section level3">
 <h3><span class="header-section-number">4.4.3</span> SNP</h3>
 <p>We then used <code>gatk</code> to limit data to biallelic snps,
 resulting in 17 521 879 biallelic snps.</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb70-1"><a href="snp-calling-and-filtering.html#cb70-1"></a><span class="ex">module</span> load bioinfo/gatk-4.1.2.0</span>
-<span id="cb70-2"><a href="snp-calling-and-filtering.html#cb70-2"></a><span class="ex">gatk</span> IndexFeatureFile \</span>
-<span id="cb70-3"><a href="snp-calling-and-filtering.html#cb70-3"></a>  -F symcapture.all.biallelic.vcf.gz</span>
-<span id="cb70-4"><a href="snp-calling-and-filtering.html#cb70-4"></a><span class="ex">gatk</span> SelectVariants \</span>
-<span id="cb70-5"><a href="snp-calling-and-filtering.html#cb70-5"></a>  -V symcapture.all.biallelic.vcf.gz \</span>
-<span id="cb70-6"><a href="snp-calling-and-filtering.html#cb70-6"></a>  -select-type SNP \</span>
-<span id="cb70-7"><a href="snp-calling-and-filtering.html#cb70-7"></a>  -O symcapture.all.biallelic.snp.vcf.gz</span>
-<span id="cb70-8"><a href="snp-calling-and-filtering.html#cb70-8"></a><span class="ex">gatk</span> IndexFeatureFile \</span>
-<span id="cb70-9"><a href="snp-calling-and-filtering.html#cb70-9"></a>  -F symcapture.all.biallelic.snp.vcf.gz</span>
-<span id="cb70-10"><a href="snp-calling-and-filtering.html#cb70-10"></a><span class="ex">module</span> load bioinfo/bcftools-1.8</span>
-<span id="cb70-11"><a href="snp-calling-and-filtering.html#cb70-11"></a><span class="ex">bcftools</span> stats  --threads 8 symcapture.all.biallelic.snp.vcf.gz</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb69-1"><a href="snp-calling-and-filtering.html#cb69-1"></a><span class="ex">module</span> load bioinfo/gatk-4.1.2.0</span>
+<span id="cb69-2"><a href="snp-calling-and-filtering.html#cb69-2"></a><span class="ex">gatk</span> IndexFeatureFile \</span>
+<span id="cb69-3"><a href="snp-calling-and-filtering.html#cb69-3"></a>  -F symcapture.all.biallelic.vcf.gz</span>
+<span id="cb69-4"><a href="snp-calling-and-filtering.html#cb69-4"></a><span class="ex">gatk</span> SelectVariants \</span>
+<span id="cb69-5"><a href="snp-calling-and-filtering.html#cb69-5"></a>  -V symcapture.all.biallelic.vcf.gz \</span>
+<span id="cb69-6"><a href="snp-calling-and-filtering.html#cb69-6"></a>  -select-type SNP \</span>
+<span id="cb69-7"><a href="snp-calling-and-filtering.html#cb69-7"></a>  -O symcapture.all.biallelic.snp.vcf.gz</span>
+<span id="cb69-8"><a href="snp-calling-and-filtering.html#cb69-8"></a><span class="ex">gatk</span> IndexFeatureFile \</span>
+<span id="cb69-9"><a href="snp-calling-and-filtering.html#cb69-9"></a>  -F symcapture.all.biallelic.snp.vcf.gz</span>
+<span id="cb69-10"><a href="snp-calling-and-filtering.html#cb69-10"></a><span class="ex">module</span> load bioinfo/bcftools-1.8</span>
+<span id="cb69-11"><a href="snp-calling-and-filtering.html#cb69-11"></a><span class="ex">bcftools</span> stats  --threads 8 symcapture.all.biallelic.snp.vcf.gz</span></code></pre></div>
 </div>
 <div id="filters" class="section level3">
 <h3><span class="header-section-number">4.4.4</span> Filters</h3>
 <p>We filtered the biallelic snp vcf with following filters (name, filter, description), resulting in 15 531 866 filtered biallelic snps,<br />
 using next histograms to set and test parameters values :</p>
 <ul>
-<li><strong>Quality (<a href="https://software.broadinstitute.org/gatk/documentation/article?id=7258">QUAL</a>)</strong> <code>QUAL &lt; 30</code>: represents the likelihood of the site to be homozygote across all samples, we filter out variants having a low quality score (<a href="snp-calling-and-filtering.html#fig:filtersR">4.10</a>)</li>
+<li><strong>Quality (<a href="https://software.broadinstitute.org/gatk/documentation/article?id=7258">QUAL</a>)</strong> <code>QUAL &lt; 30</code>: represents the likelihood of the site to be homozygous across all samples, we filter out variants having a low quality score (<a href="snp-calling-and-filtering.html#fig:filtersR">4.10</a>)</li>
 <li><strong>Quality depth (<a href="https://software.broadinstitute.org/gatk/documentation/tooldocs/3.8-0/org_broadinstitute_gatk_tools_walkers_annotator_QualByDepth.php">QD</a>)</strong> <code>QD &lt; 2</code>: filter out variants with low variant confidence (<a href="snp-calling-and-filtering.html#fig:filtersR">4.10</a>)</li>
 <li><strong>Fisher strand bias (<a href="https://software.broadinstitute.org/gatk/documentation/tooldocs/3.8-0/org_broadinstitute_gatk_tools_walkers_annotator_FisherStrand.php">FS</a>)</strong> <code>FS &gt; 60</code>: filter out variants based on Phred-scaled p-value using Fisher’s exact test to detect strand bias (<a href="snp-calling-and-filtering.html#fig:filtersR">4.10</a>)</li>
 <li><strong>Strand odd ratio (<a href="https://software.broadinstitute.org/gatk/documentation/tooldocs/3.8-0/org_broadinstitute_gatk_tools_walkers_annotator_StrandOddsRatio.php">SOR</a>)</strong> <code>SOR &lt; 3</code>: filter out variants based on Phred-scaled p-value used to detect strand bias (<a href="snp-calling-and-filtering.html#fig:filtersR">4.10</a>)</li>
 </ul>
-<div class="sourceCode" id="cb71"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb71-1"><a href="snp-calling-and-filtering.html#cb71-1"></a><span class="ex">vcftools</span> --gzvcf reference.sequences_00.vcf.gz --missing-indv -c</span>
-<span id="cb71-2"><a href="snp-calling-and-filtering.html#cb71-2"></a><span class="ex">vcftools</span> --gzvcf reference.sequences_00.vcf.gz --missing-site -c <span class="op">&gt;</span> missing.txt</span>
-<span id="cb71-3"><a href="snp-calling-and-filtering.html#cb71-3"></a><span class="ex">vcftools</span> --gzvcf reference.sequences_00.vcf.gz --site-quality -c <span class="op">&gt;</span> QUAL.txt</span>
-<span id="cb71-4"><a href="snp-calling-and-filtering.html#cb71-4"></a><span class="ex">vcftools</span> --gzvcf reference.sequences_00.vcf.gz \</span>
-<span id="cb71-5"><a href="snp-calling-and-filtering.html#cb71-5"></a>  --get-INFO AC \</span>
-<span id="cb71-6"><a href="snp-calling-and-filtering.html#cb71-6"></a>  --get-INFO AF \</span>
-<span id="cb71-7"><a href="snp-calling-and-filtering.html#cb71-7"></a>  --get-INFO QD \</span>
-<span id="cb71-8"><a href="snp-calling-and-filtering.html#cb71-8"></a>  --get-INFO FS \</span>
-<span id="cb71-9"><a href="snp-calling-and-filtering.html#cb71-9"></a>  --get-INFO SOR \</span>
-<span id="cb71-10"><a href="snp-calling-and-filtering.html#cb71-10"></a>  -c <span class="op">&gt;</span> INFO.txt</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb70-1"><a href="snp-calling-and-filtering.html#cb70-1"></a><span class="ex">vcftools</span> --gzvcf reference.sequences_00.vcf.gz --missing-indv -c</span>
+<span id="cb70-2"><a href="snp-calling-and-filtering.html#cb70-2"></a><span class="ex">vcftools</span> --gzvcf reference.sequences_00.vcf.gz --missing-site -c <span class="op">&gt;</span> missing.txt</span>
+<span id="cb70-3"><a href="snp-calling-and-filtering.html#cb70-3"></a><span class="ex">vcftools</span> --gzvcf reference.sequences_00.vcf.gz --site-quality -c <span class="op">&gt;</span> QUAL.txt</span>
+<span id="cb70-4"><a href="snp-calling-and-filtering.html#cb70-4"></a><span class="ex">vcftools</span> --gzvcf reference.sequences_00.vcf.gz \</span>
+<span id="cb70-5"><a href="snp-calling-and-filtering.html#cb70-5"></a>  --get-INFO AC \</span>
+<span id="cb70-6"><a href="snp-calling-and-filtering.html#cb70-6"></a>  --get-INFO AF \</span>
+<span id="cb70-7"><a href="snp-calling-and-filtering.html#cb70-7"></a>  --get-INFO QD \</span>
+<span id="cb70-8"><a href="snp-calling-and-filtering.html#cb70-8"></a>  --get-INFO FS \</span>
+<span id="cb70-9"><a href="snp-calling-and-filtering.html#cb70-9"></a>  --get-INFO SOR \</span>
+<span id="cb70-10"><a href="snp-calling-and-filtering.html#cb70-10"></a>  -c <span class="op">&gt;</span> INFO.txt</span></code></pre></div>
 <div class="figure"><span id="fig:filtersR"></span>
 <img src="GOING_files/figure-html/filtersR-1.png" alt="Quality, quality by depth, fisher strand and strand odd ratios per biallelic SNPs." width="768" />
 <p class="caption">
 Figure 4.10: Quality, quality by depth, fisher strand and strand odd ratios per biallelic SNPs.
 </p>
 </div>
-<div class="sourceCode" id="cb72"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb72-1"><a href="snp-calling-and-filtering.html#cb72-1"></a><span class="ex">module</span> load bioinfo/gatk-4.1.2.0</span>
-<span id="cb72-2"><a href="snp-calling-and-filtering.html#cb72-2"></a><span class="ex">gatk</span> VariantFiltration \</span>
-<span id="cb72-3"><a href="snp-calling-and-filtering.html#cb72-3"></a>  -V symcapture.all.biallelic.snp.vcf.gz \</span>
-<span id="cb72-4"><a href="snp-calling-and-filtering.html#cb72-4"></a>  --filter-expression <span class="st">&quot;QUAL &lt; 30.0 || QD &lt; 2.0 || FS &gt; 60.0 || SOR &gt; 3.0&quot;</span> \</span>
-<span id="cb72-5"><a href="snp-calling-and-filtering.html#cb72-5"></a>  --filter-name <span class="st">&quot;FAIL&quot;</span> \</span>
-<span id="cb72-6"><a href="snp-calling-and-filtering.html#cb72-6"></a>  -O symcapture.all.biallelic.snp.intermediate.vcf.gz</span>
-<span id="cb72-7"><a href="snp-calling-and-filtering.html#cb72-7"></a><span class="ex">gatk</span> SelectVariants \</span>
-<span id="cb72-8"><a href="snp-calling-and-filtering.html#cb72-8"></a>  -V symcapture.all.biallelic.snp.intermediate.vcf.gz \</span>
-<span id="cb72-9"><a href="snp-calling-and-filtering.html#cb72-9"></a>  --exclude-filtered \</span>
-<span id="cb72-10"><a href="snp-calling-and-filtering.html#cb72-10"></a>  -O symcapture.all.biallelic.snp.filtered.vcf.gz</span>
-<span id="cb72-11"><a href="snp-calling-and-filtering.html#cb72-11"></a><span class="ex">module</span> load bioinfo/bcftools-1.8</span>
-<span id="cb72-12"><a href="snp-calling-and-filtering.html#cb72-12"></a><span class="ex">bcftools</span> stats --threads 8 symcapture.all.biallelic.snp.filtered.vcf.gz</span>
-<span id="cb72-13"><a href="snp-calling-and-filtering.html#cb72-13"></a><span class="ex">gatk</span> IndexFeatureFile \</span>
-<span id="cb72-14"><a href="snp-calling-and-filtering.html#cb72-14"></a>  -F symcapture.all.biallelic.snp.filtered.vcf.gz</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb71-1"><a href="snp-calling-and-filtering.html#cb71-1"></a><span class="ex">module</span> load bioinfo/gatk-4.1.2.0</span>
+<span id="cb71-2"><a href="snp-calling-and-filtering.html#cb71-2"></a><span class="ex">gatk</span> VariantFiltration \</span>
+<span id="cb71-3"><a href="snp-calling-and-filtering.html#cb71-3"></a>  -V symcapture.all.biallelic.snp.vcf.gz \</span>
+<span id="cb71-4"><a href="snp-calling-and-filtering.html#cb71-4"></a>  --filter-expression <span class="st">&quot;QUAL &lt; 30.0 || QD &lt; 2.0 || FS &gt; 60.0 || SOR &gt; 3.0&quot;</span> \</span>
+<span id="cb71-5"><a href="snp-calling-and-filtering.html#cb71-5"></a>  --filter-name <span class="st">&quot;FAIL&quot;</span> \</span>
+<span id="cb71-6"><a href="snp-calling-and-filtering.html#cb71-6"></a>  -O symcapture.all.biallelic.snp.intermediate.vcf.gz</span>
+<span id="cb71-7"><a href="snp-calling-and-filtering.html#cb71-7"></a><span class="ex">gatk</span> SelectVariants \</span>
+<span id="cb71-8"><a href="snp-calling-and-filtering.html#cb71-8"></a>  -V symcapture.all.biallelic.snp.intermediate.vcf.gz \</span>
+<span id="cb71-9"><a href="snp-calling-and-filtering.html#cb71-9"></a>  --exclude-filtered \</span>
+<span id="cb71-10"><a href="snp-calling-and-filtering.html#cb71-10"></a>  -O symcapture.all.biallelic.snp.filtered.vcf.gz</span>
+<span id="cb71-11"><a href="snp-calling-and-filtering.html#cb71-11"></a><span class="ex">module</span> load bioinfo/bcftools-1.8</span>
+<span id="cb71-12"><a href="snp-calling-and-filtering.html#cb71-12"></a><span class="ex">bcftools</span> stats --threads 8 symcapture.all.biallelic.snp.filtered.vcf.gz</span>
+<span id="cb71-13"><a href="snp-calling-and-filtering.html#cb71-13"></a><span class="ex">gatk</span> IndexFeatureFile \</span>
+<span id="cb71-14"><a href="snp-calling-and-filtering.html#cb71-14"></a>  -F symcapture.all.biallelic.snp.filtered.vcf.gz</span></code></pre></div>
 </div>
 <div id="missing-data" class="section level3">
 <h3><span class="header-section-number">4.4.5</span> Missing data</h3>
 <p>Missing data filtering is a bit more tricky because missing data of SNPs and individuals are related,
-<em>e.g.</em> removing individuals with a lot of missing data result in the decrease of SNPs. Ideally, we wanted to keep all individuals, but this would result in a lot of SNP loss because of least represented individuals.
-So we needed to chose a threshold for missing data for individuals <code>--mind</code> and SNPs <code>--geno</code>.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb73-1"><a href="snp-calling-and-filtering.html#cb73-1"></a><span class="ex">module</span> load bioinfo/plink_high_contig_20190905</span>
-<span id="cb73-2"><a href="snp-calling-and-filtering.html#cb73-2"></a><span class="ex">module</span> load bioinfo/plink2_high_contig_20190905</span>
-<span id="cb73-3"><a href="snp-calling-and-filtering.html#cb73-3"></a><span class="fu">mkdir</span> filtered</span>
-<span id="cb73-4"><a href="snp-calling-and-filtering.html#cb73-4"></a><span class="ex">plink2</span> --threads 8 --memory 80000 \</span>
-<span id="cb73-5"><a href="snp-calling-and-filtering.html#cb73-5"></a>  --vcf symcapture.all.biallelic.snp.filtered.vcf.gz \</span>
-<span id="cb73-6"><a href="snp-calling-and-filtering.html#cb73-6"></a>  --allow-extra-chr \</span>
-<span id="cb73-7"><a href="snp-calling-and-filtering.html#cb73-7"></a>  --make-bed --out filtered/symcapture.all.biallelic.snp.filtered</span>
-<span id="cb73-8"><a href="snp-calling-and-filtering.html#cb73-8"></a><span class="bu">cd</span> filtered</span>
-<span id="cb73-9"><a href="snp-calling-and-filtering.html#cb73-9"></a><span class="ex">plink</span> --threads 8 --memory 80000 \</span>
-<span id="cb73-10"><a href="snp-calling-and-filtering.html#cb73-10"></a>  --bfile symcapture.all.biallelic.snp.filtered \</span>
-<span id="cb73-11"><a href="snp-calling-and-filtering.html#cb73-11"></a>  --allow-extra-chr --missing --het --freq --pca --freqx \</span>
-<span id="cb73-12"><a href="snp-calling-and-filtering.html#cb73-12"></a>  --out symcapture.all.biallelic.snp.filtered</span></code></pre></div>
+<em>e.g.</em> removing individuals with a lot of missing data results in the decrease of SNPs. Ideally, we wanted to keep all individuals, but this would result in a lot of SNP loss because of least represented individuals.
+So we needed to choose a threshold for missing data for individuals <code>--mind</code> and SNPs <code>--geno</code>.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb72-1"><a href="snp-calling-and-filtering.html#cb72-1"></a><span class="ex">module</span> load bioinfo/plink_high_contig_20190905</span>
+<span id="cb72-2"><a href="snp-calling-and-filtering.html#cb72-2"></a><span class="ex">module</span> load bioinfo/plink2_high_contig_20190905</span>
+<span id="cb72-3"><a href="snp-calling-and-filtering.html#cb72-3"></a><span class="fu">mkdir</span> filtered</span>
+<span id="cb72-4"><a href="snp-calling-and-filtering.html#cb72-4"></a><span class="ex">plink2</span> --threads 8 --memory 80000 \</span>
+<span id="cb72-5"><a href="snp-calling-and-filtering.html#cb72-5"></a>  --vcf symcapture.all.biallelic.snp.filtered.vcf.gz \</span>
+<span id="cb72-6"><a href="snp-calling-and-filtering.html#cb72-6"></a>  --allow-extra-chr \</span>
+<span id="cb72-7"><a href="snp-calling-and-filtering.html#cb72-7"></a>  --make-bed --out filtered/symcapture.all.biallelic.snp.filtered</span>
+<span id="cb72-8"><a href="snp-calling-and-filtering.html#cb72-8"></a><span class="bu">cd</span> filtered</span>
+<span id="cb72-9"><a href="snp-calling-and-filtering.html#cb72-9"></a><span class="ex">plink</span> --threads 8 --memory 80000 \</span>
+<span id="cb72-10"><a href="snp-calling-and-filtering.html#cb72-10"></a>  --bfile symcapture.all.biallelic.snp.filtered \</span>
+<span id="cb72-11"><a href="snp-calling-and-filtering.html#cb72-11"></a>  --allow-extra-chr --missing --het --freq --pca --freqx \</span>
+<span id="cb72-12"><a href="snp-calling-and-filtering.html#cb72-12"></a>  --out symcapture.all.biallelic.snp.filtered</span></code></pre></div>
 <div class="figure"><span id="fig:missingIndividuals"></span>
 <img src="GOING_files/figure-html/missingIndividuals-1.png" alt="Missing data statistics for filtered biallelic SNP before missing data filtering per individual." width="768" />
 <p class="caption">
@@ -1036,19 +1034,19 @@ Figure 4.12: Missing data statistics for filtered biallelic SNP before missing d
 <h3><span class="header-section-number">4.4.6</span> Normal filter</h3>
 <p>With a maximum of 95% of missing data per individual <code>--mind 0.95</code> and a maximum of 15% of missing data per SNP <code>-geno 0.15</code>,
 we obtained <strong>454 262</strong> biallelic filtered snps for <strong>406</strong> individuals.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb74-1"><a href="snp-calling-and-filtering.html#cb74-1"></a><span class="ex">module</span> load bioinfo/plink_high_contig_20190905</span>
-<span id="cb74-2"><a href="snp-calling-and-filtering.html#cb74-2"></a><span class="ex">module</span> load bioinfo/plink2_high_contig_20190905</span>
-<span id="cb74-3"><a href="snp-calling-and-filtering.html#cb74-3"></a><span class="fu">mkdir</span> nonmissing</span>
-<span id="cb74-4"><a href="snp-calling-and-filtering.html#cb74-4"></a><span class="ex">plink2</span> --threads 8 --memory 80000 \</span>
-<span id="cb74-5"><a href="snp-calling-and-filtering.html#cb74-5"></a>  --bfile filtered/symcapture.all.biallelic.snp.filtered \</span>
-<span id="cb74-6"><a href="snp-calling-and-filtering.html#cb74-6"></a>  --allow-extra-chr \</span>
-<span id="cb74-7"><a href="snp-calling-and-filtering.html#cb74-7"></a>  --mind 0.95 --geno 0.15 \</span>
-<span id="cb74-8"><a href="snp-calling-and-filtering.html#cb74-8"></a>  --make-bed --out nonmissing/symcapture.all.biallelic.snp.filtered.nonmissing</span>
-<span id="cb74-9"><a href="snp-calling-and-filtering.html#cb74-9"></a><span class="bu">cd</span> nonmissing</span>
-<span id="cb74-10"><a href="snp-calling-and-filtering.html#cb74-10"></a><span class="ex">plink</span> --threads 8 --memory 80000 \</span>
-<span id="cb74-11"><a href="snp-calling-and-filtering.html#cb74-11"></a>  --bfile symcapture.all.biallelic.snp.filtered.nonmissing \</span>
-<span id="cb74-12"><a href="snp-calling-and-filtering.html#cb74-12"></a>  --allow-extra-chr --missing --het --freqx --pca \</span>
-<span id="cb74-13"><a href="snp-calling-and-filtering.html#cb74-13"></a>  --out symcapture.all.biallelic.snp.filtered.nonmissing</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb73-1"><a href="snp-calling-and-filtering.html#cb73-1"></a><span class="ex">module</span> load bioinfo/plink_high_contig_20190905</span>
+<span id="cb73-2"><a href="snp-calling-and-filtering.html#cb73-2"></a><span class="ex">module</span> load bioinfo/plink2_high_contig_20190905</span>
+<span id="cb73-3"><a href="snp-calling-and-filtering.html#cb73-3"></a><span class="fu">mkdir</span> nonmissing</span>
+<span id="cb73-4"><a href="snp-calling-and-filtering.html#cb73-4"></a><span class="ex">plink2</span> --threads 8 --memory 80000 \</span>
+<span id="cb73-5"><a href="snp-calling-and-filtering.html#cb73-5"></a>  --bfile filtered/symcapture.all.biallelic.snp.filtered \</span>
+<span id="cb73-6"><a href="snp-calling-and-filtering.html#cb73-6"></a>  --allow-extra-chr \</span>
+<span id="cb73-7"><a href="snp-calling-and-filtering.html#cb73-7"></a>  --mind 0.95 --geno 0.15 \</span>
+<span id="cb73-8"><a href="snp-calling-and-filtering.html#cb73-8"></a>  --make-bed --out nonmissing/symcapture.all.biallelic.snp.filtered.nonmissing</span>
+<span id="cb73-9"><a href="snp-calling-and-filtering.html#cb73-9"></a><span class="bu">cd</span> nonmissing</span>
+<span id="cb73-10"><a href="snp-calling-and-filtering.html#cb73-10"></a><span class="ex">plink</span> --threads 8 --memory 80000 \</span>
+<span id="cb73-11"><a href="snp-calling-and-filtering.html#cb73-11"></a>  --bfile symcapture.all.biallelic.snp.filtered.nonmissing \</span>
+<span id="cb73-12"><a href="snp-calling-and-filtering.html#cb73-12"></a>  --allow-extra-chr --missing --het --freqx --pca \</span>
+<span id="cb73-13"><a href="snp-calling-and-filtering.html#cb73-13"></a>  --out symcapture.all.biallelic.snp.filtered.nonmissing</span></code></pre></div>
 <div class="figure"><span id="fig:nonmissingIndividuals"></span>
 <img src="GOING_files/figure-html/nonmissingIndividuals-1.png" alt="Missing data statistics for filtered biallelic SNP after missing data filtering (95% for individuals and 15% for SNPs) per individual." width="768" />
 <p class="caption">
@@ -1072,14 +1070,14 @@ Figure 4.15: Heterozigosity statistics for filtered biallelic SNP after missing 
 <h3><span class="header-section-number">4.4.7</span> Paracou</h3>
 <p>Finally, we subseted the filtered and biallelic snp from Paracou individuals,
 resulting in <strong>385</strong> remaining individuals (<strong>17 lost !</strong>).</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb75-1"><a href="snp-calling-and-filtering.html#cb75-1"></a><span class="ex">module</span> load bioinfo/plink2-v2.0_alpha2</span>
-<span id="cb75-2"><a href="snp-calling-and-filtering.html#cb75-2"></a><span class="fu">mkdir</span> paracou</span>
-<span id="cb75-3"><a href="snp-calling-and-filtering.html#cb75-3"></a><span class="ex">plink2</span> \</span>
-<span id="cb75-4"><a href="snp-calling-and-filtering.html#cb75-4"></a>  --bfile nonmissing/symcapture.all.biallelic.snp.filtered.nonmissing \</span>
-<span id="cb75-5"><a href="snp-calling-and-filtering.html#cb75-5"></a>  --allow-extra-chr \</span>
-<span id="cb75-6"><a href="snp-calling-and-filtering.html#cb75-6"></a>  --keep Paracou.fam \</span>
-<span id="cb75-7"><a href="snp-calling-and-filtering.html#cb75-7"></a>  --make-bed --out paracou/symcapture.all.biallelic.snp.filtered.nonmissing.paracou</span>
-<span id="cb75-8"><a href="snp-calling-and-filtering.html#cb75-8"></a>  <span class="co"># --recode vcf-iid</span></span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb74-1"><a href="snp-calling-and-filtering.html#cb74-1"></a><span class="ex">module</span> load bioinfo/plink2-v2.0_alpha2</span>
+<span id="cb74-2"><a href="snp-calling-and-filtering.html#cb74-2"></a><span class="fu">mkdir</span> paracou</span>
+<span id="cb74-3"><a href="snp-calling-and-filtering.html#cb74-3"></a><span class="ex">plink2</span> \</span>
+<span id="cb74-4"><a href="snp-calling-and-filtering.html#cb74-4"></a>  --bfile nonmissing/symcapture.all.biallelic.snp.filtered.nonmissing \</span>
+<span id="cb74-5"><a href="snp-calling-and-filtering.html#cb74-5"></a>  --allow-extra-chr \</span>
+<span id="cb74-6"><a href="snp-calling-and-filtering.html#cb74-6"></a>  --keep Paracou.fam \</span>
+<span id="cb74-7"><a href="snp-calling-and-filtering.html#cb74-7"></a>  --make-bed --out paracou/symcapture.all.biallelic.snp.filtered.nonmissing.paracou</span>
+<span id="cb74-8"><a href="snp-calling-and-filtering.html#cb74-8"></a>  <span class="co"># --recode vcf-iid</span></span></code></pre></div>
 
 </div>
 </div>
@@ -1117,26 +1115,6 @@ resulting in <strong>385</strong> remaining individuals (<strong>17 lost !</stro
 <p>Supernat, A., Vidarsson, O.V., Steen, V.M. &amp; Stokowy, T. (2018). Comparison of three variant callers for human whole genome sequencing. <em>Scientific Reports</em>, <strong>8</strong>, 17851. Retrieved from <a href="http://www.nature.com/articles/s41598-018-36177-7">http://www.nature.com/articles/s41598-018-36177-7</a></p>
 </div>
 </div>
-<div id="disqus_thread"></div>
-<script>
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://going-1.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
             </section>
 
           </div>

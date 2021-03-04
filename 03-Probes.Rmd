@@ -16,7 +16,7 @@ path <- "data/Symphonia_Genomic"
 
 The genomic and transcriptomic resources used for the design were comprised of a published low-coverage draft genome from Africa [@Olsson2017], an unpublished draft genome from French Guiana [Scotti et al., in prep], an unpublished transcriptome from 20 juveniles from French Guiana [Tysklind et al., in prep], and reduced-representation genomic sequence reads of individuals from French Guiana [Torroba-Balmori et al., unpublished]. 
 We aligned genomic reads on the two genome drafts with `bwa` [@Li2009]. 
-We kept scaffolds from the two genome drafts with a length superior to 1 kbp and at least one matching alignment with a read with a single match on the genome, and merged the two filtered genome drafts with `quickmerge` [@Chakraborty2016]. 
+We kept scaffolds from the two genome drafts with a length of more than 1 kbp and at least one matching alignment with a read with a single match on the genome, and merged the two filtered genome drafts with `quickmerge` [@Chakraborty2016]. 
 We aligned transcripts on the new filtered genome draft with `BLAT` [@Kent2002] and selected 533 scaffolds without transcript-match, *i.e.* anonymous scaffolds. 
 We masked repetitive regions with `RepeatMasker` [@Smit2015] and selected 533 1-kbp anonymous loci within the 533 previous scaffolds.
 
@@ -31,7 +31,7 @@ We selected 1,150 genic loci of 500-bp to 1-kbp, from 100 bp before the start to
 
 ### Filtering scaffolds over $1kbp$
 
-We first filtered scaffolds with a width superior to **1000 bp**.
+We first filtered scaffolds with a width of more than **1000 bp**.
 
 ```{bash filteringScotti, eval=F, echo=T}
 cd ~/Documents/BIOGECO/PhD/data/Symphonia_Genomes/Ivan_2018/
@@ -93,7 +93,7 @@ makeblastdb -in merged_1000.fa -parse_seqids -dbtype nucl
 We used the consensus sequence for French Guianan reads from Torroba-Balmori *et al. (unpublished)* previously assembled with ipyrad. 
 We kept the first sequence of the consensus loci file and recoded it to fasta (see loci2fa.py script below). 
 We then blasted the consensus sequences on merged scaffolds from Scotti *et al (in prep)* with `blastn` in order to detect scaffolds with repetitive regions (multi-mapped consensus sequences). 
-Repetitive sequences have been saved as a list removed in final selected scaffolds list.
+Repetitive sequences have been saved as a list and removed to generate the final list of selected scaffolds.
 
 ```{python loci2fa, eval=F, echo=T}
 infile = open("symphoGbS2.loci", "r")
@@ -170,7 +170,7 @@ sel_Ivan <- list(rm = gsub("Ivan_2018_sympho47_", "", sel_Ivan$Scaffold[sel_Ivan
 kable(sel_Ivan$cut, caption = "Scaffold to cut due to multiple read match.")
 ```
 
-Following scaffolds have been removed due to multiple matches and a length $<200bp$: `r paste0(sel_Ivan$rm, collapse = ", ")`. 
+The following scaffolds have been removed due to multiple matches and a length $<200bp$: `r paste0(sel_Ivan$rm, collapse = ", ")`. 
 The others have been cut (see table \@ref(tab:blastResultScottiFilter)).
 
 ### Total filtered scaffolds
@@ -229,13 +229,13 @@ write_file(paste(unique(blast$Scaffold), collapse = "\n"),
 seqtk subseq Olsson2017/Olsson2017.fa selected_scaffolds_blast_consensus2.list >> selected_scaffolds_blast_consensus2.fa
 ```
 
-We obtained most of scaffolds with a single  match including a broad range of sizes (from 100 bp to 33.2 kbp). 
+We obtained most scaffolds with a single  match including a broad range of sizes (from 100 bp to 33.2 kbp). 
 In total **688** scaffolds from @Olsson2017 match consensus sequences from Torroba-Balmori *et al. (unpublished)*. 
-Deveral scaffolds obtained multiple matches that we cannot use for probes.
+Several scaffolds obtained multiple matches that we cannot use for probes.
 We thus excluded the whole scaffold if the scaffold is shorter than 2000 bp,
 or the scaffold region matching the raw read if the scaffold is longer than 2000 bp.
 
-```{r blastResultOlssonFig, fig.cap="Number of match with Torroba consensus reads vs gene width.", fig.height=4}
+```{r blastResultOlssonFig, fig.cap="Number of matches with Torroba-Balmori’s consensus reads vs gene width.", fig.height=4}
 blast_Olsson <- read_tsv(file.path(path, "Olsson_2016", "torroba_blast", "blast_consensus_torroba2.txt"), col_names = F)
 names(blast_Olsson) <- c("Read", "Scaffold", "Perc_Ident", "Alignment_length", "Mismatches",
                   "Gap_openings", "R_start", "R_end", "S_start", "S_end", "E", "Bits")
@@ -265,10 +265,10 @@ sel_Olsson <- blast_Olsson %>%
   select(Scaffold, width, remove, cut)
 sel_Olsson <- list(rm = gsub("Olsson_2017_", "", sel_Olsson$Scaffold[sel_Olsson$remove == "X"]),
                  cut = sel_Olsson[sel_Olsson$remove == " ",])
-kable(sel_Olsson$cut, caption = "Scaffold to cut due to multiple read match.") 
+kable(sel_Olsson$cut, caption = "Scaffolds to cut due to multiple read matches.") 
 ```
 
-Following scaffolds have been removed due to multiple matches and a length $<200bp$: `r paste0(sel_Olsson$rm, collapse = ", ")`. 
+The following scaffolds have been removed due to multiple matches and a length $<200bp$: `r paste0(sel_Olsson$rm, collapse = ", ")`. 
 And other have been cut (see table \@ref(tab:blastResultOlssonFilter)).
 
 ### Total filtered scaffolds
@@ -288,13 +288,13 @@ scf %>%
 ##  Tysklind *et al (in prep)* transcript preparation
 
 Tysklind *et al (in prep)* used 20 *Symphonia* juveniles from the transplantation garden experiment for transcriptomic analysis.
-RNA sequence were captured. 
+RNA sequences were captured. 
 The analysis followed the scheme suggested by @Lopez-Maestre2016 (see below). 
 First, reads were assembled with `Trinity` into transcripts. 
 In parallel, SNPs were detected with `Kissplice`. 
-Then SNPs have been mapped on the transcritpome with `BLAT`.
+Then SNPs were mapped on the transcriptome with `BLAT`.
 In parallel SNPs have been tested to be morphotype-specific at the level $\alpha = 0.001$ with `KissDE` and transcriptome Open Reading Frames (ORF) have been identified with `Transdecoder`. 
-Finally, SNPs functional impact have been evaluated through `k2rt`. 
+Finally, SNPs with a functional impact were identified through `k2rt`. 
 Consequently, for every SNP we have the following information: 
 (i) inside coding DNA sequence (CDS), 
 (ii) synonymous or not, 
@@ -351,7 +351,7 @@ count_SNP <- data %>%
                                         "non specific", "morphotype specific")) %>% 
   mutate(type = ifelse(!is.na(type),
                        paste0(type,Is_condition_specific), type)) %>% 
-  mutate(type = ifelse(is.na(type), "unpossible", type))
+  mutate(type = ifelse(is.na(type), "impossible", type))
 rm(data) ; invisible(gc())
 ```
 
@@ -361,17 +361,17 @@ count_SNP %>%
   dplyr::rename("Coding sequence" = Is_in_CDS,
          "Not synonymous" = Is_not_synonymous,
          "Morphotype-specific" = Is_condition_specific) %>% 
-  kable(caption = "Single SNPs with unpossible association of characteristic. First column indicates if the SNP is in a coding sequence, second column indicates is the SNP is not synonymous, third column indicates if the SNP is morphotype-specific, and fourth column indicates the headcount.", format.args = list(big.mark = " "))
+  kable(caption = "Single SNPs with impossible association of characteristics. First column indicates if the SNP is in a coding sequence, second column indicates if the SNP is non-synonymous, third column indicates if the SNP is morphotype-specific, and fourth column indicates the headcount.", format.args = list(big.mark = " "))
 ```
 
 ### Filtering transcripts on SNP frequency
 
-We found a high frequency of SNPs per candidate genes (the majority between 1 SNP per 10 or 100 bp), 
-with some scaffolds having a frequency superior to 0.2 (see figure \@ref(fig:snpGenes2)). We assumed those hyper SNP-rich scaffolds to be errors and decided to remove them of the reference transcriptome. 
+We found a high frequency of SNPs per candidate gene (the majority between 1 SNP per 10 or 100 bp), 
+with some scaffolds having a SNP frequency superior to 0.2 (see figure \@ref(fig:snpGenes2)). We assumed those hyper SNP-rich scaffolds to be errors and decided to remove them from the reference transcriptome. 
 In order to do that, we fitted a $\Gamma$ law into the SNP frequency distribution and we kept scaffolds with a SNP frequency under the $99^{th}$ quantile ($q_{99} = 0.07810194$). We thus removed:
 
 * __358 308__ SNPs
-* including __20 521__ transcripts
+* located on __20 521__ transcripts
 * representing __1 490__ candidate genes
 
 ```{r genes, eval=F}
@@ -412,7 +412,7 @@ write_tsv(snp_genes, file = "save/snp_genes.tsv")
 rm(snp_genes, snp, transcript, data, data2) ; invisible(gc())
 ```
 
-```{r snpGenes2, fig.cap="Distribution of SNP frequencies in scaffolds. Histogram (gray bars) represents the data, red line represents the Gamma law fit, and blue area represents X*sigma were scaffolds are not excluded.", fig.height=4}
+```{r snpGenes2, fig.cap="Distribution of SNP frequencies in scaffolds. Histogram (grey bars) represents the data, red line represents the Gamma law fit, and blue area represents X*sigma where scaffolds are not excluded.", fig.height=4}
 snp_genes <- read_tsv(file = "save/snp_genes.tsv")
 fit.params <- MASS::fitdistr(snp_genes$freq, "gamma", lower = c(0, 0))
 q99 <- qgamma(0.99,fit.params$estimate["shape"], fit.params$estimate["rate"])
@@ -443,9 +443,9 @@ write.table(filtered_data_fasta, row.names = F, col.names = F, quote = F,
 We have a total of:
 
 * __1 382 525__ filtered SNPs (over 2 398 550)
-* including __177 388__ transcripts (over 257 140, including pseudo-genes isoforms)
-* representing __63 707__ candidate genes (over 76 032)
-* for a total of Mbp
+* located on __177 388__ transcripts (over 257 140, when pseudo-genes and isoforms)
+* representing __63 707__ candidate genes (over 76 032, respectively)
+* for a total of __283.4__ Mbp
 
 ```{r trscFilterFig}
 trsc <- readDNAStringSet(file.path(path,  "Niklas_transcripts",
@@ -918,7 +918,7 @@ bed <- read_tsv(file.path(path, "neutral_selection", "raw_read_alignment.merged.
                 col_names = c("target", "start", "end", "coverage"))
 ```
 
-We obtained a continuous decreasing distribution of read coverage across our scaffolds regions (figure \@ref(fig:neutralRepetFilter2)). We fitted a $\Gamma$ distribution with positive parameters for scaffolds regions with a coverage under 5 000 (non continuous distribution with optimization issues). We obtained a distribution with a mean of 324 reads per region and a $99^{th}$ quantile of 4 042. We decided to mask regions with a coverage over the $99^{th}$ quantile and remove scaffolds with a mask superior to 75% of its total length (figure \@ref(fig:neutralRepetFilter3)).
+We obtained a continuous decreasing distribution of read coverage across our scaffolds regions (figure \@ref(fig:neutralRepetFilter2)). We fitted a $\Gamma$ distribution with positive parameters for scaffolds regions with a coverage under 5 000 (non continuous distribution with optimization issues). We obtained a distribution with a mean of 324 reads per region and a $99^{th}$ quantile of 4 042. We decided to mask regions with a coverage over the $99^{th}$ quantile and remove scaffolds with a mask superior to 75% of its total length (figure \@ref(fig:neutralRepetFilter2)).
 
 ```{r neutralRepetFilter2, fig.cap="Read coverage distribution."}
 data <- bed %>%
@@ -996,8 +996,8 @@ ORFs have been detected with `transdecoder` on assembled transcripts.
 First, we filtered ORFs including a start codon(figure \@ref(fig:orfFilterGraph)).
 Then, we aligned ORFs on pre-selected and merged genomic scaffolds with `blat`. 
 We obtained 7 744 aligned scaffolds (table \@ref(tab:blatCovORF) and figure \@ref(fig:blatFigORF)). 
-Thanks to alignments, we removed overlapping genes (figure \@ref(fig:orfDist)) and obtained 4 076 pre-selected genes with a total length of 757 hbp (figure \@ref(fig:genesPlot)). 
-Finally, we used transcript differential expression to select all genes deferentially expressed between *Symphonia globulifera* and *Symphonia sp1* (figure \@ref(fig:diffExprFig)). 
+Thanks to alignments, we removed overlapping genes (figure \@ref(fig:orfDist)) and obtained 4 076 pre-selected genes with a total length of 757 kbp (figure \@ref(fig:genesPlot)). 
+Finally, we used transcript differential expression to select all genes differentially expressed between *Symphonia globulifera* and *Symphonia sp1* (figure \@ref(fig:diffExprFig)). 
 We selected 1150 sequences of 500 to 1-kbp representing 1 063 Mbp (table \@ref(tab:functionalSelectionTab)). 
 To validate our final target set, we aligned with `bwa` raw reads from one library from Scotti *et al. (in prep)*.
 
@@ -1182,7 +1182,7 @@ genes %>%
 
 ### Differential Expression (DE) of genes
 
-Figure \@ref(fig:diffExprFig) shows genes differential expression. First circle represent genes with isoforms not enriched whereas second and third circle represents respectivelly genes with isoforms *S. sp1* and *S. globulifera* enriched. Relatively few genes contained enriched isoforms, and most of them were *S. globulifera* enriched.
+Figure \@ref(fig:diffExprFig) shows genes differential expression. First circle represents genes with isoforms not enriched whereas second and third circle represent, respectively, genes with isoforms *S. sp1* and *S. globulifera* enriched. Relatively few genes contained enriched isoforms, and most of them were *S. globulifera* enriched.
 
 ```{r diffExprFig, fig.cap="Genes differential expression."}
 de <- read_delim(file.path(path, "Niklas_transcripts", "edgeR",
@@ -1211,7 +1211,7 @@ de %>%
 
 ### Final subset of selected functional scaffolds
 
-We finally selected 1150 sequences of 500 to 1-kbp with 100 bp before geneStart and a maximum of 900 bp after, resulting in 1 063, 544 kbp of targets. All differentially expressed genes between morphotypes were selected (159). And the rest of sequences were selected among non differentially expressed genes randomly (1001).
+We finally selected 1150 sequences of 500 to 1-kbp with 100 bp before geneStart and a maximum of 900 bp after, resulting in 1 063, 544 kbp of targets. All differentially expressed genes between morphotypes were selected (159). And the rest of sequences were randomly selected among non differentially expressed genes (1001).
 
 ```{r candidate_functional_target_list}
 genes %>% 
@@ -1294,7 +1294,7 @@ bed <- read_tsv(file.path(path, "functional_selection2", "raw_read_alignment.mer
                 col_names = c("target", "start", "end", "coverage"))
 ```
 
-We obtained a continuous decreasing distribution of read coverage across our scaffolds regions (figure \@ref(fig:funcRepeatFilter2)). We fitted a $\Gamma$ distribution with positive parameters for scaffolds regions with a coverage under 5 000 (non continuous distribution with optimization issues). We obtained a distribution with a mean of 309 reads per region and a $99^{th}$ quantile of 2 606. We decided to mask regions with a coverage over the $99^{th}$ quantile and remove scaffolds with a mask superior to 75% of its total length (figure \@ref(fig:funcRepeatFilter3)).
+We obtained a continuous decreasing distribution of read coverage across our scaffolds regions (figure \@ref(fig:funcRepeatFilter2)). We fitted a $\Gamma$ distribution with positive parameters for scaffolds regions with a coverage under 5 000 (non continuous distribution with optimization issues). We obtained a distribution with a mean of 309 reads per region and a $99^{th}$ quantile of 2 606. We decided to mask regions with a coverage over the $99^{th}$ quantile and remove scaffolds with a mask superior to 75% of its total length (figure \@ref(fig:funcRepeatFilter2)).
 
 ```{r funcRepeatFilter2, fig.cap="Read coverage distribution."}
 data <- bed %>%

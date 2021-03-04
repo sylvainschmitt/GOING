@@ -146,7 +146,7 @@ plates
 extraction
 extraction-plates
 extraction-nanodrop
-extraction-qbit
+extraction-qubit
 extraction-electrophoresis
 library-plates-design
 pool
@@ -162,7 +162,7 @@ fragmentation
 adaptor-ligation
 size-selection
 enrichment-and-purification
-libraries-preparation-results
+library-preparation-results
 post-enrichment-pcr1-quantification
 post-enrichment-pcr1-pcr2-and-amplification-quantification
 amplification-result
@@ -172,7 +172,7 @@ amplifcation-1-plate-reorganization
 dna-dosage-1
 amplification-2
 dna-dosage-2
-amplifcation-2-and-library-repeat-plates-reorganization
+amplification-2-and-library-repeat-plates-reorganization
 pool-building
 purification-concentration
 size-assessment

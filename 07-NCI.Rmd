@@ -48,11 +48,11 @@ $$a_{i} \sim MVlogN_N(log(1),\sigma^2_2.K)$$
 where $\mu_s$ is the mean environment of species $s$, $a_i$ is the breeding value of the individual $i$ and $\sigma^2_1$ is the shape parameter of the lognormal. 
 Individual breeding values $a_i$ are defined following a multivariate lognormal law $\mathcal{MVlogN}$ of co-shape matrix defined as the product of the kinship matrix $K$ with estimated individual genotypic variation $\sigma^2_2$.
 To estimate variances on a normal scale, we log-transformed species fixed effect, genetic additive values, and we calculated conditional and marginal $R^2$ [@Nakagawa2013].
-A Bayesian method was used to infer parameters using `stan` language [@Carpenter2017 and `rstan` package [@Team2018] in the R environment [@RCoreTeam2020] using the No-U-Turn Sampler alogirthm [NUTS, @Hoffman2014], which performs better for estimating genetic parameters and breeding values [@Nishio2019].
+A Bayesian method was used to infer parameters using `stan` language [@Carpenter2017 and `rstan` package [@Team2018] in the R environment [@RCoreTeam2020] using the No-U-Turn Sampler algorithm [NUTS, @Hoffman2014], which performs better for estimating genetic parameters and breeding values [@Nishio2019].
 
 ## Simulated Animal Model
 
-The aim of this sub-chapter is to explore animal model with generated data to validate their behavior and use it on *Symphonia* real data. 
+The aim of this subchapter is to explore the animal model with generated data to validate their behavior and use it on *Symphonia* real data. 
 Let's consider a set of $P=3$ populations including each $Fam=3$ families composed of $I = 14$ individuals with arbitrary relationships (it's only 126 individuals to do quick tests).
 
 ```{r simkinship, fig.cap="Kinship matrix"}
@@ -149,7 +149,7 @@ broom.mixed::tidyMCMC(fitAnimal, pars = c("mu", "Vp", "Vg", "Vr", "lp__"),
                       "Standard error", "$\\hat R$"))
 ```
 
-```{r animalTrace, fig.cap="Parameters for Animal model traceplot and expected value in red."}
+```{r animalTrace, fig.cap="Parameters for Animal model trace plot and expected value in red."}
 mcmc_trace(as.array(fitAnimal, pars = c("mu", "Vp", "Vg", "Vr", "lp__")),
            np = nuts_params(fitAnimal)) +
   geom_hline(aes(yintercept = expected), col = "red", 
@@ -229,7 +229,7 @@ save(mdata, file = file.path("save", 'dataEnv.Rdata'))
 
 ## Genetic variance
 
-We used between individual kinship and a lognormal Animal model [@Wilson2010] to estimate genetic variance associated to individuals global phenotype leaving in a given environment [see environmental association analyses with genome wide assocaition study analyses in @Rellstab2015a]. 
+We used between individual kinship and a lognormal Animal model [@Wilson2010] to estimate genetic variance associated to individuals' global phenotype leaving in a given environment [see environmental association analyses with genome wide association study analyses in @Rellstab2015a]. 
 Animal model is calculated for the environmental values $y$ of the $N$ individuals with following formula:
 
 \begin{equation} 
@@ -323,7 +323,7 @@ lapply(fitEnv, pars = c("Vp", "Vg", "Vr"), as.data.frame) %>%
   coord_flip()
 ```
 
-```{r envGenoVarPart, fig.cap="Genetic variance partitionning for environmental variables."}
+```{r envGenoVarPart, fig.cap="Genetic variance partitioning for environmental variables."}
 lapply(fitEnv, mcmc_intervals_data, regex_pars = c("Vp", "Vg", "Vr")) %>% 
   bind_rows(.id = "variable") %>% 
   mutate(parameter = recode(parameter, "Vp" = "Population", "Vg" = "Genotype", "Vr" = "Residual")) %>% 

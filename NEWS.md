@@ -1,3 +1,7 @@
+# GOING 0.1.9008
+* Myriam's corrections to 3.4.1
+* gdoc corrections
+
 # GOING 0.1.9007
 * Growth
 
