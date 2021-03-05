@@ -24,7 +24,7 @@
 <meta name="author" content="Sylvain Schmitt" />
 
 
-<meta name="date" content="2021-03-04" />
+<meta name="date" content="2021-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1868,28 +1868,28 @@ Figure 3.18: Original position of amplified samples in A3.
 <div id="dna-dosage-2" class="section level3">
 <h3><span class="header-section-number">3.4.4</span> DNA dosage 2</h3>
 <div class="figure"><span id="fig:PicoGreen2"></span>
-<img src="GOING_files/figure-html/PicoGreen2-1.png" alt="Reampified sampled dosage by PicoGreen (concentration in ng.uL)." width="768" />
+<img src="GOING_files/figure-html/PicoGreen2-1.png" alt="Reamplified samples dosed using PicoGreen (concentration in ng.uL)." width="768" />
 <p class="caption">
-Figure 3.19: Reampified sampled dosage by PicoGreen (concentration in ng.uL).
+Figure 3.19: Reamplified samples dosed using PicoGreen (concentration in ng.uL).
 </p>
 </div>
 </div>
 <div id="amplification-2-and-library-repeat-plates-reorganization" class="section level3">
 <h3><span class="header-section-number">3.4.5</span> Amplification 2 and Library Repeat Plates reorganization</h3>
 <div class="figure"><span id="fig:P6reorganizationFig"></span>
-<img src="GOING_files/figure-html/P6reorganizationFig-1.png" alt="Original position of plate 6.1 and 6.2 reorganization in 6.3." width="768" />
+<img src="GOING_files/figure-html/P6reorganizationFig-1.png" alt="Original position of plates 6.1 and 6.2 reorganized plate 6.3." width="768" />
 <p class="caption">
-Figure 3.20: Original position of plate 6.1 and 6.2 reorganization in 6.3.
+Figure 3.20: Original position of plates 6.1 and 6.2 reorganized plate 6.3.
 </p>
 </div>
 </div>
 <div id="pool-building" class="section level3">
 <h3><span class="header-section-number">3.4.6</span> Pool building</h3>
-<p>Due to non uniformity of fragment size,
-re-extracted samples from P6 (P6.2) have been treated in a single separated reaction (so 15 remaining).
-All other samples have been pulled by batches of 32 following plate order.
-We wanted 100 to 500 ng of DNA per reaction, and the reaction with the least samples had 16 samples.
-Consequently we used 15 ng of each sample, resulting in 240 to 645 ng of DNA per sample (but we may lose material in purification, so we aimed for extra).
+<p>Due to non-uniformity of fragment size,
+re-extracted samples from P6 (P6.2) have been pooled into a single separated pool for the capture reaction (in total, we do 16 capture reactions on pooled samples, therefore we still have to constitute the 15 remaining pools).
+All other samples have been pooled by batches of 32 using the plate order illustrated in FIgure <a href="genomic-libraries-and-sequence-capture.html#fig:captureReactions">3.21</a>.
+We wanted 100 to 500 ng of DNA per reaction, and the reaction with the lowest number of samples had 16 samples.
+Consequently we used 15 ng of each sample, resulting in 240 to 645 ng of DNA per pool (but we may lose material in purification, so we aimed for extra).
 Samples reaching to high concentration,
 for which we should sample less than 0.5 <span class="math inline">\(\mu L\)</span> have been diluted 2 to 4 times.</p>
 <div class="figure"><span id="fig:captureReactions"></span>
@@ -1908,16 +1908,16 @@ Figure 3.22: Sample reaction volume per plate.
 <div id="purification-concentration" class="section level3">
 <h3><span class="header-section-number">3.4.7</span> Purification &amp; Concentration</h3>
 <div class="figure"><span id="fig:NanoDropC1Fig"></span>
-<img src="GOING_files/figure-html/NanoDropC1Fig-1.png" alt="Reactions DNA content assessed by NanoDrop." width="768" />
+<img src="GOING_files/figure-html/NanoDropC1Fig-1.png" alt="DNA content of library pools assessed by NanoDrop." width="768" />
 <p class="caption">
-Figure 3.23: Reactions DNA content assessed by NanoDrop.
+Figure 3.23: DNA content of library pools assessed by NanoDrop.
 </p>
 </div>
 </div>
 <div id="size-assessment" class="section level3">
 <h3><span class="header-section-number">3.4.8</span> Size assessment</h3>
-<p>We had an heterogeneity of fragments size distribution among pools with a large spectrum (Fig. <a href="genomic-libraries-and-sequence-capture.html#fig:TapeStation">3.24</a>).
-We used TapeStation to select fragments between 330 and 700 bp.</p>
+<p>We had a heterogeneity of fragment size distribution among pools with a large spectrum (Fig. <a href="genomic-libraries-and-sequence-capture.html#fig:TapeStation">3.24</a>).
+We used a TapeStation to select fragments between 330 and 700 bp.</p>
 <div class="figure"><span id="fig:TapeStation"></span>
 <img src="images/TapeStation.png" alt="Pools size assessment." width="555" />
 <p class="caption">
@@ -1944,7 +1944,7 @@ Figure 3.25: Pool of reactions.
 </p>
 </div>
 <table>
-<caption><span id="tab:PoolsConcentration">Table 3.4: </span>Pool of pools result.</caption>
+<caption><span id="tab:PoolsConcentration">Table 3.4: </span>Concentrations for pools of library pools.</caption>
 <thead>
 <tr class="header">
 <th align="right">Pool</th>
@@ -2004,10 +2004,10 @@ Figure 3.26: Size selected pools assessment.
 </div>
 <div id="capture-1" class="section level3">
 <h3><span class="header-section-number">3.4.10</span> Capture</h3>
-<p>We split the 4 pools in 16 reactions (4 replicates for each) and realized the capture following <a href="https://arborbiosci.com/wp-content/uploads/2018/04/myBaits-Manual-v4.pdf">ArborScience protocol</a>. After amplification we obtained between 227 and 987 ng of DNA per pool assessed by Qubit (with the four replicates summed, Table <a href="genomic-libraries-and-sequence-capture.html#tab:QubitCapture">3.5</a>).
-We then pooled back the reaction, assessed their concentration by qPCR and adjust final samples for sequencing by an equimolar pooling Pool 1 and 2 and 3 and 4 together.
+<p>We split the 4 pools in 16 reactions (4 replicate capture reactions for each pool) and conducted the capture following <a href="https://arborbiosci.com/wp-content/uploads/2018/04/myBaits-Manual-v4.pdf">ArborScience protocol</a>. After amplification we obtained between 227 and 987 ng of DNA per pool assessed by Qubit (with the four replicates summed, Table <a href="genomic-libraries-and-sequence-capture.html#tab:QubitCapture">3.5</a>).
+We then pooled back the capture reactions, assessed their concentration by qPCR and adjusted final samples for sequencing by an equimolar pooling Pools 1 and 2, and 3 and 4 together.
 We thus obtained 22 <span class="math inline">\(\mu L\)</span> of Lane 1 at <span class="math inline">\(7.19~nM\)</span> and 19 <span class="math inline">\(\mu L\)</span> of Lane 2 at <span class="math inline">\(10.18~nM\)</span> (<a href="https://docs.google.com/spreadsheets/d/1gdmz0qpck8b5sfThmtcSo_sRkU8Vu_2ifrm8B3b_YYk/edit?usp=sharing">see google sheets for more details</a>).
-The material has been sent to the Genotoul Get team for sequencing on Illumina HiSeq 4000 on two lanes of pair-ends 150 bp sequences.</p>
+The material has been sent to the Genotoul Get team for sequencing on an Illumina HiSeq 3000 on two lanes of pair-ends 150 bp sequences.</p>
 <table>
 <caption><span id="tab:QubitCapture">Table 3.5: </span>Capture result (Qubit).</caption>
 <thead>

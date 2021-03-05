@@ -75,7 +75,7 @@ grep -h CV log*.out > CV.out
 for file in $(ls log*.out) ; do  grep "Fst divergences between estimated populations:" -A 20 $file | head -n -2 > matrices/$file ; done
 ```
 
-```{r admixtureParacouCV, fig.cap="Cross-validation for the clustering of Paracou individuals. Y axis indicates cross-validation mean error, suggesting that 2 or 3 groups represent the best Paracou individuals structure."}
+```{r admixtureParacouCV, fig.cap="Cross-validation for the clustering of Paracou individuals. Y axis indicates cross-validation mean error, suggesting that 2 or 3 groups best represent the genetic structure of individuals in Paracou."}
 read_delim(file.path(path, "admixture", "paracou", "CV.out"), delim = " ", col_names = F) %>% 
   dplyr::select(X3, X4) %>% 
   dplyr::rename(K = X3, CV = X4) %>% 
@@ -88,7 +88,7 @@ read_delim(file.path(path, "admixture", "paracou", "CV.out"), delim = " ", col_n
   ylab("Cross-validation error")
 ```
 
-```{r admixtureParacou23, fig.cap="Population structure of Paracou individuals for K=2 and K=3. Dark blue is associated with *S. globulifera* morphotype; whereas light blue is associated with *S. sp1*; and red is associated to a subgroup within *S. globulifera* morphotype."}
+```{r admixtureParacou23, fig.cap="Population structure of Paracou individuals for K=2 and K=3. Dark blue is associated with *S. globulifera* morphotype; whereas light blue is associated with *S. sp1*; and red is associated with a subgroup within the *S. globulifera* morphotype."}
 fam <- read_tsv(file.path(path, "..", "variantCalling", "paracou",
                           "symcapture.all.biallelic.snp.filtered.nonmissing.paracou.fam"),
          col_names = c("FID", "IID", "FIID", "MIID", "sex", "phenotype")) %>% 
@@ -102,7 +102,7 @@ p <- plotQ(symcapture.admix[2:3], exportplot = F, returnplot = T, imgoutput = "j
 gridExtra::grid.arrange(p$plot[[1]]) 
 ```
 
-```{r admixtureParacou2, fig.height=8, fig.width=15, fig.cap="Population structure of Paracou individuals for K = 2. Dark blue is associated to *S. globulifera* morphotype; whereas light blue is associated to *S. sp1*"}
+```{r admixtureParacou2, fig.height=8, fig.width=15, fig.cap="Population structure of Paracou individuals for K = 2. Dark blue is associated with the *S. globulifera* morphotype; whereas light blue is associated with *S. sp1*"}
 p <- plotQMultiline(qlist = symcapture.admix[3], exportplot = F, returnplot = T, useindlab = T, ordergrp=T, sortind = "Cluster1")
 gridExtra::grid.arrange(p$plot[[1]][[1]]) 
 ```
@@ -154,10 +154,10 @@ group_by(paracou3pop, Genotype) %>%
 
 ## Kinship
 
-We calculated kinship matrix for every individual to be used in genomic scan to control for population structure. 
+We calculated kinship matrix for every individual to be used in a genomic scan to control for population structure. 
 19 individuals, belonging to all gene pools, had only negative kinship values. 
 After investigation it seems that these individuals are individuals without family in Paracou with null kinship with other individuals of their gene pools and negative values  with other individuals of other gene pools. 
-Interestingly though individuals with only null or negative kinship were all located on the limit of Paracou plots.
+Interestingly though, individuals with only null or negative kinship were all located on the limit of Paracou plots.
 
 ```{bash relatedness, eval=F, echo=T}
 module load bioinfo/plink-v1.90b5.3
@@ -280,7 +280,7 @@ paste("S. sp.3 Sp =", Sp)
 ## Introgression
 
 We used the method developed by @Gompert2009 implemented in `introgress` [@Gompert2010] to map admixture between Paracou genepools. 
-We used individuals with more than 90% of the genotype belonging to the genepool to define parental allele frequencies and mapped admixture between the two pairs of *S. sp1* - *S. globulifera Paracou* and *S. sp1* - *S. globulifera Regina* as the remaining pair didn't show admixture sign with the `admixture` software.
+We used individuals with more than 90% of the genotype belonging to the genepool to define parental allele frequencies and mapped admixture between the two pairs of *S. sp1* - *S. globulifera Paracou* and *S. sp1* - *S. globulifera Regina* as the remaining pair didn't show any admixture signs with the `admixture` software.
 We furthered classified individuals as (i) *pure-bred* with a hybrid index $h$ above 0.9, (ii) introgressed with $h \in [0.6-0.9]$, and (iii) admixed with $h \in [0.5-0.6]$.
 
 We obtained relatively low levels of admixture (Fig. \@ref(fig:introgress)) with 222 *S. sp1* pure-bred, 108 *S. globulifera Paracou* pure-bred, and 30 *S. globulifera Regina* pure-bred. Only 5 individuals were admixed (2 *S. sp1* - *S. globulifera Regina* and 3 *S. sp1* - *S. globulifera Paracou*). Nevertheless *S. sp1* showed 13(6%) individuals introgressed with *S. globulifera Regina* and *S. globulifera Paracou* showed 7(6%) individuals introgressed with *S. sp1*.

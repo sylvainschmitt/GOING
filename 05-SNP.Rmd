@@ -21,7 +21,7 @@ We kept only pair-end reads without adaptors and a phred score above 15 in a sli
 Seventy percent of trimmed reads mapped off-targets using `bwa` [@Li2009]. 
 We thus mapped trimmed reads on the hybrid reference built for the sequence capture experiment using `bwa` [@Li2009], `picard` [@BroadInstitute2018], `samtools` [@Li2009a] and `bedtools` [@Quinlan2010].
 We called variants for each individual using `HaplotypeCaller`, aggregated variants using `GenomicsDBImport` and jointly-genotyped individuals using `GenotypeGVCFs` all in `GATK4` software [@Freksa1993]. 
-We filtered biallelic SNPs with a quality above 30, a quality by depth above 2, a Fisher strand bias below 60 and strand odds ratio above 3 using `GATK4` [@Freksa1993]. 
+We filtered biallelic SNPs with a quality above 30, a quality by depth above 2, a Fisher strand bias below 60 and a strand odds ratio above 3 using `GATK4` [@Freksa1993]. 
 Finally, we filtered individuals and SNPs for missing data with a maximum of 95% and 15% of missing data per individual and SNP, respectively, using `plink2` [@Chen2019].
 We obtained 454,262 biallelic SNPs over 385 individuals without outgroups, that we used for population genetic analyses.
 Since low-frequency alleles and linkage disequilibrium will bias the number of fixed loci and increase the number of false-positives in genomic scans for outliers [@Foll2008],
@@ -45,16 +45,16 @@ paired <- read_delim(file.path(path, "Sequences", "trimming", "paired_stat.txt")
 ## Quality Check
 
 We received demultiplexed libraries from sequencing. 
-We  cchecked sequences quality combining already produced fastqc and compare them with originally furnished (i) baits, (ii) targets, and (iii) references:
+We  checked sequences quality combining already produced fastqc and compared them with originally furnished (i) baits, (ii) targets, and (iii) references:
 
 1. __Multi Quality Check__: we used `multiqc` to combined `fastqc` inputs for every library (1002 for forward and reverse individuals) and check sequences, counts, quality and GC content
 1. __Trimming__: we trimmed sequences removing bad quality and adaptors sequences
-1. __Targets mapping__: we mapped 10 libraries on targets to check of-targets sequences
-1. __Reference mapping__: we mapped 10 libraries on hybrid reference to check of-reference sequences, and assess *de novo* usefulness
+1. __Targets mapping__: we mapped 10 libraries on targets to check proportion of off-targets sequences
+1. __Reference mapping__: we mapped 10 libraries on hybrid reference to check proportion of off-reference sequences, and assess the need for *de novo* assembly of captured sequences (in case of a high proportion of off-reference sequences)
 
 ### Multi Quality Check
 
-We used `multiqc` to combine `fastqc` inputs for every library (1002 for forward and reverse individuals) and check sequences, counts, quality and GC content.
+We used `multiqc` to combine `fastqc` inputs for every library (1002 for forward and reverse individuals) and checked sequences, counts, quality and GC content.
 
 ```{bash multiqc, eval=F, echo=T}
 cd ~/Documents/BIOGECO/PhD/data/Eschweilera_Paracou/Sequences/quality
@@ -65,9 +65,9 @@ mv multiqc_data/ multiqc_report.html L1.fastqc.tar.gz L2.fastqc.tar.gz multiqc
 
 #### Counts
 
-We had a big heterogeneity of sample representativity (215 000 folds), 
+We had a big heterogeneity of sample representativity (215 000 fold), 
 but 85% of samples had more than 66 6667 sequences (ca 1M targets / 150 bp * 10X). Moreover, duplicated sequences were obviously more present in over-represented individuals, 
-probably more linked to PCR biased than sequencing issues.
+probably more linked to PCR biases than ro sequencing issues.
 
 ```{r seqcounts, fig.cap="Sequence counts."}
 quality %>% 
@@ -84,7 +84,7 @@ quality %>%
 
 #### Quality
 
-Sequence quality was very good as the Phred score is above 25 for every bases on all positions across all sequences.
+Sequence quality was very good as the Phred score is above 25 for every base on all positions across all sequences.
 
 ```{r phred, fig.cap="Phred score."}
 knitr::include_graphics("data/Symphonia_Paracou/Sequences/quality/multiqc/plots/phred.png")
@@ -92,7 +92,7 @@ knitr::include_graphics("data/Symphonia_Paracou/Sequences/quality/multiqc/plots/
 
 #### GC content
 
-The mean GC content was 41.5 and only few sequences had non expected global content or content across the sequence.
+The mean GC content was 41.5 and only a few sequences had non expected global GC content or GC content across the sequence.
 
 ```{r gc, fig.cap="GC content across sequences."}
 quality %>% 
@@ -109,7 +109,7 @@ knitr::include_graphics("data/Symphonia_Paracou/Sequences/quality/multiqc/plots/
 ### Trimming
 
 We listed all libraries in text files and trimmed all libraries with `trimmomatic` in pair end (`PE`) into paired and unpaired compressed fastq files (`fq.gz`). 
-We trimmed the adaptor (`ILLUMINACLIP`) of our protocol (`TruSeq3-PE`) with a seed mismatches of 2 (mismatched count allowed),
+We trimmed the adaptor (`ILLUMINACLIP`) of our protocol (`TruSeq3-PE`) with a seed mismatch of 2 (mismatched count allowed),
 a threshold for clipping palindrome of 30 (authorized match for ligated adapters), 
 a threshold for simple clip of 10 (match between adapter and sequence), 
 a minimum adaptor length of 2, 
@@ -118,7 +118,7 @@ We trimmed sequences on phred score with a minimum of 15 in a sliding window of 
 without trimming the beginning (`LEADING:X`) or the end (`TRAILING:X`). 
 Without surprise due to the high quality check of sequencing, 
 trimming resulted in 99.91% of paired trimmed reads compared to raw reads (\@ref(fig:trimmingStat)). 
-Thus the main issue of our dataset <as more the representativity of sequences more than their quality.
+Thus the main issue of our dataset was more the representativity of sequences more than their quality.
 
 ```{r librariesList, eval=F, echo=T}
 data.frame(libraries = list.files(file.path(path, "Sequences", "raw"))) %>% 
@@ -189,9 +189,7 @@ quality %>%
 
 ### Targets mapping
 
-We mapped 10 libraries on targets to check off-targets sequences and targets loss. 
-Globally we had good coverage of targets (median of 90%, \@ref(fig:targetsAlignmentCoverage)),
-but reads were 70% to 81% of-targets (\@ref(tab:targetsAlignmentReadsMapped)). Consequently we could not only use targets as reference for reads mapping.
+We mapped every library on the hybrid reference to check off-reference sequences, and assess the need for de novo assembly, in case many sequences would not map on the reference. Globally we had a low coverage of the reference (median of 19%, Fig. \@ref(fig:targetsAlignmentCoverage)) but reads were 79% to 88% on-reference (Fig. \@ref(tab:targetsAlignmentReadsMapped)) ! Finally, we had a median of 4Mb covered with 10X on reference, which is 4 times what we designed in probes. Consequently, we won’t need *de novo* assembly and will proceed to read mapping for every library on the built reference, already partly annotated.
 
 ```{bash targetsMapping, eval=F, echo=T}
 #!/bin/bash
@@ -391,12 +389,12 @@ read_delim(file.path(path, "Sequences",  "mapping.test", "reference", "readsMapp
 
 ## Mapping
 
-We proceeded to read mapping for every libraries on the built reference,
+We proceeded to read mapping for every library on the built reference,
 already partly annotated:
 
-1. __Repeats merging__: 41 libraries were repeated, we merged their alignment to increase their information before variant calling
-1. __Reads mapping__: we mapped every libraries in pair end with `bwa mem` on the hybrid reference from Ivan Scotti et Sana Olson used to built the targets
-1. __Reference sequences__: we built bedtools for every alignment in order to list sequences with matches in the reference to be used to reduce explored reference area in variant calling
+1. __Repeats merging__: 41 libraries were repeated, we merged their fastq files before mapping to increase their information before variant calling
+1. __Reads mapping__: we mapped every library in pair end with `bwa mem` on the hybrid reference from Ivan Scotti and Sanna Olsson used to build the targets
+1. __Reference sequences__: we built bedtools for every alignment in order to list sequences with matches in the reference to be used to reduce the explored reference area in variant calling
 
 ### Repeats merging
 
@@ -438,8 +436,7 @@ tar -zcvf $name.tar.gz $folder
 
 ### Reads mapping
 
-We mapped every library in pair end with `bwa mem` on the hybrid reference from Ivan Scotti et Sana Olson used to build the targets (32 alignments with 2 processes on 64 cores of 1 node of genologin). 
-We had globally a good mapping with more than 80% of the reads mapped for  98% of the libraries \@ref(fig:mappingStat).
+We mapped every library in pair end with `bwa mem` on the hybrid reference from Ivan Scotti and Sanna Olsson used to build the targets (32 alignments with 2 processes on 64 cores of 1 node of the genologin computer cluster at Genotoul, Toulouse). We had globally a good mapping with more than 80% of the reads mapped for 98% of the libraries (Figure \@ref(fig:mappingStat)).
 
 ```{bash mappingSH, eval=F, echo=T}
 #!/bin/bash
@@ -525,11 +522,9 @@ read_delim(file.path(path, "Sequences", "mapping", "readsMappingStat.txt"),
 
 ### Reference sequences
 
-We built bedtools for every alignment in order to list sequences with matches in the reference to be used to reduce explored reference areas in variant calling.
-99.98% of reference sequences had at least one library matching (\@ref(fig:referenceSequences)). 
-Consequently we used all sequences from the reference in the variant calling, 
-besides a few sequences our libraries were under-represented, 
-but they have been removed at the SNP filtering.
+We built bedtools for every alignment in order to list sequences with matches in the reference to be used to reduce the explored reference areas in variant calling.
+99.98% of reference sequences had at least one library matching (Fig. \@ref(fig:referenceSequences)). 
+Consequently we used all sequences from the reference in the variant calling. Some reference sections were underrepresented in our libraries but they have been removed at the SNP filtering stage..
 
 ```{bash bed, eval=F, echo=T}
 # folders
@@ -556,7 +551,7 @@ sarray -J bed -o bed.out/%j.out -e bed.out/%j.err -t 1:00:00 --mail-type=BEGIN,E
 rm -r bed.out
 ```
 
-```{r referenceSequences, fig.cap="Sequences from reference alignment with reads from library."}
+```{r referenceSequences, fig.cap="Sequences from reference alignment with reads from all libraries."}
 # # On genologin
 # bed <- read_delim("referenceMappedStats.txt", delim = " ", col_names = c("sequence", "library"))
 # ggplot(bed, aes(library, sequence)) +
@@ -611,18 +606,18 @@ rm -r tmp
 
 We aggregated the GVCF files and fed them into one GVCF database with `GenomicsDBImport` to be genotyped. 
 **Beware**, `GATK 4.0.0.0` does not deal with multiple intervals when using `GenomicsDBImport`, so we used `GATK 4.1.2.0`.
-We divided the step into several intervals files of a maximum of 1000 sequences computed in parallel to speed up the operation. 
-**NB**, we tested the pipeline with 3 individual haplotypes and 10 intervals of 100 sequences ran in parallel; and it took 24 minutes. 
+We divided the step into several interval files of a maximum of 1000 sequences computed in parallel to speed up the operation. 
+**NB**, we tested the pipeline with 3 individual haplotypes and 10 intervals of 100 sequences run in parallel; and it took 24 minutes. 
 Consequently with 10 fold more sequences per interval we may increase to 4H, and the effect of 10 fold more individual haplotypes is hard to assess.
 
 Due to a memory overload on the cluster I boosted the `sarray` to 24G per node beside limiting `gatk` java session to 20G, still the overload is strange as if `gatk` was opening a parallel session of 20G java. 
 We should not decrease batch size as a batch of 50 individuals means that we will use 9 batches ! 
-If memory issues persist we may decrease the intervals length (currently 1000 sequences) and increase the number of jobs in `sarray`. 
-We may even decrease intervals to 100 sequences resulting in more than 800 jobs and run them by batch of 100 hundreds if they are really more efficient.
+If memory issues persist we may decrease the interval length (currently 1000 sequences) and increase the number of jobs in `sarray`. 
+We may even decrease intervals to 100 sequences resulting in more than 800 jobs and run them by batch of 100 if they are really more efficient.
 
 Running a first batch of 10 samples on 100 sequences took 35 minutes. 
 Thus 432 samples should take ca 1 day and 40 minutes. 
-This is the first run of DB among 8, so in total DB built should take 8 days ! 
+This is the first run of DB among 8, so in total DB build should take 8 days ! 
 But on the other hand joint genotyping might be launched on each run as soon as they finish. So we might clean the first vcf and obtain a preview of population genetics structure with the first 100 sequences.
 
 ```{bash combine, eval=F, echo=T}
@@ -674,7 +669,7 @@ rm -r tmp
 
 We joint-genotyped individuals with GenotypeGVCFs on all of them together to create the raw SNP and indel VCFs that are usually emitted by the callers. 
 We divided the step into several intervals with a maximum of 1000 sequences computed in parallel to speed up the operation (similarly to the previous step). 
-**NB**, we tested the pipeline with 3 individual haplotypes and 10 intervals of 100 sequences ran in parallel; and it took 6 minutes. 
+**NB**, we tested the pipeline with 3 individual haplotypes and 10 intervals of 100 sequences run in parallel; and it took 6 minutes. 
 Consequently with 10 fold more sequences per interval we may increase to 1H, 
 and the effect of 10 fold more individual haplotypes is hard to assess. 
 Then we merged genotypes of all intervals with `GatherVcfs` from `Picard` in one raw VCF to be filtered.
@@ -715,20 +710,16 @@ echo -e '\tO=symcapture.all.raw.vcf.gz\n' >> gather.sh
 
 We filtered the previously produced raw vcf with several steps:
 
-* __Gather__ raw vcf files gathering in **26 813 513** variants over **432** individuals
-* __Biallelic__ raw vcf filtering in **19 242 294** variants over **432** individuals
-* __SNP__ biallelic vcf filtering in **17 521 879** variants over **432** individuals
-* __Filters__ biallelic snp vcf filtering in **15 531 866** variants over **432** individuals
-* __Missing__ filtered biallelic snp vcf filtering in **454 262** variants over **406** individuals
-* __Paracou__ filtered & non missing biallelic snp vcf filtering in **454 262** variants over **385** individuals
+* __Gather__ raw vcf files which resulted in **26 813 513** variants over **432** individuals
+* __Biallelic__ raw vcf filtering which resulted in **19 242 294** variants over **432** individuals
+* __SNP__ biallelic vcf filtering which resulted in **17 521 879** variants over **432** individuals
+* __Filters__ biallelic snps which resulted in **15 531 866** variants over **432** individuals
+* __Missing__ filtered biallelic snp vcf filtering which resulted in **454 262** variants over **406** individuals
+* __Paracou__ filtered & non missing biallelic snp vcf filtering which resulted in **454 262** variants over **385** individuals
 
 ### Gather
 
-We first gathered all raw vcf.
-42 sequences of subset lost individuals in genotype call (over 878, 4%), 
-blocking the functioning of `gatk CombineVariants`, 
-so we first removed the variants associated with those subset of reference sequences. 
-This resulted in 26 813 513 variants.
+We first gathered all raw vcf files. Individuals genotyping lost 42 reference scaffolds (over 878, 4%) in few batches of individuals, which blocked the functioning of `gatk CombineVariants`. We thus removed the variants associated with these 42 reference scaffolds. We obtained 26 813 513 variants.
 
 ```{bash missingidv, eval=F, echo=T}
 mkdir out
@@ -831,7 +822,7 @@ vcftools --gzvcf reference.sequences_00.vcf.gz \
   -c > INFO.txt
 ```
 
-```{r filtersR, fig.cap="Quality, quality by depth, fisher strand and strand odd ratios per biallelic SNPs."}
+```{r filtersR, fig.cap="Quality, quality by depth, Fisher strand and strand odds ratios for biallelic SNPs."}
 filtering <- left_join(read_tsv(file.path(path, "Sequences", "variantCalling", "symcapture.vcf.stats", "missing.txt")),
           read_tsv(file.path(path, "Sequences", "variantCalling", "symcapture.vcf.stats", "QUAL.txt"))) %>% 
   left_join(read_tsv(file.path(path, "Sequences", "variantCalling", "symcapture.vcf.stats", "INFO.txt"))) %>% 
@@ -920,7 +911,7 @@ plink --threads 8 --memory 80000 \
   --out symcapture.all.biallelic.snp.filtered
 ```
 
-```{r missingIndividuals, fig.cap="Missing data statistics for filtered biallelic SNP before missing data filtering per individual."}
+```{r missingIndividuals, fig.cap="Missing data statistics for filtered biallelic SNPs before missing data filtering per individual."}
 g.het_imiss <- read_delim(file.path(path, "Sequences", "variantCalling", "filtered", 
                                     "symcapture.all.biallelic.snp.filtered.imiss"), delim = " ") %>%
   dplyr::rename_all(funs(gsub(" ", "", .))) %>% 
@@ -950,7 +941,7 @@ cowplot::plot_grid(g.het_imiss, g.pca, nrow = 2, rel_heights = c(1,2))
 ```
 
 
-```{r missingSNP, fig.cap="Missing data statistics for filtered biallelic SNP before missing data filtering per SNP."}
+```{r missingSNP, fig.cap="Missing data statistics for filtered biallelic SNPs before missing data filtering per SNP."}
 read_delim(file.path(path, "Sequences", "variantCalling", "filtered", 
                                 "symcapture.all.biallelic.snp.filtered.lmiss"), delim = " ") %>% 
   dplyr::rename_all(funs(gsub(" ", "", .))) %>%  
@@ -1003,7 +994,7 @@ plink --threads 8 --memory 80000 \
   --out symcapture.all.biallelic.snp.filtered.nonmissing
 ```
 
-```{r nonmissingIndividuals, fig.cap="Missing data statistics for filtered biallelic SNP after missing data filtering (95% for individuals and 15% for SNPs) per individual."}
+```{r nonmissingIndividuals, fig.cap="Missing data statistics for filtered biallelic SNPs after missing data filtering (95% for individuals and 15% for SNPs) per individual."}
 g.het_imiss <- read_delim(file.path(path, "Sequences", "variantCalling", "nonmissing", 
                                     "symcapture.all.biallelic.snp.filtered.nonmissing.imiss"), delim = " ") %>%
   dplyr::rename_all(funs(gsub(" ", "", .))) %>% 
@@ -1033,7 +1024,7 @@ g.pca <- read_delim(file.path(path, "Sequences", "variantCalling", "nonmissing",
 cowplot::plot_grid(g.het_imiss, g.pca, nrow = 2, rel_heights = c(1,2))
 ```
 
-```{r nonmissingSNP, fig.cap="Missing data statistics for filtered biallelic SNP after missing data filtering (95% for individuals and 15% for SNPs) per SNP."}
+```{r nonmissingSNP, fig.cap="Missing data statistics for filtered biallelic SNPs after missing data filtering (95% for individuals and 15% for SNPs) per SNP."}
 read_delim(file.path(path, "Sequences", "variantCalling", "nonmissing", 
                                 "symcapture.all.biallelic.snp.filtered.nonmissing.lmiss"), delim = " ") %>% 
   dplyr::rename_all(funs(gsub(" ", "", .))) %>%  
@@ -1065,7 +1056,7 @@ read_delim(file.path(path, "Sequences", "variantCalling", "nonmissing",
   scale_x_sqrt()
 ```
 
-```{r nonmissingHeterozigosity, fig.cap="Heterozigosity statistics for filtered biallelic SNP after missing data filtering (95% for individuals and 15% for SNPs) per SNP."}
+```{r nonmissingHeterozigosity, fig.cap="Heterozygosity statistics for filtered biallelic SNPs after missing data filtering (95% for individuals and 15% for SNPs) per SNP."}
 g.het.dens <- read_tsv(file.path(path, "Sequences", "variantCalling", "nonmissing", 
                                  "symcapture.all.biallelic.snp.filtered.nonmissing.frqx")) %>% 
   dplyr::rename(contig = CHR) %>% 
@@ -1107,7 +1098,7 @@ cowplot::plot_grid(g.het.dens, g.snp.dens, nrow = 2)
 
 ### Paracou
 
-Finally, we subseted the filtered and biallelic snp from Paracou individuals,
+Finally, we subseted the filtered and biallelic SNPs to individuals from Paracou only, 
 resulting in **385** remaining individuals (**17 lost !**).
 
 ```{bash paracou, eval=F, echo=T}

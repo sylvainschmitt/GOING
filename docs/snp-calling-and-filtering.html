@@ -24,7 +24,7 @@
 <meta name="author" content="Sylvain Schmitt" />
 
 
-<meta name="date" content="2021-03-04" />
+<meta name="date" content="2021-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -286,7 +286,7 @@ We kept only pair-end reads without adaptors and a phred score above 15 in a sli
 Seventy percent of trimmed reads mapped off-targets using <code>bwa</code> <span class="citation">(Li &amp; Durbin <a href="#ref-Li2009" role="doc-biblioref">2009</a>)</span>.
 We thus mapped trimmed reads on the hybrid reference built for the sequence capture experiment using <code>bwa</code> <span class="citation">(Li &amp; Durbin <a href="#ref-Li2009" role="doc-biblioref">2009</a>)</span>, <code>picard</code> <span class="citation">(Broad Institute <a href="#ref-BroadInstitute2018" role="doc-biblioref">2018</a>)</span>, <code>samtools</code> <span class="citation">(Li <em>et al.</em> <a href="#ref-Li2009a" role="doc-biblioref">2009</a>)</span> and <code>bedtools</code> <span class="citation">(Quinlan &amp; Hall <a href="#ref-Quinlan2010" role="doc-biblioref">2010</a>)</span>.
 We called variants for each individual using <code>HaplotypeCaller</code>, aggregated variants using <code>GenomicsDBImport</code> and jointly-genotyped individuals using <code>GenotypeGVCFs</code> all in <code>GATK4</code> software <span class="citation">(Auwera <em>et al.</em> <a href="#ref-Freksa1993" role="doc-biblioref">2013</a>)</span>.
-We filtered biallelic SNPs with a quality above 30, a quality by depth above 2, a Fisher strand bias below 60 and strand odds ratio above 3 using <code>GATK4</code> <span class="citation">(Auwera <em>et al.</em> <a href="#ref-Freksa1993" role="doc-biblioref">2013</a>)</span>.
+We filtered biallelic SNPs with a quality above 30, a quality by depth above 2, a Fisher strand bias below 60 and a strand odds ratio above 3 using <code>GATK4</code> <span class="citation">(Auwera <em>et al.</em> <a href="#ref-Freksa1993" role="doc-biblioref">2013</a>)</span>.
 Finally, we filtered individuals and SNPs for missing data with a maximum of 95% and 15% of missing data per individual and SNP, respectively, using <code>plink2</code> <span class="citation">(Chen <em>et al.</em> <a href="#ref-Chen2019" role="doc-biblioref">2019</a>)</span>.
 We obtained 454,262 biallelic SNPs over 385 individuals without outgroups, that we used for population genetic analyses.
 Since low-frequency alleles and linkage disequilibrium will bias the number of fixed loci and increase the number of false-positives in genomic scans for outliers <span class="citation">(Foll &amp; Gaggiotti <a href="#ref-Foll2008" role="doc-biblioref">2008</a>)</span>,
@@ -295,25 +295,25 @@ We further removed admixed individuals (see population genetic analyses for crit
 <div id="quality-check" class="section level2">
 <h2><span class="header-section-number">4.1</span> Quality Check</h2>
 <p>We received demultiplexed libraries from sequencing.
-We cchecked sequences quality combining already produced fastqc and compare them with originally furnished (i) baits, (ii) targets, and (iii) references:</p>
+We checked sequences quality combining already produced fastqc and compared them with originally furnished (i) baits, (ii) targets, and (iii) references:</p>
 <ol style="list-style-type: decimal">
 <li><strong>Multi Quality Check</strong>: we used <code>multiqc</code> to combined <code>fastqc</code> inputs for every library (1002 for forward and reverse individuals) and check sequences, counts, quality and GC content</li>
 <li><strong>Trimming</strong>: we trimmed sequences removing bad quality and adaptors sequences</li>
-<li><strong>Targets mapping</strong>: we mapped 10 libraries on targets to check of-targets sequences</li>
-<li><strong>Reference mapping</strong>: we mapped 10 libraries on hybrid reference to check of-reference sequences, and assess <em>de novo</em> usefulness</li>
+<li><strong>Targets mapping</strong>: we mapped 10 libraries on targets to check proportion of off-targets sequences</li>
+<li><strong>Reference mapping</strong>: we mapped 10 libraries on hybrid reference to check proportion of off-reference sequences, and assess the need for <em>de novo</em> assembly of captured sequences (in case of a high proportion of off-reference sequences)</li>
 </ol>
 <div id="multi-quality-check" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> Multi Quality Check</h3>
-<p>We used <code>multiqc</code> to combine <code>fastqc</code> inputs for every library (1002 for forward and reverse individuals) and check sequences, counts, quality and GC content.</p>
+<p>We used <code>multiqc</code> to combine <code>fastqc</code> inputs for every library (1002 for forward and reverse individuals) and checked sequences, counts, quality and GC content.</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb53-1"><a href="snp-calling-and-filtering.html#cb53-1"></a><span class="bu">cd</span> ~/Documents/BIOGECO/PhD/data/Eschweilera_Paracou/Sequences/quality</span>
 <span id="cb53-2"><a href="snp-calling-and-filtering.html#cb53-2"></a><span class="ex">multiqc</span> fastqc</span>
 <span id="cb53-3"><a href="snp-calling-and-filtering.html#cb53-3"></a><span class="fu">mkdir</span> multiqc</span>
 <span id="cb53-4"><a href="snp-calling-and-filtering.html#cb53-4"></a><span class="fu">mv</span> multiqc_data/ multiqc_report.html L1.fastqc.tar.gz L2.fastqc.tar.gz multiqc</span></code></pre></div>
 <div id="counts" class="section level4">
 <h4><span class="header-section-number">4.1.1.1</span> Counts</h4>
-<p>We had a big heterogeneity of sample representativity (215 000 folds),
+<p>We had a big heterogeneity of sample representativity (215 000 fold),
 but 85% of samples had more than 66 6667 sequences (ca 1M targets / 150 bp * 10X). Moreover, duplicated sequences were obviously more present in over-represented individuals,
-probably more linked to PCR biased than sequencing issues.</p>
+probably more linked to PCR biases than ro sequencing issues.</p>
 <div class="figure"><span id="fig:seqcounts"></span>
 <img src="GOING_files/figure-html/seqcounts-1.png" alt="Sequence counts." width="768" />
 <p class="caption">
@@ -323,7 +323,7 @@ Figure 4.1: Sequence counts.
 </div>
 <div id="quality" class="section level4">
 <h4><span class="header-section-number">4.1.1.2</span> Quality</h4>
-<p>Sequence quality was very good as the Phred score is above 25 for every bases on all positions across all sequences.</p>
+<p>Sequence quality was very good as the Phred score is above 25 for every base on all positions across all sequences.</p>
 <div class="figure"><span id="fig:phred"></span>
 <img src="data/Symphonia_Paracou/Sequences/quality/multiqc/plots/phred.png" alt="Phred score." width="695" />
 <p class="caption">
@@ -333,7 +333,7 @@ Figure 4.2: Phred score.
 </div>
 <div id="gc-content" class="section level4">
 <h4><span class="header-section-number">4.1.1.3</span> GC content</h4>
-<p>The mean GC content was 41.5 and only few sequences had non expected global content or content across the sequence.</p>
+<p>The mean GC content was 41.5 and only a few sequences had non expected global GC content or GC content across the sequence.</p>
 <div class="figure"><span id="fig:gc"></span>
 <img src="GOING_files/figure-html/gc-1.png" alt="GC content across sequences." width="768" />
 <p class="caption">
@@ -351,7 +351,7 @@ Figure 4.4: GC content within sequences.
 <div id="trimming" class="section level3">
 <h3><span class="header-section-number">4.1.2</span> Trimming</h3>
 <p>We listed all libraries in text files and trimmed all libraries with <code>trimmomatic</code> in pair end (<code>PE</code>) into paired and unpaired compressed fastq files (<code>fq.gz</code>).
-We trimmed the adaptor (<code>ILLUMINACLIP</code>) of our protocol (<code>TruSeq3-PE</code>) with a seed mismatches of 2 (mismatched count allowed),
+We trimmed the adaptor (<code>ILLUMINACLIP</code>) of our protocol (<code>TruSeq3-PE</code>) with a seed mismatch of 2 (mismatched count allowed),
 a threshold for clipping palindrome of 30 (authorized match for ligated adapters),
 a threshold for simple clip of 10 (match between adapter and sequence),
 a minimum adaptor length of 2,
@@ -360,7 +360,7 @@ We trimmed sequences on phred score with a minimum of 15 in a sliding window of 
 without trimming the beginning (<code>LEADING:X</code>) or the end (<code>TRAILING:X</code>).
 Without surprise due to the high quality check of sequencing,
 trimming resulted in 99.91% of paired trimmed reads compared to raw reads (<a href="snp-calling-and-filtering.html#fig:trimmingStat">4.5</a>).
-Thus the main issue of our dataset &lt;as more the representativity of sequences more than their quality.</p>
+Thus the main issue of our dataset was more the representativity of sequences more than their quality.</p>
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="snp-calling-and-filtering.html#cb54-1"></a><span class="kw">data.frame</span>(<span class="dt">libraries =</span> <span class="kw">list.files</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;Sequences&quot;</span>, <span class="st">&quot;raw&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb54-2"><a href="snp-calling-and-filtering.html#cb54-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">libraries =</span> <span class="kw">gsub</span>(<span class="st">&quot;_R[12].fastq.gz&quot;</span>, <span class="st">&quot;&quot;</span>, libraries)) <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb54-3"><a href="snp-calling-and-filtering.html#cb54-3"></a><span class="st">  </span><span class="kw">unique</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
@@ -405,9 +405,7 @@ Figure 4.5: Trimming results.
 </div>
 <div id="targets-mapping" class="section level3">
 <h3><span class="header-section-number">4.1.3</span> Targets mapping</h3>
-<p>We mapped 10 libraries on targets to check off-targets sequences and targets loss.
-Globally we had good coverage of targets (median of 90%, <a href="snp-calling-and-filtering.html#fig:targetsAlignmentCoverage">4.6</a>),
-but reads were 70% to 81% of-targets (<a href="snp-calling-and-filtering.html#tab:targetsAlignmentReadsMapped">4.1</a>). Consequently we could not only use targets as reference for reads mapping.</p>
+<p>We mapped every library on the hybrid reference to check off-reference sequences, and assess the need for de novo assembly, in case many sequences would not map on the reference. Globally we had a low coverage of the reference (median of 19%, Fig. <a href="snp-calling-and-filtering.html#fig:targetsAlignmentCoverage">4.6</a>) but reads were 79% to 88% on-reference (Fig. <a href="snp-calling-and-filtering.html#tab:targetsAlignmentReadsMapped">4.1</a>) ! Finally, we had a median of 4Mb covered with 10X on reference, which is 4 times what we designed in probes. Consequently, we won’t need <em>de novo</em> assembly and will proceed to read mapping for every library on the built reference, already partly annotated.</p>
 <div class="sourceCode" id="cb57"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb57-1"><a href="snp-calling-and-filtering.html#cb57-1"></a><span class="co">#!/bin/bash</span></span>
 <span id="cb57-2"><a href="snp-calling-and-filtering.html#cb57-2"></a><span class="co">#SBATCH --time=36:00:00</span></span>
 <span id="cb57-3"><a href="snp-calling-and-filtering.html#cb57-3"></a><span class="co">#SBATCH -J targetsMapping</span></span>
@@ -622,12 +620,12 @@ Figure 4.7: Reads alignment coverage on reference. Distribution has been cut at 
 </div>
 <div id="mapping" class="section level2">
 <h2><span class="header-section-number">4.2</span> Mapping</h2>
-<p>We proceeded to read mapping for every libraries on the built reference,
+<p>We proceeded to read mapping for every library on the built reference,
 already partly annotated:</p>
 <ol style="list-style-type: decimal">
-<li><strong>Repeats merging</strong>: 41 libraries were repeated, we merged their alignment to increase their information before variant calling</li>
-<li><strong>Reads mapping</strong>: we mapped every libraries in pair end with <code>bwa mem</code> on the hybrid reference from Ivan Scotti et Sana Olson used to built the targets</li>
-<li><strong>Reference sequences</strong>: we built bedtools for every alignment in order to list sequences with matches in the reference to be used to reduce explored reference area in variant calling</li>
+<li><strong>Repeats merging</strong>: 41 libraries were repeated, we merged their fastq files before mapping to increase their information before variant calling</li>
+<li><strong>Reads mapping</strong>: we mapped every library in pair end with <code>bwa mem</code> on the hybrid reference from Ivan Scotti and Sanna Olsson used to build the targets</li>
+<li><strong>Reference sequences</strong>: we built bedtools for every alignment in order to list sequences with matches in the reference to be used to reduce the explored reference area in variant calling</li>
 </ol>
 <div id="repeats-merging" class="section level3">
 <h3><span class="header-section-number">4.2.1</span> Repeats merging</h3>
@@ -666,8 +664,7 @@ Merging repeats confirmed the presence of all 430 individuals at the end of the 
 </div>
 <div id="reads-mapping" class="section level3">
 <h3><span class="header-section-number">4.2.2</span> Reads mapping</h3>
-<p>We mapped every library in pair end with <code>bwa mem</code> on the hybrid reference from Ivan Scotti et Sana Olson used to build the targets (32 alignments with 2 processes on 64 cores of 1 node of genologin).
-We had globally a good mapping with more than 80% of the reads mapped for 98% of the libraries <a href="snp-calling-and-filtering.html#fig:mappingStat">4.8</a>.</p>
+<p>We mapped every library in pair end with <code>bwa mem</code> on the hybrid reference from Ivan Scotti and Sanna Olsson used to build the targets (32 alignments with 2 processes on 64 cores of 1 node of the genologin computer cluster at Genotoul, Toulouse). We had globally a good mapping with more than 80% of the reads mapped for 98% of the libraries (Figure <a href="snp-calling-and-filtering.html#fig:mappingStat">4.8</a>).</p>
 <div class="sourceCode" id="cb60"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb60-1"><a href="snp-calling-and-filtering.html#cb60-1"></a><span class="co">#!/bin/bash</span></span>
 <span id="cb60-2"><a href="snp-calling-and-filtering.html#cb60-2"></a><span class="co">#SBATCH --time=48:00:00</span></span>
 <span id="cb60-3"><a href="snp-calling-and-filtering.html#cb60-3"></a><span class="co">#SBATCH -J mapping</span></span>
@@ -738,11 +735,9 @@ Figure 4.8: Mapping result
 </div>
 <div id="reference-sequences" class="section level3">
 <h3><span class="header-section-number">4.2.3</span> Reference sequences</h3>
-<p>We built bedtools for every alignment in order to list sequences with matches in the reference to be used to reduce explored reference areas in variant calling.
-99.98% of reference sequences had at least one library matching (<a href="snp-calling-and-filtering.html#fig:referenceSequences">4.9</a>).
-Consequently we used all sequences from the reference in the variant calling,
-besides a few sequences our libraries were under-represented,
-but they have been removed at the SNP filtering.</p>
+<p>We built bedtools for every alignment in order to list sequences with matches in the reference to be used to reduce the explored reference areas in variant calling.
+99.98% of reference sequences had at least one library matching (Fig. <a href="snp-calling-and-filtering.html#fig:referenceSequences">4.9</a>).
+Consequently we used all sequences from the reference in the variant calling. Some reference sections were underrepresented in our libraries but they have been removed at the SNP filtering stage..</p>
 <div class="sourceCode" id="cb62"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb62-1"><a href="snp-calling-and-filtering.html#cb62-1"></a><span class="co"># folders</span></span>
 <span id="cb62-2"><a href="snp-calling-and-filtering.html#cb62-2"></a><span class="fu">mkdir</span> bed</span>
 <span id="cb62-3"><a href="snp-calling-and-filtering.html#cb62-3"></a><span class="fu">mkdir</span> bed.out</span>
@@ -766,9 +761,9 @@ but they have been removed at the SNP filtering.</p>
 <span id="cb62-21"><a href="snp-calling-and-filtering.html#cb62-21"></a><span class="ex">sarray</span> -J bed -o bed.out/%j.out -e bed.out/%j.err -t 1:00:00 --mail-type=BEGIN,END,FAIL  bed.sh</span>
 <span id="cb62-22"><a href="snp-calling-and-filtering.html#cb62-22"></a><span class="fu">rm</span> -r bed.out</span></code></pre></div>
 <div class="figure"><span id="fig:referenceSequences"></span>
-<img src="images/seqAligned.png" alt="Sequences from reference alignment with reads from library." width="1050" />
+<img src="images/seqAligned.png" alt="Sequences from reference alignment with reads from all libraries." width="1050" />
 <p class="caption">
-Figure 4.9: Sequences from reference alignment with reads from library.
+Figure 4.9: Sequences from reference alignment with reads from all libraries.
 </p>
 </div>
 </div>
@@ -809,16 +804,16 @@ We used <code>sarray</code> which is much more powerful than <code>sbatch</code>
 <h3><span class="header-section-number">4.3.2</span> Data aggregation</h3>
 <p>We aggregated the GVCF files and fed them into one GVCF database with <code>GenomicsDBImport</code> to be genotyped.
 <strong>Beware</strong>, <code>GATK 4.0.0.0</code> does not deal with multiple intervals when using <code>GenomicsDBImport</code>, so we used <code>GATK 4.1.2.0</code>.
-We divided the step into several intervals files of a maximum of 1000 sequences computed in parallel to speed up the operation.
-<strong>NB</strong>, we tested the pipeline with 3 individual haplotypes and 10 intervals of 100 sequences ran in parallel; and it took 24 minutes.
+We divided the step into several interval files of a maximum of 1000 sequences computed in parallel to speed up the operation.
+<strong>NB</strong>, we tested the pipeline with 3 individual haplotypes and 10 intervals of 100 sequences run in parallel; and it took 24 minutes.
 Consequently with 10 fold more sequences per interval we may increase to 4H, and the effect of 10 fold more individual haplotypes is hard to assess.</p>
 <p>Due to a memory overload on the cluster I boosted the <code>sarray</code> to 24G per node beside limiting <code>gatk</code> java session to 20G, still the overload is strange as if <code>gatk</code> was opening a parallel session of 20G java.
 We should not decrease batch size as a batch of 50 individuals means that we will use 9 batches !
-If memory issues persist we may decrease the intervals length (currently 1000 sequences) and increase the number of jobs in <code>sarray</code>.
-We may even decrease intervals to 100 sequences resulting in more than 800 jobs and run them by batch of 100 hundreds if they are really more efficient.</p>
+If memory issues persist we may decrease the interval length (currently 1000 sequences) and increase the number of jobs in <code>sarray</code>.
+We may even decrease intervals to 100 sequences resulting in more than 800 jobs and run them by batch of 100 if they are really more efficient.</p>
 <p>Running a first batch of 10 samples on 100 sequences took 35 minutes.
 Thus 432 samples should take ca 1 day and 40 minutes.
-This is the first run of DB among 8, so in total DB built should take 8 days !
+This is the first run of DB among 8, so in total DB build should take 8 days !
 But on the other hand joint genotyping might be launched on each run as soon as they finish. So we might clean the first vcf and obtain a preview of population genetics structure with the first 100 sequences.</p>
 <div class="sourceCode" id="cb64"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb64-1"><a href="snp-calling-and-filtering.html#cb64-1"></a><span class="co"># Sample map</span></span>
 <span id="cb64-2"><a href="snp-calling-and-filtering.html#cb64-2"></a><span class="fu">touch</span> sample_map.txt</span>
@@ -867,7 +862,7 @@ But on the other hand joint genotyping might be launched on each run as soon as 
 <h3><span class="header-section-number">4.3.3</span> Joint genotyping</h3>
 <p>We joint-genotyped individuals with GenotypeGVCFs on all of them together to create the raw SNP and indel VCFs that are usually emitted by the callers.
 We divided the step into several intervals with a maximum of 1000 sequences computed in parallel to speed up the operation (similarly to the previous step).
-<strong>NB</strong>, we tested the pipeline with 3 individual haplotypes and 10 intervals of 100 sequences ran in parallel; and it took 6 minutes.
+<strong>NB</strong>, we tested the pipeline with 3 individual haplotypes and 10 intervals of 100 sequences run in parallel; and it took 6 minutes.
 Consequently with 10 fold more sequences per interval we may increase to 1H,
 and the effect of 10 fold more individual haplotypes is hard to assess.
 Then we merged genotypes of all intervals with <code>GatherVcfs</code> from <code>Picard</code> in one raw VCF to be filtered.</p>
@@ -906,20 +901,16 @@ Then we merged genotypes of all intervals with <code>GatherVcfs</code> from <cod
 <h2><span class="header-section-number">4.4</span> Variant filtering</h2>
 <p>We filtered the previously produced raw vcf with several steps:</p>
 <ul>
-<li><strong>Gather</strong> raw vcf files gathering in <strong>26 813 513</strong> variants over <strong>432</strong> individuals</li>
-<li><strong>Biallelic</strong> raw vcf filtering in <strong>19 242 294</strong> variants over <strong>432</strong> individuals</li>
-<li><strong>SNP</strong> biallelic vcf filtering in <strong>17 521 879</strong> variants over <strong>432</strong> individuals</li>
-<li><strong>Filters</strong> biallelic snp vcf filtering in <strong>15 531 866</strong> variants over <strong>432</strong> individuals</li>
-<li><strong>Missing</strong> filtered biallelic snp vcf filtering in <strong>454 262</strong> variants over <strong>406</strong> individuals</li>
-<li><strong>Paracou</strong> filtered &amp; non missing biallelic snp vcf filtering in <strong>454 262</strong> variants over <strong>385</strong> individuals</li>
+<li><strong>Gather</strong> raw vcf files which resulted in <strong>26 813 513</strong> variants over <strong>432</strong> individuals</li>
+<li><strong>Biallelic</strong> raw vcf filtering which resulted in <strong>19 242 294</strong> variants over <strong>432</strong> individuals</li>
+<li><strong>SNP</strong> biallelic vcf filtering which resulted in <strong>17 521 879</strong> variants over <strong>432</strong> individuals</li>
+<li><strong>Filters</strong> biallelic snps which resulted in <strong>15 531 866</strong> variants over <strong>432</strong> individuals</li>
+<li><strong>Missing</strong> filtered biallelic snp vcf filtering which resulted in <strong>454 262</strong> variants over <strong>406</strong> individuals</li>
+<li><strong>Paracou</strong> filtered &amp; non missing biallelic snp vcf filtering which resulted in <strong>454 262</strong> variants over <strong>385</strong> individuals</li>
 </ul>
 <div id="gather" class="section level3">
 <h3><span class="header-section-number">4.4.1</span> Gather</h3>
-<p>We first gathered all raw vcf.
-42 sequences of subset lost individuals in genotype call (over 878, 4%),
-blocking the functioning of <code>gatk CombineVariants</code>,
-so we first removed the variants associated with those subset of reference sequences.
-This resulted in 26 813 513 variants.</p>
+<p>We first gathered all raw vcf files. Individuals genotyping lost 42 reference scaffolds (over 878, 4%) in few batches of individuals, which blocked the functioning of <code>gatk CombineVariants</code>. We thus removed the variants associated with these 42 reference scaffolds. We obtained 26 813 513 variants.</p>
 <div class="sourceCode" id="cb66"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb66-1"><a href="snp-calling-and-filtering.html#cb66-1"></a><span class="fu">mkdir</span> out</span>
 <span id="cb66-2"><a href="snp-calling-and-filtering.html#cb66-2"></a><span class="fu">mkdir</span> missing_ind</span>
 <span id="cb66-3"><a href="snp-calling-and-filtering.html#cb66-3"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> symcapture.filtered.vcf/*.vcf.gz<span class="va">)</span> <span class="kw">;</span> <span class="kw">do</span> <span class="va">file=$(</span><span class="fu">basename</span> <span class="va">$file)</span> ; <span class="va">file=${file%</span>.*<span class="va">}</span> ; <span class="bu">echo</span> <span class="st">&quot;module load bioinfo/tabix-0.2.5 ; module load bioinfo/vcftools-0.1.15 ; vcftools --gzvcf symcapture.filtered.vcf/</span><span class="va">$file</span><span class="st">.gz --missing-indv -c &gt; missing_ind/</span><span class="va">$file</span><span class="st">.missing.txt&quot;</span><span class="kw">;</span> <span class="kw">done</span> <span class="op">&gt;</span> <span class="ex">missingInd.sh</span></span>
@@ -980,9 +971,9 @@ using next histograms to set and test parameters values :</p>
 <span id="cb70-9"><a href="snp-calling-and-filtering.html#cb70-9"></a>  --get-INFO SOR \</span>
 <span id="cb70-10"><a href="snp-calling-and-filtering.html#cb70-10"></a>  -c <span class="op">&gt;</span> INFO.txt</span></code></pre></div>
 <div class="figure"><span id="fig:filtersR"></span>
-<img src="GOING_files/figure-html/filtersR-1.png" alt="Quality, quality by depth, fisher strand and strand odd ratios per biallelic SNPs." width="768" />
+<img src="GOING_files/figure-html/filtersR-1.png" alt="Quality, quality by depth, Fisher strand and strand odds ratios for biallelic SNPs." width="768" />
 <p class="caption">
-Figure 4.10: Quality, quality by depth, fisher strand and strand odd ratios per biallelic SNPs.
+Figure 4.10: Quality, quality by depth, Fisher strand and strand odds ratios for biallelic SNPs.
 </p>
 </div>
 <div class="sourceCode" id="cb71"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb71-1"><a href="snp-calling-and-filtering.html#cb71-1"></a><span class="ex">module</span> load bioinfo/gatk-4.1.2.0</span>
@@ -1018,15 +1009,15 @@ So we needed to choose a threshold for missing data for individuals <code>--mind
 <span id="cb72-11"><a href="snp-calling-and-filtering.html#cb72-11"></a>  --allow-extra-chr --missing --het --freq --pca --freqx \</span>
 <span id="cb72-12"><a href="snp-calling-and-filtering.html#cb72-12"></a>  --out symcapture.all.biallelic.snp.filtered</span></code></pre></div>
 <div class="figure"><span id="fig:missingIndividuals"></span>
-<img src="GOING_files/figure-html/missingIndividuals-1.png" alt="Missing data statistics for filtered biallelic SNP before missing data filtering per individual." width="768" />
+<img src="GOING_files/figure-html/missingIndividuals-1.png" alt="Missing data statistics for filtered biallelic SNPs before missing data filtering per individual." width="768" />
 <p class="caption">
-Figure 4.11: Missing data statistics for filtered biallelic SNP before missing data filtering per individual.
+Figure 4.11: Missing data statistics for filtered biallelic SNPs before missing data filtering per individual.
 </p>
 </div>
 <div class="figure"><span id="fig:missingSNP"></span>
-<img src="GOING_files/figure-html/missingSNP-1.png" alt="Missing data statistics for filtered biallelic SNP before missing data filtering per SNP." width="768" />
+<img src="GOING_files/figure-html/missingSNP-1.png" alt="Missing data statistics for filtered biallelic SNPs before missing data filtering per SNP." width="768" />
 <p class="caption">
-Figure 4.12: Missing data statistics for filtered biallelic SNP before missing data filtering per SNP.
+Figure 4.12: Missing data statistics for filtered biallelic SNPs before missing data filtering per SNP.
 </p>
 </div>
 </div>
@@ -1048,27 +1039,27 @@ we obtained <strong>454 262</strong> biallelic filtered snps for <strong>406</st
 <span id="cb73-12"><a href="snp-calling-and-filtering.html#cb73-12"></a>  --allow-extra-chr --missing --het --freqx --pca \</span>
 <span id="cb73-13"><a href="snp-calling-and-filtering.html#cb73-13"></a>  --out symcapture.all.biallelic.snp.filtered.nonmissing</span></code></pre></div>
 <div class="figure"><span id="fig:nonmissingIndividuals"></span>
-<img src="GOING_files/figure-html/nonmissingIndividuals-1.png" alt="Missing data statistics for filtered biallelic SNP after missing data filtering (95% for individuals and 15% for SNPs) per individual." width="768" />
+<img src="GOING_files/figure-html/nonmissingIndividuals-1.png" alt="Missing data statistics for filtered biallelic SNPs after missing data filtering (95% for individuals and 15% for SNPs) per individual." width="768" />
 <p class="caption">
-Figure 4.13: Missing data statistics for filtered biallelic SNP after missing data filtering (95% for individuals and 15% for SNPs) per individual.
+Figure 4.13: Missing data statistics for filtered biallelic SNPs after missing data filtering (95% for individuals and 15% for SNPs) per individual.
 </p>
 </div>
 <div class="figure"><span id="fig:nonmissingSNP"></span>
-<img src="GOING_files/figure-html/nonmissingSNP-1.png" alt="Missing data statistics for filtered biallelic SNP after missing data filtering (95% for individuals and 15% for SNPs) per SNP." width="768" />
+<img src="GOING_files/figure-html/nonmissingSNP-1.png" alt="Missing data statistics for filtered biallelic SNPs after missing data filtering (95% for individuals and 15% for SNPs) per SNP." width="768" />
 <p class="caption">
-Figure 4.14: Missing data statistics for filtered biallelic SNP after missing data filtering (95% for individuals and 15% for SNPs) per SNP.
+Figure 4.14: Missing data statistics for filtered biallelic SNPs after missing data filtering (95% for individuals and 15% for SNPs) per SNP.
 </p>
 </div>
 <div class="figure"><span id="fig:nonmissingHeterozigosity"></span>
-<img src="GOING_files/figure-html/nonmissingHeterozigosity-1.png" alt="Heterozigosity statistics for filtered biallelic SNP after missing data filtering (95% for individuals and 15% for SNPs) per SNP." width="768" />
+<img src="GOING_files/figure-html/nonmissingHeterozigosity-1.png" alt="Heterozygosity statistics for filtered biallelic SNPs after missing data filtering (95% for individuals and 15% for SNPs) per SNP." width="768" />
 <p class="caption">
-Figure 4.15: Heterozigosity statistics for filtered biallelic SNP after missing data filtering (95% for individuals and 15% for SNPs) per SNP.
+Figure 4.15: Heterozygosity statistics for filtered biallelic SNPs after missing data filtering (95% for individuals and 15% for SNPs) per SNP.
 </p>
 </div>
 </div>
 <div id="paracou" class="section level3">
 <h3><span class="header-section-number">4.4.7</span> Paracou</h3>
-<p>Finally, we subseted the filtered and biallelic snp from Paracou individuals,
+<p>Finally, we subseted the filtered and biallelic SNPs to individuals from Paracou only,
 resulting in <strong>385</strong> remaining individuals (<strong>17 lost !</strong>).</p>
 <div class="sourceCode" id="cb74"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb74-1"><a href="snp-calling-and-filtering.html#cb74-1"></a><span class="ex">module</span> load bioinfo/plink2-v2.0_alpha2</span>
 <span id="cb74-2"><a href="snp-calling-and-filtering.html#cb74-2"></a><span class="fu">mkdir</span> paracou</span>

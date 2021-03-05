@@ -1169,7 +1169,7 @@ picogreen2 %>%
 
 ### DNA dosage 2
 
-```{r PicoGreen2, fig.cap="Reampified sampled dosage by PicoGreen (concentration in ng.uL)."}
+```{r PicoGreen2, fig.cap="Reamplified samples dosed using PicoGreen (concentration in ng.uL)."}
 picogreen2 <- read_csv(file.path(path, "QuantIt", 
                    "SYMCAPTURE_PicoGreen_A3_fluo.csv"), skip = 52)[2:4] %>% 
   dplyr::rename(position = Well, fluo = `dosage_fluo_384_CB:485,520`) %>% 
@@ -1251,7 +1251,7 @@ repetitions %>%
   kable_styling(full_width = F)
 ```
 
-```{r P6reorganizationFig, fig.cap="Original position of plate 6.1 and 6.2 reorganization in 6.3."}
+```{r P6reorganizationFig, fig.cap="Original position of plates 6.1 and 6.2 reorganized plate 6.3."}
 repetitions %>% 
   select(LibraryRep_Position, ExtractionRep_Position, Final_Position) %>% 
   dplyr::rename(P6.1 = LibraryRep_Position, P6.2 = ExtractionRep_Position, P6.3 = Final_Position) %>% 
@@ -1271,11 +1271,11 @@ repetitions %>%
 
 ### Pool building
 
-Due to non uniformity of fragment size, 
-re-extracted samples from P6 (P6.2) have been treated in a single separated reaction (so 15 remaining). 
-All other samples have been pulled by batches of 32 following plate order.
-We wanted 100 to 500 ng of DNA per reaction, and the reaction with the least samples had 16 samples. 
-Consequently we used 15 ng of each sample, resulting in 240 to 645 ng of DNA per sample (but we may lose material in purification, so we aimed for extra). 
+Due to non-uniformity of fragment size, 
+re-extracted samples from P6 (P6.2) have been pooled into a single separated pool for the capture reaction (in total, we do 16 capture reactions on pooled samples, therefore we still have to constitute the 15 remaining pools).
+All other samples have been pooled by batches of 32 using the plate order illustrated in FIgure \@ref(fig:captureReactions).
+We wanted 100 to 500 ng of DNA per reaction, and the reaction with the lowest number of samples had 16 samples. 
+Consequently we used 15 ng of each sample, resulting in 240 to 645 ng of DNA per pool (but we may lose material in purification, so we aimed for extra). 
 Samples reaching to high concentration, 
 for which we should sample less than 0.5 $\mu L$ have been diluted 2 to 4 times.
 
@@ -1381,7 +1381,7 @@ nanodrop <- read.delim2(file.path(path, "NanoDrop", "Capture", "SYMCAPTURE_NanoD
   dplyr::select(Reaction, Plate, Position, Concentration, Volume, DNA)
 ```
 
-```{r NanoDropC1Fig, fig.cap="Reactions DNA content assessed by NanoDrop."}
+```{r NanoDropC1Fig, fig.cap="DNA content of library pools assessed by NanoDrop."}
 nanodrop %>% 
   mutate(row = substr(Position, 1, 1)) %>% 
   mutate(col = substr(Position, 2, 3)) %>% 
@@ -1409,8 +1409,8 @@ nanodrop %>%
 
 ### Size assessment
 
-We had an heterogeneity of fragments size distribution among pools with a large spectrum (Fig. \@ref(fig:TapeStation)). 
-We used TapeStation to select fragments between 330 and 700 bp.
+We had a heterogeneity of fragment size distribution among pools with a large spectrum (Fig. \@ref(fig:TapeStation)). 
+We used a TapeStation to select fragments between 330 and 700 bp.
 
 ```{r TapeStation, fig.cap="Pools size assessment."}
 knitr::include_graphics("images/TapeStation.png")
@@ -1459,7 +1459,7 @@ data.frame(
   mutate(DNA0 = rep(c(1748, 978, 1177, 1028)/2,2)) %>% 
   mutate(Drop = round(DNA0/DNA)) %>% 
   filter(!is.na(DNA)) %>% 
-  kable(caption = "Pool of pools result.",
+  kable(caption = "Concentrations for pools of library pools.",
         col.names = c("Pool", "Repetition", "Volume ($\\mu L$)", 
                       "Concentration ($ng. \\mu L^{-1}$)", "DNA ($ng$)", 
                       "DNA origin ($ng$)", "Loss factor"),
@@ -1473,10 +1473,10 @@ knitr::include_graphics("images//TapeStationPoolOfPools1.png")
 
 ### Capture
 
-We split the 4 pools in 16 reactions (4 replicates for each) and realized the capture following [ArborScience protocol](https://arborbiosci.com/wp-content/uploads/2018/04/myBaits-Manual-v4.pdf). After amplification we obtained between 227 and 987 ng of DNA per pool assessed by Qubit (with the four replicates summed, Table \@ref(tab:QubitCapture)). 
-We then pooled back the reaction, assessed their concentration by qPCR and adjust final samples for sequencing by an equimolar pooling Pool 1 and 2 and 3 and 4 together. 
+We split the 4 pools in 16 reactions (4 replicate capture reactions for each pool) and conducted the capture following [ArborScience protocol](https://arborbiosci.com/wp-content/uploads/2018/04/myBaits-Manual-v4.pdf). After amplification we obtained between 227 and 987 ng of DNA per pool assessed by Qubit (with the four replicates summed, Table \@ref(tab:QubitCapture)). 
+We then pooled back the capture reactions, assessed their concentration by qPCR and adjusted final samples for sequencing by an equimolar pooling Pools 1 and 2, and 3 and 4 together. 
 We thus obtained 22 $\mu L$ of Lane 1 at $7.19~nM$ and 19 $\mu L$ of Lane 2 at $10.18~nM$ ([see google sheets for more details](https://docs.google.com/spreadsheets/d/1gdmz0qpck8b5sfThmtcSo_sRkU8Vu_2ifrm8B3b_YYk/edit?usp=sharing)). 
-The material has been sent to the Genotoul Get team for sequencing on Illumina HiSeq 4000 on two lanes of pair-ends 150 bp sequences.
+The material has been sent to the Genotoul Get team for sequencing on an Illumina HiSeq 3000 on two lanes of pair-ends 150 bp sequences.
 
 ```{r QubitCapture}
 data.frame(
