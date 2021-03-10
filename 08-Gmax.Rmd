@@ -20,19 +20,19 @@ path <- "data/Symphonia_Paracou/Sequences/populationGenomics/"
 # Neutral and adaptive genetic variation effect on individual growth
 
 We investigated effects of ecological and evolutionary processes on individual growth, using genetic species and kinship.
-The individual growth of individual $i$ in population $p$ between individual recruitment $y_0$ and 2017, correspond to the difference of DBH between the two years, and is defined with a hierarchical model in a lognormal distribution as follow:
+The individual growth of individual $i$ in population $p$ between individual recruitment $y_0$ and 2017, corresponds to the difference of DBH between the two years, and is defined with a hierarchical model in a lognormal distribution as follows:
 
 $$DBH_{y=2017,p,i} - DBH_{y=y0,p,i} \sim logN(log[\sum_{y=y0}^{y=2017}AGR(DBH_{y,p,i})], \sigma^2_1)$$
 
 where the difference of DBH $DBH_{y=2017,p,i}-DBH_{y=y_0,p,i}$ is defined with a lognormal distribution located on the logarithm of the sum of annual growth rates $AGR$ during the period $y_0-2017$ and of shape $\sigma_1$. 
-The annual growth rates $AGR$ for individual $i$ in population $p$ at year $y$ with a diameter of $DBH_{y,p,i}$ is defined following a Gompertz model [@Gompertz1825] already identified as the best model for growth-trajectories in Paracou [@Herault2011]:
+The annual growth rate $AGR$ for individual $i$ in population $p$ at year $y$ with a diameter of $DBH_{y,p,i}$ is defined following a Gompertz model [@Gompertz1825] already identified as the best model for growth-trajectories in Paracou [@Herault2011]:
 
 $$AGR(DBH_{y,p,i}) = Gmax_i.exp(-\frac12[\frac{log(\frac{DBH_{y,p,i}}{Doptp})}{Ksp}]^2)$$
 
 where $Gmax_i$ is the maximum growth potential (maximal AGR during individual life) for individual $i$, 
-$Dopt_p$ is the population optimal diameter at which the individual reach its maximum growth potential, 
+$Dopt_p$ is the population optimal diameter at which the individual reaches its maximum growth potential, 
 and $Ks_p$ is the population kurtosis defining the width of the bell-shaped growth-trajectory [see figure 1 in @Herault2011]. 
-To ease model inference population optimal diameter $Dopt_p$ and kurtosis $Ks_p$ were defined as random population effect centered on a global $Dopt$ and $Ks$ with corresponding variances $\sigma^2_{P,Dopt}$ and $\sigma^2_{P,Ks}$. 
+To ease model inference, population optimal diameter $Dopt_p$ and kurtosis $Ks_p$ were defined as random population effects centered on a global $Dopt$ and $Ks$ with corresponding variances $\sigma^2_{P,Dopt}$ and $\sigma^2_{P,Ks}$. 
 Individual $i$ maximum growth potential $Gmax_i$ was defined in a nested Animal model with a lognormal distribution:
 
 $$Gmax_i \sim logN(log(Gmax_p.a_i), \sigma_{R,Gmax})$$
@@ -189,7 +189,7 @@ We used the following growth model with a lognormal distribution to estimate ind
   (\#eq:gmaxgenoth)
 \end{equation} 
 
-We fitted the equivalent model with following priors:
+We fitted the equivalent model with the following priors:
 
 \begin{equation} 
   DBH_{y=today,p,i}  - DBH_{y=y0,p,i} \sim \\
@@ -231,7 +231,7 @@ broom.mixed::tidyMCMC(fitGmaxGeno, pars = c("thetap1", "theta2", "theta3",
                       "Expected", "$\\hat R$"))
 ```
 
-```{r gmaxgenoTrace, fig.cap="Parameters for Growth & Animal model trace plot and expected value in red."}
+```{r gmaxgenoTrace, fig.cap="Parameters for Growth & Animal model: trace plots and expected values in red."}
 mcmc_trace(as.array(fitGmaxGeno, pars = c("thetap1", "theta2", "theta3",
                                           "Vp", "Vg", "Vr")), 
            np = nuts_params(fitGmaxGeno)) +
@@ -256,7 +256,7 @@ We used the following growth model with a lognormal distribution to estimate ind
   (\#eq:gmaxgeno)
 \end{equation} 
 
-We fitted the equivalent model with following priors:
+We fitted the equivalent model with the following priors:
 
 \begin{equation} 
   DBH_{y=today,p,i}  - DBH_{y=y0,p,i} \sim \\
@@ -304,7 +304,7 @@ broom.mixed::tidyMCMC(fitGmaxGeno, pars = c("thetap1", "theta2", "theta3", "sigm
                       "$\\hat R$", "$N_{eff}$"))
 ```
 
-```{r gmaxgenoParTrace, fig.cap="Traceplot of model parameters."}
+```{r gmaxgenoParTrace, fig.cap="Trace plots of model parameters."}
 mcmc_trace(as.array(fitGmaxGeno, 
                     pars = c("thetap1", "theta2", "theta3", "sigma", "lp__")),
            np = nuts_params(fitGmaxGeno)) +
@@ -315,7 +315,7 @@ mcmc_trace(as.array(fitGmaxGeno,
 mcmc_nuts_energy(nuts_params(fitGmaxGeno))
 ```
 
-```{r gmaxgeno1ParPred, fig.cap="Species predicted growth curve."}
+```{r gmaxgeno1ParPred, fig.cap="Species predicted growth curves."}
 ggplot(data.frame(DBH = 0:200, AGR = 2), aes(x = DBH, y = AGR)) +
   geom_vline(xintercept = mdata$DBH0, alpha = 0.1) +
   stat_function(aes(col = "S. globulifera Paracou"), fun = function(.x) 

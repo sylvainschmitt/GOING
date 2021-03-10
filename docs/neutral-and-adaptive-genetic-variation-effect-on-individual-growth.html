@@ -24,7 +24,7 @@
 <meta name="author" content="Sylvain Schmitt" />
 
 
-<meta name="date" content="2021-03-05" />
+<meta name="date" content="2021-03-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -282,15 +282,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="neutral-and-adaptive-genetic-variation-effect-on-individual-growth" class="section level1">
 <h1><span class="header-section-number">Chapter 7</span> Neutral and adaptive genetic variation effect on individual growth</h1>
 <p>We investigated effects of ecological and evolutionary processes on individual growth, using genetic species and kinship.
-The individual growth of individual <span class="math inline">\(i\)</span> in population <span class="math inline">\(p\)</span> between individual recruitment <span class="math inline">\(y_0\)</span> and 2017, correspond to the difference of DBH between the two years, and is defined with a hierarchical model in a lognormal distribution as follow:</p>
+The individual growth of individual <span class="math inline">\(i\)</span> in population <span class="math inline">\(p\)</span> between individual recruitment <span class="math inline">\(y_0\)</span> and 2017, corresponds to the difference of DBH between the two years, and is defined with a hierarchical model in a lognormal distribution as follows:</p>
 <p><span class="math display">\[DBH_{y=2017,p,i} - DBH_{y=y0,p,i} \sim logN(log[\sum_{y=y0}^{y=2017}AGR(DBH_{y,p,i})], \sigma^2_1)\]</span></p>
 <p>where the difference of DBH <span class="math inline">\(DBH_{y=2017,p,i}-DBH_{y=y_0,p,i}\)</span> is defined with a lognormal distribution located on the logarithm of the sum of annual growth rates <span class="math inline">\(AGR\)</span> during the period <span class="math inline">\(y_0-2017\)</span> and of shape <span class="math inline">\(\sigma_1\)</span>.
-The annual growth rates <span class="math inline">\(AGR\)</span> for individual <span class="math inline">\(i\)</span> in population <span class="math inline">\(p\)</span> at year <span class="math inline">\(y\)</span> with a diameter of <span class="math inline">\(DBH_{y,p,i}\)</span> is defined following a Gompertz model <span class="citation">(Gompertz <a href="#ref-Gompertz1825" role="doc-biblioref">1825</a>)</span> already identified as the best model for growth-trajectories in Paracou <span class="citation">(Hérault <em>et al.</em> <a href="#ref-Herault2011" role="doc-biblioref">2011</a>)</span>:</p>
+The annual growth rate <span class="math inline">\(AGR\)</span> for individual <span class="math inline">\(i\)</span> in population <span class="math inline">\(p\)</span> at year <span class="math inline">\(y\)</span> with a diameter of <span class="math inline">\(DBH_{y,p,i}\)</span> is defined following a Gompertz model <span class="citation">(Gompertz <a href="#ref-Gompertz1825" role="doc-biblioref">1825</a>)</span> already identified as the best model for growth-trajectories in Paracou <span class="citation">(Hérault <em>et al.</em> <a href="#ref-Herault2011" role="doc-biblioref">2011</a>)</span>:</p>
 <p><span class="math display">\[AGR(DBH_{y,p,i}) = Gmax_i.exp(-\frac12[\frac{log(\frac{DBH_{y,p,i}}{Doptp})}{Ksp}]^2)\]</span></p>
 <p>where <span class="math inline">\(Gmax_i\)</span> is the maximum growth potential (maximal AGR during individual life) for individual <span class="math inline">\(i\)</span>,
-<span class="math inline">\(Dopt_p\)</span> is the population optimal diameter at which the individual reach its maximum growth potential,
+<span class="math inline">\(Dopt_p\)</span> is the population optimal diameter at which the individual reaches its maximum growth potential,
 and <span class="math inline">\(Ks_p\)</span> is the population kurtosis defining the width of the bell-shaped growth-trajectory <span class="citation">(see figure 1 in Hérault <em>et al.</em> <a href="#ref-Herault2011" role="doc-biblioref">2011</a>)</span>.
-To ease model inference population optimal diameter <span class="math inline">\(Dopt_p\)</span> and kurtosis <span class="math inline">\(Ks_p\)</span> were defined as random population effect centered on a global <span class="math inline">\(Dopt\)</span> and <span class="math inline">\(Ks\)</span> with corresponding variances <span class="math inline">\(\sigma^2_{P,Dopt}\)</span> and <span class="math inline">\(\sigma^2_{P,Ks}\)</span>.
+To ease model inference, population optimal diameter <span class="math inline">\(Dopt_p\)</span> and kurtosis <span class="math inline">\(Ks_p\)</span> were defined as random population effects centered on a global <span class="math inline">\(Dopt\)</span> and <span class="math inline">\(Ks\)</span> with corresponding variances <span class="math inline">\(\sigma^2_{P,Dopt}\)</span> and <span class="math inline">\(\sigma^2_{P,Ks}\)</span>.
 Individual <span class="math inline">\(i\)</span> maximum growth potential <span class="math inline">\(Gmax_i\)</span> was defined in a nested Animal model with a lognormal distribution:</p>
 <p><span class="math display">\[Gmax_i \sim logN(log(Gmax_p.a_i), \sigma_{R,Gmax})\]</span>
 <span class="math display">\[a_i \sim MVlogN(log(1), \sigma_{G,Gmax}.K)\]</span></p>
@@ -343,7 +343,7 @@ We used Bayesian inference with No-U-Turn Sampler <span class="citation">(NUTS, 
   a_{1,i} \sim \mathcal{MVlogN}(log(1), \sigma_5.K)
   \tag{7.1}
 \end{equation}\]</span></p>
-<p>We fitted the equivalent model with following priors:</p>
+<p>We fitted the equivalent model with the following priors:</p>
 <p><span class="math display" id="eq:gmaxgenothstan">\[\begin{equation} 
   DBH_{y=today,p,i}  - DBH_{y=y0,p,i} \sim \\
   \mathcal{logN} (log(\sum _{y=y_0} ^{y=today} \hat{\theta_{1,p,i}}.exp(-\frac12.[\frac{log(\frac{DBH_{y,p,i}}{100.\hat{\theta_{2,p}}})}{\hat{\theta_{3,p}}}]^2)), \sigma_1) \\ 
@@ -527,9 +527,9 @@ Vr
 </tbody>
 </table>
 <div class="figure"><span id="fig:gmaxgenoTrace"></span>
-<img src="GOING_files/figure-html/gmaxgenoTrace-1.png" alt="Parameters for Growth &amp; Animal model trace plot and expected value in red." width="768" />
+<img src="GOING_files/figure-html/gmaxgenoTrace-1.png" alt="Parameters for Growth &amp; Animal model: trace plots and expected values in red." width="768" />
 <p class="caption">
-Figure 7.1: Parameters for Growth &amp; Animal model trace plot and expected value in red.
+Figure 7.1: Parameters for Growth &amp; Animal model: trace plots and expected values in red.
 </p>
 </div>
 </div>
@@ -545,7 +545,7 @@ Figure 7.1: Parameters for Growth &amp; Animal model trace plot and expected val
   a_{1,i} \sim \mathcal{MVlogN}(log(1), \sigma_5.K)
   \tag{7.3}
 \end{equation}\]</span></p>
-<p>We fitted the equivalent model with following priors:</p>
+<p>We fitted the equivalent model with the following priors:</p>
 <p><span class="math display" id="eq:gmaxgenostan">\[\begin{equation} 
   DBH_{y=today,p,i}  - DBH_{y=y0,p,i} \sim \\
   \mathcal{logN} (log(\sum _{y=y_0} ^{y=today} \hat{\theta_{1,p,i}}.exp(-\frac12.[\frac{log(\frac{DBH_{y,p,i}}{100.\hat{\theta_{2,p}}})}{\hat{\theta_{3,p}}}]^2)), \sigma_1) \\ 
@@ -763,9 +763,9 @@ sigma[5]
 </tbody>
 </table>
 <div class="figure"><span id="fig:gmaxgenoParTrace"></span>
-<img src="GOING_files/figure-html/gmaxgenoParTrace-1.png" alt="Traceplot of model parameters." width="768" />
+<img src="GOING_files/figure-html/gmaxgenoParTrace-1.png" alt="Trace plots of model parameters." width="768" />
 <p class="caption">
-Figure 7.2: Traceplot of model parameters.
+Figure 7.2: Trace plots of model parameters.
 </p>
 </div>
 <div class="figure"><span id="fig:gmaxgenoParEnergy"></span>
@@ -775,9 +775,9 @@ Figure 7.3: Energy of the model.
 </p>
 </div>
 <div class="figure"><span id="fig:gmaxgeno1ParPred"></span>
-<img src="GOING_files/figure-html/gmaxgeno1ParPred-1.png" alt="Species predicted growth curve." width="768" />
+<img src="GOING_files/figure-html/gmaxgeno1ParPred-1.png" alt="Species predicted growth curves." width="768" />
 <p class="caption">
-Figure 7.4: Species predicted growth curve.
+Figure 7.4: Species predicted growth curves.
 </p>
 </div>
 <div class="figure"><span id="fig:GmaxGenoR2"></span>

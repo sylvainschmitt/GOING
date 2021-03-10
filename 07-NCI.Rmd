@@ -22,11 +22,11 @@ path <- "data/Symphonia_Paracou/Sequences/populationGenomics/"
 # Neighbourhood crowding effect on neutral and adaptive genetic variation
 
 We did environmental association analyses [@Rellstab2015a] in each complex using general linear mixed models developed for genome wide association studies (GWAS). 
-We used mean neighbourhood crowding index [$NCI$; @Uriarte2004] over the last 30 years,
+We used the mean neighbourhood crowding index [$NCI$; @Uriarte2004] over the last 30 years,
 an indirect measurement of access to light and forest gap dynamics, 
 as the response variable and genetic structure (gene pools representing species) and relatedness (kinship matrix) as explanatory variables, as it is common practice [@Rellstab2015a]. 
-This analysis assumed that the neighbour crowding conditions where individuals have grown above 10-cm DBH are strongly correlated to the individual heritable phenotypes [e.g. @Eckert2010]. 
-The mean neighborhood crowding index $NCI_i$ from tree individual $i$ was calculated as follows:
+This analysis assumed that the neighbourhood crowding conditions where individuals have grown above 10-cm DBH are strongly correlated to the individual heritable phenotypes [e.g. @Eckert2010]. 
+The mean neighbourhood crowding index $NCI_i$ from tree individual $i$ was calculated as follows:
 
 $$NCI_i=\overline{\sum_{j|\delta_{i,j}<20m}DBH^2_{j,t}.e^{-\frac14\delta_{i,j}}}$$
 
@@ -36,7 +36,7 @@ The power of neighbours $DBH_{j,t}$ effect was set to 2 to represent a surface.
 The decrease of neighbours' diameter effect with distance was set to -0.25 to represent trees at 20 meters of the focal trees having 1% of the effect of the same tree at 0 meters. 
 $NCI_i$ is computed as the mean of yearly $NCI_{i,t}$ over the last 30 years denoted by the overline.
 
-We used genetic species and individual kinship in an animal model [@Wilson2010] to estimate genetic variance associated with neighbour crowding index.
+We used genetic species and individual kinship in an animal model [@Wilson2010] to estimate genetic variance associated with neighbourhood crowding index.
 We used a lognormal likelihood given that distributions of environmental variables were positive and skewed.
 We inferred individual kinship using KING [@Manichaikul2010], as the method is robust to population structure. 
 We set negative kinship values to null as they were confounding with population structure, and we further ensured that the matrix was positive-definite using the `nearPD`  function from the R package `Matrix`.
@@ -48,11 +48,11 @@ $$a_{i} \sim MVlogN_N(log(1),\sigma^2_2.K)$$
 where $\mu_s$ is the mean environment of species $s$, $a_i$ is the breeding value of the individual $i$ and $\sigma^2_1$ is the shape parameter of the lognormal. 
 Individual breeding values $a_i$ are defined following a multivariate lognormal law $\mathcal{MVlogN}$ of co-shape matrix defined as the product of the kinship matrix $K$ with estimated individual genotypic variation $\sigma^2_2$.
 To estimate variances on a normal scale, we log-transformed species fixed effect, genetic additive values, and we calculated conditional and marginal $R^2$ [@Nakagawa2013].
-A Bayesian method was used to infer parameters using `stan` language [@Carpenter2017 and `rstan` package [@Team2018] in the R environment [@RCoreTeam2020] using the No-U-Turn Sampler algorithm [NUTS, @Hoffman2014], which performs better for estimating genetic parameters and breeding values [@Nishio2019].
+A Bayesian method was used to infer parameters using `stan` language [@Carpenter2017 and the `rstan` package [@Team2018] in the R environment [@RCoreTeam2020] using the No-U-Turn Sampler algorithm [NUTS, @Hoffman2014], which performs better for estimating genetic parameters and breeding values [@Nishio2019].
 
 ## Simulated Animal Model
 
-The aim of this subchapter is to explore the animal model with generated data to validate their behavior and use it on *Symphonia* real data. 
+The aim of this subchapter is to explore the animal model with generated data to validate their behaviour and use it on *Symphonia* real data. 
 Let's consider a set of $P=3$ populations including each $Fam=3$ families composed of $I = 14$ individuals with arbitrary relationships (it's only 126 individuals to do quick tests).
 
 ```{r simkinship, fig.cap="Kinship matrix"}
@@ -115,7 +115,7 @@ simAnimal <- function(
 }
 ```
 
-We fitted the equivalent model with following priors:
+We fitted the equivalent model with the following priors:
 
 \begin{equation} 
   y_{p,i} \sim \mathcal{logN}(log(\mu_p.\hat{a_{i}}), \sigma_1) \\ 
@@ -149,7 +149,7 @@ broom.mixed::tidyMCMC(fitAnimal, pars = c("mu", "Vp", "Vg", "Vr", "lp__"),
                       "Standard error", "$\\hat R$"))
 ```
 
-```{r animalTrace, fig.cap="Parameters for Animal model trace plot and expected value in red."}
+```{r animalTrace, fig.cap="Parameters for the Animal model: trace plot and expected value in red."}
 mcmc_trace(as.array(fitAnimal, pars = c("mu", "Vp", "Vg", "Vr", "lp__")),
            np = nuts_params(fitAnimal)) +
   geom_hline(aes(yintercept = expected), col = "red", 
@@ -229,8 +229,8 @@ save(mdata, file = file.path("save", 'dataEnv.Rdata'))
 
 ## Genetic variance
 
-We used between individual kinship and a lognormal Animal model [@Wilson2010] to estimate genetic variance associated to individuals' global phenotype leaving in a given environment [see environmental association analyses with genome wide association study analyses in @Rellstab2015a]. 
-Animal model is calculated for the environmental values $y$ of the $N$ individuals with following formula:
+We used between individual kinship and a lognormal Animal model [@Wilson2010] to estimate genetic variance associated to individuals' global phenotype living in a given environment [see environmental association analyses with genome wide association study analyses in @Rellstab2015a]. 
+The animal model is calculated for the environmental values $y$ of the $N$ individuals with the following formula:
 
 \begin{equation} 
   y_{p,i} \sim \mathcal{logN}(log(a_{p,i}),\sigma_1) \\
@@ -238,7 +238,7 @@ Animal model is calculated for the environmental values $y$ of the $N$ individua
   (\#eq:animalenv)
 \end{equation} 
 
-where individual is defined as a normal law centered on the individual genetic additive effects $a$ and associated individual remaining variance $\sigma_R$. Additive genetic variance $a$ follow a multivariate lognormal law centered on the population mean $\mu_{Population}$ of covariance $\sigma_G K$.
+where individual is defined as a normal law centered on the individual genetic additive effects $a$ and associated individual remaining variance $\sigma_R$. Additive genetic variance $a$ follows a multivariate lognormal law centered on the population mean $\mu_{Population}$ of covariance $\sigma_G K$.
 
 We fitted the equivalent model with following priors:
 
