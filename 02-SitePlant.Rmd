@@ -10,7 +10,7 @@ The site comprises 16 permanent plots (fifteen 6.25 ha plus one 25 ha) which hav
 ## Plant material
 
 Four hundred and two individuals of *Symphonia globulifera* (Clusiaceae) were sampled in 2017 during the dry season (from September to December) in Paracou.
-*Symphonia globulifera* L.f (Clusiaceae) was previously recognized as composed of two morphotypes in French Guiana [@Ferry2007; @Molino2001; @Sabatier1997].
+*Symphonia globulifera* L.f (Clusiaceae) was previously recognized as composed of two morphotypes in French Guiana [@Baraloto2007; @Molino2001; @Sabatier1997].
 *S. globulifera sensu stricto* and *Symphonia sp.1* occur in sympatry but in differentiated habitats,
 with *S. globulifera* preferentially growing in valley bottoms with an acquisitive functional strategy
 and *S. sp1* preferentially exploiting a variety of drier habitats with a conservative functional strategy [@Allie2015; @Schmitt2020a, in prep; @Schmitt2020].

@@ -288,8 +288,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 We kept only pair-end reads without adaptors and a phred score above 15 in a sliding window of 4.
 Seventy percent of trimmed reads mapped off-targets using <code>bwa</code> <span class="citation">(Li &amp; Durbin <a href="#ref-Li2009" role="doc-biblioref">2009</a>)</span>.
 We thus mapped trimmed reads on the hybrid reference built for the sequence capture experiment using <code>bwa</code> <span class="citation">(Li &amp; Durbin <a href="#ref-Li2009" role="doc-biblioref">2009</a>)</span>, <code>picard</code> <span class="citation">(Broad Institute <a href="#ref-BroadInstitute2018" role="doc-biblioref">2018</a>)</span>, <code>samtools</code> <span class="citation">(Li <em>et al.</em> <a href="#ref-Li2009a" role="doc-biblioref">2009</a>)</span> and <code>bedtools</code> <span class="citation">(Quinlan &amp; Hall <a href="#ref-Quinlan2010" role="doc-biblioref">2010</a>)</span>.
-We called variants for each individual using <code>HaplotypeCaller</code>, aggregated variants using <code>GenomicsDBImport</code> and jointly-genotyped individuals using <code>GenotypeGVCFs</code> all in <code>GATK4</code> software <span class="citation">(<span class="citeproc-not-found" data-reference-id="Freksa1993"><strong>???</strong></span>)</span>.
-We filtered biallelic SNPs with a quality above 30, a quality by depth above 2, a Fisher strand bias below 60 and a strand odds ratio above 3 using <code>GATK4</code> <span class="citation">(<span class="citeproc-not-found" data-reference-id="Freksa1993"><strong>???</strong></span>)</span>.
+We called variants for each individual using <code>HaplotypeCaller</code>, aggregated variants using <code>GenomicsDBImport</code> and jointly-genotyped individuals using <code>GenotypeGVCFs</code> all in <code>GATK4</code> software <span class="citation">(Auwera <em>et al.</em> <a href="#ref-Auwera2013" role="doc-biblioref">2013</a>)</span>.
+We filtered biallelic SNPs with a quality above 30, a quality by depth above 2, a Fisher strand bias below 60 and a strand odds ratio above 3 using <code>GATK4</code> <span class="citation">(Auwera <em>et al.</em> <a href="#ref-Auwera2013" role="doc-biblioref">2013</a>)</span>.
 Finally, we filtered individuals and SNPs for missing data with a maximum of 95% and 15% of missing data per individual and SNP, respectively, using <code>plink2</code> <span class="citation">(Chen <em>et al.</em> <a href="#ref-Chen2019" role="doc-biblioref">2019</a>)</span>.
 We obtained 454,262 biallelic SNPs over 385 individuals without outgroups, that we used for population genetic analyses.
 Since low-frequency alleles and linkage disequilibrium will bias the number of fixed loci and increase the number of false-positives in genomic scans for outliers <span class="citation">(Foll &amp; Gaggiotti <a href="#ref-Foll2008" role="doc-biblioref">2008</a>)</span>,
@@ -1078,6 +1078,9 @@ resulting in <strong>385</strong> remaining individuals (<strong>17 lost !</stro
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
+<div id="ref-Auwera2013">
+<p>Auwera, G.A., Carneiro, M.O., Hartl, C., Poplin, R., Angel, G. del, Levy-Moonshine, A., Jordan, T., Shakir, K., Roazen, D., Thibault, J., Banks, E., Garimella, K.V., Altshuler, D., Gabriel, S. &amp; DePristo, M.A. (2013). From FastQ Data to High-Confidence Variant Calls: The Genome Analysis Toolkit Best Practices Pipeline. <em>Current Protocols in Bioinformatics</em>, <strong>43</strong>, 483–492. Retrieved from <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/0471250953.bi1110s43">https://onlinelibrary.wiley.com/doi/abs/10.1002/0471250953.bi1110s43</a></p>
+</div>
 <div id="ref-Andrews2010">
 <p>Bolger, A.M., Lohse, M. &amp; Usadel, B. (2014). Trimmomatic: a flexible trimmer for Illumina sequence data. <em>Bioinformatics</em>, <strong>30</strong>, 2114–2120. Retrieved from <a href="https://academic.oup.com/bioinformatics/article-lookup/doi/10.1093/bioinformatics/btu170">https://academic.oup.com/bioinformatics/article-lookup/doi/10.1093/bioinformatics/btu170</a></p>
 </div>

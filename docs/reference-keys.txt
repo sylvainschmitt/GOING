@@ -92,6 +92,7 @@ fig:envGenoTrace
 fig:envgenoR2
 fig:envGenoVarPart
 fig:plotncigif
+fig:vgdist
 tab:envGenoSpeciesTab
 fig:envGenoSpeciesTrace
 fig:envgenoSpeciesR2
@@ -108,7 +109,7 @@ fig:gmaxgenoParEnergy
 fig:gmaxgeno1ParPred
 fig:GmaxGenoR2
 fig:GmaxGenoVarPart
-fig:unnamed-chunk-7
+fig:unnamed-chunk-6
 fig:spcorrelo
 eq:gmaxgenoenv
 eq:gmaxgenoenvstan
@@ -118,7 +119,7 @@ fig:gmaxgenoenvEnergy
 fig:gmaxgenoenvPred
 fig:GmaxGenoEnvR2
 fig:gmaxgenoenvVar
-fig:unnamed-chunk-8
+fig:unnamed-chunk-7
 fig:spcorreloGenoEnv
 study-site-sampling
 study-site

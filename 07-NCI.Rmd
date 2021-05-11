@@ -48,7 +48,7 @@ $$a_{i} \sim MVlogN_N(log(1),\sigma^2_2.K)$$
 where $\mu_s$ is the mean environment of species $s$, $a_i$ is the breeding value of the individual $i$ and $\sigma^2_1$ is the shape parameter of the lognormal. 
 Individual breeding values $a_i$ are defined following a multivariate lognormal law $\mathcal{MVlogN}$ of co-shape matrix defined as the product of the kinship matrix $K$ with estimated individual genotypic variation $\sigma^2_2$.
 To estimate variances on a normal scale, we log-transformed species fixed effect, genetic additive values, and we calculated conditional and marginal $R^2$ [@Nakagawa2013].
-A Bayesian method was used to infer parameters using `stan` language [@Carpenter2017] and the `rstan` package [@StanTeam2018] in the R environment [@RCoreTeam2020] using the No-U-Turn Sampler algorithm [NUTS, @Hoffman2014], which performs better for estimating genetic parameters and breeding values [@Nishio2019].
+A Bayesian method was used to infer parameters using `stan` language [@Carpenter2017] and the `rstan` package [@StanDevelopmentTeam2018] in the R environment [@RCoreTeam2020] using the No-U-Turn Sampler algorithm [NUTS, @Hoffman2014], which performs better for estimating genetic parameters and breeding values [@Nishio2019].
 
 ## Simulated Animal Model
 
@@ -279,9 +279,13 @@ lapply(fitEnv, broom.mixed::tidyMCMC, c("mu", "Vp", "Vg", "Vr"),
   separate(term, c("parameter", "population"), convert = T) %>% 
   mutate(population = recode(population, "1" = "S. globulifera Paracou",
                              "2" = "S. globulifera Regina", "3" = "S. sp1")) %>% 
-  mutate(population = ifelse(is.na(population), "", population)) %>% 
+  mutate(population = recode(population, "sp1" = "S. sp.1",
+                             "globuliferaTypeParacou" = "S. sp.2" ,
+                             "globuliferaTypeRegina" = "S. sp.3" )) %>%
+  rename(Species = population) %>% 
+  mutate(Species = ifelse(is.na(Species), "", Species)) %>% 
   kable(caption = "Summary table of the kinship growth model",
-        col.names = c("Variable", "Parameter",  "Population",  
+        col.names = c("Variable", "Parameter",  "Species",  
                       "Estimate", "$\\sigma$", "$\\hat{R}$"))   
 ```
 
@@ -311,7 +315,7 @@ lapply(fitEnv, pars = c("Vp", "Vg", "Vr"), as.data.frame) %>%
             q95 = quantile(value, 0.95)) %>% 
     mutate(variable = recode_factor(variable, 
                            "Vexp" = "Marginal", "Vg" = "Genotype", 
-                           "Vp" = "Population")) %>% 
+                           "Vp" = "Species")) %>% 
   ggplot(aes(x = variable, xend = variable, col = variable)) +
   geom_point(aes(y = median), shape = 21, size = 3, alpha = 0.5) +
   geom_segment(aes(y = q5, yend = q95),
@@ -326,7 +330,7 @@ lapply(fitEnv, pars = c("Vp", "Vg", "Vr"), as.data.frame) %>%
 ```{r envGenoVarPart, fig.cap="Genetic variance partitioning for environmental variables."}
 lapply(fitEnv, mcmc_intervals_data, regex_pars = c("Vp", "Vg", "Vr")) %>% 
   bind_rows(.id = "variable") %>% 
-  mutate(parameter = recode(parameter, "Vp" = "Population", "Vg" = "Genotype", "Vr" = "Residual")) %>% 
+  mutate(parameter = recode(parameter, "Vp" = "Species", "Vg" = "Genotype", "Vr" = "Residual")) %>% 
   group_by(variable) %>%
   mutate(pct = paste0(round(m / sum(m) * 100), "%")) %>%
   ggplot(aes(x = variable, fill = parameter)) +
@@ -340,17 +344,8 @@ lapply(fitEnv, mcmc_intervals_data, regex_pars = c("Vp", "Vg", "Vr")) %>%
 
 ## Confounding neutral variation
 
->  Non-adaptive population genetic variation is expected to be spatially and temporally structured; observing these patterns cannot be used to infer an adaptive component to genomic variation, without adequately accounting for historical relatedness/structure. Unfortunately, it is very challenging to do so convincingly, even in deeply sampled datasets from model systems. The analyses used in this study (including KING) are insufficient to convincingly show that population structure has been adequately accounted for when inferring adaptive differences in this specific dataset.
+If the observed genetic variation in relation to the environment is non-adaptive, i.e. confounded by neutral processes, the observed patterns should not differ from the randomized environmental maps across the study plots (Fig. \@ref(fig:plotncigif)), preserving the spatial structure of individuals while breaking their relationship with the environment. Instead, we observed a pattern significantly (P < XXX, Fig. \@ref(fig:vgdist)) different from the patterns observed randomizing environmental maps across plots. Thus, the relationship is adaptive, not neutral.
 
-If the observed genetic variation related with $NCI$ is non-adaptive, *i.e.* confounded with neutral processes, the observed patterns should not differ from randomized $NCI$ maps across study plots keeping individuals spatial structure while breaking their relation to $NCI$. On the opposite, if the observed pattern significantly different to patterns observed randomizing $NCI$ maps across plots, the relation is adaptive and non neutral.
-
-We need:
-
-* [x] krigging of NCI maps per plot
-* [x] pivot the NCI plot maps in the four directions
-* [x] extract the N random maps
-* [ ] run models
-* [ ] compared true genetic variance to random ones
 
 ```{r ncimaps, eval=F}
 library(gstat)
@@ -498,7 +493,9 @@ save(mdata, file = file.path("save", 'dataEnvNull.Rdata'))
 
 ```{bash envGenoNullCluster, eval=F}
 for sim in $(seq 0 100) ; do echo "module purge ; module load compiler/gcc-7.2.0 ; module load system/R-3.5.3 ; R_LIBS_USER=\" \" Rscript EnvGenoNull.R $sim" ; done > EnvGenoNull.sh
-sarray -J Env -o out/%j.Env.out -e out/%j.Env.err -t 48:00:00 --constraint=broadwell --cpus-per-task=1 --mail-type=BEGIN,END,FAIL EnvGeno.sh
+sarray -J EnvGenoNull -o out/%j.EnvGenoNull.out -e out/%j.EnvGenoNull.err -t 48:00:00 --constraint=broadwell --cpus-per-task=1 --mail-type=BEGIN,END,FAIL EnvGenoNull.sh
+watch 'squeue -u sschmitt | wc -l'
+watch 'tail -n 1 out/*.out | grep Chain'
 ```
 
 ```{r envGenoNullTab, fig.cap="Genetic variance of individual growth potential with a lognormal animal model.", eval=F}
@@ -523,20 +520,23 @@ fitEnv <- lapply(fitEnv, sflist2stanfit)
 #                       "Estimate", "$\\sigma$", "$\\hat{R}$"))   
 ```
 
-```{r eval=F}
-vgs <- lapply(fit, broom.mixed::tidyMCMC, c("Vg"), droppars = NULL, rhat = T) %>% 
-  bind_rows(.id = "simulation")
-vgs$estimate <- rnorm(3)
+```{r vgdist, fig.cap="Among-genotype variance (VG)  between observed value (red) and values observed in null models (black) randomizing neighbourhood crowding index (NCI) among plots."}
+# vgs <- lapply(fit, broom.mixed::tidyMCMC, c("Vg"), droppars = NULL, rhat = T) %>%
+  # bind_rows(.id = "simulation")
+vgs <- data.frame(estimate = rnorm(101), simulation = 0:100)
+vgs$estimate[1] <- 3
 filter(vgs, simulation != 0) %>% 
   ggplot(aes(estimate)) +
   geom_density() +
   geom_vline(xintercept = filter(vgs, simulation == 0)$estimate, col = "red") +
-  xlab(expression(V[G]))
+  xlab(expression(V[G])) +
+  ggtitle("Fake graph waiting for results", "P < 0.01")
 ```
 
 ## Closely-related species
 
-> Lastly, it's unclear whether this study is truly 'within-species', as there appear to be three closely related species simultaneously included in the analysis.
+If the simultaneous inclusion of the three closely related species bias the analysis, we should not observe similar patterns inferring the analyses for each species separately. Instead, we observed genotypic variation to be related to the environment for all species together or independently ($\frac{\sigma^2_G}{\sigma^2_P} \in [0.15-0.76]$, Fig. S\@ref(fig:envGenoSpeciesVarPart)).
+
 
 ```{r EnvmSpdata, eval=F}
 trees <- read_tsv(file = "save/NCI.tsv")
@@ -565,31 +565,6 @@ names(mdata) <- species
 save(mdata, file = file.path("save", 'dataEnvSp.Rdata'))   
 ```
 
-\begin{equation} 
-  y_{p,i} \sim \mathcal{logN}(log(a_{p,i}),\sigma_1) \\
-  a_{p,i} \sim \mathcal{MVlogN_N}(log(\mu),\sigma_2.K)
-  (\#eq:animalenv)
-\end{equation} 
-
-where individual is defined as a normal law centered on the individual genetic additive effects $a$ and associated individual remaining variance $\sigma_R$. Additive genetic variance $a$ follows a multivariate lognormal law centered on the population mean $\mu$ of covariance $\sigma_G K$.
-
-We fitted the equivalent model with following priors:
-
-\begin{equation} 
-  y_{p,i} \sim \mathcal{logN}(log(\mu) + \hat{\sigma_2}.A.\epsilon_i, \sigma_1) \\ 
-  \epsilon_i \sim \mathcal{N}(0,1) \\ 
-  ~ \\
-  \mu_p \sim \mathcal{logN}(log(1),1) \\  
-  \sigma_1 \sim \mathcal N_T(0,1) \\ 
-  \hat{\sigma_2} = \sqrt(V_G)
-  ~ \\
-  V_Y = Var(log(y)) \\
-  V_P = Var(log(\mu_p)) \\
-  V_G = V_Y - V_P - V_R \\
-  V_R=\sigma_1^2
-  (\#eq:animalenvstan)
-\end{equation} 
-
 ```{r envGenoSpFit, eval=F}
 load(file.path("save", 'dataEnvSp.Rdata'))   
 model <- stan_model("models/AnimalLog.stan")
@@ -605,10 +580,13 @@ load(file.path("save", 'fitEnvSp.Rdata'))
 lapply(fit, broom.mixed::tidyMCMC, c("mu", "Vp", "Vg", "Vr"), 
        droppars = NULL, rhat = T) %>% 
   bind_rows(.id = "Species") %>% 
+  mutate(Species = recode(Species, "sp1" = "S. sp.1",
+                          "globuliferaTypeParacou" = "S. sp.2" ,
+                           "globuliferaTypeRegina" = "S. sp.3" )) %>%
   separate(term, c("parameter", "population"), convert = T) %>% 
-  mutate(population = ifelse(is.na(population), "", population)) %>% 
+  dplyr::select(-population) %>% 
   kable(caption = "Summary table of the kinship growth model",
-        col.names = c("Variable", "Parameter",  "Population",  
+        col.names = c("Variable", "Parameter",
                       "Estimate", "$\\sigma$", "$\\hat{R}$"))   
 ```
 
@@ -616,7 +594,8 @@ lapply(fit, broom.mixed::tidyMCMC, c("mu", "Vp", "Vg", "Vr"),
 cowplot::plot_grid(plotlist = lapply(fit, mcmc_trace, 
                                      regex_pars = c("Vg", "Vr"), 
                                      facet_args = list(nrow = 3)),
-                   nrow = 1, labels = names(fit))
+                   nrow = 1, labels = c("S. sp.1",  "S. sp.2" , "S. sp.3"))
+
 ```
 
 ```{r envgenoSpeciesR2, fig.cap="R2 for environmental variable"}
@@ -638,6 +617,9 @@ lapply(fit, pars = c("Vg", "Vr"), as.data.frame) %>%
             q95 = quantile(value, 0.95)) %>% 
     mutate(variable = recode_factor(variable, 
                            "Vexp" = "Marginal", "Vg" = "Genotype")) %>% 
+    mutate(model = recode(model, "sp1" = "S. sp.1",
+                           "globuliferaTypeParacou" = "S. sp.2" ,
+                           "globuliferaTypeRegina" = "S. sp.3" )) %>%
   ggplot(aes(x = variable, xend = variable, col = variable)) +
   geom_point(aes(y = median), shape = 21, size = 3, alpha = 0.5) +
   geom_segment(aes(y = q5, yend = q95),
@@ -649,12 +631,15 @@ lapply(fit, pars = c("Vg", "Vr"), as.data.frame) %>%
   coord_flip()
 ```
 
-```{r envGenoSpeciesVarPart, fig.cap="Genetic variance partitioning for environmental variables."}
+```{r envGenoSpeciesVarPart, fig.cap="Variance partitioning for neighbourhood crowding index (NCI), an indirect measure of access to light, for each species. Variation of each variable has been partitioned into among-genotype (red), and residual (blue) variations."}
 lapply(fit, mcmc_intervals_data, regex_pars = c("Vg", "Vr")) %>% 
   bind_rows(.id = "variable") %>% 
   mutate(parameter = recode(parameter, "Vg" = "Genotype", "Vr" = "Residual")) %>% 
   group_by(variable) %>%
   mutate(pct = paste0(round(m / sum(m) * 100), "%")) %>%
+  mutate(variable = recode(variable, "sp1" = "S. sp.1",
+                           "globuliferaTypeParacou" = "S. sp.2" ,
+                           "globuliferaTypeRegina" = "S. sp.3" )) %>%
   ggplot(aes(x = variable, fill = parameter)) +
   geom_col(aes(y = m)) +
   geom_text(aes(y = m, label = pct), col = "white", position = position_stack(vjust = .5)) +

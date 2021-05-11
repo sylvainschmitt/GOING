@@ -795,24 +795,22 @@ Figure 7.5: R2 for Gmax.
 Figure 7.6: Genetic variance partitioning for Gmax.
 </p>
 </div>
-<div class="figure"><span id="fig:unnamed-chunk-7"></span>
-<img src="GOING_files/figure-html/unnamed-chunk-7-1.png" alt="Relation between genotypic values for individual growth potential (Gmax) and neighbourhood crowding index (NCI), an indirect measurement of access to light, for different classes of diameters. Regression lines represent a linear model of form y ~ x. Annotations give for each diameter class the Pearson’s R correlation coefficient and the associated p-value." width="768" />
+<div class="figure"><span id="fig:unnamed-chunk-6"></span>
+<img src="GOING_files/figure-html/unnamed-chunk-6-1.png" alt="Relation between genotypic values for individual growth potential (Gmax) and neighbourhood crowding index (NCI), an indirect measurement of access to light, for different classes of diameters. Regression lines represent a linear model of form y ~ x. Annotations give for each diameter class the Pearson’s R correlation coefficient and the associated p-value." width="768" />
 <p class="caption">
 Figure 7.7: Relation between genotypic values for individual growth potential (Gmax) and neighbourhood crowding index (NCI), an indirect measurement of access to light, for different classes of diameters. Regression lines represent a linear model of form y ~ x. Annotations give for each diameter class the Pearson’s R correlation coefficient and the associated p-value.
 </p>
 </div>
 <div class="figure"><span id="fig:spcorrelo"></span>
-<img src="GOING_files/figure-html/spcorrelo-1.png" alt="Spatial autocorrelogram (Moran's I) of variables and associated genetic multiplicative values." width="768" />
+<img src="GOING_files/figure-html/spcorrelo-1.png" alt="Spatial autocorrelogram (Moran's I) of variables and associated genetic additive values (a)." width="768" />
 <p class="caption">
-Figure 7.8: Spatial autocorrelogram (Moran’s I) of variables and associated genetic multiplicative values.
+Figure 7.8: Spatial autocorrelogram (Moran’s I) of variables and associated genetic additive values (a).
 </p>
 </div>
 </div>
 <div id="confounding-phenotypic-and-environmental-variation" class="section level2">
 <h2><span class="header-section-number">7.4</span> Confounding phenotypic and environmental variation</h2>
-<blockquote>
-<p>Second, the analysis of growth form variation is confounded with environment; that is, phenotypic variation between different niches could simply be due to plasticity. Excluding all or some of the contribution of plasticity requires that genotypes are grown in a common environment, which is not (and cannot be?) done with these species.</p>
-</blockquote>
+<p>If the phenotypic variation is only plastic and confounded with the environmental variation, the genotypic variance associated to the phenotype while controlling for the environmental variation should be null (<span class="math inline">\(\sigma^2_{G|E}=0\)</span>). Instead, we still observed a non null genotypic variation while controlling for the environmental variation (<span class="math inline">\(\frac{\sigma^2_{G|E}}{\sigma^2_P}=0.12\)</span>, Fig. <a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#fig:gmaxgenoenvVar">7.13</a>).</p>
 <p>We used the following growth model with a lognormal distribution to estimate individual growth potential and associated genotypic variation controlling for environmental variation (<span class="math inline">\(NCI\)</span> and <span class="math inline">\(TWI\)</span>) at the individual scale:</p>
 <p><span class="math display" id="eq:gmaxgenoenv">\[\begin{equation} 
   DBH_{y=today,p,i}  - DBH_{y=y0,p,i} \sim \\
@@ -1101,15 +1099,15 @@ Figure 7.12: R2 for Gmax.
 </p>
 </div>
 <div class="figure"><span id="fig:gmaxgenoenvVar"></span>
-<img src="GOING_files/figure-html/gmaxgenoenvVar-1.png" alt="Genetic variance partitionning for ontogenetic parameters." width="768" />
+<img src="GOING_files/figure-html/gmaxgenoenvVar-1.png" alt="Variance partitioning for individual maximum growth potential (Gmax). Variation of individual maximum growth potential has been partitioned into among-species (red), among-genotype (brown), along forest gap dynamics (NCI, green), along topography (TWI, blue), and residual (pink) variations." width="768" />
 <p class="caption">
-Figure 7.13: Genetic variance partitionning for ontogenetic parameters.
+Figure 7.13: Variance partitioning for individual maximum growth potential (Gmax). Variation of individual maximum growth potential has been partitioned into among-species (red), among-genotype (brown), along forest gap dynamics (NCI, green), along topography (TWI, blue), and residual (pink) variations.
 </p>
 </div>
-<div class="figure"><span id="fig:unnamed-chunk-8"></span>
-<img src="GOING_files/figure-html/unnamed-chunk-8-1.png" alt="Relation between genotypic values for individual growth potential knowing TWI and NCI (Gmax) and neighbourhood crowding index (NCI), an indirect measurement of access to light, for different classes of diameters. Regression lines represent a linear model of form y ~ x. Annotations give for each diameter class the Pearson’s R correlation coefficient and the associated p-value." width="768" />
+<div class="figure"><span id="fig:unnamed-chunk-7"></span>
+<img src="GOING_files/figure-html/unnamed-chunk-7-1.png" alt="Relation between genotypic values for individual growth potential controlling for TWI and NCI (Gmax) and neighbourhood crowding index (NCI), an indirect measurement of access to light, for different classes of diameters. Regression lines represent a linear model of form y ~ x. Annotations give for each diameter class the Pearson’s R correlation coefficient and the associated p-value." width="768" />
 <p class="caption">
-Figure 7.14: Relation between genotypic values for individual growth potential knowing TWI and NCI (Gmax) and neighbourhood crowding index (NCI), an indirect measurement of access to light, for different classes of diameters. Regression lines represent a linear model of form y ~ x. Annotations give for each diameter class the Pearson’s R correlation coefficient and the associated p-value.
+Figure 7.14: Relation between genotypic values for individual growth potential controlling for TWI and NCI (Gmax) and neighbourhood crowding index (NCI), an indirect measurement of access to light, for different classes of diameters. Regression lines represent a linear model of form y ~ x. Annotations give for each diameter class the Pearson’s R correlation coefficient and the associated p-value.
 </p>
 </div>
 <div class="figure"><span id="fig:spcorreloGenoEnv"></span>

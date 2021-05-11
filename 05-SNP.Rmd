@@ -20,8 +20,8 @@ We assessed the quality of raw reads using `multiqc` [@Ewels2016] and trimmed th
 We kept only pair-end reads without adaptors and a phred score above 15 in a sliding window of 4.
 Seventy percent of trimmed reads mapped off-targets using `bwa` [@Li2009]. 
 We thus mapped trimmed reads on the hybrid reference built for the sequence capture experiment using `bwa` [@Li2009], `picard` [@BroadInstitute2018], `samtools` [@Li2009a] and `bedtools` [@Quinlan2010].
-We called variants for each individual using `HaplotypeCaller`, aggregated variants using `GenomicsDBImport` and jointly-genotyped individuals using `GenotypeGVCFs` all in `GATK4` software [@Freksa1993]. 
-We filtered biallelic SNPs with a quality above 30, a quality by depth above 2, a Fisher strand bias below 60 and a strand odds ratio above 3 using `GATK4` [@Freksa1993]. 
+We called variants for each individual using `HaplotypeCaller`, aggregated variants using `GenomicsDBImport` and jointly-genotyped individuals using `GenotypeGVCFs` all in `GATK4` software [@Auwera2013]. 
+We filtered biallelic SNPs with a quality above 30, a quality by depth above 2, a Fisher strand bias below 60 and a strand odds ratio above 3 using `GATK4` [@Auwera2013]. 
 Finally, we filtered individuals and SNPs for missing data with a maximum of 95% and 15% of missing data per individual and SNP, respectively, using `plink2` [@Chen2019].
 We obtained 454,262 biallelic SNPs over 385 individuals without outgroups, that we used for population genetic analyses.
 Since low-frequency alleles and linkage disequilibrium will bias the number of fixed loci and increase the number of false-positives in genomic scans for outliers [@Foll2008],
