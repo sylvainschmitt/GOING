@@ -347,87 +347,191 @@ If the observed genetic variation related with $NCI$ is non-adaptive, *i.e.* con
 We need:
 
 * [x] krigging of NCI maps per plot
-* [ ] pivot the NCI plot maps in the four directions
-* [ ] extract the N random maps
+* [x] pivot the NCI plot maps in the four directions
+* [x] extract the N random maps
 * [ ] run models
 * [ ] compared true genetic variance to random ones
 
-```{r ncikriged, eval=F}
+```{r ncimaps, eval=F}
 library(gstat)
 library(sf)
+rm(list = ls())
+src_sqlite(file.path("/home/sylvain//Documents/BIOGECO/PhD/data/Paracou/",
+                              "trees", "Paracou.sqlite")) %>% 
+  tbl("Paracou") %>% 
+  filter(CodeAlive == 1) %>% 
+  filter(Plot %in% 1:15) %>% 
+  filter(CensusYear == 2015) %>% 
+  collect() %>% 
+  mutate(DBH = CircCorr/pi) %>% 
+  left_join(data.frame(SubPlot = 1:4, Xcor = c(0, 125, 0, 125), Ycor = c(125, 125, 0, 0))) %>% 
+  mutate(Xfield2 = Xfield - Xcor, Yfield2 = Yfield - Ycor) %>% 
+  filter(Xfield2 >= 0, Xfield2 <= 125, Yfield2 >= 0, Yfield2 <= 125) %>% 
+  write_tsv("save/paracou.tsv")
+computeNCI <- function(P, d = 20){
+  dat <- read_tsv("save/paracou.tsv") %>% 
+    filter(Plot == P)
+  D <- dist(dat[c("Xfield", "Yfield")]) %>% 
+    as.matrix()
+  D[D>20] <- NA # individuals above 20 m
+  D[D == 0] <- NA # theimselves
+  D <- exp(-0.25*D)
+  D[is.na(D)] <- 0
+  dat$NCI <- as.vector(D %*% as.vector(dat$DBH))
+  return(dat %>% 
+           filter(Xfield > local(d), Xfield < 250-local(d), Yfield > local(d), Yfield < 250-local(d)))
+}
+lapply(1:15, computeNCI) %>% 
+  bind_rows() %>% 
+  left_join(data.frame(SubPlot = 1:4, Xcor2 = c(20, 0, 20, 0), Ycor2 = c(0, 0, 20, 20))) %>% 
+  mutate(Xfield3 = Xfield2 - Xcor2, Yfield3 = Yfield2 - Ycor2) %>% 
+  write_tsv(path = "save/nci.tsv")
 krige_stand <- function(name){
-  stand <- vroom::vroom("save/nciall.tsv") %>% 
+  stand <- vroom::vroom("save/nci.tsv") %>% 
     mutate(stand = paste0("P", Plot, "C", SubPlot)) %>% 
-    filter(CensusYear == 2015) %>% 
     filter(stand == name)
-  if(name == "P15C1")
-    stand <- filter(stand, Xfield < 125)
-  if(max(stand$Xfield > 125)){
-    stand$Xfield <- stand$Xfield - 125
-  } else {
-    stand$Xfield <- stand$Xfield - 20
-  }
-    
-  if(max(stand$Yfield > 125)) {
-    stand$Yfield <- stand$Yfield - 125
-  } else {
-    stand$Yfield <- stand$Yfield - 20
-  }
-  stand.xy  <- as_Spatial(st_as_sf(stand, coords = c("Xfield", "Yfield")))
+  stand.xy  <- as_Spatial(st_as_sf(stand, coords = c("Xfield3", "Yfield3")))
   stand.xy <- stand.xy[-sp::zerodist(stand.xy)[,1],]
-  grd <- expand.grid(Xfield = seq(0, 105, length.out = 105), Yfield = seq(0, 105, length.out = 105)) %>% 
-    st_as_sf(coords = c("Xfield", "Yfield")) %>% 
+  grd <- expand.grid(Xfield3 = seq(0, 105, length.out = 106), Yfield3 = seq(0, 105, length.out = 106)) %>% 
+    st_as_sf(coords = c("Xfield3", "Yfield3")) %>% 
     as_Spatial()
   stand.vgm <- variogram(NCI ~ 1, stand.xy)
   stand.fit <- fit.variogram(stand.vgm, model = vgm("Sph"))
-  # plot(stand.vgm, stand.fit)
   stand.kriged <- krige((NCI) ~ 1, stand.xy, grd, model = stand.fit)
   stand.kriged %>% 
     as.data.frame %>% 
     rename(Xfield = coords.x1, Yfield = coords.x2, NCI = var1.pred)
 }
-stands <- vroom::vroom("save/nciall.tsv") %>% 
+stands <- vroom::vroom("save/nci.tsv") %>% 
   mutate(stand = paste0("P", Plot, "C", SubPlot)) %>% 
   dplyr::select(stand) %>% 
   collect() %>% 
   unique() %>% 
   unlist()
-t <- lapply(stands, krige_stand)
-names(t) <- stands
-bind_rows(t, .id = "stand") %>% 
+names(stands) <- stands
+lapply(stands, krige_stand) %>% 
+  bind_rows(.id = "stand") %>% 
+  rename(Xfield3 = Xfield, Yfield3 = Yfield, NCI.var = var1.var) %>% 
   write_tsv("data/ncikriged.tsv")
-# ! P13C3 P15C3
+rotateTab <- function(tab){
+  tab0 <- mutate(tab, stand = paste0(stand, "-0"))
+  tabX <- mutate(tab, stand = paste0(stand, "-flipX")) %>% 
+     mutate(Xfield3 = abs(105-Xfield3))
+  tabY <- mutate(tab, stand = paste0(stand, "-flipY")) %>% 
+    mutate(Yfield3 = abs(105-Yfield3))
+  tabXY <- mutate(tab, stand = paste0(stand, "-flipXY")) %>% 
+    mutate(Yfield3 = abs(Yfield3-105), Xfield3 = abs(Xfield3-105))
+  return(bind_rows(tab0, tabX, tabY, tabXY))
+}
+rotateTab(vroom::vroom("data/ncikriged.tsv")) %>% 
+  write_tsv("data/ncikrigedrotated.tsv")
 ```
 
 ```{r plotnci, eval=F}
 library(gganimate)
-g <- vroom::vroom("data/ncikriged.tsv") %>% 
-  # filter(stand == "P15C3") %>%
-  ggplot(aes(Xfield, Yfield, fill = NCI)) + 
+g <- vroom::vroom("data/ncikrigedrotated.tsv") %>% 
+  ggplot(aes(Xfield3, Yfield3, fill = NCI)) + 
   geom_raster() +
   coord_equal() +
   viridis::scale_fill_viridis(direction = -1) +
-  theme(axis.text = element_blank(),
-        axis.line = element_blank(), axis.ticks = element_blank()) +
   transition_manual(stand) +
   labs(title = 'Stand: {current_frame}')
-anim_save("save/nci.gif", g)
+anim_save("images/nci.gif", g)
 ```
 
 ```{r plotncigif, fig.cap="NCI in 2015 across SubPlots."}
-include_graphics("save/nci.gif")
+include_graphics("images/nci.gif")
 ```
 
+```{r EnvmdataNull, eval=F}
+path <- "data/Symphonia_Paracou/Sequences/populationGenomics/"
+paracou <- read_tsv("save/paracou.tsv") %>% 
+  mutate(Ind = paste0("P", Plot, "-", SubPlot, "-", TreeFieldNum)) %>% 
+  mutate(stand = paste0("P", Plot, "C", SubPlot, "-0")) %>% 
+  left_join(data.frame(SubPlot = 1:4, Xcor2 = c(20, 0, 20, 0), Ycor2 = c(0, 0, 20, 20))) %>% 
+  mutate(Xfield3 = Xfield2 - Xcor2, Yfield3 = Yfield2 - Ycor2) %>% 
+  dplyr::select(stand, Ind, Xfield3, Yfield3)
+trees <- read_tsv(file = "save/NCI.tsv") %>% 
+  dplyr::select(-NCI) %>% 
+  left_join(paracou) %>% 
+  filter(Xfield3 > 0, Yfield3 > 0, Xfield3 < 105, Yfield3 < 150) %>% 
+  mutate(Xfield3 = round(Xfield3), Yfield3 = round(Yfield3))
+nci <- vroom::vroom("data/ncikrigedrotated.tsv")   
+ids <- read_tsv(file.path(path, "..", "variantCalling", "growth", "plink2.king.id"))
+K <- read_tsv(file.path(path, "..", "variantCalling", "growth", "plink2.king"),
+         col_names = ids$IID) %>% 
+  as.data.frame()
+row.names(K) <- ids$IID
+K <- as.matrix(K)
+trees <- trees %>% 
+  filter(IID %in% colnames(K)) %>% 
+  mutate(IndNum = 1:nrow(.), popNum = as.numeric(as.factor(pop)))
+N <- 100
+mdata <- lapply(0:N, function(sim) {
+  if(sim == 0) {
+    dat <- left_join(trees, nci, 
+                     by = c("Xfield3", "Yfield3"), 
+                     suffix = c(".true", ".null")) %>% 
+      filter(stand.true == stand.null)
+  } else {
+    dat <- left_join(trees, nci, 
+                     by = c("Xfield3", "Yfield3"), 
+                     suffix = c(".true", ".null")) %>% 
+      filter(stand.true != stand.null) %>% 
+      group_by(stand.true) %>% 
+      filter(stand.null == sample(unique(stand.null), 1))
+  }
+  K <- K[dat$IID, dat$IID]
+  K[K < 0] <- 0
+  K <- K*2
+  K <- as.matrix(Matrix::nearPD(K)$mat)
+  return(list(N = nrow(dat),
+              P = length(unique(dat$pop)),
+              y = as.vector(scale(dat$NCI, center = F)),
+              population = dat$popNum,
+              K = K))
+})
+names(mdata) <- 0:N
+# str(mdata)
+save(mdata, file = file.path("save", 'dataEnvNull.Rdata'))   
+```
 
-```{r rotations, eval=F}
-rasters <- vroom::vroom("data/ncikriged.tsv") %>%
-  group_by(stand) %>%
-  do(raster = rasterFromXYZ(dplyr::select(., Xfield, Yfield, NCI)))
-lapply(rasters$raster, plot)
-plot(rasters$raster[[1]])
-plot(flip(rasters$raster[[1]], direction = 1))
-plot(flip(rasters$raster[[1]], direction = 2))
-plot(t(rasters$raster[[1]]))
+```{bash envGenoNullCluster, eval=F}
+for sim in $(seq 0 100) ; do echo "module purge ; module load compiler/gcc-7.2.0 ; module load system/R-3.5.3 ; R_LIBS_USER=\" \" Rscript EnvGenoNull.R $sim" ; done > EnvGenoNull.sh
+sarray -J Env -o out/%j.Env.out -e out/%j.Env.err -t 48:00:00 --constraint=broadwell --cpus-per-task=1 --mail-type=BEGIN,END,FAIL EnvGeno.sh
+```
+
+```{r envGenoNullTab, fig.cap="Genetic variance of individual growth potential with a lognormal animal model.", eval=F}
+fitEnvNull <- list(NCI = list())
+for(var in c("NCI")){
+  for(sim in list.files("save/EnvGeno", 
+                        pattern = var, full.names = T)){
+    load(sim)
+    fitEnv[[var]] <- c(fitEnv[[var]], fit)
+  }
+}
+fitEnv <- lapply(fitEnv, sflist2stanfit)
+# lapply(fitEnv, broom.mixed::tidyMCMC, c("mu", "Vp", "Vg", "Vr"), 
+#        droppars = NULL, rhat = T) %>% 
+#   bind_rows(.id = "Variable") %>% 
+#   separate(term, c("parameter", "population"), convert = T) %>% 
+#   mutate(population = recode(population, "1" = "S. globulifera Paracou",
+#                              "2" = "S. globulifera Regina", "3" = "S. sp1")) %>% 
+#   mutate(population = ifelse(is.na(population), "", population)) %>% 
+#   kable(caption = "Summary table of the kinship growth model",
+#         col.names = c("Variable", "Parameter",  "Population",  
+#                       "Estimate", "$\\sigma$", "$\\hat{R}$"))   
+```
+
+```{r eval=F}
+vgs <- lapply(fit, broom.mixed::tidyMCMC, c("Vg"), droppars = NULL, rhat = T) %>% 
+  bind_rows(.id = "simulation")
+vgs$estimate <- rnorm(3)
+filter(vgs, simulation != 0) %>% 
+  ggplot(aes(estimate)) +
+  geom_density() +
+  geom_vline(xintercept = filter(vgs, simulation == 0)$estimate, col = "red") +
+  xlab(expression(V[G]))
 ```
 
 ## Closely-related species
