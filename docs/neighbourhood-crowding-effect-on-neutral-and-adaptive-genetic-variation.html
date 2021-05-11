@@ -24,7 +24,7 @@
 <meta name="author" content="Sylvain Schmitt" />
 
 
-<meta name="date" content="2021-03-10" />
+<meta name="date" content="2021-05-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -252,11 +252,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#simulated-animal-model"><i class="fa fa-check"></i><b>6.1</b> Simulated Animal Model</a></li>
 <li class="chapter" data-level="6.2" data-path="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#neighbourhood-crowding-index"><i class="fa fa-check"></i><b>6.2</b> Neighbourhood crowding index</a></li>
 <li class="chapter" data-level="6.3" data-path="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#genetic-variance"><i class="fa fa-check"></i><b>6.3</b> Genetic variance</a></li>
+<li class="chapter" data-level="6.4" data-path="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#confounding-neutral-variation"><i class="fa fa-check"></i><b>6.4</b> Confounding neutral variation</a></li>
+<li class="chapter" data-level="6.5" data-path="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#closely-related-species"><i class="fa fa-check"></i><b>6.5</b> Closely-related species</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><i class="fa fa-check"></i><b>7</b> Neutral and adaptive genetic variation effect on individual growth</a><ul>
 <li class="chapter" data-level="7.1" data-path="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#growth-data"><i class="fa fa-check"></i><b>7.1</b> Growth data</a></li>
 <li class="chapter" data-level="7.2" data-path="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#simulated-growth-and-animal-model"><i class="fa fa-check"></i><b>7.2</b> Simulated Growth and Animal Model</a></li>
 <li class="chapter" data-level="7.3" data-path="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#genetic-variance-1"><i class="fa fa-check"></i><b>7.3</b> Genetic variance</a></li>
+<li class="chapter" data-level="7.4" data-path="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#confounding-phenotypic-and-environmental-variation"><i class="fa fa-check"></i><b>7.4</b> Confounding phenotypic and environmental variation</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -281,10 +284,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation" class="section level1">
 <h1><span class="header-section-number">Chapter 6</span> Neighbourhood crowding effect on neutral and adaptive genetic variation</h1>
-<p>We did environmental association analyses <span class="citation">(Rellstab <em>et al.</em> <a href="#ref-Rellstab2015a" role="doc-biblioref">2015</a>)</span> in each complex using general linear mixed models developed for genome wide association studies (GWAS).
+<p>We did environmental association analyses <span class="citation">(Rellstab <em>et al.</em> <a href="#ref-Rellstab2015" role="doc-biblioref">2015</a>)</span> in each complex using general linear mixed models developed for genome wide association studies (GWAS).
 We used the mean neighbourhood crowding index <span class="citation">(<span class="math inline">\(NCI\)</span>; Uriarte <em>et al.</em> <a href="#ref-Uriarte2004" role="doc-biblioref">2004</a>)</span> over the last 30 years,
 an indirect measurement of access to light and forest gap dynamics,
-as the response variable and genetic structure (gene pools representing species) and relatedness (kinship matrix) as explanatory variables, as it is common practice <span class="citation">(Rellstab <em>et al.</em> <a href="#ref-Rellstab2015a" role="doc-biblioref">2015</a>)</span>.
+as the response variable and genetic structure (gene pools representing species) and relatedness (kinship matrix) as explanatory variables, as it is common practice <span class="citation">(Rellstab <em>et al.</em> <a href="#ref-Rellstab2015" role="doc-biblioref">2015</a>)</span>.
 This analysis assumed that the neighbourhood crowding conditions where individuals have grown above 10-cm DBH are strongly correlated to the individual heritable phenotypes <span class="citation">(e.g. Eckert <em>et al.</em> <a href="#ref-Eckert2010" role="doc-biblioref">2010</a>)</span>.
 The mean neighbourhood crowding index <span class="math inline">\(NCI_i\)</span> from tree individual <span class="math inline">\(i\)</span> was calculated as follows:</p>
 <p><span class="math display">\[NCI_i=\overline{\sum_{j|\delta_{i,j}&lt;20m}DBH^2_{j,t}.e^{-\frac14\delta_{i,j}}}\]</span></p>
@@ -303,7 +306,7 @@ The environment <span class="math inline">\(y_{s,i}\)</span> where individual <s
 <p>where <span class="math inline">\(\mu_s\)</span> is the mean environment of species <span class="math inline">\(s\)</span>, <span class="math inline">\(a_i\)</span> is the breeding value of the individual <span class="math inline">\(i\)</span> and <span class="math inline">\(\sigma^2_1\)</span> is the shape parameter of the lognormal.
 Individual breeding values <span class="math inline">\(a_i\)</span> are defined following a multivariate lognormal law <span class="math inline">\(\mathcal{MVlogN}\)</span> of co-shape matrix defined as the product of the kinship matrix <span class="math inline">\(K\)</span> with estimated individual genotypic variation <span class="math inline">\(\sigma^2_2\)</span>.
 To estimate variances on a normal scale, we log-transformed species fixed effect, genetic additive values, and we calculated conditional and marginal <span class="math inline">\(R^2\)</span> <span class="citation">(Nakagawa &amp; Schielzeth <a href="#ref-Nakagawa2013" role="doc-biblioref">2013</a>)</span>.
-A Bayesian method was used to infer parameters using <code>stan</code> language [<span class="citation">Carpenter <em>et al.</em> (<a href="#ref-Carpenter2017" role="doc-biblioref">2017</a>)</span> and the <code>rstan</code> package <span class="citation">(Stan Development Team <a href="#ref-Team2018" role="doc-biblioref">2018</a>)</span> in the R environment <span class="citation">(R Core Team <a href="#ref-RCoreTeam2020" role="doc-biblioref">2020</a>)</span> using the No-U-Turn Sampler algorithm <span class="citation">(NUTS, Hoffman &amp; Gelman <a href="#ref-Hoffman2014" role="doc-biblioref">2014</a>)</span>, which performs better for estimating genetic parameters and breeding values <span class="citation">(Nishio &amp; Arakawa <a href="#ref-Nishio2019" role="doc-biblioref">2019</a>)</span>.</p>
+A Bayesian method was used to infer parameters using <code>stan</code> language <span class="citation">(Carpenter <em>et al.</em> <a href="#ref-Carpenter2017" role="doc-biblioref">2017</a>)</span> and the <code>rstan</code> package <span class="citation">(<span class="citeproc-not-found" data-reference-id="StanTeam2018"><strong>???</strong></span>)</span> in the R environment <span class="citation">(R Core Team <a href="#ref-RCoreTeam2020" role="doc-biblioref">2020</a>)</span> using the No-U-Turn Sampler algorithm <span class="citation">(NUTS, Hoffman &amp; Gelman <a href="#ref-Hoffman2014" role="doc-biblioref">2014</a>)</span>, which performs better for estimating genetic parameters and breeding values <span class="citation">(Nishio &amp; Arakawa <a href="#ref-Nishio2019" role="doc-biblioref">2019</a>)</span>.</p>
 <div id="simulated-animal-model" class="section level2">
 <h2><span class="header-section-number">6.1</span> Simulated Animal Model</h2>
 <p>The aim of this subchapter is to explore the animal model with generated data to validate their behaviour and use it on <em>Symphonia</em> real data.
@@ -513,7 +516,7 @@ Figure 6.2: Parameters for the Animal model: trace plot and expected value in re
 </div>
 <div id="genetic-variance" class="section level2">
 <h2><span class="header-section-number">6.3</span> Genetic variance</h2>
-<p>We used between individual kinship and a lognormal Animal model <span class="citation">(Wilson <em>et al.</em> <a href="#ref-Wilson2010" role="doc-biblioref">2010</a>)</span> to estimate genetic variance associated to individuals’ global phenotype living in a given environment <span class="citation">(see environmental association analyses with genome wide association study analyses in Rellstab <em>et al.</em> <a href="#ref-Rellstab2015a" role="doc-biblioref">2015</a>)</span>.
+<p>We used between individual kinship and a lognormal Animal model <span class="citation">(Wilson <em>et al.</em> <a href="#ref-Wilson2010" role="doc-biblioref">2010</a>)</span> to estimate genetic variance associated to individuals’ global phenotype living in a given environment <span class="citation">(see environmental association analyses with genome wide association study analyses in Rellstab <em>et al.</em> <a href="#ref-Rellstab2015" role="doc-biblioref">2015</a>)</span>.
 The animal model is calculated for the environmental values <span class="math inline">\(y\)</span> of the <span class="math inline">\(N\)</span> individuals with the following formula:</p>
 <p><span class="math display" id="eq:animalenv">\[\begin{equation} 
   y_{p,i} \sim \mathcal{logN}(log(a_{p,i}),\sigma_1) \\
@@ -700,6 +703,337 @@ Figure 6.4: R2 for environmental variable
 Figure 6.5: Genetic variance partitioning for environmental variables.
 </p>
 </div>
+</div>
+<div id="confounding-neutral-variation" class="section level2">
+<h2><span class="header-section-number">6.4</span> Confounding neutral variation</h2>
+<blockquote>
+<p>Non-adaptive population genetic variation is expected to be spatially and temporally structured; observing these patterns cannot be used to infer an adaptive component to genomic variation, without adequately accounting for historical relatedness/structure. Unfortunately, it is very challenging to do so convincingly, even in deeply sampled datasets from model systems. The analyses used in this study (including KING) are insufficient to convincingly show that population structure has been adequately accounted for when inferring adaptive differences in this specific dataset.</p>
+</blockquote>
+<p>If the observed genetic variation related with <span class="math inline">\(NCI\)</span> is non-adaptive, <em>i.e.</em> confounded with neutral processes, the observed patterns should not differ from randomized <span class="math inline">\(NCI\)</span> maps across study plots keeping individuals spatial structure while breaking their relation to <span class="math inline">\(NCI\)</span>. On the opposite, if the observed pattern significantly different to patterns observed randomizing <span class="math inline">\(NCI\)</span> maps across plots, the relation is adaptive and non neutral.</p>
+<p>We need:</p>
+<ul>
+<li><input type="checkbox" disabled="" checked="" />
+krigging of NCI maps per plot</li>
+<li><input type="checkbox" disabled="" />
+pivot the NCI plot maps in the four directions</li>
+<li><input type="checkbox" disabled="" />
+extract the N random maps</li>
+<li><input type="checkbox" disabled="" />
+run models</li>
+<li><input type="checkbox" disabled="" />
+compared true genetic variance to random ones</li>
+</ul>
+<div class="figure"><span id="fig:plotncigif"></span>
+<img src="save/nci.gif" alt="NCI in 2015 across SubPlots."  />
+<p class="caption">
+Figure 6.6: NCI in 2015 across SubPlots.
+</p>
+</div>
+</div>
+<div id="closely-related-species" class="section level2">
+<h2><span class="header-section-number">6.5</span> Closely-related species</h2>
+<blockquote>
+<p>Lastly, it’s unclear whether this study is truly ‘within-species’, as there appear to be three closely related species simultaneously included in the analysis.</p>
+</blockquote>
+<p><span class="math display" id="eq:animalenv">\[\begin{equation} 
+  y_{p,i} \sim \mathcal{logN}(log(a_{p,i}),\sigma_1) \\
+  a_{p,i} \sim \mathcal{MVlogN_N}(log(\mu),\sigma_2.K)
+  \tag{6.3}
+\end{equation}\]</span></p>
+<p>where individual is defined as a normal law centered on the individual genetic additive effects <span class="math inline">\(a\)</span> and associated individual remaining variance <span class="math inline">\(\sigma_R\)</span>. Additive genetic variance <span class="math inline">\(a\)</span> follows a multivariate lognormal law centered on the population mean <span class="math inline">\(\mu\)</span> of covariance <span class="math inline">\(\sigma_G K\)</span>.</p>
+<p>We fitted the equivalent model with following priors:</p>
+<p><span class="math display" id="eq:animalenvstan">\[\begin{equation} 
+  y_{p,i} \sim \mathcal{logN}(log(\mu) + \hat{\sigma_2}.A.\epsilon_i, \sigma_1) \\ 
+  \epsilon_i \sim \mathcal{N}(0,1) \\ 
+  ~ \\
+  \mu_p \sim \mathcal{logN}(log(1),1) \\  
+  \sigma_1 \sim \mathcal N_T(0,1) \\ 
+  \hat{\sigma_2} = \sqrt(V_G)
+  ~ \\
+  V_Y = Var(log(y)) \\
+  V_P = Var(log(\mu_p)) \\
+  V_G = V_Y - V_P - V_R \\
+  V_R=\sigma_1^2
+  \tag{6.4}
+\end{equation}\]</span></p>
+<table>
+<caption>
+<span id="tab:envGenoSpeciesTab">Table 6.3: </span>Summary table of the kinship growth model
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+Parameter
+</th>
+<th style="text-align:left;">
+Population
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(\sigma\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(\hat{R}\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+sp1
+</td>
+<td style="text-align:left;">
+mu
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+0.9023484
+</td>
+<td style="text-align:right;">
+0.0285899
+</td>
+<td style="text-align:right;">
+0.9994199
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp1
+</td>
+<td style="text-align:left;">
+Vp
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+<td style="text-align:right;">
+0.9996906
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp1
+</td>
+<td style="text-align:left;">
+Vg
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.0167879
+</td>
+<td style="text-align:right;">
+0.0188060
+</td>
+<td style="text-align:right;">
+1.0134743
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp1
+</td>
+<td style="text-align:left;">
+Vr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.0982633
+</td>
+<td style="text-align:right;">
+0.0188060
+</td>
+<td style="text-align:right;">
+1.0134743
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+globuliferaTypeParacou
+</td>
+<td style="text-align:left;">
+mu
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+0.8703783
+</td>
+<td style="text-align:right;">
+0.0427612
+</td>
+<td style="text-align:right;">
+1.0162655
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+globuliferaTypeParacou
+</td>
+<td style="text-align:left;">
+Vp
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+<td style="text-align:right;">
+1.0024119
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+globuliferaTypeParacou
+</td>
+<td style="text-align:left;">
+Vg
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.0897400
+</td>
+<td style="text-align:right;">
+0.0292443
+</td>
+<td style="text-align:right;">
+1.1526588
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+globuliferaTypeParacou
+</td>
+<td style="text-align:left;">
+Vr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.0278601
+</td>
+<td style="text-align:right;">
+0.0292443
+</td>
+<td style="text-align:right;">
+1.1526588
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+globuliferaTypeRegina
+</td>
+<td style="text-align:left;">
+mu
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+0.8739254
+</td>
+<td style="text-align:right;">
+0.0732571
+</td>
+<td style="text-align:right;">
+1.0098772
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+globuliferaTypeRegina
+</td>
+<td style="text-align:left;">
+Vp
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+<td style="text-align:right;">
+1.0048700
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+globuliferaTypeRegina
+</td>
+<td style="text-align:left;">
+Vg
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.0564579
+</td>
+<td style="text-align:right;">
+0.0344308
+</td>
+<td style="text-align:right;">
+1.0096385
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+globuliferaTypeRegina
+</td>
+<td style="text-align:left;">
+Vr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.0528782
+</td>
+<td style="text-align:right;">
+0.0344308
+</td>
+<td style="text-align:right;">
+1.0096385
+</td>
+</tr>
+</tbody>
+</table>
+<div class="figure"><span id="fig:envGenoSpeciesTrace"></span>
+<img src="GOING_files/figure-html/envGenoSpeciesTrace-1.png" alt="Traceplot for environmental variables." width="768" />
+<p class="caption">
+Figure 6.7: Traceplot for environmental variables.
+</p>
+</div>
+<div class="figure"><span id="fig:envgenoSpeciesR2"></span>
+<img src="GOING_files/figure-html/envgenoSpeciesR2-1.png" alt="R2 for environmental variable" width="768" />
+<p class="caption">
+Figure 6.8: R2 for environmental variable
+</p>
+</div>
+<div class="figure"><span id="fig:envGenoSpeciesVarPart"></span>
+<img src="GOING_files/figure-html/envGenoSpeciesVarPart-1.png" alt="Genetic variance partitioning for environmental variables." width="768" />
+<p class="caption">
+Figure 6.9: Genetic variance partitioning for environmental variables.
+</p>
+</div>
 
 </div>
 </div>
@@ -726,11 +1060,8 @@ Figure 6.5: Genetic variance partitioning for environmental variables.
 <div id="ref-RCoreTeam2020">
 <p>R Core Team. (2020). R: A Language and Environment for Statistical Computing. </p>
 </div>
-<div id="ref-Rellstab2015a">
+<div id="ref-Rellstab2015">
 <p>Rellstab, C., Gugerli, F., Eckert, A.J., Hancock, A.M. &amp; Holderegger, R. (2015). A practical guide to environmental association analysis in landscape genomics. <strong>24</strong>, 4348–4370. Retrieved from <a href="http://doi.wiley.com/10.1111/mec.13322">http://doi.wiley.com/10.1111/mec.13322</a></p>
-</div>
-<div id="ref-Team2018">
-<p>Stan Development Team. (2018). Rstan: the R interface to Stan. Retrieved from <a href="http://mc-stan.org/">http://mc-stan.org/</a></p>
 </div>
 <div id="ref-Uriarte2004">
 <p>Uriarte, M., Condit, R., Canham, C.D. &amp; Hubbell, S.P. (2004). A spatially explicit model of sapling growth in a tropical forest: Does the identity of neighbours matter? <em>Journal of Ecology</em>, <strong>92</strong>, 348–360. Retrieved from <a href="http://doi.wiley.com/10.1111/j.0022-0477.2004.00867.x">http://doi.wiley.com/10.1111/j.0022-0477.2004.00867.x</a></p>

@@ -1,0 +1,16 @@
+#!/usr/bin/env Rscript
+args = commandArgs(trailingOnly=TRUE)
+if (length(args)==0)
+  stop("At least one argument must be supplied (chain and species).n", call.=FALSE)
+load("../save/dataEnvSp.Rdata")
+chain <- as.numeric(args[1])
+species <- as.numeric(args[2])
+print(paste("Chain number is", chain))
+print(paste("Species is", names(mdata)[species]))
+library(rstan)
+options(mc.cores = 1)
+rstan_options(auto_write = T)
+model <- stan_model("../models/AnimalLog.stan")
+fit <- sampling(model, chains = 1, data = mdata[[species]], save_warmup = F,
+                     control = list(adapt_delta = 0.99, max_treedepth = 12))
+save(fit, file = paste0("../save/EnvGenoSpecies/species", species, ".chain", chain, ".Rdata"))

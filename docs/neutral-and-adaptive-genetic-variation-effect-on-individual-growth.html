@@ -24,7 +24,7 @@
 <meta name="author" content="Sylvain Schmitt" />
 
 
-<meta name="date" content="2021-03-10" />
+<meta name="date" content="2021-05-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -252,11 +252,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#simulated-animal-model"><i class="fa fa-check"></i><b>6.1</b> Simulated Animal Model</a></li>
 <li class="chapter" data-level="6.2" data-path="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#neighbourhood-crowding-index"><i class="fa fa-check"></i><b>6.2</b> Neighbourhood crowding index</a></li>
 <li class="chapter" data-level="6.3" data-path="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#genetic-variance"><i class="fa fa-check"></i><b>6.3</b> Genetic variance</a></li>
+<li class="chapter" data-level="6.4" data-path="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#confounding-neutral-variation"><i class="fa fa-check"></i><b>6.4</b> Confounding neutral variation</a></li>
+<li class="chapter" data-level="6.5" data-path="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#closely-related-species"><i class="fa fa-check"></i><b>6.5</b> Closely-related species</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><i class="fa fa-check"></i><b>7</b> Neutral and adaptive genetic variation effect on individual growth</a><ul>
 <li class="chapter" data-level="7.1" data-path="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#growth-data"><i class="fa fa-check"></i><b>7.1</b> Growth data</a></li>
 <li class="chapter" data-level="7.2" data-path="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#simulated-growth-and-animal-model"><i class="fa fa-check"></i><b>7.2</b> Simulated Growth and Animal Model</a></li>
 <li class="chapter" data-level="7.3" data-path="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#genetic-variance-1"><i class="fa fa-check"></i><b>7.3</b> Genetic variance</a></li>
+<li class="chapter" data-level="7.4" data-path="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#confounding-phenotypic-and-environmental-variation"><i class="fa fa-check"></i><b>7.4</b> Confounding phenotypic and environmental variation</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -802,6 +805,317 @@ Figure 7.7: Relation between genotypic values for individual growth potential (G
 <img src="GOING_files/figure-html/spcorrelo-1.png" alt="Spatial autocorrelogram (Moran's I) of variables and associated genetic multiplicative values." width="768" />
 <p class="caption">
 Figure 7.8: Spatial autocorrelogram (Moran’s I) of variables and associated genetic multiplicative values.
+</p>
+</div>
+</div>
+<div id="confounding-phenotypic-and-environmental-variation" class="section level2">
+<h2><span class="header-section-number">7.4</span> Confounding phenotypic and environmental variation</h2>
+<blockquote>
+<p>Second, the analysis of growth form variation is confounded with environment; that is, phenotypic variation between different niches could simply be due to plasticity. Excluding all or some of the contribution of plasticity requires that genotypes are grown in a common environment, which is not (and cannot be?) done with these species.</p>
+</blockquote>
+<p>We used the following growth model with a lognormal distribution to estimate individual growth potential and associated genotypic variation controlling for environmental variation (<span class="math inline">\(NCI\)</span> and <span class="math inline">\(TWI\)</span>) at the individual scale:</p>
+<p><span class="math display" id="eq:gmaxgenoenv">\[\begin{equation} 
+  DBH_{y=today,p,i}  - DBH_{y=y0,p,i} \sim \\
+  \mathcal{logN} (log(\sum _{y=y_0} ^{y=today} \theta_{1,p,i}.exp(-\frac12.[\frac{log(\frac{DBH_{y,p,i}}{100.\theta_{2,p}})}{\theta_{3,p}}]^2)), \sigma_1) \\ 
+  \theta_{1,p,i} \sim \mathcal {logN}(log(\theta_{1,p}.a_{1,i}. \beta_1.TWI_i.\beta_2.NCI_i), \sigma_2) \\ 
+  \theta_{2,p} \sim \mathcal {logN}(log(\theta_2),\sigma_3) \\ 
+  \theta_{3,p} \sim \mathcal {logN}(log(\theta_3),\sigma_4) \\
+  a_{1,i} \sim \mathcal{MVlogN}(log(1), \sigma_5.K)
+  \tag{7.5}
+\end{equation}\]</span></p>
+<p>We fitted the equivalent model with following priors:</p>
+<p><span class="math display" id="eq:gmaxgenoenvstan">\[\begin{equation} 
+  DBH_{y=today,p,i}  - DBH_{y=y0,p,i} \sim \\
+  \mathcal{logN} (log(\sum _{y=y_0} ^{y=today} \hat{\theta_{1,p,i}}.exp(-\frac12.[\frac{log(\frac{DBH_{y,p,i}}{100.\hat{\theta_{2,p}}})}{\hat{\theta_{3,p}}}]^2)), \sigma_1) \\ 
+  \hat{\theta_{1,p,i}} = e^{log(\theta_{1,p}.\hat{a_{1,i}}. \beta_1.TWI_i.\beta_2.NCI_i) + \sigma_2.\epsilon_{1,i}} \\ 
+  \hat{\theta_{2,p}}  = e^{log(\theta_2) + \sigma_3.\epsilon_{2,p}} \\ 
+  \hat{\theta_{3,p}}  = e^{log(\theta_3) + \sigma_4.\epsilon_{3,p}} \\  
+  \hat{a_{1,i}} = e^{\sigma_5.A.\epsilon_{4,i}} \\
+  \epsilon_{1,i} \sim \mathcal{N}(0,1) \\
+  \epsilon_{2,p} \sim \mathcal{N}(0,1) \\
+  \epsilon_{3,p} \sim \mathcal{N}(0,1) \\
+  \epsilon_{4,i} \sim \mathcal{N}(0,1) \\
+  ~ \\
+  (\theta_{1,p}, \theta_2, \theta_3) \sim \mathcal{logN}^3(log(1),1) \\ 
+  (\sigma_1, \sigma_2, \sigma_3, \sigma_4, \sigma_5) \sim \mathcal{N}^5_T(0,1) \\ 
+    ~ \\ 
+    V_P = Var(log(\mu_p)) \\
+    V_G=\sigma_5^2\\
+    V_{TWI} = Var(log(\beta_1.TWI_i)) \\
+    V_{NCI} = Var(log(\beta_2.NCI_i)) \\
+    V_R=\sigma_2^2
+  \tag{7.6}
+\end{equation}\]</span></p>
+<table>
+<caption>
+<span id="tab:gmaxgenoenvTab">Table 7.3: </span>Individual growth potential model.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Parameter
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Standard error
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(\hat R\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(N_{eff}\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+thetap1[1]
+</td>
+<td style="text-align:right;">
+0.6819703
+</td>
+<td style="text-align:right;">
+0.1750196
+</td>
+<td style="text-align:right;">
+1.0017710
+</td>
+<td style="text-align:right;">
+3771
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+thetap1[2]
+</td>
+<td style="text-align:right;">
+0.4693647
+</td>
+<td style="text-align:right;">
+0.1630881
+</td>
+<td style="text-align:right;">
+1.0003561
+</td>
+<td style="text-align:right;">
+3238
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+thetap1[3]
+</td>
+<td style="text-align:right;">
+0.7133448
+</td>
+<td style="text-align:right;">
+0.1741461
+</td>
+<td style="text-align:right;">
+1.0009126
+</td>
+<td style="text-align:right;">
+3999
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+beta[1]
+</td>
+<td style="text-align:right;">
+1.0338461
+</td>
+<td style="text-align:right;">
+0.4773498
+</td>
+<td style="text-align:right;">
+1.0009493
+</td>
+<td style="text-align:right;">
+5751
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+beta[2]
+</td>
+<td style="text-align:right;">
+1.0231845
+</td>
+<td style="text-align:right;">
+0.4821474
+</td>
+<td style="text-align:right;">
+0.9998852
+</td>
+<td style="text-align:right;">
+6093
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+theta2
+</td>
+<td style="text-align:right;">
+0.2212118
+</td>
+<td style="text-align:right;">
+0.0872344
+</td>
+<td style="text-align:right;">
+1.0031382
+</td>
+<td style="text-align:right;">
+1564
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+theta3
+</td>
+<td style="text-align:right;">
+0.6542952
+</td>
+<td style="text-align:right;">
+0.1080025
+</td>
+<td style="text-align:right;">
+1.0011451
+</td>
+<td style="text-align:right;">
+2755
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sigma[1]
+</td>
+<td style="text-align:right;">
+0.1302832
+</td>
+<td style="text-align:right;">
+0.0953805
+</td>
+<td style="text-align:right;">
+1.3708842
+</td>
+<td style="text-align:right;">
+22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sigma[2]
+</td>
+<td style="text-align:right;">
+0.8841277
+</td>
+<td style="text-align:right;">
+0.1185958
+</td>
+<td style="text-align:right;">
+1.1145255
+</td>
+<td style="text-align:right;">
+81
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sigma[3]
+</td>
+<td style="text-align:right;">
+0.3078621
+</td>
+<td style="text-align:right;">
+0.3262250
+</td>
+<td style="text-align:right;">
+1.0020929
+</td>
+<td style="text-align:right;">
+2855
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sigma[4]
+</td>
+<td style="text-align:right;">
+0.1441136
+</td>
+<td style="text-align:right;">
+0.2493211
+</td>
+<td style="text-align:right;">
+1.0005756
+</td>
+<td style="text-align:right;">
+4162
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sigma[5]
+</td>
+<td style="text-align:right;">
+0.4157660
+</td>
+<td style="text-align:right;">
+0.2270843
+</td>
+<td style="text-align:right;">
+1.1430011
+</td>
+<td style="text-align:right;">
+55
+</td>
+</tr>
+</tbody>
+</table>
+<div class="figure"><span id="fig:gmaxgenoenvTrace"></span>
+<img src="GOING_files/figure-html/gmaxgenoenvTrace-1.png" alt="Traceplot of model parameters." width="768" />
+<p class="caption">
+Figure 7.9: Traceplot of model parameters.
+</p>
+</div>
+<div class="figure"><span id="fig:gmaxgenoenvEnergy"></span>
+<img src="GOING_files/figure-html/gmaxgenoenvEnergy-1.png" alt="Energy of the model." width="768" />
+<p class="caption">
+Figure 7.10: Energy of the model.
+</p>
+</div>
+<div class="figure"><span id="fig:gmaxgenoenvPred"></span>
+<img src="GOING_files/figure-html/gmaxgenoenvPred-1.png" alt="Species predicted growth curve." width="768" />
+<p class="caption">
+Figure 7.11: Species predicted growth curve.
+</p>
+</div>
+<div class="figure"><span id="fig:GmaxGenoEnvR2"></span>
+<img src="GOING_files/figure-html/GmaxGenoEnvR2-1.png" alt="R2 for Gmax." width="768" />
+<p class="caption">
+Figure 7.12: R2 for Gmax.
+</p>
+</div>
+<div class="figure"><span id="fig:gmaxgenoenvVar"></span>
+<img src="GOING_files/figure-html/gmaxgenoenvVar-1.png" alt="Genetic variance partitionning for ontogenetic parameters." width="768" />
+<p class="caption">
+Figure 7.13: Genetic variance partitionning for ontogenetic parameters.
+</p>
+</div>
+<div class="figure"><span id="fig:unnamed-chunk-7"></span>
+<img src="GOING_files/figure-html/unnamed-chunk-7-1.png" alt="Relation between genotypic values for individual growth potential knowing TWI and NCI (Gmax) and neighbourhood crowding index (NCI), an indirect measurement of access to light, for different classes of diameters. Regression lines represent a linear model of form y ~ x. Annotations give for each diameter class the Pearson’s R correlation coefficient and the associated p-value." width="768" />
+<p class="caption">
+Figure 7.14: Relation between genotypic values for individual growth potential knowing TWI and NCI (Gmax) and neighbourhood crowding index (NCI), an indirect measurement of access to light, for different classes of diameters. Regression lines represent a linear model of form y ~ x. Annotations give for each diameter class the Pearson’s R correlation coefficient and the associated p-value.
+</p>
+</div>
+<div class="figure"><span id="fig:spcorreloGenoEnv"></span>
+<img src="GOING_files/figure-html/spcorreloGenoEnv-1.png" alt="Spatial autocorrelogram (Moran's I) of variables and associated genetic multiplicative values." width="768" />
+<p class="caption">
+Figure 7.15: Spatial autocorrelogram (Moran’s I) of variables and associated genetic multiplicative values.
 </p>
 </div>
 
