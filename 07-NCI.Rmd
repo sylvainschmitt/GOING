@@ -498,39 +498,22 @@ watch 'squeue -u sschmitt | wc -l'
 watch 'tail -n 1 out/*.out | grep Chain'
 ```
 
-```{r envGenoNullTab, fig.cap="Genetic variance of individual growth potential with a lognormal animal model.", eval=F}
-fitEnvNull <- list(NCI = list())
-for(var in c("NCI")){
-  for(sim in list.files("save/EnvGeno", 
-                        pattern = var, full.names = T)){
-    load(sim)
-    fitEnv[[var]] <- c(fitEnv[[var]], fit)
-  }
+```{r envGenoNullGraph, fig.cap="Among-genotype variance (VG) between observed value (red) and values observed in null models (black) randomizing neighbourhood crowding index (NCI) among plots."}
+fitEnvNull <- list()
+sims <- gsub(".Rdata", "", list.files("save/EnvGenoNull"))
+for(sim in sims){
+  load(paste0("save/EnvGenoNull/", sim, ".Rdata"))
+  fitEnvNull <- c(fitEnvNull, fit)
 }
-fitEnv <- lapply(fitEnv, sflist2stanfit)
-# lapply(fitEnv, broom.mixed::tidyMCMC, c("mu", "Vp", "Vg", "Vr"), 
-#        droppars = NULL, rhat = T) %>% 
-#   bind_rows(.id = "Variable") %>% 
-#   separate(term, c("parameter", "population"), convert = T) %>% 
-#   mutate(population = recode(population, "1" = "S. globulifera Paracou",
-#                              "2" = "S. globulifera Regina", "3" = "S. sp1")) %>% 
-#   mutate(population = ifelse(is.na(population), "", population)) %>% 
-#   kable(caption = "Summary table of the kinship growth model",
-#         col.names = c("Variable", "Parameter",  "Population",  
-#                       "Estimate", "$\\sigma$", "$\\hat{R}$"))   
-```
-
-```{r vgdist, fig.cap="Among-genotype variance (VG)  between observed value (red) and values observed in null models (black) randomizing neighbourhood crowding index (NCI) among plots."}
-# vgs <- lapply(fit, broom.mixed::tidyMCMC, c("Vg"), droppars = NULL, rhat = T) %>%
-  # bind_rows(.id = "simulation")
-vgs <- data.frame(estimate = rnorm(101), simulation = 0:100)
-vgs$estimate[1] <- 3
-filter(vgs, simulation != 0) %>% 
-  ggplot(aes(estimate)) +
-  geom_density() +
-  geom_vline(xintercept = filter(vgs, simulation == 0)$estimate, col = "red") +
-  xlab(expression(V[G])) +
-  ggtitle("Fake graph waiting for results", "P < 0.01")
+names(fitEnvNull) <- sims
+vgs <- lapply(fitEnvNull, function(fit) try(broom.mixed::tidyMCMC(fit, c("Vg"), droppars = NULL, rhat = T)))
+vgs <- bind_rows(vgs[lapply(vgs, class) != "try-error"], .id = "simulation")
+ggplot(vgs, aes(estimate)) +
+  geom_histogram(fill = "lightgrey", binwidth = 0.001) +
+  geom_density(aes(y = 0.001*..count..), fill = NA) +
+  geom_vline(xintercept = 0.021, col = "red") +
+  geom_text(label = "P < 0.001", y = 20, data = data.frame(estimate = 0.01)) +
+  xlab(expression(V[G]))
 ```
 
 ## Closely-related species

@@ -92,7 +92,7 @@ fig:envGenoTrace
 fig:envgenoR2
 fig:envGenoVarPart
 fig:plotncigif
-fig:vgdist
+fig:envGenoNullGraph
 tab:envGenoSpeciesTab
 fig:envGenoSpeciesTrace
 fig:envgenoSpeciesR2
