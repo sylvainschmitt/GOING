@@ -277,6 +277,58 @@ f1 <- 0.0037
 Sp <- -blog/(1-f1)
 paste("S. sp.3 Sp =", Sp)
 ```
+
+## Environmental auto-correlation
+
+```{r spagedienvsymphofile, eval=F, echo=T}
+trees <- read_tsv(file = "save/NCI.tsv") 
+snps <- vroom::vroom(file.path(path, "..", "variantCalling", "spagedienv", "sp2.1k.genepop"), skip = 1002, 
+                     col_names = c("Lib", "nci", "Long", paste0("SNP", 1:1000))) %>% 
+  dplyr::select(-Long)
+NCI <- mutate(snps, Ind = gsub(".g.vcf", "", Lib)) %>% 
+  dplyr::select(Ind) %>% 
+  left_join(dplyr::select(trees, Ind, NCI))
+snps$nci <- NCI$NCI
+write_tsv(snps, path = file.path(path, "..", "variantCalling", "spagedienv", "sp2.1k.spagedi.in"), col_names = T)
+```
+
+```{bash spagediHeader, eval=F, echo=T}
+// #ind #cat #coord #loci #dig/loc #ploidy// this an example (lines beginning by // are comment lines)
+30	0	1	1000	3	2
+-8
+
+
+spagedi
+sp1.1k.spagedi.in  
+sp1.1k.spagedi.out
+e
+return
+13
+3
+return
+1000
+34
+3
+```
+
+```{r}
+# Sp1
+blog <- -0.00045741
+f1 <- 0.0024
+Sp <- -blog/(1-f1)
+paste("S. sp.1 Sp =", Sp)
+# Paracou
+blog <- -0.00110023
+f1 <- 0.0063
+Sp <- -blog/(1-f1)
+paste("S. sp.2 Sp =", Sp)
+# Regina
+blog <- -0.000205915
+f1 <- 0.00232857
+Sp <- -blog/(1-f1)
+paste("S. sp.3 Sp =", Sp)
+```
+
 ## Introgression
 
 We used the method developed by @Gompert2009 implemented in `introgress` [@Gompert2010] to map admixture between Paracou genepools. 

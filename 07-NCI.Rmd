@@ -512,7 +512,7 @@ ggplot(vgs, aes(estimate)) +
   geom_histogram(fill = "lightgrey", binwidth = 0.001) +
   geom_density(aes(y = 0.001*..count..), fill = NA) +
   geom_vline(xintercept = 0.021, col = "red") +
-  geom_text(label = "P < 0.001", y = 20, data = data.frame(estimate = 0.01)) +
+  geom_text(label = "P < 0.01", y = 20, data = data.frame(estimate = 0.01)) +
   xlab(expression(V[G]))
 ```
 
@@ -631,3 +631,69 @@ lapply(fit, mcmc_intervals_data, regex_pars = c("Vg", "Vr")) %>%
         axis.text.x = element_blank(), axis.line.x = element_blank(), axis.ticks.x = element_blank()) +
   scale_fill_discrete(expression(sigma^2))
 ```
+
+<!-- ## Isolation by environement (IBE) -->
+
+<!-- > Je pense qu'il faut trouver une manière de présenter la méthode et les résultats plus facile à suivre, notamment pour ceux qui n'ont pas un bon background en génétique quanti moderne. Personnellement je serais aussi un peu plus prudent dans les interprétations car il y a peut-être d'autres mécanismes qui pourraient conduire aux patterns observés. Je pense notamment à de la dispersion de graines qui se feraient préférentiellement entre microhabitats similaires (peut-être à vérifier en comparant l'IBD à l'IBE). A moins que nos discussions finissent par me convaincre tout à fait, j'ai l'impression que tu as des éléments probants pour échafauder des hypothèses mais pas de preuves formelles. C'est là que proposer des expérimentations pour tester ces hypothèses serait peut être une plus-value. *O. Hardy* -->
+
+<!-- ```{r} -->
+<!-- paracou <- src_sqlite(file.path("data", "Paracou","trees", "Paracou.sqlite")) %>%  -->
+<!--   tbl("Paracou") %>%  -->
+<!--   filter(Genus == "Symphonia") %>%  -->
+<!--   filter(CensusYear == 2015) %>%  -->
+<!--   collect() %>%  -->
+<!--   mutate(Ind = paste0("P", Plot, "-", SubPlot, "-", TreeFieldNum)) %>%  -->
+<!--   dplyr::select(Ind, Xutm, Yutm) -->
+<!-- trees <- read_tsv(file = "save/NCI.tsv") %>%  -->
+<!--   left_join(paracou) -->
+<!-- ids <- read_tsv(file.path(path, "..", "variantCalling", "growth", "plink2.king.id")) -->
+<!-- K <- read_tsv(file.path(path, "..", "variantCalling", "growth", "plink2.king"), -->
+<!--          col_names = ids$IID) %>%  -->
+<!--   as.data.frame() -->
+<!-- row.names(K) <- ids$IID -->
+<!-- K <- as.matrix(K) -->
+<!-- trees <- trees %>%  -->
+<!--   filter(IID %in% colnames(K)) %>%  -->
+<!--   mutate(IndNum = 1:nrow(.), popNum = as.numeric(as.factor(pop))) -->
+<!-- # all(trees$IID == colnames(K)) -->
+<!-- G <- K -->
+<!-- D <- dist(trees[c("Xutm", "Yutm")]) %>%  -->
+<!--   as.matrix() -->
+<!-- E <- dist(trees[c("NCI")]) %>%  -->
+<!--   as.matrix() -->
+<!-- ib <- read_tsv("../PhD/data/Symphonia_Paracou/Sequences/variantCalling/spagedi/globuliferaTypeParacou.1k.spagedi.out.ibd") %>%  -->
+<!--   rename(IID1 = "Name i", IID2 = "Name j", distance = "Spatial dist", kinship = "ALL LOCI", moran = "ALL LOCI_1") %>%  -->
+<!--   mutate(distance = ifelse(distance == "inbreeding coef", 0, distance)) %>%  -->
+<!--   mutate(distance = as.numeric(distance)) %>%  -->
+<!--   filter(distance < 10^5) %>%  -->
+<!--   dplyr::select(IID1, IID2, distance, kinship) %>%  -->
+<!--   left_join(reshape2::melt(E) %>%  -->
+<!--               rename(IID1 = Var1, IID2 = Var2, nci = value)) -->
+<!-- ib %>%  -->
+<!--   reshape2::melt(id.vars = c("IID1", "IID2", "kinship")) %>%  -->
+<!--   ggplot(aes(value, kinship)) + -->
+<!--   geom_point() + -->
+<!--   geom_smooth(method = "lm") + -->
+<!--   facet_wrap(~ variable, scales = "free", nrow = 2) -->
+<!-- ib.full <- bind_rows(ib, -->
+<!--                      ib %>%  -->
+<!--                        rename(IID3 = IID1) %>%  -->
+<!--                        rename(IID1 = IID2, IID2 = IID3)) %>%  -->
+<!--   unique() -->
+
+<!-- vegan::mantel(as.matrix(reshape2::dcast(ib.full, IID1 ~ IID2, value.var = "kinship")[-1]), -->
+<!--               as.matrix(reshape2::dcast(ib.full, IID1 ~ IID2, value.var = "distance")[-1])) -->
+
+<!-- reshape2::dcast(ib.full, IID1 ~ IID2, value.var = "distance") %>%  -->
+<!--   filter_if(is.na) -->
+<!-- as.matrix(reshape2::dcast(ib.full, IID1 ~ IID2, value.var = "kinship")) -->
+
+<!-- ib.full %>%  -->
+<!--   filter() -->
+<!-- mantel.rtest(as.matrix(reshape2::dcast(ib.full, IID1 ~ IID2, value.var = "kinship")[-1]), -->
+<!--               as.matrix(reshape2::dcast(ib.full, IID1 ~ IID2, value.var = "distance")[-1])) -->
+
+<!-- data.frame(G = as.vector(G), D = as.vector(D), E = as.vector(E)) %>%  -->
+<!--   cor() %>%  -->
+<!--   corrplot::corrplot.mixed() -->
+<!-- ``` -->
