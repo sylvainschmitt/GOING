@@ -24,7 +24,7 @@
 <meta name="author" content="Sylvain Schmitt" />
 
 
-<meta name="date" content="2021-07-06" />
+<meta name="date" content="2021-07-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,6 +51,11 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<link href="libs/sequences-0.1/sequences.css" rel="stylesheet" />
+<script src="libs/sunburst-binding-2.1.5/sunburst.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -250,13 +255,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3" data-path="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#genetic-variance"><i class="fa fa-check"></i><b>6.3</b> Genetic variance</a></li>
 <li class="chapter" data-level="6.4" data-path="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#confounding-neutral-variation"><i class="fa fa-check"></i><b>6.4</b> Confounding neutral variation</a></li>
 <li class="chapter" data-level="6.5" data-path="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#closely-related-species"><i class="fa fa-check"></i><b>6.5</b> Closely-related species</a></li>
-<li class="chapter" data-level="6.6" data-path="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#isolation-by-environement-ibe"><i class="fa fa-check"></i><b>6.6</b> Isolation by environement (IBE)</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><i class="fa fa-check"></i><b>7</b> Neutral and adaptive genetic variation effect on individual growth</a><ul>
 <li class="chapter" data-level="7.1" data-path="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#growth-data"><i class="fa fa-check"></i><b>7.1</b> Growth data</a></li>
 <li class="chapter" data-level="7.2" data-path="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#simulated-growth-and-animal-model"><i class="fa fa-check"></i><b>7.2</b> Simulated Growth and Animal Model</a></li>
 <li class="chapter" data-level="7.3" data-path="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#genetic-variance-1"><i class="fa fa-check"></i><b>7.3</b> Genetic variance</a></li>
 <li class="chapter" data-level="7.4" data-path="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#confounding-phenotypic-and-environmental-variation"><i class="fa fa-check"></i><b>7.4</b> Confounding phenotypic and environmental variation</a></li>
+<li class="chapter" data-level="7.5" data-path="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#manuscript-figure"><i class="fa fa-check"></i><b>7.5</b> Manuscript figure</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -296,26 +301,26 @@ Interestingly, we noticed the so-called <em>Paracou type</em> and <em>Régina ty
 And looking at a few identified individuals’ bark,
 the two identified gene pools correspond two these two morphotypes (Fig. <a href="genetic-species-delimitation.html#fig:populationMorphotypes">5.5</a>).
 The <em>Paracou type</em> has a smoother and thinner bark compared to the thick and lashed bark of the <em>Régina type</em>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="genetic-species-delimitation.html#cb1-1"></a><span class="ex">module</span> load bioinfo/admixture_linux-1.3.0</span>
-<span id="cb1-2"><a href="genetic-species-delimitation.html#cb1-2"></a><span class="ex">module</span> load bioinfo/plink-v1.90b5.3</span>
-<span id="cb1-3"><a href="genetic-species-delimitation.html#cb1-3"></a><span class="fu">mkdir</span> admixture</span>
-<span id="cb1-4"><a href="genetic-species-delimitation.html#cb1-4"></a><span class="fu">mkdir</span> admixture/paracou</span>
-<span id="cb1-5"><a href="genetic-species-delimitation.html#cb1-5"></a><span class="fu">mkdir</span> out</span>
-<span id="cb1-6"><a href="genetic-species-delimitation.html#cb1-6"></a><span class="bu">cd</span> ../variantCalling</span>
-<span id="cb1-7"><a href="genetic-species-delimitation.html#cb1-7"></a><span class="fu">mkdir</span> paracouRenamed</span>
-<span id="cb1-8"><a href="genetic-species-delimitation.html#cb1-8"></a><span class="co"># read_tsv(file.path(pathCluster, &quot;paracou&quot;, &quot;symcapture.all.biallelic.snp.filtered.nonmissing.paracou.bim&quot;),</span></span>
-<span id="cb1-9"><a href="genetic-species-delimitation.html#cb1-9"></a><span class="co">#          col_names = F) %&gt;% </span></span>
-<span id="cb1-10"><a href="genetic-species-delimitation.html#cb1-10"></a><span class="co">#   mutate(X1 = as.numeric(as.factor(X1))) %&gt;% </span></span>
-<span id="cb1-11"><a href="genetic-species-delimitation.html#cb1-11"></a><span class="co">#   write_tsv(file.path(pathCluster, &quot;paracouRenamed&quot;, &quot;symcapture.all.biallelic.snp.filtered.nonmissing.paracou.bim&quot;),</span></span>
-<span id="cb1-12"><a href="genetic-species-delimitation.html#cb1-12"></a><span class="co">#             col_names = F)</span></span>
-<span id="cb1-13"><a href="genetic-species-delimitation.html#cb1-13"></a><span class="fu">cp</span> paracou/symcapture.all.biallelic.snp.filtered.nonmissing.paracou.bed paracouRenamed</span>
-<span id="cb1-14"><a href="genetic-species-delimitation.html#cb1-14"></a><span class="fu">cp</span> paracou/symcapture.all.biallelic.snp.filtered.nonmissing.paracou.fam paracouRenamed </span>
-<span id="cb1-15"><a href="genetic-species-delimitation.html#cb1-15"></a><span class="bu">cd</span> ../populationGenomics/admixture/paracou</span>
-<span id="cb1-16"><a href="genetic-species-delimitation.html#cb1-16"></a><span class="kw">for</span> <span class="ex">k</span> in <span class="va">$(</span><span class="fu">seq</span> 10<span class="va">)</span> <span class="kw">;</span> <span class="kw">do</span> <span class="bu">echo</span> <span class="st">&quot;module load bioinfo/admixture_linux-1.3.0 ; admixture --cv ../../variantCalling/paracouRenamed/symcapture.all.biallelic.snp.filtered.nonmissing.paracou.bed </span><span class="va">$k</span><span class="st"> | tee log</span><span class="va">$k</span><span class="st">.out&quot;</span> <span class="kw">;</span> <span class="kw">done</span> <span class="op">&gt;</span> <span class="ex">admixture.sh</span></span>
-<span id="cb1-17"><a href="genetic-species-delimitation.html#cb1-17"></a><span class="ex">sarray</span> -J admixture -o ../../out/%j.admixture.out -e ../../out/%j.admixture.err -t 48:00:00 --mem=8G --mail-type=BEGIN,END,FAIL admixture.sh</span>
-<span id="cb1-18"><a href="genetic-species-delimitation.html#cb1-18"></a><span class="fu">scp</span> sschmitt@genologin.toulouse.inra.fr:~/Symcapture/populationGenomics/admixture/paracou/*</span>
-<span id="cb1-19"><a href="genetic-species-delimitation.html#cb1-19"></a><span class="fu">grep</span> -h CV log*.out <span class="op">&gt;</span> CV.out</span>
-<span id="cb1-20"><a href="genetic-species-delimitation.html#cb1-20"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> log*.out<span class="va">)</span> <span class="kw">;</span> <span class="kw">do</span>  <span class="fu">grep</span> <span class="st">&quot;Fst divergences between estimated populations:&quot;</span> -A 20 <span class="va">$file</span> <span class="kw">|</span> <span class="fu">head</span> -n -2 <span class="op">&gt;</span> matrices/<span class="va">$file</span> <span class="kw">;</span> <span class="kw">done</span></span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb75-1"><a href="genetic-species-delimitation.html#cb75-1"></a><span class="ex">module</span> load bioinfo/admixture_linux-1.3.0</span>
+<span id="cb75-2"><a href="genetic-species-delimitation.html#cb75-2"></a><span class="ex">module</span> load bioinfo/plink-v1.90b5.3</span>
+<span id="cb75-3"><a href="genetic-species-delimitation.html#cb75-3"></a><span class="fu">mkdir</span> admixture</span>
+<span id="cb75-4"><a href="genetic-species-delimitation.html#cb75-4"></a><span class="fu">mkdir</span> admixture/paracou</span>
+<span id="cb75-5"><a href="genetic-species-delimitation.html#cb75-5"></a><span class="fu">mkdir</span> out</span>
+<span id="cb75-6"><a href="genetic-species-delimitation.html#cb75-6"></a><span class="bu">cd</span> ../variantCalling</span>
+<span id="cb75-7"><a href="genetic-species-delimitation.html#cb75-7"></a><span class="fu">mkdir</span> paracouRenamed</span>
+<span id="cb75-8"><a href="genetic-species-delimitation.html#cb75-8"></a><span class="co"># read_tsv(file.path(pathCluster, &quot;paracou&quot;, &quot;symcapture.all.biallelic.snp.filtered.nonmissing.paracou.bim&quot;),</span></span>
+<span id="cb75-9"><a href="genetic-species-delimitation.html#cb75-9"></a><span class="co">#          col_names = F) %&gt;% </span></span>
+<span id="cb75-10"><a href="genetic-species-delimitation.html#cb75-10"></a><span class="co">#   mutate(X1 = as.numeric(as.factor(X1))) %&gt;% </span></span>
+<span id="cb75-11"><a href="genetic-species-delimitation.html#cb75-11"></a><span class="co">#   write_tsv(file.path(pathCluster, &quot;paracouRenamed&quot;, &quot;symcapture.all.biallelic.snp.filtered.nonmissing.paracou.bim&quot;),</span></span>
+<span id="cb75-12"><a href="genetic-species-delimitation.html#cb75-12"></a><span class="co">#             col_names = F)</span></span>
+<span id="cb75-13"><a href="genetic-species-delimitation.html#cb75-13"></a><span class="fu">cp</span> paracou/symcapture.all.biallelic.snp.filtered.nonmissing.paracou.bed paracouRenamed</span>
+<span id="cb75-14"><a href="genetic-species-delimitation.html#cb75-14"></a><span class="fu">cp</span> paracou/symcapture.all.biallelic.snp.filtered.nonmissing.paracou.fam paracouRenamed </span>
+<span id="cb75-15"><a href="genetic-species-delimitation.html#cb75-15"></a><span class="bu">cd</span> ../populationGenomics/admixture/paracou</span>
+<span id="cb75-16"><a href="genetic-species-delimitation.html#cb75-16"></a><span class="kw">for</span> <span class="ex">k</span> in <span class="va">$(</span><span class="fu">seq</span> 10<span class="va">)</span> <span class="kw">;</span> <span class="kw">do</span> <span class="bu">echo</span> <span class="st">&quot;module load bioinfo/admixture_linux-1.3.0 ; admixture --cv ../../variantCalling/paracouRenamed/symcapture.all.biallelic.snp.filtered.nonmissing.paracou.bed </span><span class="va">$k</span><span class="st"> | tee log</span><span class="va">$k</span><span class="st">.out&quot;</span> <span class="kw">;</span> <span class="kw">done</span> <span class="op">&gt;</span> <span class="ex">admixture.sh</span></span>
+<span id="cb75-17"><a href="genetic-species-delimitation.html#cb75-17"></a><span class="ex">sarray</span> -J admixture -o ../../out/%j.admixture.out -e ../../out/%j.admixture.err -t 48:00:00 --mem=8G --mail-type=BEGIN,END,FAIL admixture.sh</span>
+<span id="cb75-18"><a href="genetic-species-delimitation.html#cb75-18"></a><span class="fu">scp</span> sschmitt@genologin.toulouse.inra.fr:~/Symcapture/populationGenomics/admixture/paracou/*</span>
+<span id="cb75-19"><a href="genetic-species-delimitation.html#cb75-19"></a><span class="fu">grep</span> -h CV log*.out <span class="op">&gt;</span> CV.out</span>
+<span id="cb75-20"><a href="genetic-species-delimitation.html#cb75-20"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="va">$(</span><span class="fu">ls</span> log*.out<span class="va">)</span> <span class="kw">;</span> <span class="kw">do</span>  <span class="fu">grep</span> <span class="st">&quot;Fst divergences between estimated populations:&quot;</span> -A 20 <span class="va">$file</span> <span class="kw">|</span> <span class="fu">head</span> -n -2 <span class="op">&gt;</span> matrices/<span class="va">$file</span> <span class="kw">;</span> <span class="kw">done</span></span></code></pre></div>
 <div class="figure"><span id="fig:admixtureParacouCV"></span>
 <img src="GOING_files/figure-html/admixtureParacouCV-1.png" alt="Cross-validation for the clustering of Paracou individuals. Y axis indicates cross-validation mean error, suggesting that 2 or 3 groups best represent the genetic structure of individuals in Paracou." width="768" />
 <p class="caption">
@@ -353,14 +358,14 @@ Figure 5.5: The <em>Symphonia globulifera</em> morphotypes identified in the fie
 19 individuals, belonging to all gene pools, had only negative kinship values.
 After investigation it seems that these individuals are individuals without family in Paracou with null kinship with other individuals of their gene pools and negative values with other individuals of other gene pools.
 Interestingly though, individuals with only null or negative kinship were all located on the limit of Paracou plots.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="genetic-species-delimitation.html#cb2-1"></a><span class="ex">module</span> load bioinfo/plink-v1.90b5.3</span>
-<span id="cb2-2"><a href="genetic-species-delimitation.html#cb2-2"></a><span class="ex">plink</span> \</span>
-<span id="cb2-3"><a href="genetic-species-delimitation.html#cb2-3"></a>  --bfile symcapture.all.biallelic.snp.filtered.nonmissing.paracou \</span>
-<span id="cb2-4"><a href="genetic-species-delimitation.html#cb2-4"></a>  --allow-extra-chr \</span>
-<span id="cb2-5"><a href="genetic-species-delimitation.html#cb2-5"></a>  --recode vcf-iid \</span>
-<span id="cb2-6"><a href="genetic-species-delimitation.html#cb2-6"></a>  --out symcapture.all.biallelic.snp.filtered.nonmissing.paracou</span>
-<span id="cb2-7"><a href="genetic-species-delimitation.html#cb2-7"></a><span class="ex">vcftools</span> --gzvcf  symcapture.all.biallelic.snp.filtered.nonmissing.paracou.vcf.gz  --relatedness2</span>
-<span id="cb2-8"><a href="genetic-species-delimitation.html#cb2-8"></a><span class="co"># an estimated kinship coefficient range &gt;0.354, [0.177, 0.354], [0.0884, 0.177] and [0.0442, 0.0884] corresponds to duplicate/MZ twin, 1st-degree, 2nd-degree, and 3rd-degree relationships respectively</span></span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb76-1"><a href="genetic-species-delimitation.html#cb76-1"></a><span class="ex">module</span> load bioinfo/plink-v1.90b5.3</span>
+<span id="cb76-2"><a href="genetic-species-delimitation.html#cb76-2"></a><span class="ex">plink</span> \</span>
+<span id="cb76-3"><a href="genetic-species-delimitation.html#cb76-3"></a>  --bfile symcapture.all.biallelic.snp.filtered.nonmissing.paracou \</span>
+<span id="cb76-4"><a href="genetic-species-delimitation.html#cb76-4"></a>  --allow-extra-chr \</span>
+<span id="cb76-5"><a href="genetic-species-delimitation.html#cb76-5"></a>  --recode vcf-iid \</span>
+<span id="cb76-6"><a href="genetic-species-delimitation.html#cb76-6"></a>  --out symcapture.all.biallelic.snp.filtered.nonmissing.paracou</span>
+<span id="cb76-7"><a href="genetic-species-delimitation.html#cb76-7"></a><span class="ex">vcftools</span> --gzvcf  symcapture.all.biallelic.snp.filtered.nonmissing.paracou.vcf.gz  --relatedness2</span>
+<span id="cb76-8"><a href="genetic-species-delimitation.html#cb76-8"></a><span class="co"># an estimated kinship coefficient range &gt;0.354, [0.177, 0.354], [0.0884, 0.177] and [0.0442, 0.0884] corresponds to duplicate/MZ twin, 1st-degree, 2nd-degree, and 3rd-degree relationships respectively</span></span></code></pre></div>
 <div class="figure"><span id="fig:kinship-1"></span>
 <img src="GOING_files/figure-html/kinship-1.png" alt="Individuals kinship matrix." width="768" />
 <p class="caption">
@@ -376,37 +381,37 @@ Figure 5.7: Individuals kinship matrix.
 </div>
 <div id="spatial-auto-correlation" class="section level2">
 <h2><span class="header-section-number">5.3</span> Spatial auto-correlation</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="genetic-species-delimitation.html#cb3-1"></a><span class="va">plink=</span>~/Tools/plink_linux_x86_64_20190617/plink </span>
-<span id="cb3-2"><a href="genetic-species-delimitation.html#cb3-2"></a><span class="va">$plink</span> <span class="kw">\</span></span>
-<span id="cb3-3"><a href="genetic-species-delimitation.html#cb3-3"></a>  <span class="ex">--bfile</span> ../paracou/symcapture.all.biallelic.snp.filtered.nonmissing.paracou \</span>
-<span id="cb3-4"><a href="genetic-species-delimitation.html#cb3-4"></a>  --allow-extra-chr \</span>
-<span id="cb3-5"><a href="genetic-species-delimitation.html#cb3-5"></a>  --keep sp1.fam \</span>
-<span id="cb3-6"><a href="genetic-species-delimitation.html#cb3-6"></a>  --recode vcf-iid \</span>
-<span id="cb3-7"><a href="genetic-species-delimitation.html#cb3-7"></a>  --thin-count 1000 \</span>
-<span id="cb3-8"><a href="genetic-species-delimitation.html#cb3-8"></a>  --out sp1.1k</span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="genetic-species-delimitation.html#cb4-1"></a>snps &lt;-<span class="st"> </span>vroom<span class="op">::</span><span class="kw">vroom</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;..&quot;</span>, <span class="st">&quot;variantCalling&quot;</span>, <span class="st">&quot;spagedi&quot;</span>, <span class="st">&quot;globuliferaTypeRegina.1k.genepop&quot;</span>), <span class="dt">skip =</span> <span class="dv">1002</span>, </span>
-<span id="cb4-2"><a href="genetic-species-delimitation.html#cb4-2"></a>                     <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;Lib&quot;</span>, <span class="st">&quot;Lat&quot;</span>, <span class="st">&quot;Long&quot;</span>, <span class="kw">paste0</span>(<span class="st">&quot;SNP&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>)))</span>
-<span id="cb4-3"><a href="genetic-species-delimitation.html#cb4-3"></a>XY &lt;-<span class="st"> </span><span class="kw">mutate</span>(snps, <span class="dt">Ind =</span> <span class="kw">gsub</span>(<span class="st">&quot;.g.vcf&quot;</span>, <span class="st">&quot;&quot;</span>, Lib)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb4-4"><a href="genetic-species-delimitation.html#cb4-4"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(Ind) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb4-5"><a href="genetic-species-delimitation.html#cb4-5"></a><span class="st">  </span><span class="kw">left_join</span>(dplyr<span class="op">::</span><span class="kw">select</span>(trees, Ind, Xutm, Yutm))</span>
-<span id="cb4-6"><a href="genetic-species-delimitation.html#cb4-6"></a>snps<span class="op">$</span>Lat &lt;-<span class="st"> </span>XY<span class="op">$</span>Xutm</span>
-<span id="cb4-7"><a href="genetic-species-delimitation.html#cb4-7"></a>snps<span class="op">$</span>Long &lt;-<span class="st"> </span>XY<span class="op">$</span>Yutm</span>
-<span id="cb4-8"><a href="genetic-species-delimitation.html#cb4-8"></a><span class="kw">write_tsv</span>(snps, <span class="dt">path =</span> <span class="kw">file.path</span>(path, <span class="st">&quot;..&quot;</span>, <span class="st">&quot;variantCalling&quot;</span>, <span class="st">&quot;spagedi&quot;</span>, <span class="st">&quot;globuliferaTypeRegina.1k.spagedi.in&quot;</span>), <span class="dt">col_names =</span> T)</span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="genetic-species-delimitation.html#cb5-1"></a><span class="ex">//</span> <span class="co">#ind #cat #coord #loci #dig/loc #ploidy// this an example (lines beginning by // are comment lines)</span></span>
-<span id="cb5-2"><a href="genetic-species-delimitation.html#cb5-2"></a><span class="ex">231</span> 0   2   1000    3   2</span>
-<span id="cb5-3"><a href="genetic-species-delimitation.html#cb5-3"></a><span class="ex">8</span>   25  50  100 200 400 800 1600 3200</span>
-<span id="cb5-4"><a href="genetic-species-delimitation.html#cb5-4"></a></span>
-<span id="cb5-5"><a href="genetic-species-delimitation.html#cb5-5"></a><span class="ex">spagedi</span></span>
-<span id="cb5-6"><a href="genetic-species-delimitation.html#cb5-6"></a><span class="ex">sp1.1k.spagedi.in</span>  </span>
-<span id="cb5-7"><a href="genetic-species-delimitation.html#cb5-7"></a><span class="ex">sp1.1k.spagedi.out</span></span>
-<span id="cb5-8"><a href="genetic-species-delimitation.html#cb5-8"></a><span class="ex">e</span></span>
-<span id="cb5-9"><a href="genetic-species-delimitation.html#cb5-9"></a><span class="bu">return</span></span>
-<span id="cb5-10"><a href="genetic-species-delimitation.html#cb5-10"></a><span class="ex">13</span></span>
-<span id="cb5-11"><a href="genetic-species-delimitation.html#cb5-11"></a><span class="ex">3</span></span>
-<span id="cb5-12"><a href="genetic-species-delimitation.html#cb5-12"></a><span class="bu">return</span></span>
-<span id="cb5-13"><a href="genetic-species-delimitation.html#cb5-13"></a><span class="ex">1000</span></span>
-<span id="cb5-14"><a href="genetic-species-delimitation.html#cb5-14"></a><span class="ex">34</span></span>
-<span id="cb5-15"><a href="genetic-species-delimitation.html#cb5-15"></a><span class="ex">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb77-1"><a href="genetic-species-delimitation.html#cb77-1"></a><span class="va">plink=</span>~/Tools/plink_linux_x86_64_20190617/plink </span>
+<span id="cb77-2"><a href="genetic-species-delimitation.html#cb77-2"></a><span class="va">$plink</span> <span class="kw">\</span></span>
+<span id="cb77-3"><a href="genetic-species-delimitation.html#cb77-3"></a>  <span class="ex">--bfile</span> ../paracou/symcapture.all.biallelic.snp.filtered.nonmissing.paracou \</span>
+<span id="cb77-4"><a href="genetic-species-delimitation.html#cb77-4"></a>  --allow-extra-chr \</span>
+<span id="cb77-5"><a href="genetic-species-delimitation.html#cb77-5"></a>  --keep sp1.fam \</span>
+<span id="cb77-6"><a href="genetic-species-delimitation.html#cb77-6"></a>  --recode vcf-iid \</span>
+<span id="cb77-7"><a href="genetic-species-delimitation.html#cb77-7"></a>  --thin-count 1000 \</span>
+<span id="cb77-8"><a href="genetic-species-delimitation.html#cb77-8"></a>  --out sp1.1k</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="genetic-species-delimitation.html#cb78-1"></a>snps &lt;-<span class="st"> </span>vroom<span class="op">::</span><span class="kw">vroom</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;..&quot;</span>, <span class="st">&quot;variantCalling&quot;</span>, <span class="st">&quot;spagedi&quot;</span>, <span class="st">&quot;globuliferaTypeRegina.1k.genepop&quot;</span>), <span class="dt">skip =</span> <span class="dv">1002</span>, </span>
+<span id="cb78-2"><a href="genetic-species-delimitation.html#cb78-2"></a>                     <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;Lib&quot;</span>, <span class="st">&quot;Lat&quot;</span>, <span class="st">&quot;Long&quot;</span>, <span class="kw">paste0</span>(<span class="st">&quot;SNP&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>)))</span>
+<span id="cb78-3"><a href="genetic-species-delimitation.html#cb78-3"></a>XY &lt;-<span class="st"> </span><span class="kw">mutate</span>(snps, <span class="dt">Ind =</span> <span class="kw">gsub</span>(<span class="st">&quot;.g.vcf&quot;</span>, <span class="st">&quot;&quot;</span>, Lib)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb78-4"><a href="genetic-species-delimitation.html#cb78-4"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(Ind) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb78-5"><a href="genetic-species-delimitation.html#cb78-5"></a><span class="st">  </span><span class="kw">left_join</span>(dplyr<span class="op">::</span><span class="kw">select</span>(trees, Ind, Xutm, Yutm))</span>
+<span id="cb78-6"><a href="genetic-species-delimitation.html#cb78-6"></a>snps<span class="op">$</span>Lat &lt;-<span class="st"> </span>XY<span class="op">$</span>Xutm</span>
+<span id="cb78-7"><a href="genetic-species-delimitation.html#cb78-7"></a>snps<span class="op">$</span>Long &lt;-<span class="st"> </span>XY<span class="op">$</span>Yutm</span>
+<span id="cb78-8"><a href="genetic-species-delimitation.html#cb78-8"></a><span class="kw">write_tsv</span>(snps, <span class="dt">path =</span> <span class="kw">file.path</span>(path, <span class="st">&quot;..&quot;</span>, <span class="st">&quot;variantCalling&quot;</span>, <span class="st">&quot;spagedi&quot;</span>, <span class="st">&quot;globuliferaTypeRegina.1k.spagedi.in&quot;</span>), <span class="dt">col_names =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb79-1"><a href="genetic-species-delimitation.html#cb79-1"></a><span class="ex">//</span> <span class="co">#ind #cat #coord #loci #dig/loc #ploidy// this an example (lines beginning by // are comment lines)</span></span>
+<span id="cb79-2"><a href="genetic-species-delimitation.html#cb79-2"></a><span class="ex">231</span> 0   2   1000    3   2</span>
+<span id="cb79-3"><a href="genetic-species-delimitation.html#cb79-3"></a><span class="ex">8</span>   25  50  100 200 400 800 1600 3200</span>
+<span id="cb79-4"><a href="genetic-species-delimitation.html#cb79-4"></a></span>
+<span id="cb79-5"><a href="genetic-species-delimitation.html#cb79-5"></a><span class="ex">spagedi</span></span>
+<span id="cb79-6"><a href="genetic-species-delimitation.html#cb79-6"></a><span class="ex">sp1.1k.spagedi.in</span>  </span>
+<span id="cb79-7"><a href="genetic-species-delimitation.html#cb79-7"></a><span class="ex">sp1.1k.spagedi.out</span></span>
+<span id="cb79-8"><a href="genetic-species-delimitation.html#cb79-8"></a><span class="ex">e</span></span>
+<span id="cb79-9"><a href="genetic-species-delimitation.html#cb79-9"></a><span class="bu">return</span></span>
+<span id="cb79-10"><a href="genetic-species-delimitation.html#cb79-10"></a><span class="ex">13</span></span>
+<span id="cb79-11"><a href="genetic-species-delimitation.html#cb79-11"></a><span class="ex">3</span></span>
+<span id="cb79-12"><a href="genetic-species-delimitation.html#cb79-12"></a><span class="bu">return</span></span>
+<span id="cb79-13"><a href="genetic-species-delimitation.html#cb79-13"></a><span class="ex">1000</span></span>
+<span id="cb79-14"><a href="genetic-species-delimitation.html#cb79-14"></a><span class="ex">34</span></span>
+<span id="cb79-15"><a href="genetic-species-delimitation.html#cb79-15"></a><span class="ex">3</span></span></code></pre></div>
 <blockquote>
 <p>Locus intra-individual (inbreeding coef) 1 2 3 4 5 6 7 average 0-2704.88 b-lin(slope linear dist) b-log(slope log dist)
 ALL LOCI -0.0480 0.0079 0.0049 0.0046 0.0036 0.0035 0.0023 -0.0001 0.0001 -1.34448E-06 -0.00128963
@@ -419,31 +424,31 @@ Sp = –b-log / (1 − F1)</p>
 </div>
 <div id="environmental-auto-correlation" class="section level2">
 <h2><span class="header-section-number">5.4</span> Environmental auto-correlation</h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="genetic-species-delimitation.html#cb9-1"></a>trees &lt;-<span class="st"> </span><span class="kw">read_tsv</span>(<span class="dt">file =</span> <span class="st">&quot;save/NCI.tsv&quot;</span>) </span>
-<span id="cb9-2"><a href="genetic-species-delimitation.html#cb9-2"></a>snps &lt;-<span class="st"> </span>vroom<span class="op">::</span><span class="kw">vroom</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;..&quot;</span>, <span class="st">&quot;variantCalling&quot;</span>, <span class="st">&quot;spagedienv&quot;</span>, <span class="st">&quot;sp2.1k.genepop&quot;</span>), <span class="dt">skip =</span> <span class="dv">1002</span>, </span>
-<span id="cb9-3"><a href="genetic-species-delimitation.html#cb9-3"></a>                     <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;Lib&quot;</span>, <span class="st">&quot;nci&quot;</span>, <span class="st">&quot;Long&quot;</span>, <span class="kw">paste0</span>(<span class="st">&quot;SNP&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb9-4"><a href="genetic-species-delimitation.html#cb9-4"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="op">-</span>Long)</span>
-<span id="cb9-5"><a href="genetic-species-delimitation.html#cb9-5"></a>NCI &lt;-<span class="st"> </span><span class="kw">mutate</span>(snps, <span class="dt">Ind =</span> <span class="kw">gsub</span>(<span class="st">&quot;.g.vcf&quot;</span>, <span class="st">&quot;&quot;</span>, Lib)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb9-6"><a href="genetic-species-delimitation.html#cb9-6"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(Ind) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb9-7"><a href="genetic-species-delimitation.html#cb9-7"></a><span class="st">  </span><span class="kw">left_join</span>(dplyr<span class="op">::</span><span class="kw">select</span>(trees, Ind, NCI))</span>
-<span id="cb9-8"><a href="genetic-species-delimitation.html#cb9-8"></a>snps<span class="op">$</span>nci &lt;-<span class="st"> </span>NCI<span class="op">$</span>NCI</span>
-<span id="cb9-9"><a href="genetic-species-delimitation.html#cb9-9"></a><span class="kw">write_tsv</span>(snps, <span class="dt">path =</span> <span class="kw">file.path</span>(path, <span class="st">&quot;..&quot;</span>, <span class="st">&quot;variantCalling&quot;</span>, <span class="st">&quot;spagedienv&quot;</span>, <span class="st">&quot;sp2.1k.spagedi.in&quot;</span>), <span class="dt">col_names =</span> T)</span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="genetic-species-delimitation.html#cb10-1"></a><span class="ex">//</span> <span class="co">#ind #cat #coord #loci #dig/loc #ploidy// this an example (lines beginning by // are comment lines)</span></span>
-<span id="cb10-2"><a href="genetic-species-delimitation.html#cb10-2"></a><span class="ex">30</span>  0   1   1000    3   2</span>
-<span id="cb10-3"><a href="genetic-species-delimitation.html#cb10-3"></a><span class="ex">-8</span></span>
-<span id="cb10-4"><a href="genetic-species-delimitation.html#cb10-4"></a></span>
-<span id="cb10-5"><a href="genetic-species-delimitation.html#cb10-5"></a></span>
-<span id="cb10-6"><a href="genetic-species-delimitation.html#cb10-6"></a><span class="ex">spagedi</span></span>
-<span id="cb10-7"><a href="genetic-species-delimitation.html#cb10-7"></a><span class="ex">sp1.1k.spagedi.in</span>  </span>
-<span id="cb10-8"><a href="genetic-species-delimitation.html#cb10-8"></a><span class="ex">sp1.1k.spagedi.out</span></span>
-<span id="cb10-9"><a href="genetic-species-delimitation.html#cb10-9"></a><span class="ex">e</span></span>
-<span id="cb10-10"><a href="genetic-species-delimitation.html#cb10-10"></a><span class="bu">return</span></span>
-<span id="cb10-11"><a href="genetic-species-delimitation.html#cb10-11"></a><span class="ex">13</span></span>
-<span id="cb10-12"><a href="genetic-species-delimitation.html#cb10-12"></a><span class="ex">3</span></span>
-<span id="cb10-13"><a href="genetic-species-delimitation.html#cb10-13"></a><span class="bu">return</span></span>
-<span id="cb10-14"><a href="genetic-species-delimitation.html#cb10-14"></a><span class="ex">1000</span></span>
-<span id="cb10-15"><a href="genetic-species-delimitation.html#cb10-15"></a><span class="ex">34</span></span>
-<span id="cb10-16"><a href="genetic-species-delimitation.html#cb10-16"></a><span class="ex">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="genetic-species-delimitation.html#cb83-1"></a>trees &lt;-<span class="st"> </span><span class="kw">read_tsv</span>(<span class="dt">file =</span> <span class="st">&quot;save/NCI.tsv&quot;</span>) </span>
+<span id="cb83-2"><a href="genetic-species-delimitation.html#cb83-2"></a>snps &lt;-<span class="st"> </span>vroom<span class="op">::</span><span class="kw">vroom</span>(<span class="kw">file.path</span>(path, <span class="st">&quot;..&quot;</span>, <span class="st">&quot;variantCalling&quot;</span>, <span class="st">&quot;spagedienv&quot;</span>, <span class="st">&quot;sp2.1k.genepop&quot;</span>), <span class="dt">skip =</span> <span class="dv">1002</span>, </span>
+<span id="cb83-3"><a href="genetic-species-delimitation.html#cb83-3"></a>                     <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;Lib&quot;</span>, <span class="st">&quot;nci&quot;</span>, <span class="st">&quot;Long&quot;</span>, <span class="kw">paste0</span>(<span class="st">&quot;SNP&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb83-4"><a href="genetic-species-delimitation.html#cb83-4"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="op">-</span>Long)</span>
+<span id="cb83-5"><a href="genetic-species-delimitation.html#cb83-5"></a>NCI &lt;-<span class="st"> </span><span class="kw">mutate</span>(snps, <span class="dt">Ind =</span> <span class="kw">gsub</span>(<span class="st">&quot;.g.vcf&quot;</span>, <span class="st">&quot;&quot;</span>, Lib)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb83-6"><a href="genetic-species-delimitation.html#cb83-6"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(Ind) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb83-7"><a href="genetic-species-delimitation.html#cb83-7"></a><span class="st">  </span><span class="kw">left_join</span>(dplyr<span class="op">::</span><span class="kw">select</span>(trees, Ind, NCI))</span>
+<span id="cb83-8"><a href="genetic-species-delimitation.html#cb83-8"></a>snps<span class="op">$</span>nci &lt;-<span class="st"> </span>NCI<span class="op">$</span>NCI</span>
+<span id="cb83-9"><a href="genetic-species-delimitation.html#cb83-9"></a><span class="kw">write_tsv</span>(snps, <span class="dt">path =</span> <span class="kw">file.path</span>(path, <span class="st">&quot;..&quot;</span>, <span class="st">&quot;variantCalling&quot;</span>, <span class="st">&quot;spagedienv&quot;</span>, <span class="st">&quot;sp2.1k.spagedi.in&quot;</span>), <span class="dt">col_names =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb84-1"><a href="genetic-species-delimitation.html#cb84-1"></a><span class="ex">//</span> <span class="co">#ind #cat #coord #loci #dig/loc #ploidy// this an example (lines beginning by // are comment lines)</span></span>
+<span id="cb84-2"><a href="genetic-species-delimitation.html#cb84-2"></a><span class="ex">30</span>  0   1   1000    3   2</span>
+<span id="cb84-3"><a href="genetic-species-delimitation.html#cb84-3"></a><span class="ex">-8</span></span>
+<span id="cb84-4"><a href="genetic-species-delimitation.html#cb84-4"></a></span>
+<span id="cb84-5"><a href="genetic-species-delimitation.html#cb84-5"></a></span>
+<span id="cb84-6"><a href="genetic-species-delimitation.html#cb84-6"></a><span class="ex">spagedi</span></span>
+<span id="cb84-7"><a href="genetic-species-delimitation.html#cb84-7"></a><span class="ex">sp1.1k.spagedi.in</span>  </span>
+<span id="cb84-8"><a href="genetic-species-delimitation.html#cb84-8"></a><span class="ex">sp1.1k.spagedi.out</span></span>
+<span id="cb84-9"><a href="genetic-species-delimitation.html#cb84-9"></a><span class="ex">e</span></span>
+<span id="cb84-10"><a href="genetic-species-delimitation.html#cb84-10"></a><span class="bu">return</span></span>
+<span id="cb84-11"><a href="genetic-species-delimitation.html#cb84-11"></a><span class="ex">13</span></span>
+<span id="cb84-12"><a href="genetic-species-delimitation.html#cb84-12"></a><span class="ex">3</span></span>
+<span id="cb84-13"><a href="genetic-species-delimitation.html#cb84-13"></a><span class="bu">return</span></span>
+<span id="cb84-14"><a href="genetic-species-delimitation.html#cb84-14"></a><span class="ex">1000</span></span>
+<span id="cb84-15"><a href="genetic-species-delimitation.html#cb84-15"></a><span class="ex">34</span></span>
+<span id="cb84-16"><a href="genetic-species-delimitation.html#cb84-16"></a><span class="ex">3</span></span></code></pre></div>
 <pre><code>## [1] &quot;S. sp.1 Sp = 0.000458510425020048&quot;</code></pre>
 <pre><code>## [1] &quot;S. sp.2 Sp = 0.00110720539398209&quot;</code></pre>
 <pre><code>## [1] &quot;S. sp.3 Sp = 0.000206395606617702&quot;</code></pre>

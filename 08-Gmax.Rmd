@@ -622,3 +622,78 @@ cor %>%
   geom_vline(xintercept = 150, col = "lightgrey", linetype = "dotted") +
   xlab("Distance (m)") + ylab("Moran\'s I") + scale_color_discrete("Variable")
 ```
+
+## Manuscript figure
+
+```{r}
+library(tidyverse)
+library(rstan)
+library(bayesplot)
+theme_set(bayesplot::theme_default())
+rm(list = ls()) ; invisible(gc())
+# NCI
+fitEnv <- list(NCI = list())
+for(var in c("NCI")){
+  for(sim in list.files("save/EnvGeno", 
+                        pattern = var, full.names = T)){
+    load(sim)
+    fitEnv[[var]] <- c(fitEnv[[var]], fit)
+  }
+}
+fitEnv <- lapply(fitEnv, sflist2stanfit)
+# NCI species
+load(file.path("save", 'fitEnvSp.Rdata'))   
+fitEnvSp <- fit
+# Gmax
+fitGmaxGeno <- list()
+for(sim in list.files("save/GmaxGeno", full.names = T)){
+  load(sim)
+  fitGmaxGeno <- c(fitGmaxGeno, fit)
+}
+fitGmaxGeno <- sflist2stanfit(fitGmaxGeno)
+# Gmax env
+fitGmaxGenoEnv <- list()
+for(sim in list.files("save/GmaxGenoEnv", full.names = T)){
+  load(sim)
+  fitGmaxGenoEnv <- c(fitGmaxGenoEnv, fit)
+}
+fitGmaxGenoEnv <- sflist2stanfit(fitGmaxGenoEnv)
+fitGmax <- list(gmax = fitGmaxGeno,
+                gmaxenv = fitGmaxGenoEnv)
+# merge
+fit <- fitEnvSp
+fit$all <- fitEnv$NCI
+fit$gmax <- fitGmaxGeno
+fit$gmaxenv <- fitGmaxGenoEnv
+rm(fitEnv, fitEnvSp, fitGmaxGeno, fitGmaxGenoEnv)
+# fig
+lapply(fit, mcmc_intervals_data, regex_pars = c("Vp", "Vg", "Vnci", "Vtwi", "Vr")) %>% 
+  bind_rows(.id = "type") %>% 
+  mutate(variance = recode_factor(parameter, 
+                           "Vp" = "Species", "Vg" = "Genotype", 
+                           "Vnci" = "NCI", "Vtwi" = "TWI", "Vr" = "Residual")) %>% 
+  group_by(type) %>%
+  mutate(pct = m / sum(m) * 100) %>% 
+  mutate(pct_txt = ifelse(round(pct) > 0, paste0(round(pct), "%"), "")) %>%
+  mutate(variable = ifelse(type %in% c("gmax", "gmaxenv"), "Gmax", "NCI")) %>% 
+  mutate(type = recode_factor(type,
+                              "gmax" = "without enviornment", 
+                              "gmaxenv" = "with enviornment",
+                              "all" = "All species",
+                              "sp1" = "S. sp.1",
+                              "globuliferaTypeParacou" = "S. sp.2" ,
+                              "globuliferaTypeRegina" = "S. sp.3" )) %>%
+  mutate(variable = factor(variable, levels = c("NCI", "Gmax"))) %>% 
+  mutate(type = factor(type, levels = c("with enviornment", "without enviornment", 
+                                        "S. sp.3", "S. sp.2",  "S. sp.1", "All species"))) %>% 
+  ggplot(aes(x = type, fill = variance)) +
+  geom_col(aes(y = pct)) +
+  geom_text(aes(y = pct, label = pct_txt), col = "white", position = position_stack(vjust = .5)) +
+  facet_wrap(~ variable, scales = "free", nrow = 2) + 
+  theme(axis.title.x = element_blank(), axis.title.y = element_blank(),
+        axis.text.x = element_blank(), axis.line.x = element_blank(), axis.ticks.x = element_blank()) +
+  scale_fill_manual(expression(sigma^2), values = c(RColorBrewer::brewer.pal(4, "Paired"), 
+                                                    "grey")) +
+  coord_flip()
+```
+

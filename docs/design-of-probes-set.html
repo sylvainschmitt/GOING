@@ -24,7 +24,7 @@
 <meta name="author" content="Sylvain Schmitt" />
 
 
-<meta name="date" content="2021-05-17" />
+<meta name="date" content="2021-07-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -246,7 +246,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1" data-path="genetic-species-delimitation.html"><a href="genetic-species-delimitation.html#populations-structure"><i class="fa fa-check"></i><b>5.1</b> Populations structure</a></li>
 <li class="chapter" data-level="5.2" data-path="genetic-species-delimitation.html"><a href="genetic-species-delimitation.html#kinship"><i class="fa fa-check"></i><b>5.2</b> Kinship</a></li>
 <li class="chapter" data-level="5.3" data-path="genetic-species-delimitation.html"><a href="genetic-species-delimitation.html#spatial-auto-correlation"><i class="fa fa-check"></i><b>5.3</b> Spatial auto-correlation</a></li>
-<li class="chapter" data-level="5.4" data-path="genetic-species-delimitation.html"><a href="genetic-species-delimitation.html#introgression"><i class="fa fa-check"></i><b>5.4</b> Introgression</a></li>
+<li class="chapter" data-level="5.4" data-path="genetic-species-delimitation.html"><a href="genetic-species-delimitation.html#environmental-auto-correlation"><i class="fa fa-check"></i><b>5.4</b> Environmental auto-correlation</a></li>
+<li class="chapter" data-level="5.5" data-path="genetic-species-delimitation.html"><a href="genetic-species-delimitation.html#introgression"><i class="fa fa-check"></i><b>5.5</b> Introgression</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><i class="fa fa-check"></i><b>6</b> Neighbourhood crowding effect on neutral and adaptive genetic variation</a><ul>
 <li class="chapter" data-level="6.1" data-path="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html"><a href="neighbourhood-crowding-effect-on-neutral-and-adaptive-genetic-variation.html#simulated-animal-model"><i class="fa fa-check"></i><b>6.1</b> Simulated Animal Model</a></li>
@@ -260,6 +261,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2" data-path="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#simulated-growth-and-animal-model"><i class="fa fa-check"></i><b>7.2</b> Simulated Growth and Animal Model</a></li>
 <li class="chapter" data-level="7.3" data-path="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#genetic-variance-1"><i class="fa fa-check"></i><b>7.3</b> Genetic variance</a></li>
 <li class="chapter" data-level="7.4" data-path="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#confounding-phenotypic-and-environmental-variation"><i class="fa fa-check"></i><b>7.4</b> Confounding phenotypic and environmental variation</a></li>
+<li class="chapter" data-level="7.5" data-path="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html"><a href="neutral-and-adaptive-genetic-variation-effect-on-individual-growth.html#manuscript-figure"><i class="fa fa-check"></i><b>7.5</b> Manuscript figure</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -1213,7 +1215,7 @@ Figure 2.10: Available genes for target sequences design.
 <h3><span class="header-section-number">2.5.5</span> Differential Expression (DE) of genes</h3>
 <p>Figure <a href="design-of-probes-set.html#fig:diffExprFig">2.11</a> shows genes differential expression. First circle represents genes with isoforms not enriched whereas second and third circle represent, respectively, genes with isoforms <em>S. sp1</em> and <em>S. globulifera</em> enriched. Relatively few genes contained enriched isoforms, and most of them were <em>S. globulifera</em> enriched.</p>
 <div class="figure"><span id="fig:diffExprFig"></span>
-<div class="sunburst html-widget" id="htmlwidget-1e5eb84eea75d9546b0d" style="width:768px;height:576px; position:relative;">
+<div class="sunburst html-widget" id="htmlwidget-447c1e93f0133fc50119" style="width:768px;height:576px; position:relative;">
 <div>
 <div class="sunburst-main">
 <div class="sunburst-sequence"></div>
@@ -1227,7 +1229,7 @@ Figure 2.10: Available genes for target sequences design.
 </div>
 </div>
 </div>
-<script type="application/json" data-for="htmlwidget-1e5eb84eea75d9546b0d">{"x":{"data":{"children":[{"name":"NA","children":[{"name":"NA","children":[{"name":"Globulifera enriched","size":33,"colname":"X3"}],"colname":"X2"},{"name":"Sp1 enriched","children":[{"name":"Globulifera enriched","size":2,"colname":"X3"},{"name":"NA","size":6,"colname":"X3"}],"colname":"X2"}],"colname":"X1"},{"name":"Not enriched","children":[{"name":"NA","children":[{"name":"Globulifera enriched","size":31,"colname":"X3"},{"name":"NA","size":704,"colname":"X3"}],"colname":"X2"},{"name":"Sp1 enriched","children":[{"name":"Globulifera enriched","size":1,"colname":"X3"},{"name":"NA","size":15,"colname":"X3"}],"colname":"X2"}],"colname":"X1"}],"name":"root"},"options":{"legendOrder":null,"colors":null,"valueField":"size","percent":true,"count":true,"explanation":null,"breadcrumb":[],"legend":[],"sortFunction":null,"sumNodes":true}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-447c1e93f0133fc50119">{"x":{"data":{"children":[{"name":"NA","children":[{"name":"NA","children":[{"name":"Globulifera enriched","size":33,"colname":"X3"}],"colname":"X2"},{"name":"Sp1 enriched","children":[{"name":"Globulifera enriched","size":2,"colname":"X3"},{"name":"NA","size":6,"colname":"X3"}],"colname":"X2"}],"colname":"X1"},{"name":"Not enriched","children":[{"name":"NA","children":[{"name":"Globulifera enriched","size":31,"colname":"X3"},{"name":"NA","size":704,"colname":"X3"}],"colname":"X2"},{"name":"Sp1 enriched","children":[{"name":"Globulifera enriched","size":1,"colname":"X3"},{"name":"NA","size":15,"colname":"X3"}],"colname":"X2"}],"colname":"X1"}],"name":"root"},"options":{"legendOrder":null,"colors":null,"valueField":"size","percent":true,"count":true,"explanation":null,"breadcrumb":[],"legend":[],"sortFunction":null,"sumNodes":true}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 2.11: Genes differential expression.
 </p>
